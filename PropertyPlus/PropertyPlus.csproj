@@ -243,6 +243,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="html\blog.html" />
     <Content Include="html\detail.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
@@ -296,6 +297,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\home\app.js" />
+    <Content Include="Scripts\home\blogctrl.js" />
     <Content Include="Scripts\home\config.js" />
     <Content Include="Scripts\home\detailctrl.js" />
     <Content Include="Scripts\home\services.js" />
@@ -323,6 +325,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
