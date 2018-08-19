@@ -7,14 +7,20 @@
 }
 
 var translationsEN = {
-    menu_blog: "Blog";
+    search_bar_livingHaNoi: "Easy living in HaNoi",
+    search_bar_price: "Price",
+    search_bar_room: "Room",
+    search_bar_area: "Area",
+    search_bar_facilities: "Facilities",
+    menu_support:"Support",
+    menu_blog: "Blog",
     menu_customer: "Support",
     menu_signup: "Sign up",
     menu_help: "Help",
     menu_login: "Login",
     menu_visit: "Your visit list",
-    menu_host: "Become a host";
-    btn_register: "Signup",
+    menu_host: "Become a host",
+    btn_register: "Signup"
    
 }
 
