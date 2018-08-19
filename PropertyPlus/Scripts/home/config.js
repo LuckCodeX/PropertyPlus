@@ -19,22 +19,16 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
             templateUrl: "html/home.html",
             data: { pageTitle: 'Trang chủ' }
         })
+        .state('blog', {
+            url: "/blog",
+            templateUrl: "html/blog.html",
+            data: { pageTitle: 'Blog' }
+        })
         .state('detail', {
             url: "/detail/:id",
             templateUrl: "html/detail.html",
             data: { pageTitle: 'Xác nhận đơn hàng' }
         });
-    //$routeProvider
-    //    .when("/",
-    //        {
-    //            templateUrl: "html/index.html",
-    //            //controller: 'HomeCtrl'
-    //        })
-    //    .when("/home/detail/:id",
-    //        {
-    //            templateUrl: "html/detail.html",
-    //            //controller: 'DetailCtrl'
-    //        });
 }
 
 

@@ -94,3 +94,7 @@ D:\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csprojResolveAssembl
 D:\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csproj.CoreCompileInputs.cache
 D:\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.dll
 D:\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.pdb
+D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.dll
+D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.SqlServer.dll
+D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.xml
+D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.SqlServer.xml

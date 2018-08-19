@@ -21,5 +21,12 @@ namespace PropertyPlus.Controllers
 
             return View();
         }
+
+        public ActionResult Blog()
+        {
+            ViewBag.Title = "Blog";
+
+            return View();
+        }
     }
 }
