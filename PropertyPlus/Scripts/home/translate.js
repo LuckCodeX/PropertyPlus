@@ -7,9 +7,13 @@
 }
 
 var translationsEN = {
+    menu_blog: "Blog";
     menu_customer: "Support",
     menu_signup: "Sign up",
-
+    menu_help: "Help",
+    menu_login: "Login",
+    menu_visit: "Your visit list",
+    menu_host: "Become a host";
     btn_register: "Signup",
    
 }
