@@ -14,8 +14,14 @@ namespace PropertyPlus
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{action}/{id}",
+                name: "Blog",
+                url: "blog/{id}",
+                defaults: new { controller = "Home", action = "Blog", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Admin",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

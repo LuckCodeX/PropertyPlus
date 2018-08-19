@@ -15,7 +15,7 @@
     <link href="/Content/owl.theme.default.min.css" rel="stylesheet"/>
     <link href="/Content/Custom.css" rel="stylesheet"/>
 </head>
-<body>
+<body ng-controller="HomeCtrl" ng-init="loadData()">
 <header class="clearfix">
     <div class="logo-header">
 
@@ -42,7 +42,7 @@
             <a class="text-center" href="#">Help</a>
         </div>
         <div class="header-navbar-menu-nav">
-            <a class="text-center" href="#">Sign up</a>
+            <a class="text-center" href="#" translate>menu_signup</a>
         </div>
         <div class="header-navbar-menu-nav">
             |&nbsp;&nbsp;
@@ -54,7 +54,7 @@
 </header>
 
 <div class="body-content">
-    <div ng-controller="HomeCtrl">
+    <div>
         <div class="container-fluid search-bar-section">
             <div class="container">
                 <div class="row">
@@ -228,7 +228,7 @@
 <script src="/Scripts/home/app.js"></script>
 <script src="/Scripts/home/config.js"></script>
 <script src="/Scripts/home/services.js"></script>
+<script src="/Scripts/home/translate.js"></script>
 <script src="/Scripts/home/homectrl.js"></script>
-<script src="/Scripts/home/detailctrl.js"></script>
 </body>
 </html>
