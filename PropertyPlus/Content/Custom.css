@@ -53,11 +53,9 @@ header .search-box {
     float: left;
     width: 436.55px;
     height: 47.55px;
-}
-
-.search-box {
     position: relative;
 }
+
 
 header .search-box input{
     height: 100%;
@@ -71,13 +69,10 @@ header .search-box input{
         font-size: 12px;
     }
 
-.btn-search {
-    color: white;
-    background-color: #473D6F;
-    position: absolute;
-}
 
 header .btn-search {
+    color: white;
+    background-color: #473D6F;
     width: 65.73px;
     height: 35.66px;
     position: absolute;
@@ -120,10 +115,6 @@ header .btn-search {
         vertical-align: middle;
         line-height: 50px
     }
-
-.header-navbar-menu-nav:nth-child(1) {
-    padding-left: 30px;
-}
 
 footer {
     background-color: #465983;
@@ -189,17 +180,23 @@ footer {
 }
 
 .search-bar-section .search-box {
-    width: 710.75px;
+    width: 100%;
     height: 69.06px;
+    border-color: #707070;
+    background-color:white;
+    padding:7px;
+    margin-top: 36.1px;
 }
 
     .search-bar-section .search-box input {
+        border:none;
         height: 100%;
         font-size: 16px;
-        width: 100%;
+        width: calc(100% - 103.16px);
         padding: 0 17.5px;
-        border-color: #707070;
-
+        
+        float:left;
+        display:inline-block;
     }
         .search-bar-section .search-box input::-webkit-input-placeholder {
             font-size: 16px;
@@ -208,12 +205,16 @@ footer {
     border-color: #707070;
     width: 103.16px;
     height: 53.4px;
-    right: 10.1px;
-    top: 8.1px;
+    float: right;
+    display: inline-block;
+    color: white;
+    background-color: #473D6F;
+    font-size:15px;
 }
 
 .list-btn-facilities {
     margin-top: 25.6px;
+   
 }
 
 .btn-facilities {
@@ -228,6 +229,7 @@ footer {
     border-color: #707070;
     text-align: left;
     padding-left: 10px;
+    margin-bottom: 15px;
 }
     .btn-facilities:hover, .btn-facilities:hover .fas.fa-chevron-right {
         color: white;
@@ -242,6 +244,8 @@ footer {
         top: 15px;
         color: #464878;
     }
+
+
 .btn-introducing {
     border-color: #707070;
     background-color: white;
@@ -283,7 +287,6 @@ footer {
 
 .sevice-rating {
     margin-top: 69px;
-    position: relative;
 }
 
 .section1 {
@@ -293,12 +296,19 @@ footer {
 }
 
 .sevice-rating-content {
-    margin-top: 145px;
+    padding-top: 105px;
+}
+
+.content-service-rating{
+    margin-top:53px;
 }
 
 .width-20 {
     display: inline-block;
     width: 20%;
+}
+.content-service-rating {
+    position: relative;
 }
 
 .width-offset-10 {
@@ -308,17 +318,18 @@ footer {
 .list-service-rating {
     position: absolute;
     left: 0;
-    right: 0;
-    margin: 0 auto;
+    top:0;
     z-index: 50;
-    background-color: white;
+}
+
+.list-service-rating-main{
+    background-color:white;
 }
 
 .icon-service-rating {
-    background-color: #CBCBCB;
-    width: 82.06px;
-    height: 82.06px;
-    margin: 42.6px auto 20.7px auto;
+    width: 50%;
+    height:auto;
+    margin:42.6px auto 20.7px auto;
 }
 
 .title-service-rating {
@@ -333,5 +344,223 @@ footer {
 
 .homepage-title-section p.small-text {
     font-size: 16px;
-    margin-top: 11.5px;
-}//cai nay e vua them
+    margin-top: 1.5px;
+}
+
+.thumbnail-choose-home {
+    margin-bottom: 26px;
+}
+
+.choose-home {
+    margin-top: 58px;
+}
+
+.slide-choose-home {
+    height: 167.11px;
+}
+
+.choose-home-code{
+    font-size: 11px;
+    margin-top: 15.3px;
+}
+
+.choose-home-name{
+    font-size: 16px;
+    margin-top: 10px
+}
+
+.choose-home-price, .choose-home-detail{
+    margin-top:17px;
+}
+
+.choose-home-detail p, .choose-home-price {
+    font-size: 11px;
+}
+
+    .choose-home-detail p:last-child{
+        line-height:22px;
+    }
+
+    .choose-home-price p {
+        font-size: 23px;
+    }
+
+
+.choose-home-item{
+    background-color:#a5a4a4;
+    height:167.11px;
+}
+
+.owl-nav .owl-prev span{
+    position: absolute;
+    top: 30%;
+    left: 52px;
+    font-size: 30px;
+    color:white;
+}
+.owl-nav .owl-next span {
+    position: absolute;
+    top: 30%;
+    right: 52px;
+    font-size: 30px;
+    color: white;
+}
+.owl-dots {
+    position:absolute;
+    bottom: 30px;
+    left: 40%;
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #FFFFFF;
+}
+.owl-theme .owl-dots .owl-dot span, .owl-theme .owl-dots .owl-dot span {
+    background: #EDECEC;
+}
+
+.choose-home .btn-see-more button {
+    background-color: #473D6F;
+    color: white;
+    width: 100%;
+    height: 50px;
+}
+
+.choose-home .btn-see-more {
+    margin-top: 40.2px;
+}
+
+.list-project .project {
+    margin-bottom: 28px;
+}
+
+.project-have-service {
+    margin-top: 83px;
+}
+
+.list-project {
+    margin-top: 28px;
+}
+
+.project-have-service .project .project-thumbnail {
+    width: 100%;
+    height: 269px;
+    background-color: #A5A4A4;
+}
+.project-have-service .project .project-name {
+    font-size: 15px;
+    margin-top: 21.4px;
+}
+.big-news .big-news-thumbnail {
+    width: 100%;
+    background: #A5A4A4;
+    height: 308.37px;
+}
+
+.big-news .big-news-title {
+    margin: 22.8px 0;
+    font-size: 16px;
+}
+
+.small-news .small-news-thumbnail {
+    width: 100%;
+    height: 185.86px;
+    background: #A5A4A4;
+}
+
+.small-news .small-news-title {
+    margin-top: 15.4px;
+    font-size: 14px;
+}
+
+.list-normal-news {
+    margin-top: 45px;
+}
+
+.list-normal-news ul {
+    padding-left: 15px;
+}
+
+    .list-normal-news ul li{
+        line-height: 35px;
+        font-size: 14px;
+    }
+
+        .list-normal-news ul li a {
+            color: #484848;
+        }
+
+.project-have-service .btn-explore-all button{
+    background-color: #473D6F;
+    color: white;
+    width: 100%;
+    height: 50px;
+}
+
+.project-have-service .btn-explore-all button {
+    margin-top: 9.8px;
+}
+
+.homepage-news {
+    margin-top: 67.3px;
+    margin-bottom: 75.3px;
+}
+
+.main-homepage .box-shadow {
+    border-color: #707070 !important;
+}
+
+.list-news {
+    margin-top: 28.3px;
+}
+
+.list-choose-home {
+    margin-top: 20.9px;
+}
+
+.icon-bars {
+    font-size: 14px;
+    padding: 6px 10px;
+    display: none;
+    border-color: #707070;
+    float: right;
+    background-color: white !important;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .icon-service-rating {
+        width: 100%;
+    }
+    .large-text-search-bar p {
+        font-size: 27px;
+    }
+    .logo-header {
+        margin-left: 0;
+    }
+
+    header {
+        padding-left: 10px;
+        padding-right: 10px
+    }
+
+    .search-bar-section {
+        height: 540.66px;
+    }
+
+    .header-navbar-menu-nav {
+        display: block;
+        width: 100%;
+    }
+    .between {
+        display: none;
+    }
+
+    #drop-down-menu {
+        display: none;
+    }
+
+
+    .icon-bars {
+        display: inline-block;
+    }
+}
