@@ -2,20 +2,39 @@
     font-family: 'Montserrat', sans-serif;
     color: #484848;
 }
+*:focus{outline: none}
 a {
     text-decoration: none !important;
 }
 
 header {
-    padding: 0 15px;
+    padding: 12.5px 30px;
 }
 
 .box-shadow {
     border: 0.5px solid #484848;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
-    
-    border-radius: 7px;
+    border-radius: 7px ;
 }
+
+.logo-header {
+    display: inline-block;
+    float: left;
+    background-color: black;
+    width: 46.28px;
+    height: 46.28px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.float-left {
+    float: left !important;
+}
+
 
 .m-t-25 {
     margin-top: 25px; 
@@ -29,36 +48,78 @@ header {
     margin-top: 10px;
 }
 
+header .search-box {
+    display: inline-block;
+    float: left;
+    width: 436.55px;
+    height: 47.55px;
+}
+
 .search-box {
     position: relative;
 }
 
-.search-box input{
+header .search-box input{
+    height: 100%;
+    font-size: 12px;
     width: 100%;
-    height: 47.55px;
-    padding: 0 15px;
+    padding: 0 17.5px;
+
 }
+
+    header .search-box input::-webkit-input-placeholder {
+        font-size: 12px;
+    }
 
 .btn-search {
     color: white;
     background-color: #473D6F;
     position: absolute;
+}
+
+header .btn-search {
+    width: 65.73px;
+    height: 35.66px;
+    position: absolute;
     right: 6.3px;
     bottom: 6.3px;
-    padding: 9px 10px;
     font-size: 12px;
 }
 
-.header-navbar-menu-nav {
+
+.header-navbar-menu-nav { 
+    display: inline-block;
+    float: left;
     height: 47.55px;
 }
+    .header-navbar-menu-nav:nth-child(1) {
+        margin-right: 65px;
 
-.header-navbar-menu a {
-    font-size: 12px;
-    color: #484848;
-    vertical-align: middle;
-    line-height: 50px
-}
+    }
+    .header-navbar-menu-nav:nth-child(2) {
+        margin-right: 45px
+    }
+    .header-navbar-menu-nav:nth-child(3) {
+        margin-right: 40px
+    }
+    .header-navbar-menu-nav:nth-child(4) {
+        margin-right: 45px
+    }
+    .header-navbar-menu-nav:nth-child(5) {
+        margin-right: 40px
+    }
+    .header-navbar-menu-nav:nth-child(6) {
+        margin-right: 15px
+    }
+    
+    
+
+    .header-navbar-menu a {
+        font-size: 12px;
+        color: #484848;
+        vertical-align: middle;
+        line-height: 50px
+    }
 
 .header-navbar-menu-nav:nth-child(1) {
     padding-left: 30px;
@@ -93,7 +154,7 @@ footer {
         margin-right: 10px;
     }
     footer hr {
-        width: 100%;
+        width: calc(100% - 30px);
         color: white;
     }
 .copyright {
@@ -101,3 +162,176 @@ footer {
     font-size: 16px;
     margin: 23px 0 21px 10px;
 }
+.logo-name-header {
+    display: inline-block;
+    float: left;
+}
+
+.logo-name-header a{
+  
+    font-size: 22px;
+    color: #484848;
+    line-height: 40px;
+}
+
+.search-bar-section {
+    height: 633.66px;
+    background-color: #A5A4A4;
+    border: 1px solid #707070;
+}
+.large-text-search-bar p{
+    font-size: 44px;
+    color: white;
+}
+.search-bar {
+    margin-top: 133.9px;
+    padding: 10px;
+}
+
+.search-bar-section .search-box {
+    width: 710.75px;
+    height: 69.06px;
+}
+
+    .search-bar-section .search-box input {
+        height: 100%;
+        font-size: 16px;
+        width: 100%;
+        padding: 0 17.5px;
+        border-color: #707070;
+
+    }
+        .search-bar-section .search-box input::-webkit-input-placeholder {
+            font-size: 16px;
+        }
+.search-bar-section .btn-search {
+    border-color: #707070;
+    width: 103.16px;
+    height: 53.4px;
+    right: 10.1px;
+    top: 8.1px;
+}
+
+.list-btn-facilities {
+    margin-top: 25.6px;
+}
+
+.btn-facilities {
+    position: relative;
+    width: 108.01px;
+    height: 46.99px;
+    font-size: 15px;
+    color: #464878;
+    font-weight: 500;
+    background-color: white;
+    margin-right: 17.5px;
+    border-color: #707070;
+    text-align: left;
+    padding-left: 10px;
+}
+    .btn-facilities:hover, .btn-facilities:hover .fas.fa-chevron-right {
+        color: white;
+        background-color: #464878;
+    }
+    .btn-facilities:last-child {
+        margin-right: 0;
+    }
+    .btn-facilities .fas.fa-chevron-right {
+        position: absolute;
+        right: 12.1px;
+        top: 15px;
+        color: #464878;
+    }
+.btn-introducing {
+    border-color: #707070;
+    background-color: white;
+    color: #474747;
+    position: absolute;
+    right: 17.1px;
+    bottom: 21.2px;
+    font-size: 15px;
+    width: 214px;
+    height: 46px;
+}
+.homepage-title-section {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.introducing-banner {
+    position: relative;
+    height: 310px;
+    background-color: #A5A4A4;
+    border-color: #707070;
+}
+.introducing {
+    margin-top: 69px;
+}
+.btn-service-rating {
+    border-color: #707070;
+    background-color: white;
+    color: #474747;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 21.2px;
+    font-size: 15px;
+    width: 214px;
+    height: 46px;
+}
+
+.sevice-rating {
+    margin-top: 69px;
+    position: relative;
+}
+
+.section1 {
+    position: relative;
+    height: 307.9px;
+    background-color: #A5A4A4;
+}
+
+.sevice-rating-content {
+    margin-top: 145px;
+}
+
+.width-20 {
+    display: inline-block;
+    width: 20%;
+}
+
+.width-offset-10 {
+    margin-left: 10%;
+}
+
+.list-service-rating {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 50;
+    background-color: white;
+}
+
+.icon-service-rating {
+    background-color: #CBCBCB;
+    width: 82.06px;
+    height: 82.06px;
+    margin: 42.6px auto 20.7px auto;
+}
+
+.title-service-rating {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 55.5px;
+}
+
+.sevice-rating .box-shadow {
+    border-color: #707070;
+}
+
+.homepage-title-section p.small-text {
+    font-size: 16px;
+    margin-top: 11.5px;
+}//cai nay e vua them
