@@ -2,7 +2,11 @@
     font-family: 'Montserrat', sans-serif;
     color: #484848;
 }
-*:focus{outline: none}
+
+    *:focus {
+        outline: none
+    }
+
 a {
     text-decoration: none !important;
 }
@@ -14,7 +18,7 @@ header {
 .box-shadow {
     border: 0.5px solid #484848;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
-    border-radius: 7px ;
+    border-radius: 7px;
 }
 
 .logo-header {
@@ -37,7 +41,7 @@ header {
 
 
 .m-t-25 {
-    margin-top: 25px; 
+    margin-top: 25px;
 }
 
 .m-t-15 {
@@ -57,17 +61,16 @@ header .search-box {
 }
 
 
-header .search-box input{
-    height: 100%;
-    font-size: 12px;
-    width: 100%;
-    padding: 0 17.5px;
-
-}
-
-    header .search-box input::-webkit-input-placeholder {
+    header .search-box input {
+        height: 100%;
         font-size: 12px;
+        width: 100%;
+        padding: 0 17.5px;
     }
+
+        header .search-box input::-webkit-input-placeholder {
+            font-size: 12px;
+        }
 
 
 header .btn-search {
@@ -82,39 +85,44 @@ header .btn-search {
 }
 
 
-.header-navbar-menu-nav { 
+.header-navbar-menu-nav {
     display: inline-block;
     float: left;
     height: 47.55px;
 }
+
     .header-navbar-menu-nav:nth-child(1) {
         margin-right: 65px;
-
     }
+
     .header-navbar-menu-nav:nth-child(2) {
         margin-right: 45px
     }
+
     .header-navbar-menu-nav:nth-child(3) {
         margin-right: 40px
     }
+
     .header-navbar-menu-nav:nth-child(4) {
         margin-right: 45px
     }
+
     .header-navbar-menu-nav:nth-child(5) {
         margin-right: 40px
     }
+
     .header-navbar-menu-nav:nth-child(6) {
         margin-right: 15px
     }
-    
-    
 
-    .header-navbar-menu a {
-        font-size: 12px;
-        color: #484848;
-        vertical-align: middle;
-        line-height: 50px
-    }
+
+
+.header-navbar-menu a {
+    font-size: 12px;
+    color: #484848;
+    vertical-align: middle;
+    line-height: 50px
+}
 
 footer {
     background-color: #465983;
@@ -133,7 +141,7 @@ footer {
         margin-bottom: 25px;
     }
 
-    footer .footer-navbar-menu-nav a{
+    footer .footer-navbar-menu-nav a {
         line-height: 25px;
         color: white;
         font-size: 12px;
@@ -144,36 +152,40 @@ footer {
         font-size: 26.7px;
         margin-right: 10px;
     }
+
     footer hr {
         width: calc(100% - 30px);
         color: white;
     }
+
 .copyright {
     color: white;
     font-size: 16px;
     margin: 23px 0 21px 10px;
 }
+
 .logo-name-header {
     display: inline-block;
     float: left;
 }
 
-.logo-name-header a{
-  
-    font-size: 22px;
-    color: #484848;
-    line-height: 40px;
-}
+    .logo-name-header a {
+        font-size: 22px;
+        color: #484848;
+        line-height: 40px;
+    }
 
 .search-bar-section {
     height: 633.66px;
     background-color: #A5A4A4;
     border: 1px solid #707070;
 }
-.large-text-search-bar p{
+
+.large-text-search-bar p {
     font-size: 44px;
     color: white;
 }
+
 .search-bar {
     margin-top: 133.9px;
     padding: 10px;
@@ -183,24 +195,25 @@ footer {
     width: 100%;
     height: 69.06px;
     border-color: #707070;
-    background-color:white;
-    padding:7px;
+    background-color: white;
+    padding: 7px;
     margin-top: 36.1px;
 }
 
     .search-bar-section .search-box input {
-        border:none;
+        border: none;
         height: 100%;
         font-size: 16px;
         width: calc(100% - 103.16px);
         padding: 0 17.5px;
-        
-        float:left;
-        display:inline-block;
+        float: left;
+        display: inline-block;
     }
+
         .search-bar-section .search-box input::-webkit-input-placeholder {
             font-size: 16px;
         }
+
 .search-bar-section .btn-search {
     border-color: #707070;
     width: 103.16px;
@@ -209,12 +222,11 @@ footer {
     display: inline-block;
     color: white;
     background-color: #473D6F;
-    font-size:15px;
+    font-size: 15px;
 }
 
 .list-btn-facilities {
     margin-top: 25.6px;
-   
 }
 
 .btn-facilities {
@@ -231,13 +243,16 @@ footer {
     padding-left: 10px;
     margin-bottom: 15px;
 }
+
     .btn-facilities:hover, .btn-facilities:hover .fas.fa-chevron-right {
         color: white;
         background-color: #464878;
     }
+
     .btn-facilities:last-child {
         margin-right: 0;
     }
+
     .btn-facilities .fas.fa-chevron-right {
         position: absolute;
         right: 12.1px;
@@ -257,19 +272,23 @@ footer {
     width: 214px;
     height: 46px;
 }
+
 .homepage-title-section {
     font-size: 24px;
     margin-bottom: 10px;
 }
+
 .introducing-banner {
     position: relative;
     height: 310px;
     background-color: #A5A4A4;
     border-color: #707070;
 }
+
 .introducing {
     margin-top: 69px;
 }
+
 .btn-service-rating {
     border-color: #707070;
     background-color: white;
@@ -299,14 +318,15 @@ footer {
     padding-top: 105px;
 }
 
-.content-service-rating{
-    margin-top:53px;
+.content-service-rating {
+    margin-top: 53px;
 }
 
 .width-20 {
     display: inline-block;
     width: 20%;
 }
+
 .content-service-rating {
     position: relative;
 }
@@ -318,18 +338,18 @@ footer {
 .list-service-rating {
     position: absolute;
     left: 0;
-    top:0;
+    top: 0;
     z-index: 50;
 }
 
-.list-service-rating-main{
-    background-color:white;
+.list-service-rating-main {
+    background-color: white;
 }
 
 .icon-service-rating {
     width: 50%;
-    height:auto;
-    margin:42.6px auto 20.7px auto;
+    height: auto;
+    margin: 42.6px auto 20.7px auto;
 }
 
 .title-service-rating {
@@ -359,45 +379,46 @@ footer {
     height: 167.11px;
 }
 
-.choose-home-code{
+.choose-home-code {
     font-size: 11px;
     margin-top: 15.3px;
 }
 
-.choose-home-name{
+.choose-home-name {
     font-size: 16px;
     margin-top: 10px
 }
 
-.choose-home-price, .choose-home-detail{
-    margin-top:17px;
+.choose-home-price, .choose-home-detail {
+    margin-top: 17px;
 }
 
-.choose-home-detail p, .choose-home-price {
-    font-size: 11px;
-}
-
-    .choose-home-detail p:last-child{
-        line-height:22px;
+    .choose-home-detail p, .choose-home-price {
+        font-size: 11px;
     }
 
-    .choose-home-price p {
-        font-size: 23px;
-    }
+        .choose-home-detail p:last-child {
+            line-height: 22px;
+        }
+
+        .choose-home-price p {
+            font-size: 23px;
+        }
 
 
-.choose-home-item{
-    background-color:#a5a4a4;
-    height:167.11px;
+.choose-home-item {
+    background-color: #a5a4a4;
+    height: 167.11px;
 }
 
-.owl-nav .owl-prev span{
+.owl-nav .owl-prev span {
     position: absolute;
     top: 30%;
     left: 52px;
     font-size: 30px;
-    color:white;
+    color: white;
 }
+
 .owl-nav .owl-next span {
     position: absolute;
     top: 30%;
@@ -405,14 +426,17 @@ footer {
     font-size: 30px;
     color: white;
 }
+
 .owl-dots {
-    position:absolute;
+    position: absolute;
     bottom: 30px;
     left: 37%;
 }
+
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
     background: #FFFFFF;
 }
+
 .owl-theme .owl-dots .owl-dot span, .owl-theme .owl-dots .owl-dot span {
     background: #EDECEC;
 }
@@ -445,10 +469,12 @@ footer {
     height: 269px;
     background-color: #A5A4A4;
 }
+
 .project-have-service .project .project-name {
     font-size: 15px;
     margin-top: 21.4px;
 }
+
 .big-news .big-news-thumbnail {
     width: 100%;
     background: #A5A4A4;
@@ -476,20 +502,20 @@ footer {
     margin-top: 30px;
 }
 
-.list-normal-news ul {
-    padding-left: 15px;
-}
-
-    .list-normal-news ul li{
-        line-height: 35px;
-        font-size: 14px;
+    .list-normal-news ul {
+        padding-left: 15px;
     }
 
-        .list-normal-news ul li a {
-            color: #484848;
+        .list-normal-news ul li {
+            line-height: 35px;
+            font-size: 14px;
         }
 
-.project-have-service .btn-explore-all button{
+            .list-normal-news ul li a {
+                color: #484848;
+            }
+
+.project-have-service .btn-explore-all button {
     background-color: #473D6F;
     color: white;
     width: 100%;
@@ -532,9 +558,11 @@ footer {
     .icon-service-rating {
         width: 100%;
     }
+
     .large-text-search-bar p {
         font-size: 27px;
     }
+
     .logo-header {
         margin-left: 0;
     }
@@ -552,6 +580,7 @@ footer {
         display: block;
         width: 100%;
     }
+
     .between {
         display: none;
     }
