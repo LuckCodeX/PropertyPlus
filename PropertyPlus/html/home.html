@@ -1,0 +1,563 @@
+﻿
+<div ng-controller="HomeCtrl" ng-init="loadData()">
+    <div class="body-content">
+        <div>
+            <div class="container-fluid search-bar-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 search-bar">
+                            <div class="large-text-search-bar">
+                                <p>Property Plus</p>
+                                <p translate>search_bar_livingHaNoi</p>
+                            </div>
+                            <div class="search-box box-shadow">
+                                <input type="text" name="name" placeholder="Type Location or Project Keyword" value="" />
+                                <button class="btn-search box-shadow" translate>Search</button>
+                            </div>
+                            <div class="list-btn-facilities">
+                                <button class="box-shadow btn-facilities"><span translate>search_bar_price </span><i class="fas fa-chevron-right"></i></button>
+                                <button class="box-shadow btn-facilities"><span translate>search_bar_room</span> <i class="fas fa-chevron-right"></i></button>
+                                <button class="box-shadow btn-facilities"><span translate>search_bar_area </span><i class="fas fa-chevron-right"></i></button>
+                                <button class="box-shadow btn-facilities"><span translate>search_bar_facilities</span> <i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-homepage container">
+                <div class="row">
+                    <div class="col-xs-12 introducing">
+                        <div class="homepage-title-section">
+                            Introducing Propert Plus
+                        </div>
+                        <div class="introducing-banner box-shadow">
+                            <button class="box-shadow btn-introducing">Explore our story</button>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 sevice-rating">
+                        <div class="homepage-title-section">
+                            See how our service is best
+                            <p class="small-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p>
+                        </div>
+                        <div class="content-service-rating">
+                            <div class="list-service-rating col-xs-12">
+                                <div class="list-service-rating-main box-shadow col-md-10 col-md-offset-1">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="~/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating">
+                                                        Standard Quality
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="~/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating">
+                                                        Fast service
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="~/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating">
+                                                        24/7 call center
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="~/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating">
+                                                        <div class="row">
+                                                            Multi-language support
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="sevice-rating-content">
+                                <div class="section1 box-shadow">
+                                    <button class="box-shadow btn-service-rating">Explore all service</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 choose-home">
+                        <div class="homepage-title-section">
+                            Choose your new home
+                        </div>
+                        <div class="list-choose-home">
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-3 thumbnail-choose-home clearfix">
+                                    <div class="slide-choose-home">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>1</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>2</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>3</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose-home-summary">
+                                        <div class="choose-home-code">
+                                            House P123456
+                                        </div>
+                                        <div class="choose-home-name">
+                                            Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
+                                        </div>
+                                        <div class="choose-home-detail float-left">
+                                            <p>Bedrooms: 2</p>
+                                            <p>Dong Da, Hanoi</p>
+                                        </div>
+                                        <div class="choose-home-price float-right">
+                                            Estimate Price:
+                                            <p class="price">$ <span>2400</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3 thumbnail-choose-home clearfix">
+                                    <div class="slide-choose-home">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>1</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>2</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>3</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose-home-summary">
+                                        <div class="choose-home-code">
+                                            House P123456
+                                        </div>
+                                        <div class="choose-home-name">
+                                            Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
+                                        </div>
+                                        <div class="choose-home-detail float-left">
+                                            <p>Bedrooms: 2</p>
+                                            <p>Dong Da, Hanoi</p>
+                                        </div>
+                                        <div class="choose-home-price float-right">
+                                            Estimate Price:
+                                            <p class="price">$ <span>2400</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3 thumbnail-choose-home clearfix">
+                                    <div class="slide-choose-home">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>1</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>2</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>3</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose-home-summary">
+                                        <div class="choose-home-code">
+                                            House P123456
+                                        </div>
+                                        <div class="choose-home-name">
+                                            Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
+                                        </div>
+                                        <div class="choose-home-detail float-left">
+                                            <p>Bedrooms: 2</p>
+                                            <p>Dong Da, Hanoi</p>
+                                        </div>
+                                        <div class="choose-home-price float-right">
+                                            Estimate Price:
+                                            <p class="price">$ <span>2400</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3 thumbnail-choose-home clearfix">
+                                    <div class="slide-choose-home">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>1</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>2</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>3</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose-home-summary">
+                                        <div class="choose-home-code">
+                                            House P123456
+                                        </div>
+                                        <div class="choose-home-name">
+                                            Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
+                                        </div>
+                                        <div class="choose-home-detail float-left">
+                                            <p>Bedrooms: 2</p>
+                                            <p>Dong Da, Hanoi</p>
+                                        </div>
+                                        <div class="choose-home-price float-right">
+                                            Estimate Price:
+                                            <p class="price">$ <span>2400</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3 thumbnail-choose-home clearfix">
+                                    <div class="slide-choose-home">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>1</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>2</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>3</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose-home-summary">
+                                        <div class="choose-home-code">
+                                            House P123456
+                                        </div>
+                                        <div class="choose-home-name">
+                                            Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
+                                        </div>
+                                        <div class="choose-home-detail float-left">
+                                            <p>Bedrooms: 2</p>
+                                            <p>Dong Da, Hanoi</p>
+                                        </div>
+                                        <div class="choose-home-price float-right">
+                                            Estimate Price:
+                                            <p class="price">$ <span>2400</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3 thumbnail-choose-home clearfix">
+                                    <div class="slide-choose-home">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>1</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>2</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>3</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose-home-summary">
+                                        <div class="choose-home-code">
+                                            House P123456
+                                        </div>
+                                        <div class="choose-home-name">
+                                            Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
+                                        </div>
+                                        <div class="choose-home-detail float-left">
+                                            <p>Bedrooms: 2</p>
+                                            <p>Dong Da, Hanoi</p>
+                                        </div>
+                                        <div class="choose-home-price float-right">
+                                            Estimate Price:
+                                            <p class="price">$ <span>2400</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3 thumbnail-choose-home clearfix">
+                                    <div class="slide-choose-home">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>1</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>2</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>3</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose-home-summary">
+                                        <div class="choose-home-code">
+                                            House P123456
+                                        </div>
+                                        <div class="choose-home-name">
+                                            Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
+                                        </div>
+                                        <div class="choose-home-detail float-left">
+                                            <p>Bedrooms: 2</p>
+                                            <p>Dong Da, Hanoi</p>
+                                        </div>
+                                        <div class="choose-home-price float-right">
+                                            Estimate Price:
+                                            <p class="price">$ <span>2400</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-3 thumbnail-choose-home clearfix">
+                                    <div class="slide-choose-home">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>1</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>2</h4>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <div class="choose-home-item box-shadow">
+                                                    <h4>3</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="choose-home-summary">
+                                        <div class="choose-home-code">
+                                            House P123456
+                                        </div>
+                                        <div class="choose-home-name">
+                                            Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
+                                        </div>
+                                        <div class="choose-home-detail float-left">
+                                            <p>Bedrooms: 2</p>
+                                            <p>Dong Da, Hanoi</p>
+                                        </div>
+                                        <div class="choose-home-price float-right">
+                                            Estimate Price:
+                                            <p class="price">$ <span>2400</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-see-more">
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+                                    <button class="box-shadow">See more (+2000)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 project-have-service">
+                        <div class="homepage-title-section">
+                            Project have our service
+                        </div>
+                        <div class="list-project">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 project">
+                                    <div class="project-thumbnail box-shadow">
+
+                                    </div>
+                                    <div class="text-center project-name">
+                                        Project Name
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4 project">
+                                    <div class="project-thumbnail box-shadow">
+
+                                    </div>
+                                    <div class="text-center project-name">
+                                        Project Name
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 col-md-4 project">
+                                    <div class="project-thumbnail box-shadow">
+
+                                    </div>
+                                    <div class="text-center project-name">
+                                        Project Name
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="btn-explore-all">
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+                                    <button class="box-shadow">Explore all</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 homepage-news">
+                        <div class="homepage-title-section">News</div>
+                        <div class="list-news">
+                            <div class="row">
+                                <div class="col-md-6 big-news">
+                                    <div class="big-news-thumbnail box-shadow">
+
+                                    </div>
+                                    <div class="big-news-title">
+                                        CEO Property Plus introduce new business model on Shark Tank
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-xs-6 small-news">
+                                            <div class="small-news-thumbnail box-shadow">
+
+                                            </div>
+                                            <div class="small-news-title">
+                                                CEO Property Plus introduce new business model on Shark Tank
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 small-news">
+                                            <div class="small-news-thumbnail box-shadow">
+
+                                            </div>
+                                            <div class="small-news-title">
+                                                CEO Property Plus introduce new business model on Shark Tank
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 list-normal-news">
+                                            <ul>
+                                                <li><a href="#">Nulla at nisl euismod, egestas turpis eu.</a> </li>
+                                                <li><a href="#">Nulla at nisl euismod, egestas turpis eu.</a></li>
+                                                <li><a href="#">Nulla at nisl euismod, egestas turpis eu.</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 footer-navbar-menu">
+                    <div class="title">Property Plus</div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">About Us</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Career</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Policy</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Help</a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-4 footer-navbar-menu">
+                    <div class="title">Host</div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Why host</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Hosting</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Community Center</a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-2 footer-navbar-menu">
+                    <div class="title">
+                        <a href="#">
+                            <i class="footer-icon fab fa-instagram"></i>
+                        </a>
+                        <a href="#">
+                            <i class="footer-icon fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="footer-icon fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="footer-icon fas fa-globe-americas"></i>
+                        </a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Terms</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Privacy</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Site Map</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="col-md-12">
+                    <div class="copyright">&copy; PropertyPlus, Inc. 2018</div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</div>

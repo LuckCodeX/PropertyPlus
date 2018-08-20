@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html ng-app="propertyplus">
 <head>
     <base href="/">
@@ -14,49 +14,49 @@
     <link href="/Content/blog.css" rel="stylesheet" />
 </head>
 <body>
-<header class="m-t-25">
-    <div class="row">
-        <div class="col-md-5">
-            <div class="row">
-                <div class="col-md-2">
+<header class="clearfix">
+    <a class="logo-header" ui-sref="home">
 
-                </div>
-                <div class="col-md-10">
-                    <div class="search-box">
-                        <input type="text" class="box-shadow" placeholder="Type Location or Project or Keyword" name="search" value="" />
-                        <button class="btn-search box-shadow">Search</button>
-                    </div>
-                </div>
-            </div>
+    </a>
+    <div class="logo-name-header" ng-if="$state.includes('home')">
+        <a href="#">Property Plus</a>
+    </div>
+    <div class="search-box" ng-if="!$state.includes('home')">
+        <input type="text" class="box-shadow" placeholder="Type Location or Project or Keyword" name="search" value="" />
+        <button class="btn-search box-shadow">Search</button>
+    </div>
+    <div class="header-navbar-menu float-right">
+
+        <div class=" header-navbar-menu-nav">
+            <a class="text-center " href="#">Support: 1800 7856</a>
         </div>
-        <div class="col-md-7 header-navbar-menu">
-            <div class="row">
-                <div class="col-md-3 header-navbar-menu-nav">
-                    <a class="text-center " href="#">Support: 1800 7856</a>
-                </div>
-                <div class="col-md-1 header-navbar-menu-nav">
-                    <a class="text-center" href="#">Blog</a>
-                </div>
-                <div class="col-md-2 header-navbar-menu-nav">
-                    <a class="text-center" href="#">Become a host</a>
-                </div>
-                <div class="col-md-2 header-navbar-menu-nav">
-                    <a class="text-center" href="#">Your visit list</a>
-                </div>
-                <div class="col-md-1 header-navbar-menu-nav">
-                    <a class="text-center" href="#">Help</a>
-                </div>
-                <div class="col-md-3 header-navbar-menu-nav">
-                    <a class="text-center" href="#">Sign up  | Login</a>
-                </div>
-            </div>
+        <div class="header-navbar-menu-nav">
+            <a class="text-center" href="/blog">Blog</a>
+        </div>
+        <div class="header-navbar-menu-nav">
+            <a class="text-center" href="#">Become a host</a>
+        </div>
+        <div class="header-navbar-menu-nav">
+            <a class="text-center" href="#">Your visit list</a>
+        </div>
+        <div class="header-navbar-menu-nav">
+            <a class="text-center" href="#">Help</a>
+        </div>
+        <div class="header-navbar-menu-nav">
+            <a class="text-center" href="#">Sign up</a>
+        </div>
+        <div class="header-navbar-menu-nav">
+            |&nbsp;&nbsp;
+            <a class="text-center" href="#">Login</a>
         </div>
     </div>
+
+
 </header>
-    
-<div class="container-fluid body-content">
+
+<div class="body-content">
     @RenderBody()
-    <hr/>
+    <hr />
 </div>
 
 <footer>
@@ -64,27 +64,55 @@
         <div class="row">
             <div class="col-md-2 footer-navbar-menu">
                 <div class="title">Property Plus</div>
-                <div class="footer-navbar-menu-nav"> <a href="#">About Us</a> </div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Career</a> </div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Policy</a> </div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Help</a> </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">About Us</a>
+                </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Career</a>
+                </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Policy</a>
+                </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Help</a>
+                </div>
             </div>
             <div class="col-md-2 col-md-offset-4 footer-navbar-menu">
                 <div class="title">Host</div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Why host</a> </div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Hosting</a> </div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Community Center</a> </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Why host</a>
+                </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Hosting</a>
+                </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Community Center</a>
+                </div>
             </div>
             <div class="col-md-2 col-md-offset-2 footer-navbar-menu">
                 <div class="title">
-                    <a href="#"><i class="footer-icon fab fa-instagram"></i></a>
-                    <a href="#"><i class="footer-icon fab fa-twitter"></i></a>
-                    <a href="#"><i class="footer-icon fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="footer-icon fas fa-globe-americas"></i></a>
+                    <a href="#">
+                        <i class="footer-icon fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="footer-icon fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="footer-icon fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="footer-icon fas fa-globe-americas"></i>
+                    </a>
                 </div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Terms</a> </div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Privacy</a> </div>
-                <div class="footer-navbar-menu-nav"> <a href="#">Site Map</a> </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Terms</a>
+                </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Privacy</a>
+                </div>
+                <div class="footer-navbar-menu-nav">
+                    <a href="#">Site Map</a>
+                </div>
             </div>
             <hr />
             <div class="col-md-12">
@@ -92,7 +120,7 @@
             </div>
         </div>
     </div>
-    
+
 </footer>
 
 <script src="/Scripts/jquery-3.3.1.min.js"></script>

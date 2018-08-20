@@ -408,7 +408,7 @@ footer {
 .owl-dots {
     position:absolute;
     bottom: 30px;
-    left: 40%;
+    left: 37%;
 }
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
     background: #FFFFFF;

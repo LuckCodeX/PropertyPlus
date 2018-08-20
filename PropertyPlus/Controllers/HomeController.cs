@@ -15,7 +15,7 @@ namespace PropertyPlus.Controllers
             return View();
         }
 
-        public ActionResult Detail(int id)
+        public ActionResult Apartment()
         {
             ViewBag.Title = "Home Page";
 

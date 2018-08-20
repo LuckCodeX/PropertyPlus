@@ -51,6 +51,8 @@ D:\Project\PropertyPlus\PropertyPlus\bin\PropertyPlus.dll.config
 D:\Project\PropertyPlus\PropertyPlus\bin\PropertyPlus.dll
 D:\Project\PropertyPlus\PropertyPlus\bin\PropertyPlus.pdb
 D:\Project\PropertyPlus\PropertyPlus\bin\Antlr3.Runtime.dll
+D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.dll
+D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.SqlServer.dll
 D:\Project\PropertyPlus\PropertyPlus\bin\Microsoft.AI.Agent.Intercept.dll
 D:\Project\PropertyPlus\PropertyPlus\bin\Microsoft.AI.DependencyCollector.dll
 D:\Project\PropertyPlus\PropertyPlus\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -72,6 +74,8 @@ D:\Project\PropertyPlus\PropertyPlus\bin\System.Web.WebPages.Deployment.dll
 D:\Project\PropertyPlus\PropertyPlus\bin\System.Web.WebPages.dll
 D:\Project\PropertyPlus\PropertyPlus\bin\System.Web.WebPages.Razor.dll
 D:\Project\PropertyPlus\PropertyPlus\bin\WebGrease.dll
+D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.xml
+D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.SqlServer.xml
 D:\Project\PropertyPlus\PropertyPlus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Project\PropertyPlus\PropertyPlus\bin\Newtonsoft.Json.xml
 D:\Project\PropertyPlus\PropertyPlus\bin\System.Net.Http.Formatting.xml
@@ -94,7 +98,3 @@ D:\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csprojResolveAssembl
 D:\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csproj.CoreCompileInputs.cache
 D:\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.dll
 D:\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.pdb
-D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.dll
-D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.SqlServer.dll
-D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.xml
-D:\Project\PropertyPlus\PropertyPlus\bin\EntityFramework.SqlServer.xml

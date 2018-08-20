@@ -1,10 +1,11 @@
-﻿function BlogCtrl($scope,
+﻿function ApartmentCtrl($scope,
     $rootScope,
     $stateParams,
     $location,
     $timeout,
     xhrService,
     $anchorScroll) {
+    
 }
 
-app.controller('BlogCtrl', BlogCtrl);
+app.controller('ApartmentCtrl', ApartmentCtrl);

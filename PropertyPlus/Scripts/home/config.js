@@ -14,22 +14,33 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
     $locationProvider.html5Mode(true);
 
     $stateProvider
-        .state('home', {
+        .state('home',
+        {
             url: "/",
             templateUrl: "html/home.html",
             data: { pageTitle: 'Trang chủ' }
         })
-        .state('blog', {
+        .state('blog',
+        {
             url: "/blog",
             templateUrl: "html/blog.html",
             data: { pageTitle: 'Blog' }
         })
-        .state('detail', {
-            url: "/detail/:id",
-            templateUrl: "html/detail.html",
-            data: { pageTitle: 'Xác nhận đơn hàng' }
+        .state('apartment',
+        {
+            url: "/apartment",
+            templateUrl: "html/apartment.html",
+            data: { pageTitle: 'Apartment' }
         });
 }
 
 
-app.config(config);
+app.config(config)
+    .run(function ($rootScope, $state, $stateParams) {
+        $rootScope.$state = $state;
+        $rootScope.$stateParams = $stateParams;
+        $rootScope.$on('$stateChangeSuccess', function () {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            
+        });
+    });

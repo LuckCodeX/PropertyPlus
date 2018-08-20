@@ -635,6 +635,7 @@
     <Content Include="ckeditor\skins\moono-lisa\images\spinner.gif" />
     <Content Include="ckeditor\styles.js" />
     <Content Include="Content\animate.css" />
+    <Content Include="Content\blog.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
@@ -645,8 +646,10 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="html\apartment.html" />
     <Content Include="html\blog.html" />
     <Content Include="html\detail.html" />
+    <Content Include="html\home.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-idle.js" />
@@ -719,6 +722,7 @@
     <Content Include="ckeditor\skins\minimalist\readme.md" />
     <Content Include="ckeditor\skins\moono-lisa\readme.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\home\apartmentctrl.js" />
     <Content Include="Scripts\home\app.js" />
     <Content Include="Scripts\home\blogctrl.js" />
     <Content Include="Scripts\home\config.js" />
@@ -750,10 +754,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
@@ -763,6 +764,9 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_RightSidebar.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Apartment.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
