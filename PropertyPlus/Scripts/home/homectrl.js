@@ -1,11 +1,9 @@
-﻿function HomeCtrl($scope,
-    $rootScope,
-    $stateParams,
-    $location,
-    $timeout,
-    xhrService,
-    $anchorScroll) {
-    $scope.message = "aaa";
+﻿function HomeCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrService, $anchorScroll, $translate) {
+    $scope.loadData = function () {
+        if (localStorage && localStorage.getItem('language')) {
+            $translate.use(localStorage.getItem('language'));
+        }
+    }
 }
 
 app.controller('HomeCtrl', HomeCtrl);
