@@ -17,7 +17,14 @@ namespace PropertyPlus.Controllers
 
         public ActionResult Apartment()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Apartment";
+
+            return View();
+        }
+
+        public ActionResult ApartmentDetail()
+        {
+            ViewBag.Title = "Apartment Detail";
 
             return View();
         }
@@ -25,6 +32,13 @@ namespace PropertyPlus.Controllers
         public ActionResult Blog()
         {
             ViewBag.Title = "Blog";
+
+            return View();
+        }
+
+        public ActionResult Project()
+        {
+            ViewBag.Title = "Project";
 
             return View();
         }

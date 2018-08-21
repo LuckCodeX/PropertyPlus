@@ -31,6 +31,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
             url: "/apartment",
             templateUrl: "html/apartment.html",
             data: { pageTitle: 'Apartment' }
+        })
+        .state('apartmentdetail',
+            {
+                url: "/apartment-detail",
+                templateUrl: "html/apartmentdetail.html",
+                data: { pageTitle: 'Apartment' }
+            })
+        .state('project',
+        {
+            url: "/project",
+            templateUrl: "html/project.html",
+            data: { pageTitle: 'Project' }
         });
 }
 
@@ -41,6 +53,6 @@ app.config(config)
         $rootScope.$stateParams = $stateParams;
         $rootScope.$on('$stateChangeSuccess', function () {
             document.body.scrollTop = document.documentElement.scrollTop = 0;
-            
+
         });
     });

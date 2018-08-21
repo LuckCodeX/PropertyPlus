@@ -647,9 +647,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="html\apartment.html" />
+    <Content Include="html\apartmentdetail.html" />
     <Content Include="html\blog.html" />
     <Content Include="html\detail.html" />
     <Content Include="html\home.html" />
+    <Content Include="html\project.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-idle.js" />
@@ -727,6 +729,7 @@
     <Content Include="Scripts\home\blogctrl.js" />
     <Content Include="Scripts\home\config.js" />
     <Content Include="Scripts\home\detailctrl.js" />
+    <Content Include="Scripts\home\projectctrl.js" />
     <Content Include="Scripts\home\services.js" />
     <Content Include="Scripts\home\homectrl.js" />
     <Content Include="Scripts\home\translate.js" />
@@ -767,6 +770,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Apartment.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Project.cshtml" />
+    <Content Include="Views\Home\ApartmentDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
