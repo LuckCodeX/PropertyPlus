@@ -1,0 +1,227 @@
+﻿*{
+    padding:0;
+}
+
+
+
+
+.text-project {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.pj-header{
+    border:1px solid #707070;
+    background:#A5A4A4;
+    width:100%;
+    height:497px;
+    position:relative;
+}
+
+.pj-header span { 
+    color: #fff;
+    font-size: 57px;
+    position:absolute;
+    padding-left:424px;
+    padding-top:209px;
+}
+
+.text-project-1{
+    color:#353536;
+    font-size:24px;
+    padding-top:70px;
+}
+
+.box-project {
+    border: 0px solid;
+    background: #A5A4A5;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+    border-radius: 5px;
+    width: 279px;
+    height: 327px;
+}
+
+.text-project-2{
+    color:#fff;
+    font-size:29px;
+    padding-top:140px;
+}
+
+.text-project-3 {
+    color: #2B2B2B;
+    font-size: 17px;
+    text-align:left;
+    padding-top: 10px;
+    font-weight:550;
+}
+
+.project-item{
+    border:0px solid;
+    background:#A5A4A4;
+    width:100%;
+    height:327px;
+    border-radius:5px;
+   
+    
+    
+}
+
+.owl-theme .owl-dots .owl-dot.active span {
+    background: #473D6F;
+    transition: all 0.5s;
+    width: 13px;
+    height: 13px;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    background: #A5A4A4;
+    width: 13px;
+    height: 13px;
+}
+
+#nghia2 .owl-dots {
+    top: 460px;
+    left: 545px;
+    
+}
+
+.owl-theme .owl-nav {
+    position: relative;
+    bottom: 140px;
+}
+
+
+
+.owl-nav .owl-next span {
+    position: absolute;
+    color: #81BDF1;
+    font-size: 100px;
+    top: -825%;
+    right: -58px;
+}
+
+.owl-nav .owl-prev span{
+    display:none;
+}
+
+.text-project-4 {
+    font-size: 17px;
+    color: #353536;
+    font-weight: 450;
+}
+
+.text-project-5{
+    font-size:14px;
+    color:#353536;
+}
+
+.button-box {
+    border: 0px solid;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+    width:115px;
+    height:43px;
+}
+
+.button-left {
+    position: absolute;
+    float: left;
+    display: inline-block;
+    margin-left: 78px;
+    margin-top: 250px;
+    z-index:98;
+}
+
+.button-right {
+    position: absolute;
+    float: left;
+    display: inline-block;
+    margin-top: 250px;
+    margin-left: 386px;
+    z-index: 98;
+}
+
+.text-project-left {
+    position: absolute;
+    float: left;
+    display: inline-block;
+    margin-left: 80px;
+    margin-top: 15px;
+}
+
+.text-project-right {
+    
+    float: left;
+    display: inline-block;
+    margin-left: 320px;
+    margin-top: 15px;
+}
+
+.project-item-below {
+    border: 0px solid;
+    background: #A5A4A4;
+    width: 100%;
+    height: 373px;
+    border-radius: 5px;
+    position:relative;
+}
+
+.padding-bottom-60{
+padding-bottom:60px;
+}
+
+.project-item img{
+    position:absolute;
+    z-index:1;
+}
+
+.logo {
+    position: absolute;
+}
+
+.project-box-above {
+    border: 0px solid;
+    background: #fff;
+    width: 147px;
+    height: 69px;
+    margin-bottom: 22px;
+    border-radius: 5px;
+    margin-left: 210px;
+    position: relative;
+}
+
+.project-box-above img{
+    position:absolute;
+}
+
+#nghia .owl-nav .owl-next span {
+    top: -690%;
+    right: -100px;
+}
+
+#nghia .owl-dots {
+    top: 398px;
+    left: 545px;
+}
+
+.padding-right-37{
+    padding-right:37px;
+}
+
+.safe-fire{
+    margin:0 -34px 0 -30px;
+}
+
+.safe-fire1{
+    padding:60px 0 0 0;
+
+}
+
+.text-project-6 {
+    font-size: 29px;
+    color: #fff;
+    position: absolute;
+    top: 167px;
+    left: 396px;
+}
