@@ -21,10 +21,13 @@ header {
     border-radius: 7px;
 }
 
+.display-none{
+    display: none !important;
+}
+
 .logo-header {
     display: inline-block;
     float: left;
-    background-color: black;
     width: 46.28px;
     height: 46.28px;
     margin-right: 20px;
@@ -121,12 +124,13 @@ header .btn-search {
     font-size: 12px;
     color: #484848;
     vertical-align: middle;
-    line-height: 50px
+    line-height: 50px;
 }
 
 footer {
     background-color: #465983;
     color: white;
+    padding-bottom: 20px;
 }
 
     footer .title {
@@ -172,7 +176,7 @@ footer {
     .logo-name-header a {
         font-size: 22px;
         color: #484848;
-        line-height: 40px;
+        line-height: 50px;
     }
 
 .search-bar-section {
@@ -248,6 +252,10 @@ footer {
         color: white;
         background-color: #464878;
     }
+
+.btn-facilities:hover span{
+    color: white;
+}
 
     .btn-facilities:last-child {
         margin-right: 0;
@@ -368,7 +376,7 @@ footer {
 }
 
 .thumbnail-choose-home {
-    margin-bottom: 26px;
+    margin-bottom: 6px;
 }
 
 .choose-home {
@@ -395,14 +403,21 @@ footer {
 
     .choose-home-detail p, .choose-home-price {
         font-size: 11px;
+
     }
 
         .choose-home-detail p:last-child {
             line-height: 22px;
         }
 
-        .choose-home-price p {
+        .choose-home-price p.price {
             font-size: 23px;
+            text-align: right;
+        
+        }
+
+        .choose-home-price span.text-price-title {
+            margin-right: 5px;
         }
 
 
@@ -552,9 +567,398 @@ footer {
     background-color: white !important;
 }
 
+.list-btn-second-header .btn-facility{
+    width: auto;
+    padding: 0 10px;
+    height: 35.47px;
+    font-size: 12px;
+    margin-right: 14px;
+    margin-bottom: 14px;
+    color: #464878;
+    font-weight: 500;
+    background-color: white;
+}
 
+.second-header{
+    background-color: #473D6F;
+    padding: 23.5px 0 9.5px 0;
+}
+
+.list-btn-second-header .btn-facility .fas.fa-chevron-right{
+    font-size: 13px;
+    margin-left: 15px;
+}
+
+.list-btn-second-header{
+    display: inline-block;
+}
+
+.switch-show-map{
+    display: inline-block;
+    float: right;
+}
+
+.title-switch-show-map{
+    margin-top: 5px;
+    margin-right: 33px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    float: left;
+}
+
+.switch-show-map .switch {
+    float: left;
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 30px;
+}
+
+.switch-show-map .switch input {display:none;}
+
+.switch-show-map .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.switch-show-map .slider:before {
+    position: absolute;
+    content: "";
+    height: 31px;
+    width: 31px;
+    left: -2px;
+    bottom: -1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.switch-show-map input:checked + .slider {
+    background-color: #473D6F;
+}
+
+.switch-show-map input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.switch-show-map input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.switch-show-map .slider.round {
+    border-color: white;
+    border-radius: 34px;
+}
+
+.switch-show-map .slider.round:before {
+    border: 0.5px solid #484848;
+    border-radius: 50%;
+}
+
+.list-apartment{
+    margin-top: 42.7px;
+}
+
+.list-apartment-content{
+    margin-top: 50px;
+}
+
+.google-map iframe{
+    margin-top: 50px;
+    width: 100%;
+    height: 725.9px;
+    margin-bottom: 25px;
+}
+
+.pagination-apartment .pagination-sm{
+    margin-left: 41%;
+}
+
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover{
+    display: none;
+}
+
+.pagination-sm>li>a>i{
+    font-size: 12px;
+}
+
+.pagination-sm>li>a{
+    width: 28.77px !important;
+    height: 28.77px !important;
+    text-align: center !important;
+    padding: 4px ;
+    border: none;
+    font-weight: 400;
+    border-radius: 50%;
+    color: #464878 !important;
+    font-size: 14px;
+    margin: 0 2px;
+}
+
+
+.pagination-sm>li:last-child>a{
+    border-radius: 50%;
+    border: 1px solid #464878;
+    padding: 3px 0px 2px 2px;
+}
+
+.pagination-sm>li:first-child>a{
+    border-radius: 50%;
+    border: 1px solid #464878;
+    padding: 3px 2px 2px 0;
+}
+
+.hide-block{
+    display: none;
+}
+
+.pagination-sm>li:first-child:hover>a>i,.pagination-sm>li:first-child:hover>a>i{
+    color: white;
+}
+
+.pagination>.active>a,.pagination>li:last-child>a:hover,.pagination>li:first-child>a:hover,.pagination>li>a:hover i{
+    background-color: #464878;
+    color: white !important;
+}
+
+.pagination>.active>a:hover{
+    background-color: #464878bf;
+    color: white !important;
+}
+
+.pagination>li>a:hover{
+    background-color: #464878bf;
+    color: white !important;
+}
+
+.sort-list-apartment .label{
+    display: inline-block;
+    color: #484848;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.sort-list-apartment .select{
+    border: 1px solid #707070;
+    border-radius: 4px;
+    width: 225px;
+    height: 40px;
+    position: relative;
+    display: inline-block;
+    margin-right: 103px;
+    padding: 1px;
+}
+
+.sort-list-apartment select{
+    border: 0;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.sort-list-apartment .select .caret-select {
+    color: #484848;
+    position: absolute; right: 10px; bottom: 8px;
+    z-index: 1;
+    text-align: center;
+}
+
+#radio-grid{
+    display: inline-block;
+    position: relative;
+    top: 3px;
+}
+
+#radio-grid .btn-radio-grid:first-child{
+    border-radius: 4px 0 0 4px;
+}
+
+#radio-grid .btn-radio-grid:last-child{
+    margin-left: -5px;
+    border-radius: 0 4px 4px 0;
+}
+
+#radio-grid .btn-radio-grid {
+    border: 1px solid #707070 !important;
+    width: 41.83px;
+    height: 39.61px;
+    border: none;
+    outline: none;
+    padding-top: 4px;
+    padding-left: 6px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.sumary-detail{
+    float: left;
+    width: 392.19px;
+}
+.slide-choose-home{
+    margin-bottom: 20px;
+}
+
+.choose-home-summary-column{
+    position: relative;
+}
+
+.choose-home-summary-column .apartment-code{
+    font-size: 12px;
+}
+
+.choose-home-summary-column .apartment-name{
+    font-size: 18px;
+}
+
+.choose-home-summary-column .apartment-address{
+    margin-top: 24px;
+    font-size: 12px;
+}
+
+.choose-home-summary-column .apartment-description{
+    margin-top: 17px;
+    font-size: 12px;
+    width: 392.19px;
+}
+
+.choose-home-summary-column .apartment-facilities .apartment-facility{
+    width: 70.6px;
+    height: auto;
+    margin-top: 17.3px;
+    display: inline-block;
+}
+
+.choose-home-summary-column .apartment-facilities .apartment-facility img{
+    width: 44.06px;
+    height: 44.06px;
+    margin-left: 13px;
+    padding: 2px;
+}
+
+.choose-home-summary-column .apartment-facilities .apartment-facility p{
+    margin-top: 6.8px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.choose-home-summary-column .apartment-price{
+    margin-top: 28px;
+}
+
+.choose-home-summary-column .apartment-facilities .apartment-price .price-label{
+    font-weight: 500 !important;
+    font-size: 12px;
+    margin-right: 97px;
+}
+
+.apartment-owner{
+    position: absolute;
+    top:0;
+    right: 15px;
+}
+
+.apartment-owner p{
+    font-size: 9px;
+}
+
+.apartment-interacts{
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+
+}
+
+.list-apartment-content .choose-home-item.height-grid{
+    height: 291.12px;
+}
+
+.apartment-interact:last-child{
+    margin-right: 0;
+}
+
+.apartment-interact{
+    display: inline-block;
+    margin-right: 39.3px;
+}
+
+.apartment-interacts p{
+    font-size: 9px;
+    text-align: center;
+}
+
+.apartment-interacts p i{
+    font-size: 23px;
+    color: white;
+    text-shadow: 0px 0px 3px black;
+}
+
+.or{
+    font-size: 8px;
+}
+
+.apartment-interacts p i.fa-bookmark:hover{
+    color: #7698E7;
+}
+
+.apartment-interacts p i.fa-heart:hover{
+    color: #FF7487;
+}
+
+/* Style the active class, and buttons on mouse-over */
+#radio-grid .active,#radio-grid  .btn-radio-grid:hover {
+    background-color: #DBDBDB;
+    color: white;
+}
+
+.thumbnail-choose-home{
+    padding: 10px 15px;
+    border-radius: 7px;
+}
+
+.thumbnail-choose-home:hover{
+    background-color: #F2F2F2;
+}
+
+.bocongthuong{
+    width: 180px;
+    height: 68px;
+    margin-left: 72px;
+}
+
+.bocongthuong img{
+    width: 100%;
+    height: 100%;
+}
+
+.slide-paragraph{
+    font-size: 14px;
+    margin-top: 52.3px;
+}
 
 @media only screen and (max-width: 600px) {
+    .pagination-apartment .pagination-sm{
+        margin-left: 30%;
+    }
+    .switch-show-map{
+        display: block;
+        float: left;
+    }
     .icon-service-rating {
         width: 100%;
     }
