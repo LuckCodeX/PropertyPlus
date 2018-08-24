@@ -422,11 +422,17 @@ footer {
 
 
 .choose-home-item {
+    padding: 1px;
     background-color: #a5a4a4;
     height: 167.11px;
 }
 
-.owl-nav .owl-prev span {
+    .choose-home-item img {
+        border-radius: 7px;
+        height: 165.11px;
+    }
+
+.thumbnail-choose-home .owl-nav .owl-prev span {
     position: absolute;
     top: 30%;
     left: 52px;
@@ -434,25 +440,28 @@ footer {
     color: white;
 }
 
-.owl-nav .owl-next span {
+.thumbnail-choose-home .owl-nav .owl-next span {
     position: absolute;
     top: 30%;
     right: 52px;
     font-size: 30px;
-    color: white;
 }
 
-.owl-dots {
-    position: absolute;
-    bottom: 30px;
-    left: 37%;
-}
+    .thumbnail-choose-home .owl-nav .owl-next span i, .thumbnail-choose-home .owl-nav .owl-prev span i{
+        color: white;
+    }
 
-.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    .thumbnail-choose-home .owl-dots {
+        position: absolute;
+        bottom: 30px;
+        left: 37%;
+    }
+
+.thumbnail-choose-home .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
     background: #FFFFFF;
 }
 
-.owl-theme .owl-dots .owl-dot span, .owl-theme .owl-dots .owl-dot span {
+.thumbnail-choose-home .owl-theme .owl-dots .owl-dot span, .owl-theme .owl-dots .owl-dot span {
     background: #EDECEC;
 }
 
@@ -949,6 +958,312 @@ footer {
 .slide-paragraph{
     font-size: 14px;
     margin-top: 52.3px;
+}
+
+.line-service input[type="radio"]:checked {
+    background: #56be8e;
+    box-shadow:
+              inset 0 0 0 .2em white,
+              0 0 0 .1em #56be8e;
+}
+
+.line-service input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0 40px;
+    width: 14px;
+    height: 14px;
+    box-shadow: inset 0 0 0 .2em white, 0 0 0 .1em;
+    border-radius: 50%;
+    transition: .2s;
+    cursor: pointer;
+    color: #363945;
+    margin-top: 3px;
+}
+.line-service input[type="radio"]:focus {
+    outline: 0;
+}
+
+.header-apartment-detail {
+    border: 1px solid #707070;
+    border-right: none;
+    border-left: none;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.med-text {
+    font-size: 16px
+}
+
+.sm-text {
+    font-size: 14px
+}
+
+.apartment-detail-body {
+    margin-top: 52.3px;
+}
+
+.header-apartment-detail .item img {
+    height: 497px;
+    width: 100%;
+}
+    .header-apartment-detail .owl-dots, .header-apartment-detail .owl-nav {
+        display: none;
+    }
+
+.title-detail-apartment {
+    margin-top: 17px;
+    font-size: 24px;
+}
+
+.address-detail-apartment {
+    margin-top: 11px; 
+}
+
+
+.facility-detail-apartment {
+    width: 24%;
+    display: inline-block;
+}
+
+.facility-detail-apartment img {
+    width: 100%;
+    padding: 32px;
+}
+
+.facilities-detail-apartment {
+    margin-top: 20px;
+}
+
+.title-apartment-detail {
+    font-size: 24px;
+}
+
+.about-this-listing {
+    margin-top: 22px;
+}
+
+.about-this-listing-border {
+    margin-top: 21px;
+    border: 1px solid #707070;
+    padding: 28.4px 24px;
+}
+
+    .about-this-listing-border p {
+        margin-bottom: 20px;
+    }
+
+.about-this-listing-none-border {
+    margin-top: 32px;
+}
+
+.tour-this-home {
+    margin-top: 47px;
+}
+
+.tour-this-home-slide {
+    padding: 0;
+}
+
+    .tour-this-home-slide .owl-carousel .item img {
+        height: 156.76px;
+    }
+
+    .tour-this-home-slide .owl-nav .owl-prev span, .tour-this-home-slide .owl-dots {
+        display: none;
+    }
+
+    .tour-this-home-slide .owl-nav .owl-next span {
+        position: absolute;
+        top: 30%;
+        right: -30px;
+        font-size: 30px;
+        color: black;
+    }
+
+.similar-listing > .owl-carousel > .owl-nav > .owl-next > span {
+    position: absolute !important;
+    top: 30% !important;
+    right: -30px !important;
+    font-size: 30px !important;
+    color: black !important;
+}
+
+    .tour-this-home-slide .owl-carousel {
+        height: 165px;
+    }
+
+.amenities img{
+    width: calc(22% - 3px);
+    margin-right: 4%;
+    margin-bottom: 21.6px;
+}
+
+.avatar-owner {
+    display: inline-block;
+    padding: 0;
+}
+
+.apartment-detail-owner .col-xs-3 {
+    padding-left: 0;
+}
+
+.avatar-owner img {
+   
+    border-radius: 50%;
+    width: 65.55px;
+    height: 65.55px;
+}
+
+.time-join {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.owner-name {
+    margin-top: 20px;
+}
+
+.apartment-detail-map {
+    margin-top: 91px;
+}
+
+.similar-listing {
+    margin-top: 100px;
+}
+
+.title-apartment-detail {
+    margin-bottom: 50px;
+}
+
+.apartment-detail-map #gmap_canvas {
+    width: 100%;
+    height: 515px;
+}
+
+.amenities img:nth-child(4n+0) {
+    margin-right: 0;
+}
+
+.title-tour-this-home {
+    margin-bottom: 33.3px;
+}
+
+.slide-similar {
+    height: 352px;
+}
+
+.apartment-detail-service {
+   
+}
+
+.header-service p.label-service {
+    font-size: 20px;
+}
+
+.header-service {
+    padding: 12.1px 26px;
+    background: #473E70;
+    height: 85px;
+}
+
+.body-service {
+    background: white;
+    border: 1px solid #473E70;
+    height: 700px;
+    padding: 20.6px 25px;
+}
+
+.net-price-value, .total-price-value {
+    margin-right: 5px;
+}
+
+.line-service {
+    padding: 5px 0 5px 5px;
+    clear: both;
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+.header-service p, .header-service span {
+    color: white;
+    font-size: 14px;
+}
+        .header-service span:last-child {
+            color: #F0D66A;
+            margin-right: 17px;
+        }
+
+    .line-service:nth-child(3) {
+        margin-top: 29px; 
+    }
+
+.group-btn-service {
+    border: 1px solid black;
+    border-radius: 3px;
+    position: relative;
+    width: 52px;
+    height:22px;
+    margin-right:18px;
+    margin-left: 67px;
+}
+.quantity-service {
+    margin-left: 81.3px;
+}
+.line-service:nth-child(6) {
+    margin-bottom: 80px;
+}
+
+.bg-gray {
+    background-color: #F2F2F2 !important;
+}
+
+.price-water-bill {
+    margin-left: 60px;
+    margin-right: 120px;
+}
+
+.group-btn-service button.minus {
+    background: white;
+    color: #484848;
+    width: 25px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    border: none;
+    font-size: 18px;
+    line-height: 20px;
+    border-right: 0.5px solid #484848;
+    border-radius: 3px 0 0 3px;
+}
+    .group-btn-service button.plus {
+        line-height: 20px;
+        border-radius: 0 3px 3px 0;
+        background: white;
+        color: #484848;
+        width: 25px;
+        height: 20px;
+        border: none;
+        font-size: 18px;
+        position: absolute;
+        right: 0;
+        top: 0px;
+    }
+    .group-btn-service button:active {
+        background: #48484882;
+    }
+
+.btn-service {
+    margin-top: 30px;
+    width: 70%;
+    margin-left: 14%;
+    padding: 17px 0;
+    background: #473d6f;
+    color: white;
+    border-radius: 6px; 
 }
 
 @media only screen and (max-width: 600px) {

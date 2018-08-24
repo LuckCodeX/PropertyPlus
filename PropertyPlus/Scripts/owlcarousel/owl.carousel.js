@@ -2963,8 +2963,8 @@
 	Navigation.Defaults = {
 		nav: false,
 		navText: [
-			'<span aria-label="' + 'Previous' + '">&#x2039;</span>',
-			'<span aria-label="' + 'Next' + '">&#x203a;</span>'
+			'<span aria-label="' + 'Previous' + '"><i class="fas fa-angle-left"></i></span>',
+			'<span aria-label="' + 'Next' + '"><i class="fas fa-angle-right"></i></span>'
 		],
 		navSpeed: false,
 		navElement: 'button type="button" role="presentation"',
