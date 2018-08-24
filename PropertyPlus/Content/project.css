@@ -66,14 +66,14 @@
     
 }
 
-.owl-theme .owl-dots .owl-dot.active span {
+#nghia2.owl-theme .owl-dots .owl-dot.active span {
     background: #473D6F;
     transition: all 0.5s;
     width: 13px;
     height: 13px;
 }
 
-.owl-theme .owl-dots .owl-dot span {
+#nghia2.owl-theme .owl-dots .owl-dot span {
     background: #A5A4A4;
     width: 13px;
     height: 13px;
@@ -85,14 +85,14 @@
     
 }
 
-.owl-theme .owl-nav {
+#nghia2.owl-theme .owl-nav {
     position: relative;
     bottom: 140px;
 }
 
 
 
-.owl-nav .owl-next span {
+#nghia2 .owl-nav .owl-next span {
     position: absolute;
     color: #81BDF1;
     font-size: 100px;
@@ -100,7 +100,7 @@
     right: -58px;
 }
 
-.owl-nav .owl-prev span{
+#nghia2 .owl-nav .owl-prev span{
     display:none;
 }
 
@@ -195,9 +195,39 @@ padding-bottom:60px;
     position:absolute;
 }
 
+#nghia.owl-theme .owl-nav {
+    position: relative;
+    bottom: 140px;
+}
+
+#nghia .owl-nav .owl-next span {
+    position: absolute;
+    color: #81BDF1;
+    font-size: 100px;
+    top: -825%;
+    right: -58px;
+}
+
 #nghia .owl-nav .owl-next span {
     top: -690%;
     right: -100px;
+}
+
+#nghia .owl-nav .owl-prev span {
+    display: none;
+}
+
+#nghia.owl-theme .owl-dots .owl-dot.active span {
+    background: #473D6F;
+    transition: all 0.5s;
+    width: 13px;
+    height: 13px;
+}
+
+#nghia.owl-theme .owl-dots .owl-dot span {
+    background: #A5A4A4;
+    width: 13px;
+    height: 13px;
 }
 
 #nghia .owl-dots {
