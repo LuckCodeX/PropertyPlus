@@ -435,7 +435,7 @@ footer {
 .thumbnail-choose-home .owl-nav .owl-prev span {
     position: absolute;
     top: 30%;
-    left: 52px;
+    left: 30px;
     font-size: 30px;
     color: white;
 }
@@ -443,7 +443,7 @@ footer {
 .thumbnail-choose-home .owl-nav .owl-next span {
     position: absolute;
     top: 30%;
-    right: 52px;
+    right: 30px;
     font-size: 30px;
 }
 
@@ -833,10 +833,10 @@ footer {
 
 .choose-home-summary-column .apartment-name{
     font-size: 18px;
+    height: 55px
 }
 
 .choose-home-summary-column .apartment-address{
-    margin-top: 24px;
     font-size: 12px;
 }
 
@@ -867,7 +867,7 @@ footer {
 }
 
 .choose-home-summary-column .apartment-price{
-    margin-top: 28px;
+    margin-top: 27px;
 }
 
 .choose-home-summary-column .apartment-facilities .apartment-price .price-label{
