@@ -77,8 +77,9 @@
         border: none;
         width: calc(100% - 110px);
         font-family: 'Montserrat', sans-serif;
-        color: #484848;
+        color: #B7B7B7;
         font-size: 20px;
+        padding-left:25px;
     }
 
     .blogsearch-box button {
@@ -157,4 +158,61 @@
     width: 100%;
     height: 50px;
     text-align: center;
+}
+
+
+.text-show-day h1 {
+    color: #ccc;
+    font-size: 11px;
+    font-style: italic;
+    padding-left: 30px;
+    padding-top: 76px;
+}
+
+.text-popup {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.blog-title {
+    color: #464878;
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    padding: 30px;
+    
+}
+
+.blog-intro {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 10px;
+    line-height: 3.5;
+    color: #000;
+    font-weight: 500;
+    
+    padding-left: 30px;
+}
+
+.blog-content {
+    font-size: 14px;
+    color: #000;
+    padding-top: 25px;
+text-align:justify;
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 2;
+}
+
+.model-content-img{
+    width:90%;
+    display:block;
+    height:auto;
+    margin:auto;
+    text-align:center;
+}
+
+.blog-box img {
+    width: 100%;
+    height: 292px;
+    border-radius: 5px 5px 0 0;
 }

@@ -97,11 +97,15 @@
     color: #81BDF1;
     font-size: 100px;
     top: -825%;
-    right: -58px;
+    right: -62px;
 }
 
-#nghia2 .owl-nav .owl-prev span{
-    display:none;
+#nghia2 .owl-nav .owl-prev span {
+    position: absolute;
+    color: #81BDF1;
+    font-size: 100px;
+    bottom:33px;
+    right:101%;
 }
 
 .text-project-4 {
@@ -171,9 +175,10 @@
 padding-bottom:60px;
 }
 
-.project-item img{
-    position:absolute;
-    z-index:1;
+.project-item img {
+    position: absolute;
+    z-index: 1;
+    height: 327px;
 }
 
 .logo {
@@ -209,12 +214,16 @@ padding-bottom:60px;
 }
 
 #nghia .owl-nav .owl-next span {
-    top: -690%;
-    right: -100px;
+    top: -600%;
+    right: -60px;
 }
 
 #nghia .owl-nav .owl-prev span {
-    display: none;
+    position: absolute;
+    color: #81BDF1;
+    font-size: 100px;
+    bottom: 0px;
+    right: 101%;
 }
 
 #nghia.owl-theme .owl-dots .owl-dot.active span {
@@ -254,4 +263,13 @@ padding-bottom:60px;
     position: absolute;
     top: 167px;
     left: 396px;
+}
+
+.project-item-below img{
+    height:373px;
+}
+
+.safe-fire img{
+    width:279px;
+    height:327px;
 }
