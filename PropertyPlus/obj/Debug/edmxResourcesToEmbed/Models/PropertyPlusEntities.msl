@@ -61,16 +61,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="blog_content">
-      <EntityTypeMapping TypeName="PropertyPlusModel.blog_content">
-        <MappingFragment StoreEntitySet="blog_content">
-          <ScalarProperty Name="blog_content_id" ColumnName="blog_content_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="content" ColumnName="content" />
-          <ScalarProperty Name="blog_id" ColumnName="blog_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="facilities">
       <EntityTypeMapping TypeName="PropertyPlusModel.facility">
         <MappingFragment StoreEntitySet="facility">
@@ -118,6 +108,18 @@
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="blog_content">
+      <EntityTypeMapping TypeName="PropertyPlusModel.blog_content">
+        <MappingFragment StoreEntitySet="blog_content">
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="blog_id" ColumnName="blog_id" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="blog_content_id" ColumnName="blog_content_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

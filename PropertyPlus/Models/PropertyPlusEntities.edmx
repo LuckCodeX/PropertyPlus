@@ -74,9 +74,11 @@
             <PropertyRef Name="blog_content_id" />
           </Key>
           <Property Name="blog_content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="content" Type="ntext" Nullable="false" />
-          <Property Name="blog_id" Type="int" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="content" Type="ntext" />
+          <Property Name="blog_id" Type="int" Nullable="false" />
+          <Property Name="description" Type="ntext" Nullable="false" />
+          <Property Name="language" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="facility">
           <Key>
@@ -185,7 +187,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__blog_cont__blog___2E1BDC42">
-          <End Role="blog" Type="Self.blog" Multiplicity="0..1">
+          <End Role="blog" Type="Self.blog" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="blog_content" Type="Self.blog_content" Multiplicity="*" />
@@ -337,17 +339,7 @@
           <Property Name="created_date" Type="Int32" Nullable="false" />
           <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="type" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="blog_content" Relationship="Self.FK__blog_cont__blog___2E1BDC42" FromRole="blog" ToRole="blog_content" />
-        </EntityType>
-        <EntityType Name="blog_content">
-          <Key>
-            <PropertyRef Name="blog_content_id" />
-          </Key>
-          <Property Name="blog_content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="blog_id" Type="Int32" />
-          <NavigationProperty Name="blog" Relationship="Self.FK__blog_cont__blog___2E1BDC42" FromRole="blog_content" ToRole="blog" />
+          <NavigationProperty Name="blog_content" Relationship="PropertyPlusModel.FK__blog_cont__blog___2E1BDC42" FromRole="blog" ToRole="blog_content" />
         </EntityType>
         <EntityType Name="facility">
           <Key>
@@ -450,20 +442,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__blog_cont__blog___2E1BDC42">
-          <End Role="blog" Type="Self.blog" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="blog_content" Type="Self.blog_content" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="blog">
-              <PropertyRef Name="blog_id" />
-            </Principal>
-            <Dependent Role="blog_content">
-              <PropertyRef Name="blog_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__facility___facil__24927208">
           <End Role="facility" Type="Self.facility" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -484,7 +462,6 @@
           <EntitySet Name="apartment_content" EntityType="Self.apartment_content" />
           <EntitySet Name="apartment_facility" EntityType="Self.apartment_facility" />
           <EntitySet Name="blogs" EntityType="Self.blog" />
-          <EntitySet Name="blog_content" EntityType="Self.blog_content" />
           <EntitySet Name="facilities" EntityType="Self.facility" />
           <EntitySet Name="facility_content" EntityType="Self.facility_content" />
           <EntitySet Name="user_profile" EntityType="Self.user_profile" />
@@ -508,10 +485,6 @@
             <End Role="facility" EntitySet="facilities" />
             <End Role="apartment_facility" EntitySet="apartment_facility" />
           </AssociationSet>
-          <AssociationSet Name="FK__blog_cont__blog___2E1BDC42" Association="Self.FK__blog_cont__blog___2E1BDC42">
-            <End Role="blog" EntitySet="blogs" />
-            <End Role="blog_content" EntitySet="blog_content" />
-          </AssociationSet>
           <AssociationSet Name="FK__facility___facil__24927208" Association="Self.FK__facility___facil__24927208">
             <End Role="facility" EntitySet="facilities" />
             <End Role="facility_content" EntitySet="facility_content" />
@@ -522,6 +495,11 @@
             <End Role="user_account" EntitySet="user_account" />
           </AssociationSet>
           <EntitySet Name="admins" EntityType="PropertyPlusModel.admin" />
+          <EntitySet Name="blog_content" EntityType="PropertyPlusModel.blog_content" />
+          <AssociationSet Name="FK__blog_cont__blog___2E1BDC42" Association="PropertyPlusModel.FK__blog_cont__blog___2E1BDC42">
+            <End Role="blog" EntitySet="blogs" />
+            <End Role="blog_content" EntitySet="blog_content" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="user_account">
           <Key>
@@ -557,6 +535,32 @@
           <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="role" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="blog_content">
+          <Key>
+            <PropertyRef Name="blog_content_id" />
+          </Key>
+          <Property Name="blog_content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="blog_id" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="language" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="blog" Relationship="PropertyPlusModel.FK__blog_cont__blog___2E1BDC42" FromRole="blog_content" ToRole="blog" />
+        </EntityType>
+        <Association Name="FK__blog_cont__blog___2E1BDC42">
+          <End Type="PropertyPlusModel.blog" Role="blog" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PropertyPlusModel.blog_content" Role="blog_content" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="blog">
+              <PropertyRef Name="blog_id" />
+            </Principal>
+            <Dependent Role="blog_content">
+              <PropertyRef Name="blog_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -623,16 +627,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="blog_content">
-            <EntityTypeMapping TypeName="PropertyPlusModel.blog_content">
-              <MappingFragment StoreEntitySet="blog_content">
-                <ScalarProperty Name="blog_content_id" ColumnName="blog_content_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="content" ColumnName="content" />
-                <ScalarProperty Name="blog_id" ColumnName="blog_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="facilities">
             <EntityTypeMapping TypeName="PropertyPlusModel.facility">
               <MappingFragment StoreEntitySet="facility">
@@ -680,6 +674,18 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="blog_content">
+            <EntityTypeMapping TypeName="PropertyPlusModel.blog_content">
+              <MappingFragment StoreEntitySet="blog_content">
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="blog_id" ColumnName="blog_id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="blog_content_id" ColumnName="blog_content_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -69,9 +69,11 @@
       <PropertyRef Name="blog_content_id" />
     </Key>
     <Property Name="blog_content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="content" Type="ntext" Nullable="false" />
-    <Property Name="blog_id" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="content" Type="ntext" />
+    <Property Name="blog_id" Type="int" Nullable="false" />
+    <Property Name="description" Type="ntext" Nullable="false" />
+    <Property Name="language" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="facility">
     <Key>
@@ -180,7 +182,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__blog_cont__blog___2E1BDC42">
-    <End Role="blog" Type="Self.blog" Multiplicity="0..1">
+    <End Role="blog" Type="Self.blog" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="blog_content" Type="Self.blog_content" Multiplicity="*" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
@@ -30,18 +31,18 @@ namespace PropertyPlus.Services
             return dbSet;
         }
 
-        public virtual void Insert(T entity)
+        public virtual void Save(T entity)
         {
-            dbSet.Add(entity);
+            dbSet.AddOrUpdate(entity);
             Save();
         }
 
-        public virtual void Update(T entity)
-        {
-            dbSet.Attach(entity);
-            context.Entry(entity).State = EntityState.Modified;
-            Save();
-        }
+        //public virtual void Update(T entity)
+        //{
+        //    dbSet.Attach(entity);
+        //    context.Entry(entity).State = EntityState.Modified;
+        //    Save();
+        //}
 
         public virtual void Save()
         {
@@ -62,6 +63,7 @@ namespace PropertyPlus.Services
             }
 
             dbSet.Remove(entity);
+            Save();
         }
 
         protected virtual void Dispose(bool disposing)

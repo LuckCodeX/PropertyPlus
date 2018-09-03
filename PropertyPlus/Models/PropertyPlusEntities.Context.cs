@@ -30,11 +30,11 @@ namespace PropertyPlus.Models
         public virtual DbSet<apartment_content> apartment_content { get; set; }
         public virtual DbSet<apartment_facility> apartment_facility { get; set; }
         public virtual DbSet<blog> blogs { get; set; }
-        public virtual DbSet<blog_content> blog_content { get; set; }
         public virtual DbSet<facility> facilities { get; set; }
         public virtual DbSet<facility_content> facility_content { get; set; }
         public virtual DbSet<user_profile> user_profile { get; set; }
         public virtual DbSet<user_account> user_account { get; set; }
         public virtual DbSet<admin> admins { get; set; }
+        public virtual DbSet<blog_content> blog_content { get; set; }
     }
 }

@@ -12,7 +12,13 @@ namespace PropertyPlus.Services
     {
         admin GetAdminByToken(TokenModel token);
         admin LoginAdmin(AdminModel model);
-        IEnumerable GetAllBlog();
+        List<blog> GetAllBlog();
         void Dispose();
+        blog GetBlogById(int id);
+        void SaveBlog(blog blog);
+        blog_content GetBlogContentById(int id);
+        void SaveBlogContent(blog_content content);
+        void DeleteBlog(int id);
+        BlogContentModel ConvertBlogContentToModel(blog_content blogContent);
     }
 }

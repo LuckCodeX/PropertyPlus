@@ -195,6 +195,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ConvertDatetime.cs" />
     <Compile Include="Helper\Encrypt.cs" />
     <Compile Include="Helper\HMTLHelperExtensions.cs" />
     <Compile Include="Helper\LoginActionFilter.cs" />
@@ -806,9 +807,12 @@
     <Content Include="Views\Home\UserProfileEdit.cshtml" />
     <Content Include="Views\Home\UserProfileSetting.cshtml" />
     <Content Include="Views\Home\UserProfileRefer.cshtml" />
+    <Content Include="Views\Admin\BlogDetail.cshtml" />
+    <Content Include="Views\Admin\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

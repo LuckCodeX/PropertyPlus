@@ -15,9 +15,11 @@ namespace PropertyPlus.Models
     public partial class blog_content
     {
         public int blog_content_id { get; set; }
-        public string name { get; set; }
+        public string title { get; set; }
         public string content { get; set; }
-        public Nullable<int> blog_id { get; set; }
+        public int blog_id { get; set; }
+        public string description { get; set; }
+        public int language { get; set; }
     
         public virtual blog blog { get; set; }
     }
