@@ -29,6 +29,31 @@ namespace PropertyPlus.Controllers
             return View();
         }
 
+        public ActionResult UserProfileGeneral()
+        {
+            return View();
+        }
+
+        public ActionResult UserProfileManage()
+        {
+            return View();
+        }
+
+        public ActionResult UserProfileEdit()
+        {
+            return View();
+        }
+
+        public ActionResult UserProfileSetting()
+        {
+            return View();
+        }
+
+        public ActionResult UserProfileRefer()
+        {
+            return View();
+        }
+
         public ActionResult Blog()
         {
             ViewBag.Title = "Blog";

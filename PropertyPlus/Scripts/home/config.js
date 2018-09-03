@@ -15,23 +15,23 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
 
     $stateProvider
         .state('home',
-        {
-            url: "/",
-            templateUrl: "html/home.html",
-            data: { pageTitle: 'Trang chủ' }
-        })
+            {
+                url: "/",
+                templateUrl: "html/home.html",
+                data: { pageTitle: 'Trang chủ' }
+            })
         .state('blog',
-        {
-            url: "/blog",
-            templateUrl: "html/blog.html",
-            data: { pageTitle: 'Blog' }
-        })
+            {
+                url: "/blog",
+                templateUrl: "html/blog.html",
+                data: { pageTitle: 'Blog' }
+            })
         .state('apartment',
-        {
-            url: "/apartment",
-            templateUrl: "html/apartment.html",
-            data: { pageTitle: 'Apartment' }
-        })
+            {
+                url: "/apartment",
+                templateUrl: "html/apartment.html",
+                data: { pageTitle: 'Apartment' }
+            })
         .state('apartmentdetail',
             {
                 url: "/apartment-detail",
@@ -39,11 +39,48 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 data: { pageTitle: 'Apartment' }
             })
         .state('project',
-        {
-            url: "/project",
-            templateUrl: "html/project.html",
-            data: { pageTitle: 'Project' }
-        });
+            {
+                url: "/project",
+                templateUrl: "html/project.html",
+                data: { pageTitle: 'Project' }
+            })
+        .state('userprofile',
+            {
+                url: "/user-profile",
+                abstract: true,
+                templateUrl: "html/userprofile.html",
+                data: { pageTitle: 'User Profile' }
+            })
+        .state('userprofile.general',
+            {
+                url: "/general",
+                templateUrl: "html/userprofilegeneral.html",
+                data: { pageTitle: 'User Profile' }
+            })
+        .state('userprofile.manage',
+            {
+                url: "/manage",
+                templateUrl: "html/userprofilemanage.html",
+                data: { pageTitle: 'User Profile' }
+            })
+        .state('userprofile.edit',
+            {
+                url: "/edit",
+                templateUrl: "html/userprofileedit.html",
+                data: { pageTitle: 'User Profile' }
+            })
+        .state('userprofile.setting',
+            {
+                url: "/setting",
+                templateUrl: "html/userprofilesetting.html",
+                data: { pageTitle: 'User Profile' }
+            })
+        .state('userprofile.refer',
+            {
+                url: "/refer",
+                templateUrl: "html/userprofilerefer.html",
+                data: { pageTitle: 'User Profile' }
+            });
 }
 
 

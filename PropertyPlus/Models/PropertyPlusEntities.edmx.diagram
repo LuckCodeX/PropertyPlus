@@ -23,6 +23,7 @@
         <AssociationConnector Association="PropertyPlusModel.FK__facility___facil__24927208" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PropertyPlusModel.user_account" Width="1.5" PointX="3" PointY="10" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_acco__user___1273C1CD" />
+        <EntityTypeShape EntityType="PropertyPlusModel.admin" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

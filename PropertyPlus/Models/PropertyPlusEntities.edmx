@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PropertyPlusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="aparment_image">
           <Key>
             <PropertyRef Name="apartment_image_id" />
@@ -218,6 +227,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PropertyPlusModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aparment_image" EntityType="Self.aparment_image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="apartment" EntityType="Self.apartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="apartment_content" EntityType="Self.apartment_content" Schema="dbo" store:Type="Tables" />
@@ -511,6 +521,7 @@
             <End Role="user_profile" EntitySet="user_profile" />
             <End Role="user_account" EntitySet="user_account" />
           </AssociationSet>
+          <EntitySet Name="admins" EntityType="PropertyPlusModel.admin" />
         </EntityContainer>
         <EntityType Name="user_account">
           <Key>
@@ -537,6 +548,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -650,6 +670,16 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="user_account_id" ColumnName="user_account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="PropertyPlusModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

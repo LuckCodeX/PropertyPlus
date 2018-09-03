@@ -246,6 +246,7 @@
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="user_account" EntitySet="user_account" />
     </AssociationSet>
+    <EntitySet Name="admins" EntityType="PropertyPlusModel.admin" />
   </EntityContainer>
   <EntityType Name="user_account">
     <Key>
@@ -272,4 +273,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>
