@@ -1,10 +1,38 @@
-﻿<div ng-controller="UserProfileCtrl">
+﻿<div ng-controller="UserProfileCtrl" class=" user-profile">
     <div class="container">
         <div class="row">
-            <div class="col-md-2">
-                <h1>user profile</h1>
+            <div class="col-md-2 left-side-bar">
+                <div class="row">
+                    <div class="col-xs-12 info-user">
+                        <div class="avatar">
+                            <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
+                        </div>
+                        <div class="info">
+                            <p class="user-name">John Wick</p>
+                            <p class="user-id">ID: 123456</p>
+                        </div>
+                    </div>
+                    <a href="#" class="col-xs-12 menu-nav active">
+                        General
+                    </a>
+                    <a href="#" class="col-xs-12 menu-nav">
+                        Manage
+                    </a>
+                    <a href="#" class="col-xs-12 menu-nav">
+                        Edit profile
+                    </a>
+                    <a href="#" class="col-xs-12 menu-nav">
+                        Account setting
+                    </a>
+                    <a href="#" class="col-xs-12 menu-nav">
+                        Refer
+                    </a>
+                    <a href="#" class="col-xs-12 menu-nav">
+                        Log Out
+                    </a>
+                </div>
             </div>
-            <div ui-view class="col-md-10">
+            <div ui-view class="body-content">
             </div>
         </div>
     </div>
