@@ -9,6 +9,27 @@ a { text-decoration: none !important; }
 
 header { padding: 12.5px 30px; }
 
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
 .box-shadow {
     border: 0.5px solid #484848;
     border-radius: 7px;

@@ -264,6 +264,8 @@ H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Microsoft.ApplicationInsights.
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Microsoft.Web.Infrastructure.dll
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Newtonsoft.Json.dll
+H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\PagedList.dll
+H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\PagedList.Mvc.dll
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\System.Net.Http.Formatting.dll
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\System.Web.Helpers.dll
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\System.Web.Http.dll
@@ -278,6 +280,8 @@ H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\WebGrease.dll
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\EntityFramework.xml
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\EntityFramework.SqlServer.xml
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\PagedList.xml
+H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\PagedList.Mvc.xml
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Newtonsoft.Json.xml
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\System.Net.Http.Formatting.xml
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\System.Web.Helpers.xml
@@ -295,12 +299,7 @@ H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Microsoft.AI.DependencyCollect
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Microsoft.AI.ServerTelemetryChannel.xml
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Microsoft.AI.WindowsServer.xml
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\Microsoft.AI.Web.xml
-H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csprojAssemblyReference.cache
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csproj.CoreCompileInputs.cache
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csproj.CopyComplete
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.dll
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.pdb
-H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\PagedList.dll
-H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\PagedList.Mvc.dll
-H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\PagedList.xml
-H:\Project\OneDrive\PropertyPlus\PropertyPlus\bin\PagedList.Mvc.xml

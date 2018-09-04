@@ -1,1 +1,18 @@
-﻿<h1>edit</h1>
+﻿<div class="form-group">
+    <label class="col-sm-3 control-label" ng-show="userprofile.verification_images.length > 0">Description Image</label>
+    <div class="col-sm-9">
+        <div class="col-sm-3" ng-repeat="img in userprofile.verification_images" ng-show="!img.is_delete" >
+            <img ng-src="{{img.image}}" alt="" width="70" height="95" />
+            <a ng-click="removeImage($index)" ><i class="fa fa-remove"></i></a>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">Upload Verification Image</label>
+    <div class="col-sm-7">
+        <span class="btn btn-success btn-file">
+            Upload
+            <input name="file" type="file" accept="image/*" fileread="userprofile.verification_images" title="Upload" />
+        </span>
+    </div>
+</div>

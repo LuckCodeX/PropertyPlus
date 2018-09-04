@@ -5,7 +5,9 @@
     $timeout,
     xhrService,
     $anchorScroll) {
-
+    $scope.userprofile = {
+        verification_images: []
+    };
 }
 
 app.controller('UserProfileCtrl', UserProfileCtrl);
