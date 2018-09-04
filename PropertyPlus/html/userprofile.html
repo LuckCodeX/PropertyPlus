@@ -12,19 +12,19 @@
                             <p class="user-id">ID: 123456</p>
                         </div>
                     </div>
-                    <a href="#" class="col-xs-12 menu-nav active">
+                    <a ui-sref="userprofile.general" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('userprofile.general')}">
                         General
                     </a>
-                    <a href="#" class="col-xs-12 menu-nav">
+                    <a ui-sref="userprofile.manage" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('userprofile.manage')}">
                         Manage
                     </a>
-                    <a href="#" class="col-xs-12 menu-nav">
+                    <a ui-sref="userprofile.edit" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('userprofile.edit')}">
                         Edit profile
                     </a>
-                    <a href="#" class="col-xs-12 menu-nav">
+                    <a ui-sref="userprofile.setting" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('userprofile.setting')}">
                         Account setting
                     </a>
-                    <a href="#" class="col-xs-12 menu-nav">
+                    <a ui-sref="userprofile.refer" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('userprofile.refer')}">
                         Refer
                     </a>
                     <a href="#" class="col-xs-12 menu-nav">
