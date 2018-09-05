@@ -1,0 +1,198 @@
+﻿#myModal-signup .modal-sm {
+    width: 494px;
+    height: 498px;
+    border-radius: 0;
+    left: 65px;
+}
+
+#myModal-signup .close {
+    font-size: 43px;
+    font-weight: 100;
+    padding-right:4px;
+    line-height: 0.75;
+}
+
+.sign-up-fb {
+    border: 1px solid transparent;
+    background: #4568B2;
+    color: #fff;
+    width: 378px;
+    height: 82px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 57px;
+}
+
+.sign-up-gg {
+    border: 1px solid #707070;
+    background: #fff;
+    color: #444444;
+    width: 378px;
+    height: 82px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 57px;
+}
+
+
+.line-or {
+    border-top: 1px solid #707070;
+    position: relative;
+    width: 320px;
+    margin-top: 30px;
+    left: 85px;
+    z-index: 2;
+}
+
+.text-or {
+    border: 1px solid transparent;
+    position: inherit;
+    background: #fff;
+    font-size: 14px;
+    text-align: center;
+    bottom: 14px;
+    left: 150px;
+    width: 30px;
+}
+
+.sign-up-email {
+    border: 1px solid transparent;
+    background: #473D6F;
+    color: #fff;
+    width: 378px;
+    height: 57px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 57px;
+}
+
+
+.text-acc{
+    font-size:14px;
+    margin-left:57px;
+    display:inline-block;
+    color:#444;
+    padding-top:40px;
+}
+
+.sign-up-login {
+    border: 1px solid #473D6F;
+    background: #fff;
+    color: #444;
+    width: 123px;
+    height: 57px;
+    font-size: 14px;
+    border-radius: 5px;
+    float: right;
+    display: inline-block;
+    margin-top: 22px;
+    margin-right: 55px;
+}
+
+#myModal-email .modal-sm {
+    width: 494px;
+    height: 744px;
+    border-radius: 0;
+    left: 65px;
+    bottom:25px;
+}
+
+#myModal-email .close {
+    font-size: 43px;
+    font-weight: 100;
+    padding-right: 4px;
+    line-height: 0.75;
+}
+
+.text-mail {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin-top: 45px;
+}
+
+.text-mail-fb-gg{
+    color:#4568B2;
+}
+
+.mail-submit {
+    border: 1px solid #707070;
+    background: #fff;
+    font-size: 14px;
+    color: #444;
+    width: 378px;
+    height: 57px;
+    border-radius: 5px;
+    margin: -8px 0 25px 56px;
+    padding-left: 15px;
+    
+}
+
+.mail-checkbox input{
+    border:1px solid #707070;
+    background:#fff;
+    width:24px;
+    height:24px;
+    margin-left:56px;
+    display:inline-block;
+    
+}
+
+.text-checkbox {
+    font-size: 14px;
+    display: inline-block;
+    padding-bottom: 37px;
+    padding-left: 16px;
+    position: absolute;
+    line-height: 2;
+}
+
+.sign-up-email-final {
+    border: 1px solid transparent;
+    background: #473D6F;
+    color: #fff;
+    width: 378px;
+    height: 57px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 57px;
+    margin-top: 40px;
+}
+
+#myModal-login .modal-sm {
+    width: 494px;
+    height: 668px;
+    border-radius: 0;
+    left: 65px;
+}
+
+#myModal-login .close {
+    font-size: 43px;
+    font-weight: 100;
+    padding-right: 4px;
+    line-height: 0.75;
+}
+
+.text-checkbox-pass {
+    font-size: 14px;
+    display: inline-block;
+    padding-bottom: 37px;
+    padding-left: 220px;
+    position: absolute;
+    line-height: 2;
+    color: #444;
+}
+
+.sign-up-email-final-2 {
+    border: 1px solid transparent;
+    background: #473D6F;
+    color: #fff;
+    width: 378px;
+    height: 57px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 57px;
+    margin-top: 20px;
+}
