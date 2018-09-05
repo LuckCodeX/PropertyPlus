@@ -13,6 +13,7 @@
     <link href="/Content/Custom.css" rel="stylesheet" />
     <link href="/Content/blog.css" rel="stylesheet" />
     <link href="/Content/project.css" rel="stylesheet" />
+    <link href="/Content/login.css" rel="stylesheet" />
     <script src="/Scripts/jquery-3.3.1.min.js"></script>
     <script src="/Scripts/owlcarousel/owl.carousel.js"></script>
 </head>
@@ -46,14 +47,79 @@
                 <a class="text-center" href="#">Help</a>
             </div>
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="#">Sign up</a>
+                <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#">Sign up</a>
             </div>
             <div class="header-navbar-menu-nav">
                 |&nbsp;&nbsp;
-                <a class="text-center" ui-sref="userprofile.general()">Login</a>
+                <a class="text-center" href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login">Login</a>
+            </div>
+        </div>
+        @* signin popup *@
+        <div id="myModal-signup" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-sm">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="sign-up-fb">Sign up with Facebook</button>
+                    <button type="button" class="sign-up-gg">Sign up with Google</button>
+                    <div class="line-or"><p class="text-or">or</p></div>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-email" class="sign-up-email">Sign up with Email</button>
+                    <span class="text-acc">Already have an account</span>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">Login</button>
+                </div>
             </div>
         </div>
 
+        @* email-signin popup *@
+        <div id="myModal-email" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-sm">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="text-mail">Sign up with <a class="text-mail-fb-gg" href="#">Facebook</a> or <a class="text-mail-fb-gg" href="#">Google</a></span>
+                    <div class="line-or"><p class="text-or">or</p></div>
+                    <input type="text" placeholder="First name" class="mail-submit">
+                    <input type="text" placeholder="Last name" class="mail-submit">
+                    <input type="text" placeholder="Email Adress" class="mail-submit">
+                    <input type="text" placeholder="Create a Password" class="mail-submit">
+                    <input type="text" placeholder="Re-type Password" class="mail-submit">
+                    <div class="mail-checkbox">
+                        <input type="checkbox">
+                        <span class="text-checkbox">By sign up, I agree to PropertyPlus's <a class="text-mail-fb-gg" href="#">Term of service, Privacy policy,</a> and <a class="text-mail-fb-gg" href="#">Copyright policy</a></span>
+                    </div>
+                    <button type="button" class="sign-up-email-final">Sign up with Email</button>
+                    <span class="text-acc">Already have an account</span>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">Login</button>
+
+
+                </div>
+            </div>
+        </div>
+        @* login popup *@
+        <div id="myModal-login" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-sm">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="sign-up-fb">Log in with Facebook</button>
+                    <button type="button" class="sign-up-gg">Log in with Google</button>
+                    <div class="line-or"><p class="text-or">or</p></div>
+                    <input type="text" placeholder="Email Adress" class="mail-submit">
+                    <input type="text" placeholder="Password" class="mail-submit">
+                    <div class="mail-checkbox">
+                        <input type="checkbox">
+                        <span class="text-checkbox">Remember me</span>
+                        <a href="#" class="text-checkbox-pass">Forgot password</a>
+                    </div>
+
+                    <button type="button" class="sign-up-email-final-2">Login</button>
+                    <span class="text-acc">Don't have an account</span>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
+
+
+                </div>
+            </div>
+        </div>
 
     </header>
 
