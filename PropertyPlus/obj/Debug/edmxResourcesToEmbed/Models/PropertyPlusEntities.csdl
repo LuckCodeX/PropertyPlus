@@ -223,6 +223,7 @@
       <End Role="blog" EntitySet="blogs" />
       <End Role="blog_content" EntitySet="blog_content" />
     </AssociationSet>
+    <EntitySet Name="slides" EntityType="PropertyPlusModel.slide" />
   </EntityContainer>
   <EntityType Name="user_account">
     <Key>
@@ -284,4 +285,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="slide">
+    <Key>
+      <PropertyRef Name="slide_id" />
+    </Key>
+    <Property Name="slide_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="img" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

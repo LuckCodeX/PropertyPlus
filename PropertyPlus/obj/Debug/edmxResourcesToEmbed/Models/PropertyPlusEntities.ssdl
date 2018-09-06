@@ -91,6 +91,15 @@
     <Property Name="language" Type="int" Nullable="false" />
     <Property Name="facility_id" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="slide">
+    <Key>
+      <PropertyRef Name="slide_id" />
+    </Key>
+    <Property Name="slide_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
+    <Property Name="type" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="user_account">
     <Key>
       <PropertyRef Name="user_account_id" />
@@ -233,6 +242,7 @@
     <EntitySet Name="blog_content" EntityType="Self.blog_content" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="facility" EntityType="Self.facility" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="facility_content" EntityType="Self.facility_content" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="slide" EntityType="Self.slide" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user_account" EntityType="Self.user_account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user_profile" EntityType="Self.user_profile" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__aparment___apart__1ED998B2" Association="Self.FK__aparment___apart__1ED998B2">

@@ -123,5 +123,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="slides">
+      <EntityTypeMapping TypeName="PropertyPlusModel.slide">
+        <MappingFragment StoreEntitySet="slide">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="slide_id" ColumnName="slide_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
