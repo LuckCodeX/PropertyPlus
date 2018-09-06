@@ -303,3 +303,4 @@ H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csproj.Core
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csproj.CopyComplete
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.dll
 H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.pdb
+H:\Project\OneDrive\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csprojAssemblyReference.cache

@@ -244,6 +244,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PropertyPlusEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\slide.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Models\user_account.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>

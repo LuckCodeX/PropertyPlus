@@ -4,6 +4,14 @@
 @{
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    List<SelectListItem> listItem = new List<SelectListItem>()
+{
+new SelectListItem(){Text = "== Tất cả ==", Value = "-1"},
+new SelectListItem(){Text = "Tin tức", Value = "0"},
+new SelectListItem(){Text = "Kinh nghiệm", Value = "1"},
+new SelectListItem(){Text = "Lời khuyên", Value = "2"}
+};
 }
 
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -29,6 +37,24 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content m-b-sm border-bottom">
         <div class="row">
+            @using (Html.BeginForm("Blog", "Admin", FormMethod.Get, new { @class = "col-md-10" }))
+            {
+                <div class="col-md-4">
+                    <div class="form_control">
+                        @Html.DropDownList("type", new SelectList(listItem, "Value", "Text", (int?)ViewBag.TypeSearch ?? -1), new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form_control">
+                        @Html.TextBox("search", (string)ViewBag.KeySearch, new { @class = "form-control", @placeholder = "Tìm theo tiêu đề" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form_control">
+                        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                    </div>
+                </div>
+            }
             <div class="col-sm-2">
                 <div class="form_control">
                     <a href="@Url.Action("BlogDetail")" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>

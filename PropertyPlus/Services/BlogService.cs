@@ -71,5 +71,10 @@ namespace PropertyPlus.Services
                 Description = blogContent.description
             };
         }
+
+        public List<blog> SearchBlogList(int type, string search)
+        {
+            return BlogRepository.FindBy(p => (type == -1 || p.type == type) && (Equals(search, null) || p.blog_content.Any(q => q.title.Contains(search)))).Include(p => p.blog_content).OrderByDescending(p => p.blog_id).ToList();
+        }
     }
 }

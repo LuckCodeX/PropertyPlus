@@ -24,6 +24,7 @@
         <EntityTypeShape EntityType="PropertyPlusModel.admin" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="PropertyPlusModel.blog_content" Width="1.5" PointX="10" PointY="9" />
         <AssociationConnector Association="PropertyPlusModel.FK__blog_cont__blog___2E1BDC42" />
+        <EntityTypeShape EntityType="PropertyPlusModel.slide" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

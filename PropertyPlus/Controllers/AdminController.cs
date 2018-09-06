@@ -110,10 +110,11 @@ namespace PropertyPlus.Controllers
         }
 
         [LoginActionFilter]
-        public ActionResult Blog(int? page)
+        public ActionResult Blog(int? page, int? type, string search)
         {
             int curPage = page ?? 1;
-            var blogs = _service.GetAllBlog();
+            int curType = type ?? -1;
+            var blogs = _service.SearchBlogList(curType, search);
             var blogList = blogs.Select(p => new BlogModel()
             {
                 Id = p.blog_id,
@@ -122,6 +123,8 @@ namespace PropertyPlus.Controllers
                 Type = p.type,
                 Content = _service.ConvertBlogContentToModel(p.blog_content.FirstOrDefault(q => q.language == 0))
             });
+            ViewBag.TypeSearch = curType;
+            ViewBag.KeySearch = search;
             return View(blogList.ToPagedList(curPage, 10));
         }
 

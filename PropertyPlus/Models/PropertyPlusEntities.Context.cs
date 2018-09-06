@@ -36,5 +36,6 @@ namespace PropertyPlus.Models
         public virtual DbSet<user_account> user_account { get; set; }
         public virtual DbSet<admin> admins { get; set; }
         public virtual DbSet<blog_content> blog_content { get; set; }
+        public virtual DbSet<slide> slides { get; set; }
     }
 }
