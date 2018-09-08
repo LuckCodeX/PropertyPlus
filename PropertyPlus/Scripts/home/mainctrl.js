@@ -14,7 +14,7 @@
             $scope.userProfile = JSON.parse(Base64.decode(localStorage.getItem('user_profile')));
         }
 
-        xhrService.get("GetListBlog").then(function (data) {
+        xhrService.get("GetListBlog/1/4/-1/").then(function (data) {
             console.log(data.data);
         }, function (error) { });
     }
