@@ -148,7 +148,7 @@ function cityService() {
 }
 
 app.service('xhrService', xhrService)
-    .service('adminService', adminService)
+    //.service('adminService', adminService)
     .service('cityService', cityService);
 
 app.filter('filterCategory', function () {

@@ -14,9 +14,9 @@
             $scope.userProfile = JSON.parse(Base64.decode(localStorage.getItem('user_profile')));
         }
 
-        xhrService.get("GetListBlog/1/4/-1/").then(function (data) {
-            console.log(data.data);
-        }, function (error) { });
+        //xhrService.get("GetListBlog/1/6/-1/").then(function (data) {
+        //    $scope.blogList = data.data.data;
+        //}, function (error) { });
     }
 
     $scope.replaceString = function (str) {

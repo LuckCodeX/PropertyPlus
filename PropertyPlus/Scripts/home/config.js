@@ -22,7 +22,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
             })
         .state('blog',
             {
-                url: "/blog",
+                url: "/blog?page&limit&type&search",
                 templateUrl: "html/blog.html",
                 data: { pageTitle: 'Blog' }
             })

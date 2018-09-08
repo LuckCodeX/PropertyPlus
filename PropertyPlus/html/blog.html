@@ -1,4 +1,4 @@
-﻿<div ng-controller="BlogCtrl">
+﻿<div ng-controller="BlogCtrl" ng-init="loadData()">
     <div class="phase1">
     </div>
 
@@ -6,23 +6,25 @@
 
 
         <div>
-            <button href="#" class="news text">News</button>
+            <button class="news text" ng-click="type = 0; pageChanged()">News</button>
         </div>
         <div>
-            <button href="#" class="experience text">Experience</button>
+            <button class="experience text" ng-click="type = 1; pageChanged()">Experience</button>
         </div>
         <div>
-            <button href="#" class="tips text">Tips</button>
+            <button class="tips text" ng-click="type = 2; pageChanged()">Tips</button>
         </div>
-        <div class="blogsearch-box ">
-            <input type="text" placeholder="Keyword">
-            <button type="submit" class=" text">Search</button>
-        </div>
+        <form ng-submit="pageChanged()">
+            <div class="blogsearch-box ">
+                <input type="text" placeholder="Keyword" ng-model="search">
+                <button type="submit" class=" text" >Search</button>
+            </div>
+        </form>
 
 
     </div>
 
-    <div class="container padding-top-30 ">
+    <!--<div class="container padding-top-30 ">
         <div class="row">
             <div class="col-md-4">
                 <div class="blog-box">
@@ -96,48 +98,25 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <div class="container padding-top-60 blogBox extra-box">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4" ng-repeat="item in blogList">
                 <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
+                    <img src="/Upload/{{item.Img}}" alt="#" class="img-fluid" />
                 </div>
                 <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
+                    <p class="text padding-top-20" data-toggle="modal" data-target="#myModal"  ng-click="loadDetail(item.Id)">{{item.Content.Title | limitTo : 50}}{{item.Content.Title.length > 50 ? '...' : ''}}</p>
+                    <p class="text1">{{item.CreatedString}}</p>
+                    <p class="text2">{{item.Content.Description | limitTo : 100}}{{item.Content.Description.length > 100 ? '...' : ''}}</p>
+                    <button data-toggle="modal" data-target="#myModal" ng-click="loadDetail(item.Id)">READ MORE</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container padding-top-60 blogBox extra-box">
+    <!--<div class="container padding-top-60 blogBox extra-box">
         <div class="row">
             <div class="col-md-4">
                 <div class="blog-box">
@@ -284,7 +263,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class=" container padding-top-60">
         <div class="row">
             <div class="col-md-offset-4 col-md-4 final  text-center">
@@ -297,11 +276,11 @@
 
 
             <div class="modal-content text-popup">
-                <span class="blog-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</span>
-                <p id="show-day" class="text-show-day"></p>
-                <span class="blog-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</span>
-                <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="model-content-img" />
-                <p class="blog-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
+                <span class="blog-title">{{blog.Content.Title}}</span>
+                <p class="text-show-day">{{blog.CreatedString}}</p>
+                <span class="blog-intro">{{blog.Content.Description}}</span>
+                <img src="/Upload/{{blog.Img}}" alt="#" class="model-content-img" />
+                <div class="blog-content" ng-bind-html="blog.Content.Content | trust"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
