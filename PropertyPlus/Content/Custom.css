@@ -1539,6 +1539,402 @@ footer hr {
     margin-bottom: 50px;
 }
 
+.choice-apartment {
+    margin-top: 20.4px;
+    padding: 18px 29px 32px 29px;
+    background-color: white;
+    width: 100%
+}
+
+.choice-apartment select {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #707070;
+    padding: 10px 5px 10px 18px;
+    margin-top: 6px;
+}
+
+.content-user-manage {
+    margin-top: 25px;
+    background-color: white;
+    padding-bottom: 30px; 
+}
+
+    .content-user-manage ul.tabs {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        display: flex;
+    }
+    .content-user-manage ul.tabs li {
+        text-align: center;
+        background: #455782;
+        opacity: 0.4;
+        color: white;
+        display: inline-block;
+        padding: 13px 0;
+        cursor: pointer;
+        width: 33.33%;
+        margin: 0;
+        height: 45px;
+    }
+
+        .content-user-manage ul.tabs li.current {
+            background: #455782;
+            color: white;
+            opacity: 1;
+        }
+
+.content-user-manage .tab-content {
+    display: none;
+    background: white;
+    padding: 24px 29px;
+}
+
+    .content-user-manage .tab-content.current {
+        display: inherit;
+        overflow: hidden;
+    }
+
+.download-contract-user {
+    float: right;
+    margin-right: 7px;
+    margin-top: 28px;
+}
+
+    .download-contract-user span {
+        font-size: 12px;
+    }
+
+    .download-contract-user span.icon {
+        font-size: 17px;
+       
+    }
+
+    .download-contract-user a {
+        margin-left: 26px;
+    }
+.billing-tab .label-price-billing {
+    margin-bottom: 5px;
+}
+
+.billing-tab .label-price-billing span {
+    margin-right: 26px;
+}
+
+    .billing-tab .label-price-billing i {
+        font-size: 13.5px;
+    }
+
+#billing-table {
+    margin-top: 16px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#billing-table .tr-first {
+    background-color: #E4E4E4;
+}
+
+    #billing-table th {
+        font-weight: 400;
+        padding: 8px 10px;
+    }
+
+    #billing-table .column-amount {
+        text-align: center;
+
+    }
+    #billing-table .column-status {
+        text-align: center;
+    }
+
+
+    #billing-table th:first-child {
+        padding-left: 20px;
+    }
+
+    #billing-table tr td {
+        padding: 3.5px 10px;
+    }
+    #billing-table tr:nth-child(2) td {
+        padding-top: 22px;
+    }
+
+    .status-danger {
+        font-size: 7px;
+        margin-right: 4px;
+        color: #FB2450
+    }
+
+.status-success {
+    font-size: 7px;
+    margin-right: 4px;
+    color: #7DE172;
+}
+    #billing-table th, #billing-table td {
+        font-size: 10px;
+    }
+
+.send-issue-box {
+    width: calc(100% + 58px);
+    border-bottom: 1px solid #707070;
+    margin: 0 -29px;
+}
+
+    .send-issue-box .send-issue-btn {
+        height: 35.51px;
+        color: white;
+        padding: 8px 64px 8.5px 46px;
+        background-color: #464878;
+        margin: 8px auto 35px auto;
+        display: block;
+        border: none;
+        border-radius: 5px;
+    }
+
+.support-inbox-box {
+    margin-top: 35px;
+}
+
+.input-group-search-inbox {
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    border: 1px solid #707070;
+    padding: 3px;
+    padding-left: 10px;
+    display: inline-block;
+    float: right;
+}
+
+.support-inbox-box p {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+    .input-group-search-inbox input {
+        float: left;
+        height: 22px;
+        border: none;
+        width: calc(100% - 20px);
+    }
+
+.input-group-search-inbox button {
+    margin-top: 3px;
+    margin-right: 3px;
+    display: block;
+    border: none;
+    background: transparent;
+    float: right;
+    font-size: 12px;
+}
+
+.list-inbox-box {
+    margin-top: 29.6px;
+    height: 271px;
+    width: 100%;
+    border: 1px solid #707070;
+    border-radius: 2px;
+}
+
+.scrollbar {
+    overflow-y: scroll;
+    position: relative;
+}
+
+    .scrollbar::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #D4D4D4;
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        width: 5.5px;
+        background-color: white;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #7B7B7B;
+    }
+
+.force-overflow {
+    min-height: 450px;
+}
+
+.inbox-section {
+    overflow: hidden;
+    padding: 12px 34px 10px 13px;
+    border-bottom: 1px solid #E4E4E4;
+}
+
+    .inbox-section:last-child {
+        border: none;
+    }
+
+    .inbox-section .avatar {
+        display: inline-block;
+        float: left;
+
+        width: 40px;
+        height: 40px;
+        
+    }
+
+        .inbox-section .avatar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+    .inbox-section .summary-inbox {
+        display: inline-block;
+        float: left;
+        margin-left: 12.5px;
+    }
+
+    .inbox-section .summary-inbox .title-inbox {
+        margin-top: 2px;
+        margin-bottom: 2.8px;
+        font-size: 12px;
+    }
+    .inbox-section .summary-inbox .time-inbox {
+        font-size: 9px;
+    }
+
+    .inbox-section .action-inbox {
+        margin-top: 10px;
+        width: 98px;
+        display: inline-block;
+        float: right;
+    }
+
+        .inbox-section .action-inbox .btn-inbox {
+            float: left;
+            font-size: 8px;
+            color: white;
+            background-color: #465983;
+            padding: 3.6px 14.3px 3.1px 9px;
+            border: none;
+            margin-right: 18.1px;
+        }
+
+        .inbox-section .action-inbox button  {
+            float: left;
+            display: inline-block;
+            border: none;
+            background-color: white;
+        }
+.inbox-section .action-inbox button i {
+    float: left;
+    display: inline-block;
+    color: #FB6262;
+    font-size: 16.5px;
+}
+
+.detail-inbox-box {
+    margin-top: 65px;
+}
+
+.detail-inbox {
+    margin-top: 34.4px;
+    border: 1px solid #707070;
+}
+
+.header-detail-inbox {
+    overflow: hidden;
+    padding: 26.1px 0 26.1px 13px;
+    border-bottom: 1px solid #707070;
+}
+
+    .header-detail-inbox .avatar {
+        width: 40px;
+        height: 40px;
+        float: left;
+        display: inline-block
+    }
+.header-detail-inbox .avatar img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+.description-detail-inbox {
+   
+    display: inline-block;
+    margin-left: 13.3px;
+    float: left;
+}
+
+    .description-detail-inbox .label-description-detail-inbox {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .description-detail-inbox .btn-status-inbox {
+        font-size: 8px;
+        color: white;
+        background-color: #465983;
+        padding: 3.6px 14.3px 3.1px 9px;
+        border: none;
+    }
+
+    .detail-inbox-section {
+        overflow: hidden;
+        padding: 12.3px 11.9px;
+        background-color: #F8F8F8;
+        border-bottom: 1px solid #707070;
+        
+    }
+
+    .detail-inbox-section:last-child {
+        border: none;
+    }
+.avatar-admin-detail-inbox {
+    width: 34.76px;
+    height: 34.76px;
+    display: inline-block;
+    float: left
+}
+
+.content-section-inbox {
+    display: inline-block;
+    float: left;
+    width: 456.14px;
+    margin-left: 14.8px;
+    margin-top: 4px;
+}
+
+.rating-detail-inbox {
+    background-color: #F8F8F8;
+    padding: 16.7px 0 23px 0;
+}
+
+    .rating-detail-inbox p {
+        font-size: 9px; 
+    }
+
+.rating-detail-inbox i {
+    font-size: 22px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+    .rating-detail-inbox .start-rating {
+        display: block;
+        margin: 10px auto;
+        width: 174px;
+    }
+
+    .content-section-inbox .message-detail-inbox p {
+        font-size: 10px;
+    }
+    .content-section-inbox .label-info-section {
+        font-size: 10px;
+    }
+    .content-section-inbox .time-section-inbox {
+        font-size: 8px;
+    }
 @media only screen and (max-width: 992px) {
     .thumbnail-choose-home-column .slide-choose-home { height: 290px }
 
