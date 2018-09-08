@@ -11,3 +11,5 @@
     //'ngclipboard',
     'pascalprecht.translate'
 ]);
+
+var API = "http://localhost:10918/api/propertyplus/";

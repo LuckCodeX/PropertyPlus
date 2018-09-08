@@ -17,7 +17,7 @@
     <script src="/Scripts/jquery-3.3.1.min.js"></script>
     <script src="/Scripts/owlcarousel/owl.carousel.js"></script>
 </head>
-<body class="scrollbar">
+<body class="scrollbar" ng-controller="MainCtrl" ng-init="loadData()">
 
 <header class="clearfix">
     <a class="logo-header" ui-sref="home">
@@ -220,6 +220,7 @@
 <script src="/Scripts/home/services.js"></script>
 <script src="/Scripts/home/directives.js"></script>
 <script src="/Scripts/home/translate.js"></script>
+<script src="/Scripts/home/mainctrl.js"></script>
 <script src="/Scripts/home/homectrl.js"></script>
 <script src="/Scripts/home/apartmentctrl.js"></script>
 <script src="/Scripts/home/detailctrl.js"></script>

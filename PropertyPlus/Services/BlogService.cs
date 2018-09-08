@@ -72,9 +72,9 @@ namespace PropertyPlus.Services
             };
         }
 
-        public List<blog> SearchBlogList(int type, string search)
+        public List<blog> SearchBlogList(int type, int language, string search)
         {
-            return BlogRepository.FindBy(p => (type == -1 || p.type == type) && (Equals(search, null) || p.blog_content.Any(q => q.title.Contains(search)))).Include(p => p.blog_content).OrderByDescending(p => p.blog_id).ToList();
+            return BlogRepository.FindBy(p => (type == -1 || p.type == type) && p.blog_content.Any(q => q.language == language) && (Equals(search, null) || p.blog_content.Any(q => q.title.Contains(search)))).Include(p => p.blog_content).OrderByDescending(p => p.blog_id).ToList();
         }
     }
 }

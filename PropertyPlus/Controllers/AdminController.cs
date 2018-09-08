@@ -114,7 +114,7 @@ namespace PropertyPlus.Controllers
         {
             int curPage = page ?? 1;
             int curType = type ?? -1;
-            var blogs = _service.SearchBlogList(curType, search);
+            var blogs = _service.SearchBlogList(curType, 0, search);
             var blogList = blogs.Select(p => new BlogModel()
             {
                 Id = p.blog_id,

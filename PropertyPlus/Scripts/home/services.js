@@ -30,7 +30,7 @@ function xhrService($q, $http) {
     this.post = function (url, data) {
         var config = getHttpConfig();
         var deferred = $q.defer();
-        $http.post(url, data, config).then(function (respone) {
+        $http.post(API + url, data, config).then(function (respone) {
             deferred.resolve(respone);
         }, function (msg) {
             deferred.reject(msg);
@@ -40,7 +40,7 @@ function xhrService($q, $http) {
     this.put = function (url, data) {
         var config = getHttpConfig();
         var deferred = $q.defer();
-        $http.put(url, data, config).then(function (respone) {
+        $http.put(API + url, data, config).then(function (respone) {
             deferred.resolve(respone);
         }, function (msg) {
             deferred.reject(msg);
@@ -50,7 +50,7 @@ function xhrService($q, $http) {
     this.get = function (url) {
         var config = getHttpConfig();
         var deferred = $q.defer();
-        $http.get(url, config).then(function (respone) {
+        $http.get(API + url, config).then(function (respone) {
             deferred.resolve(respone);
         }, function (msg) {
             deferred.reject(msg);
@@ -60,21 +60,12 @@ function xhrService($q, $http) {
     this.delete = function (url) {
         var config = getHttpConfig();
         var deferred = $q.defer();
-        $http.delete(url, config).then(function (respone) {
+        $http.delete(API + url, config).then(function (respone) {
             deferred.resolve(respone);
         }, function (msg) {
             deferred.reject(msg);
         });
         return deferred.promise;
-    }
-}
-
-function adminService($state) {
-    this.checkLogin = function () {
-        if (!(localStorage && localStorage.getItem('admin'))) {
-            $state.go('login');
-            event.preventDefault();
-        }
     }
 }
 
