@@ -222,6 +222,18 @@ namespace PropertyPlus.Controllers
             return RedirectToAction("Blog");
         }
 
+        public ActionResult Slide(int type)
+        {
+            var slides = _service.GetListSlideByType(type).Select(p => new SlideModel()
+            {
+                Id = p.slide_id,
+                Img = p.img,
+                Url = p.url,
+                Type = p.type
+            }).ToList();
+            return View(slides);
+        }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();

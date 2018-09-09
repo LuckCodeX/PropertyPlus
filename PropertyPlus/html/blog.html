@@ -107,7 +107,7 @@
                     <img src="/Upload/{{item.Img}}" alt="#" class="img-fluid" />
                 </div>
                 <div class="blog-box-below">
-                    <p class="text padding-top-20" data-toggle="modal" data-target="#myModal"  ng-click="loadDetail(item.Id)">{{item.Content.Title | limitTo : 50}}{{item.Content.Title.length > 50 ? '...' : ''}}</p>
+                    <p class="text padding-top-20" data-toggle="modal" data-target="#myModal" ng-click="loadDetail(item.Id)">{{item.Content.Title | limitTo : 50}}{{item.Content.Title.length > 50 ? '...' : ''}}</p>
                     <p class="text1">{{item.CreatedString}}</p>
                     <p class="text2">{{item.Content.Description | limitTo : 100}}{{item.Content.Description.length > 100 ? '...' : ''}}</p>
                     <button data-toggle="modal" data-target="#myModal" ng-click="loadDetail(item.Id)">READ MORE</button>

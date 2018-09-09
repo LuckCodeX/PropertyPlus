@@ -24,8 +24,8 @@
                 });
     };
 
-    $scope.loadDetail = function(id) {
-        $scope.blog = $scope.blogList.filter((p) => p.Id == id)[0];
+    $scope.loadDetailData = function(id) {
+        
     };
 }
 

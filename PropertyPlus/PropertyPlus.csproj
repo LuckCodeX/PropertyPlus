@@ -249,6 +249,7 @@
     <Compile Include="Models\slide.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SlideModel.cs" />
     <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Models\user_account.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
@@ -262,6 +263,7 @@
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\Services.cs" />
+    <Compile Include="Services\SlideService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -675,6 +677,7 @@
     <Content Include="html\apartment.html" />
     <Content Include="html\apartmentdetail.html" />
     <Content Include="html\blog.html" />
+    <Content Include="html\blogdetail.html" />
     <Content Include="html\detail.html" />
     <Content Include="html\home.html" />
     <Content Include="html\project.html" />
@@ -816,6 +819,8 @@
     <Content Include="Views\Home\UserProfileRefer.cshtml" />
     <Content Include="Views\Admin\BlogDetail.cshtml" />
     <Content Include="Views\Admin\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\Slide.cshtml" />
+    <Content Include="Views\Home\BlogDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

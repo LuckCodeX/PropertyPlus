@@ -21,5 +21,6 @@ namespace PropertyPlus.Services
         void DeleteBlog(int id);
         BlogContentModel ConvertBlogContentToModel(blog_content blogContent);
         List<blog> SearchBlogList(int type, int language, string search);
+        List<slide> GetListSlideByType(int type);
     }
 }

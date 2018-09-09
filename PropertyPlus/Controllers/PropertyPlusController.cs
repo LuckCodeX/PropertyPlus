@@ -42,6 +42,26 @@ namespace PropertyPlus.Controllers
             return new PagingResult<BlogModel>();
         }
 
+        [HttpGet]
+        [Route("GetBlogDetail/{id}")]
+        public BlogModel GetBlogDetail(int id)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Language", out values))
+            {
+                var language = Convert.ToInt32(values.First());
+                var blog = _service.GetBlogById(id);
+                return new BlogModel()
+                {
+                    Id = blog.blog_id,
+                    CreatedString = ConvertDatetime.ConvertUnixTimeStampToDateTime(blog.created_date),
+                    Img = blog.img,
+                    Type = blog.type,
+                    Content = _service.ConvertBlogContentToModel(blog.blog_content.FirstOrDefault(q => q.language == language))
+                };
+            }
+            return new BlogModel();
+        }
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();

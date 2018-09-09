@@ -61,6 +61,11 @@ namespace PropertyPlus.Controllers
             return View();
         }
 
+        public ActionResult BlogDetail()
+        {
+            return View();
+        }
+
         public ActionResult Project()
         {
             ViewBag.Title = "Project";

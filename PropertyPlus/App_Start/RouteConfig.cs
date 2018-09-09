@@ -20,6 +20,12 @@ namespace PropertyPlus
             );
 
             routes.MapRoute(
+                name: "BlogDetail",
+                url: "blog-detail/{id}/{title}",
+                defaults: new { controller = "Home", action = "BlogDetail", id = UrlParameter.Optional, title = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Apartment",
                 url: "apartment",
                 defaults: new { controller = "Home", action = "Apartment" }

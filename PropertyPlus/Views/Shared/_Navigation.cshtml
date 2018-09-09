@@ -5,7 +5,7 @@
             <li class="nav-header">
                 <div class="dropdown profile-element">
                     <span>
-                        <img alt="image" class="img-circle" src="~/Images/logo.svg" width="40" height="40"/>
+                        <img alt="image" class="img-circle" src="~/Images/logo.svg" width="40" height="40" />
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear">
@@ -16,7 +16,7 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         @*<li><a href="@Url.Action("Profile", "AppViews")">Profile</a></li>
-                        <li class="divider"></li>*@
+                            <li class="divider"></li>*@
                         <li><a href="@Url.Action("ChangePassword", "Admin")">Đổi mật khẩu</a></li>
                     </ul>
                 </div>
@@ -25,21 +25,31 @@
                 </div>
             </li>
             @*<li class="@Html.IsSelected(action: "Post") || @Html.IsSelected(action: "PostDetail") || @Html.IsSelected(action: "Category") || @Html.IsSelected(action: "CategoryDetail") || @Html.IsSelected(action: "FilterWord") || @Html.IsSelected(action: "Symbol") || @Html.IsSelected(action: "SymbolDetail") || @Html.IsSelected(action: "Report")">
-                <a href="#"><i class="fas fa-book"></i> <span class="nav-label">Bài viết</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="fas fa-book"></i> <span class="nav-label">Bài viết</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="@Html.IsSelected(action: "Post") || @Html.IsSelected(action: "PostDetail")"><a href="@Url.Action("Post", "Admin")">Bài viết</a></li>
+                        <li class="@Html.IsSelected(action: "Category") || @Html.IsSelected(action: "CategoryDetail")"><a href="@Url.Action("Category", "Admin")">Danh mục</a></li>
+                        <li class="@Html.IsSelected(action: "Symbol") || @Html.IsSelected(action: "SymbolDetail")"><a href="@Url.Action("Symbol", "Admin")">Mã chứng khoán</a></li>
+                        <li class="@Html.IsSelected(action: "FilterWord")"><a href="@Url.Action("FilterWord", "Admin")">Bộ lọc từ</a></li>
+                        <li class="@Html.IsSelected(action: "Report")"><a href="@Url.Action("Report", "Admin")">Báo cáo</a></li>
+                    </ul>
+                </li>*@
+            <li class="@Html.IsSelected(action: "Blog") || @Html.IsSelected(action: "BlogDetail")">
+                <a href="@Url.Action("Blog", "Admin")"><i class="far fa-newspaper"></i> <span class="nav-label">Blog</span> </a>
+            </li>
+            @*<li class="@Html.IsSelected(action: "Account") || @Html.IsSelected(action: "AccountDetail")">
+                    <a href="@Url.Action("Account", "Admin")"><i class="fas fa-user"></i> <span class="nav-label">Tài khoản</span> </a>
+                </li>*@
+            <li class="@Html.IsSelected(action: "SlideHome") || @Html.IsSelected(action: "PostDetail") || @Html.IsSelected(action: "Category") || @Html.IsSelected(action: "CategoryDetail") || @Html.IsSelected(action: "FilterWord") || @Html.IsSelected(action: "Symbol") || @Html.IsSelected(action: "SymbolDetail") || @Html.IsSelected(action: "Report")">
+                <a href="#"><i class="fas fa-book"></i> <span class="nav-label">Slide</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li class="@Html.IsSelected(action: "Post") || @Html.IsSelected(action: "PostDetail")"><a href="@Url.Action("Post", "Admin")">Bài viết</a></li>
+                    <li class="@Html.IsSelected(action: "SlideHome")"><a href="@Url.Action("Post", "Admin")">Trang chủ</a></li>
                     <li class="@Html.IsSelected(action: "Category") || @Html.IsSelected(action: "CategoryDetail")"><a href="@Url.Action("Category", "Admin")">Danh mục</a></li>
                     <li class="@Html.IsSelected(action: "Symbol") || @Html.IsSelected(action: "SymbolDetail")"><a href="@Url.Action("Symbol", "Admin")">Mã chứng khoán</a></li>
                     <li class="@Html.IsSelected(action: "FilterWord")"><a href="@Url.Action("FilterWord", "Admin")">Bộ lọc từ</a></li>
                     <li class="@Html.IsSelected(action: "Report")"><a href="@Url.Action("Report", "Admin")">Báo cáo</a></li>
                 </ul>
-            </li>*@
-            <li class="@Html.IsSelected(action: "Blog") || @Html.IsSelected(action: "BlogDetail")">
-                <a href="@Url.Action("Blog", "Admin")"><i class="far fa-newspaper"></i> <span class="nav-label">Blog</span> </a>
             </li>
-            @*<li class="@Html.IsSelected(action: "Account") || @Html.IsSelected(action: "AccountDetail")">
-                <a href="@Url.Action("Account", "Admin")"><i class="fas fa-user"></i> <span class="nav-label">Tài khoản</span> </a>
-            </li>*@
         </ul>
     </div>
 </nav>

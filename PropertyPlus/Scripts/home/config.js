@@ -25,6 +25,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/blog?page&limit&type&search",
                 templateUrl: "html/blog.html",
                 data: { pageTitle: 'Blog' }
+        })
+        .state('blogdetail',
+            {
+                url: "/blog-detail/:id/:title",
+                templateUrl: "html/blogdetail.html",
+                data: { pageTitle: 'Blog' }
             })
         .state('apartment',
             {
