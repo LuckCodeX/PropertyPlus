@@ -62,6 +62,21 @@ namespace PropertyPlus.Controllers
             }
             return new BlogModel();
         }
+
+        [HttpGet]
+        [Route("GetSlide/{type}")]
+        public SlideModel GetSlide(int type)
+        {
+            var slide = _service.GetRandomSlideByType(type);
+            return new SlideModel()
+            {
+                Id = slide.slide_id,
+                Type = slide.type,
+                Url = slide.url,
+                Img = slide.img
+            };
+        }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();

@@ -40,14 +40,12 @@
             @*<li class="@Html.IsSelected(action: "Account") || @Html.IsSelected(action: "AccountDetail")">
                     <a href="@Url.Action("Account", "Admin")"><i class="fas fa-user"></i> <span class="nav-label">Tài khoản</span> </a>
                 </li>*@
-            <li class="@Html.IsSelected(action: "SlideHome") || @Html.IsSelected(action: "PostDetail") || @Html.IsSelected(action: "Category") || @Html.IsSelected(action: "CategoryDetail") || @Html.IsSelected(action: "FilterWord") || @Html.IsSelected(action: "Symbol") || @Html.IsSelected(action: "SymbolDetail") || @Html.IsSelected(action: "Report")">
+            <li class="@Html.IsSelected(action: "SlideHome") || @Html.IsSelected(action: "SlideProject") || @Html.IsSelected(action: "SlideBlog")">
                 <a href="#"><i class="fas fa-book"></i> <span class="nav-label">Slide</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li class="@Html.IsSelected(action: "SlideHome")"><a href="@Url.Action("Post", "Admin")">Trang chủ</a></li>
-                    <li class="@Html.IsSelected(action: "Category") || @Html.IsSelected(action: "CategoryDetail")"><a href="@Url.Action("Category", "Admin")">Danh mục</a></li>
-                    <li class="@Html.IsSelected(action: "Symbol") || @Html.IsSelected(action: "SymbolDetail")"><a href="@Url.Action("Symbol", "Admin")">Mã chứng khoán</a></li>
-                    <li class="@Html.IsSelected(action: "FilterWord")"><a href="@Url.Action("FilterWord", "Admin")">Bộ lọc từ</a></li>
-                    <li class="@Html.IsSelected(action: "Report")"><a href="@Url.Action("Report", "Admin")">Báo cáo</a></li>
+                    <li class="@Html.IsSelected(action: "SlideHome")"><a href="@Url.Action("SlideHome", "Admin")">Trang chủ</a></li>
+                    <li class="@Html.IsSelected(action: "SlideProject")"><a href="@Url.Action("SlideProject", "Admin")">Project</a></li>
+                    <li class="@Html.IsSelected(action: "SlideBlog")"><a href="@Url.Action("SlideBlog", "Admin")">Blog</a></li>
                 </ul>
             </li>
         </ul>

@@ -222,9 +222,10 @@ namespace PropertyPlus.Controllers
             return RedirectToAction("Blog");
         }
 
-        public ActionResult Slide(int type)
+        [LoginActionFilter]
+        public ActionResult SlideHome()
         {
-            var slides = _service.GetListSlideByType(type).Select(p => new SlideModel()
+            var slides = _service.GetListSlideByType(0).Select(p => new SlideModel()
             {
                 Id = p.slide_id,
                 Img = p.img,
@@ -234,10 +235,63 @@ namespace PropertyPlus.Controllers
             return View(slides);
         }
 
+        [LoginActionFilter]
+        public ActionResult SlideProject()
+        {
+            var slides = _service.GetListSlideByType(1).Select(p => new SlideModel()
+            {
+                Id = p.slide_id,
+                Img = p.img,
+                Url = p.url,
+                Type = p.type
+            }).ToList();
+            return View(slides);
+        }
+
+        [LoginActionFilter]
+        public ActionResult SlideBlog()
+        {
+            var slides = _service.GetListSlideByType(2).Select(p => new SlideModel()
+            {
+                Id = p.slide_id,
+                Img = p.img,
+                Url = p.url,
+                Type = p.type
+            }).ToList();
+            return View(slides);
+        }
+
+        [HttpPost]
+        public ActionResult SaveSlide(List<SlideModel> list)
+        {
+            var type = 0;
+            foreach (var model in list)
+            {
+                type = model.Type;
+                var slide = _service.GetSlideById(model.Id);
+                if (!Equals(model.ImageFile, null))
+                {
+                    var fileName = "Slide_" + slide.slide_id + "_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                    model.ImageFile.SaveAs(path);
+                    slide.img = fileName;
+                }
+                slide.url = model.Url;
+                _service.SaveSlide(slide);
+            }
+            if (type == 1)
+                return RedirectToAction("SlideProject");
+            if (type == 2)
+                return RedirectToAction("SlideBlog");
+            return RedirectToAction("SlideHome");
+        }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();
             base.Dispose(disposing);
         }
+
+
     }
 }

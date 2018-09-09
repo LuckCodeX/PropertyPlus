@@ -22,5 +22,8 @@ namespace PropertyPlus.Services
         BlogContentModel ConvertBlogContentToModel(blog_content blogContent);
         List<blog> SearchBlogList(int type, int language, string search);
         List<slide> GetListSlideByType(int type);
+        slide GetSlideById(int id);
+        void SaveSlide(slide slide);
+        slide GetRandomSlideByType(int type);
     }
 }
