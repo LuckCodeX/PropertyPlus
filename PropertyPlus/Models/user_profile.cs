@@ -23,9 +23,18 @@ namespace PropertyPlus.Models
     
         public int user_profile_id { get; set; }
         public string email { get; set; }
-        public string full_name { get; set; }
         public int status { get; set; }
         public int created_date { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public Nullable<int> gender { get; set; }
+        public Nullable<int> birthday { get; set; }
+        public string phone { get; set; }
+        public string img_verification_1 { get; set; }
+        public string img_verification_2 { get; set; }
+        public string work { get; set; }
+        public string contact { get; set; }
+        public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<apartment> apartments { get; set; }

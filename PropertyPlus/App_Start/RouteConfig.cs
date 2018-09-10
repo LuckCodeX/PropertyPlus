@@ -74,6 +74,66 @@ namespace PropertyPlus
             );
 
             routes.MapRoute(
+                name: "HostDashboard",
+                url: "host/dashboard",
+                defaults: new { controller = "Home", action = "HostDashboard" }
+            );
+
+            routes.MapRoute(
+                name: "HostListing",
+                url: "host/listing",
+                defaults: new { controller = "Home", action = "HostDashboard" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateStep11",
+                url: "host/create/step-1-1",
+                defaults: new { controller = "Home", action = "HostCreateStep11" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateStep12",
+                url: "host/create/step-1-2",
+                defaults: new { controller = "Home", action = "HostCreateStep12" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateStep13",
+                url: "host/create/step-1-3",
+                defaults: new { controller = "Home", action = "HostCreateStep13" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateStep21",
+                url: "host/create/step-2-1",
+                defaults: new { controller = "Home", action = "HostCreateStep21" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateStep22",
+                url: "host/create/step-2-2",
+                defaults: new { controller = "Home", action = "HostCreateStep22" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateStep31",
+                url: "host/create/step-3-1",
+                defaults: new { controller = "Home", action = "HostCreateStep31" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateStep32",
+                url: "host/create/step-3-2",
+                defaults: new { controller = "Home", action = "HostCreateStep32" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateStep4",
+                url: "host/create/step-4",
+                defaults: new { controller = "Home", action = "HostCreateStep4" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

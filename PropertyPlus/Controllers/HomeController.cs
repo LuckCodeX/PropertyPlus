@@ -72,5 +72,54 @@ namespace PropertyPlus.Controllers
 
             return View();
         }
+
+        public ActionResult HostDashboard()
+        {
+            return View();
+        }
+        public ActionResult HostListing()
+        {
+            return View();
+        }
+
+        public ActionResult HostCreateStep11()
+        {
+            return View();
+        }
+
+        public ActionResult HostCreateStep12()
+        {
+            return View();
+        }
+
+        public ActionResult HostCreateStep13()
+        {
+            return View();
+        }
+
+        public ActionResult HostCreateStep21()
+        {
+            return View();
+        }
+
+        public ActionResult HostCreateStep22()
+        {
+            return View();
+        }
+
+        public ActionResult HostCreateStep31()
+        {
+            return View();
+        }
+
+        public ActionResult HostCreateStep32()
+        {
+            return View();
+        }
+
+        public ActionResult HostCreateStep4()
+        {
+            return View();
+        }
     }
 }

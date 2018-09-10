@@ -12,19 +12,19 @@
         <EntityTypeShape EntityType="PropertyPlusModel.blog" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PropertyPlusModel.facility" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PropertyPlusModel.facility_content" Width="1.5" PointX="8.25" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PropertyPlusModel.user_profile" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
         <AssociationConnector Association="PropertyPlusModel.FK__aparment___apart__1ED998B2" ManuallyRouted="false" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__1A14E395" ManuallyRouted="false" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__276EDEB3" ManuallyRouted="false" />
-        <AssociationConnector Association="PropertyPlusModel.FK__apartment__user___164452B1" ManuallyRouted="false" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__facil__286302EC" ManuallyRouted="false" />
         <AssociationConnector Association="PropertyPlusModel.FK__facility___facil__24927208" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PropertyPlusModel.user_account" Width="1.5" PointX="3" PointY="10" />
-        <AssociationConnector Association="PropertyPlusModel.FK__user_acco__user___1273C1CD" />
         <EntityTypeShape EntityType="PropertyPlusModel.admin" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="PropertyPlusModel.blog_content" Width="1.5" PointX="10" PointY="9" />
         <AssociationConnector Association="PropertyPlusModel.FK__blog_cont__blog___2E1BDC42" />
         <EntityTypeShape EntityType="PropertyPlusModel.slide" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PropertyPlusModel.user_profile" Width="1.5" PointX="0.75" PointY="6.25" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__user___164452B1" />
+        <AssociationConnector Association="PropertyPlusModel.FK__user_acco__user___1273C1CD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -25,7 +25,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/blog?page&limit&type&search",
                 templateUrl: "html/blog.html",
                 data: { pageTitle: 'Blog' }
-        })
+            })
         .state('blogdetail',
             {
                 url: "/blog-detail/:id/:title",
@@ -86,6 +86,80 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/refer",
                 templateUrl: "html/userprofilerefer.html",
                 data: { pageTitle: 'User Profile' }
+            })
+        .state('host',
+            {
+                url: "/host",
+                abstract: true,
+                templateUrl: "html/host.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.dashboard',
+            {
+                url: "/dashboard",
+                templateUrl: "html/hostdashboard.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.listing',
+            {
+                url: "/listing",
+                templateUrl: "html/hostlisting.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create',
+            {
+                url: "/create",
+                abstract: true,
+                templateUrl: "html/hostcreate.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create.step11',
+            {
+                url: "/step-1-1",
+                templateUrl: "html/hostcreatestep11.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create.step12',
+            {
+                url: "/step-1-2",
+                templateUrl: "html/hostcreatestep12.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create.step13',
+            {
+                url: "/step-1-3",
+                templateUrl: "html/hostcreatestep13.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create.step21',
+            {
+                url: "/step-2-1",
+                templateUrl: "html/hostcreatestep21.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create.step22',
+            {
+                url: "/step-2-2",
+                templateUrl: "html/hostcreatestep22.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create.step31',
+            {
+                url: "/step-3-1",
+                templateUrl: "html/hostcreatestep31.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create.step32',
+            {
+                url: "/step-3-2",
+                templateUrl: "html/hostcreatestep32.html",
+                data: { pageTitle: 'Host' }
+            })
+        .state('host.create.step4',
+            {
+                url: "/step-4",
+                templateUrl: "html/hostcreatestep4.html",
+                data: { pageTitle: 'Host' }
             });
 }
 

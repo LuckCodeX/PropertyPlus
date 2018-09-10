@@ -25,5 +25,11 @@ namespace PropertyPlus.Services
         slide GetSlideById(int id);
         void SaveSlide(slide slide);
         slide GetRandomSlideByType(int type);
+        user_account Login(UserAccountModel model);
+        user_profile GetUserProfileByEmail(string email);
+        void SaveUserProfile(user_profile userProfile);
+        void SaveUserAccount(user_account userAcc);
+        user_profile GetUserProfileById(int id);
+        user_profile GetActiveUserProfileById(int id);
     }
 }

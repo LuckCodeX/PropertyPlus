@@ -30,7 +30,7 @@
     <NavigationProperty Name="aparment_image" Relationship="Self.FK__aparment___apart__1ED998B2" FromRole="apartment" ToRole="aparment_image" />
     <NavigationProperty Name="apartment_content" Relationship="Self.FK__apartment__apart__1A14E395" FromRole="apartment" ToRole="apartment_content" />
     <NavigationProperty Name="apartment_facility" Relationship="Self.FK__apartment__apart__276EDEB3" FromRole="apartment" ToRole="apartment_facility" />
-    <NavigationProperty Name="user_profile" Relationship="Self.FK__apartment__user___164452B1" FromRole="apartment" ToRole="user_profile" />
+    <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="apartment" ToRole="user_profile" />
   </EntityType>
   <EntityType Name="apartment_content">
     <Key>
@@ -83,18 +83,6 @@
     <Property Name="facility_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="facility" Relationship="Self.FK__facility___facil__24927208" FromRole="facility_content" ToRole="facility" />
   </EntityType>
-  <EntityType Name="user_profile">
-    <Key>
-      <PropertyRef Name="user_profile_id" />
-    </Key>
-    <Property Name="user_profile_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="full_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="status" Type="Int32" Nullable="false" />
-    <Property Name="created_date" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="apartments" Relationship="Self.FK__apartment__user___164452B1" FromRole="user_profile" ToRole="apartment" />
-    <NavigationProperty Name="user_account" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_profile" ToRole="user_account" />
-  </EntityType>
   <Association Name="FK__aparment___apart__1ED998B2">
     <End Role="apartment" Type="Self.apartment" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -137,20 +125,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__apartment__user___164452B1">
-    <End Role="user_profile" Type="Self.user_profile" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="apartment" Type="Self.apartment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="user_profile">
-        <PropertyRef Name="user_profile_id" />
-      </Principal>
-      <Dependent Role="apartment">
-        <PropertyRef Name="user_profile_owner_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__apartment__facil__286302EC">
     <End Role="facility" Type="Self.facility" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -187,7 +161,6 @@
     <EntitySet Name="blogs" EntityType="Self.blog" />
     <EntitySet Name="facilities" EntityType="Self.facility" />
     <EntitySet Name="facility_content" EntityType="Self.facility_content" />
-    <EntitySet Name="user_profile" EntityType="Self.user_profile" />
     <AssociationSet Name="FK__aparment___apart__1ED998B2" Association="Self.FK__aparment___apart__1ED998B2">
       <End Role="apartment" EntitySet="apartments" />
       <End Role="aparment_image" EntitySet="aparment_image" />
@@ -200,10 +173,6 @@
       <End Role="apartment" EntitySet="apartments" />
       <End Role="apartment_facility" EntitySet="apartment_facility" />
     </AssociationSet>
-    <AssociationSet Name="FK__apartment__user___164452B1" Association="Self.FK__apartment__user___164452B1">
-      <End Role="user_profile" EntitySet="user_profile" />
-      <End Role="apartment" EntitySet="apartments" />
-    </AssociationSet>
     <AssociationSet Name="FK__apartment__facil__286302EC" Association="Self.FK__apartment__facil__286302EC">
       <End Role="facility" EntitySet="facilities" />
       <End Role="apartment_facility" EntitySet="apartment_facility" />
@@ -213,10 +182,6 @@
       <End Role="facility_content" EntitySet="facility_content" />
     </AssociationSet>
     <EntitySet Name="user_account" EntityType="PropertyPlusModel.user_account" />
-    <AssociationSet Name="FK__user_acco__user___1273C1CD" Association="PropertyPlusModel.FK__user_acco__user___1273C1CD">
-      <End Role="user_profile" EntitySet="user_profile" />
-      <End Role="user_account" EntitySet="user_account" />
-    </AssociationSet>
     <EntitySet Name="admins" EntityType="PropertyPlusModel.admin" />
     <EntitySet Name="blog_content" EntityType="PropertyPlusModel.blog_content" />
     <AssociationSet Name="FK__blog_cont__blog___2E1BDC42" Association="PropertyPlusModel.FK__blog_cont__blog___2E1BDC42">
@@ -224,6 +189,15 @@
       <End Role="blog_content" EntitySet="blog_content" />
     </AssociationSet>
     <EntitySet Name="slides" EntityType="PropertyPlusModel.slide" />
+    <EntitySet Name="user_profile" EntityType="PropertyPlusModel.user_profile" />
+    <AssociationSet Name="FK__apartment__user___164452B1" Association="PropertyPlusModel.FK__apartment__user___164452B1">
+      <End Role="user_profile" EntitySet="user_profile" />
+      <End Role="apartment" EntitySet="apartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_acco__user___1273C1CD" Association="PropertyPlusModel.FK__user_acco__user___1273C1CD">
+      <End Role="user_profile" EntitySet="user_profile" />
+      <End Role="user_account" EntitySet="user_account" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="user_account">
     <Key>
@@ -236,20 +210,6 @@
     <Property Name="avatar" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_account" ToRole="user_profile" />
   </EntityType>
-  <Association Name="FK__user_acco__user___1273C1CD">
-    <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="PropertyPlusModel.user_account" Role="user_account" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="user_profile">
-        <PropertyRef Name="user_profile_id" />
-      </Principal>
-      <Dependent Role="user_account">
-        <PropertyRef Name="user_profile_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="admin">
     <Key>
       <PropertyRef Name="admin_id" />
@@ -294,4 +254,53 @@
     <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="type" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="user_profile">
+    <Key>
+      <PropertyRef Name="user_profile_id" />
+    </Key>
+    <Property Name="user_profile_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="created_date" Type="Int32" Nullable="false" />
+    <Property Name="first_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="last_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="Int32" />
+    <Property Name="birthday" Type="Int32" />
+    <Property Name="phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="img_verification_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="img_verification_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="work" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="contact" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="apartments" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="user_profile" ToRole="apartment" />
+    <NavigationProperty Name="user_account" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_profile" ToRole="user_account" />
+  </EntityType>
+  <Association Name="FK__apartment__user___164452B1">
+    <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_profile">
+        <PropertyRef Name="user_profile_id" />
+      </Principal>
+      <Dependent Role="apartment">
+        <PropertyRef Name="user_profile_owner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_acco__user___1273C1CD">
+    <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PropertyPlusModel.user_account" Role="user_account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_profile">
+        <PropertyRef Name="user_profile_id" />
+      </Principal>
+      <Dependent Role="user_account">
+        <PropertyRef Name="user_profile_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

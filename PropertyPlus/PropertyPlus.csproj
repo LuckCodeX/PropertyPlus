@@ -251,6 +251,8 @@
     </Compile>
     <Compile Include="Models\SlideModel.cs" />
     <Compile Include="Models\TokenModel.cs" />
+    <Compile Include="Models\UserAccountModel.cs" />
+    <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\user_account.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
@@ -264,6 +266,7 @@
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\Services.cs" />
     <Compile Include="Services\SlideService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -680,6 +683,18 @@
     <Content Include="html\blogdetail.html" />
     <Content Include="html\detail.html" />
     <Content Include="html\home.html" />
+    <Content Include="html\host.html" />
+    <Content Include="html\hostcreate.html" />
+    <Content Include="html\hostcreatestep11.html" />
+    <Content Include="html\hostcreatestep12.html" />
+    <Content Include="html\hostcreatestep13.html" />
+    <Content Include="html\hostcreatestep21.html" />
+    <Content Include="html\hostcreatestep22.html" />
+    <Content Include="html\hostcreatestep31.html" />
+    <Content Include="html\hostcreatestep32.html" />
+    <Content Include="html\hostcreatestep4.html" />
+    <Content Include="html\hostdashboard.html" />
+    <Content Include="html\hostlisting.html" />
     <Content Include="html\project.html" />
     <Content Include="html\userprofile.html" />
     <Content Include="html\userprofileedit.html" />
@@ -765,6 +780,7 @@
     <Content Include="Scripts\home\config.js" />
     <Content Include="Scripts\home\detailctrl.js" />
     <Content Include="Scripts\home\directives.js" />
+    <Content Include="Scripts\home\hostctrl.js" />
     <Content Include="Scripts\home\mainctrl.js" />
     <Content Include="Scripts\home\projectctrl.js" />
     <Content Include="Scripts\home\services.js" />
@@ -823,6 +839,16 @@
     <Content Include="Views\Admin\SlideHome.cshtml" />
     <Content Include="Views\Admin\SlideProject.cshtml" />
     <Content Include="Views\Admin\SlideBlog.cshtml" />
+    <Content Include="Views\Home\HostListing.cshtml" />
+    <Content Include="Views\Home\HostDashboard.cshtml" />
+    <Content Include="Views\Home\HostCreateStep11.cshtml" />
+    <Content Include="Views\Home\HostCreateStep12.cshtml" />
+    <Content Include="Views\Home\HostCreateStep13.cshtml" />
+    <Content Include="Views\Home\HostCreateStep21.cshtml" />
+    <Content Include="Views\Home\HostCreateStep22.cshtml" />
+    <Content Include="Views\Home\HostCreateStep31.cshtml" />
+    <Content Include="Views\Home\HostCreateStep32.cshtml" />
+    <Content Include="Views\Home\HostCreateStep4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

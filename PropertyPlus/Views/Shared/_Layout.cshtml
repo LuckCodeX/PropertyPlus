@@ -19,7 +19,7 @@
 </head>
 <body class="scrollbar" ng-controller="MainCtrl" ng-init="loadData()">
 
-<header class="clearfix">
+<header class="clearfix" ng-if="!$state.includes('host')">
     <a class="logo-header" ui-sref="home">
         <img src="/Images/logo.svg" alt="Alternate Text"/>
     </a>
@@ -126,7 +126,6 @@
     </div>
 
 </header>
-
 <div class="body-content">
     @RenderBody()
 </div>
@@ -227,5 +226,6 @@
 <script src="/Scripts/home/blogctrl.js"></script>
 <script src="/Scripts/home/projectctrl.js"></script>
 <script src="/Scripts/home/userprofilectrl.js"></script>
+<script src="/Scripts/home/hostctrl.js"></script>
 </body>
 </html>

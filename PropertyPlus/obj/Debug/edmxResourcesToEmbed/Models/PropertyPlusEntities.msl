@@ -79,17 +79,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="user_profile">
-      <EntityTypeMapping TypeName="PropertyPlusModel.user_profile">
-        <MappingFragment StoreEntitySet="user_profile">
-          <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="full_name" ColumnName="full_name" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="created_date" ColumnName="created_date" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="user_account">
       <EntityTypeMapping TypeName="PropertyPlusModel.user_account">
         <MappingFragment StoreEntitySet="user_account">
@@ -130,6 +119,26 @@
           <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="slide_id" ColumnName="slide_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_profile">
+      <EntityTypeMapping TypeName="PropertyPlusModel.user_profile">
+        <MappingFragment StoreEntitySet="user_profile">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="work" ColumnName="work" />
+          <ScalarProperty Name="img_verification_2" ColumnName="img_verification_2" />
+          <ScalarProperty Name="img_verification_1" ColumnName="img_verification_1" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
