@@ -79,17 +79,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="user_account">
-      <EntityTypeMapping TypeName="PropertyPlusModel.user_account">
-        <MappingFragment StoreEntitySet="user_account">
-          <ScalarProperty Name="avatar" ColumnName="avatar" />
-          <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="user_account_id" ColumnName="user_account_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="admins">
       <EntityTypeMapping TypeName="PropertyPlusModel.admin">
         <MappingFragment StoreEntitySet="admin">
@@ -122,9 +111,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="user_account">
+      <EntityTypeMapping TypeName="PropertyPlusModel.user_account">
+        <MappingFragment StoreEntitySet="user_account">
+          <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="user_account_id" ColumnName="user_account_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="user_profile">
       <EntityTypeMapping TypeName="PropertyPlusModel.user_profile">
         <MappingFragment StoreEntitySet="user_profile">
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="contact" ColumnName="contact" />
           <ScalarProperty Name="work" ColumnName="work" />

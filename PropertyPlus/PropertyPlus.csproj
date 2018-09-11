@@ -66,6 +66,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -669,6 +670,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\owl.carousel.min.css" />
     <Content Include="Content\owl.theme.default.min.css" />
     <Content Include="Content\PagedList.css" />
@@ -800,6 +802,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\skin.config.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-1.3.3.min.js" />
+    <Content Include="Upload\avatar\noavatar.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -852,7 +855,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -108,7 +108,6 @@
     <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="user_profile_id" Type="int" Nullable="false" />
-    <Property Name="avatar" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="user_profile">
     <Key>
@@ -128,6 +127,7 @@
     <Property Name="work" Type="nvarchar" MaxLength="255" />
     <Property Name="contact" Type="nvarchar" MaxLength="255" />
     <Property Name="description" Type="ntext" />
+    <Property Name="avatar" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <Association Name="FK__aparment___apart__1ED998B2">
     <End Role="apartment" Type="Self.apartment" Multiplicity="1">

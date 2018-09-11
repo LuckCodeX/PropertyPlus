@@ -35,6 +35,7 @@ namespace PropertyPlus.Models
         public string work { get; set; }
         public string contact { get; set; }
         public string description { get; set; }
+        public string avatar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<apartment> apartments { get; set; }

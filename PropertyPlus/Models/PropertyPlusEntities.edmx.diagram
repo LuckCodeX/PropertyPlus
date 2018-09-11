@@ -17,12 +17,12 @@
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__276EDEB3" ManuallyRouted="false" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__facil__286302EC" ManuallyRouted="false" />
         <AssociationConnector Association="PropertyPlusModel.FK__facility___facil__24927208" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PropertyPlusModel.user_account" Width="1.5" PointX="3" PointY="10" />
         <EntityTypeShape EntityType="PropertyPlusModel.admin" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="PropertyPlusModel.blog_content" Width="1.5" PointX="10" PointY="9" />
         <AssociationConnector Association="PropertyPlusModel.FK__blog_cont__blog___2E1BDC42" />
         <EntityTypeShape EntityType="PropertyPlusModel.slide" Width="1.5" PointX="10.375" PointY="0.75" />
-        <EntityTypeShape EntityType="PropertyPlusModel.user_profile" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="PropertyPlusModel.user_account" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="PropertyPlusModel.user_profile" Width="1.5" PointX="0.75" PointY="4.5" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__user___164452B1" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_acco__user___1273C1CD" />
       </Diagram>

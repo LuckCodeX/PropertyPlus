@@ -11,12 +11,16 @@ namespace PropertyPlus.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string Avatar { get; set; }
+        public string Avatar_Base64 { get; set; }
         public int Status { get; set; }
         public int Gender { get; set; }
         public int BirthDay { get; set; }
         public string Phone { get; set; }
         public string ImgVerification1 { get; set; }
+        public string ImgVerification1_Base64 { get; set; }
         public string ImgVerification2 { get; set; }
+        public string ImgVerification2_Base64 { get; set; }
         public string Work { get; set; }
         public string Contact { get; set; }
         public string Description { get; set; }

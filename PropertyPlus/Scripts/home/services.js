@@ -1,6 +1,4 @@
-﻿/**
- * Created by luck on 7/12/2016.
- */
+﻿
 function xhrService($q, $http) {
     function getHttpConfig() {
         var token = null;
