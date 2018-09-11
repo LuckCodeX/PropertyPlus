@@ -102,8 +102,9 @@
 #myModal-email .close {
     font-size: 43px;
     font-weight: 100;
-    padding-right: 4px;
+    padding-right: 0px;
     line-height: 0.75;
+    margin-top: -45px;
 }
 
 .text-mail {
@@ -195,4 +196,17 @@
     border-radius: 5px;
     margin-left: 57px;
     margin-top: 20px;
+}
+
+.text-danger-1 {
+    color: #a94442;
+    position: relative;
+    top: -17px;
+    left: 57px;
+}
+.text-danger {
+    color: #a94442;
+    position: relative;
+    top: -19px;
+    left: 57px;
 }

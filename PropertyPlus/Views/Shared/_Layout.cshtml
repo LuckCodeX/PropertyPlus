@@ -102,25 +102,26 @@
         <div id="myModal-login" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content modal-sm">
+                    <form ng-submit="login()">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="sign-up-fb">Log in with Facebook</button>
+                        <button type="button" class="sign-up-gg">Log in with Google</button>
+                        <div class="line-or">
+                            <p class="text-or">or</p>
+                        </div>
+                        <span class="text-danger-1">{{errorText}}</span>
+                        <input type="email" placeholder="Email Adress" ng-model="user.email.login" class="mail-submit" required="">
+                        <input type="password" placeholder="Password" ng-model="user.password.login" class="mail-submit" required="">
+                        <div class="mail-checkbox">
+                            <input type="checkbox">
+                            <span class="text-checkbox">Remember me</span>
+                            <a href="#" class="text-checkbox-pass">Forgot password</a>
+                        </div>
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <button type="button" class="sign-up-fb">Log in with Facebook</button>
-                    <button type="button" class="sign-up-gg">Log in with Google</button>
-                    <div class="line-or">
-                        <p class="text-or">or</p>
-                    </div>
-                    <input type="text" placeholder="Email Adress" class="mail-submit">
-                    <input type="text" placeholder="Password" class="mail-submit">
-                    <div class="mail-checkbox">
-                        <input type="checkbox">
-                        <span class="text-checkbox">Remember me</span>
-                        <a href="#" class="text-checkbox-pass">Forgot password</a>
-                    </div>
-
-                    <button type="button" class="sign-up-email-final-2">Login</button>
-                    <span class="text-acc">Don't have an account</span>
-                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
-
+                        <button type="submit" class="sign-up-email-final-2">Login</button>
+                        <span class="text-acc">Don't have an account</span>
+                        <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
+                    </form>
 
                 </div>
             </div>
