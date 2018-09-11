@@ -56,6 +56,17 @@
                 $scope.errorText = error.statusText;
             });
     };
+
+    $scope.login = function () {
+        xhrService.post("Login", $scope.user).then(function (data) {
+            localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
+            $scope.userProfile = data.data;
+            console.log($scope.userProfile);
+        },
+            function (error) {
+                $scope.errorText = error.statusText;
+            });
+    }
 }
 
 app.controller('MainCtrl', MainCtrl);
