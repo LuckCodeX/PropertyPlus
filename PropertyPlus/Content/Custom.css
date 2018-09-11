@@ -1848,10 +1848,9 @@ footer {
                 opacity: 1;
             }
 
-    .content-user-manage .tab-content {
-        display: none;
-        background: white;
-        padding: 24px 29px;
+    .content-user-manage .tab-content.current {
+        display: white;
+        overflow: hidden;
     }
 
         .content-user-manage .tab-content.current {
@@ -2237,13 +2236,248 @@ footer {
         position: relative;
     }
 
-        .wizard .row i {
-            position: absolute;
-            /*left: 50%;*/
-            top: -7px;
-            color: #E4E4E4;
+.header-listing-dasboard {
+    width: 100%;
+    height: 72px;
+}
+
+.menu-header-listing {
+    margin-left: 100px;
+    float: left;
+    display: inline-block;
+    
+}
+
+    .menu-header-listing ul li {
+        width: 81px;
+        margin-right: 18px;
+        text-align: center;
+        display: inline-block;
+        padding: 26px 0;
+    }
+
+        .menu-header-listing ul li:hover, .menu-header-listing ul li.active {
+            padding-bottom: 19px;
+            border-bottom: 7px solid #464878;
         }
 
+        .menu-header-listing ul li:first-child {
+            text-align: left;
+        }
+
+        .menu-header-listing ul li a {
+            color: black;
+        }
+
+.user-header-listing {
+    margin-right: 31px;
+    display: inline-block;
+    float: right;
+}
+
+.user-name-header {
+    color: black;
+    padding: 26px 0;
+    margin-right: 35px;
+}
+
+.user-header-listing img {
+    margin: 14px 0;
+    height: 43px;
+    width: 43px;
+    border-radius: 50%;
+}
+
+.body-listing-dashboard ul.tabs {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display: flex;
+}
+    .body-listing-dashboard ul.tabs li {
+        text-align: center;
+        background: inherit;
+        color: #707070;
+        display: inline-block;
+        padding: 21.3px 0;
+        cursor: pointer;
+        width: 81px;
+        margin: 0;
+    }
+
+        .body-listing-dashboard ul.tabs li.current {
+            background: inherit;
+            border-bottom: 4.5px solid #464878;
+            padding-bottom: 16.8px;
+        }
+
+.body-listing-dashboard .tab-content {
+    display: none;
+    background: inherit;
+    padding: 24px 0px;
+}
+
+.apartment-in-listing .img-apartment {
+    height: 166.16px;
+    display: inline-block
+}
+
+.apartment-in-listing .summary-apartment {
+    display: inline-block;
+}
+
+.apartment-in-listing .img-apartment img {
+    width: 100%;
+    height: 100%;
+}
+
+.apartment-in-listing .apartment-code {
+    font-size: 13px;
+    margin-bottom: 4.3px;
+}
+
+.apartment-in-listing .apartment-name {
+    font-size: 14px;
+}
+
+
+
+.apartment-in-listing .facilities-apartment p {
+    margin: 0;
+    font-size: 13px;
+}
+.apartment-in-listing .facilities-apartment .apartment-facility {
+    margin-bottom: 3.7px;
+}
+
+.body-listing-dashboard .tab-content.current {
+    display: inherit;
+    overflow: hidden;
+}
+
+.btn-create-listing {
+    position: absolute;
+    top: 19px;
+    right: 15px;
+}
+.main-body-listing {
+    background-color: #F8F8F8;
+}
+    .btn-create-listing button {
+        background-color: #464878;
+        color: white;
+        padding: 11px 30px 12px 19px;
+        border: none;
+        border-radius: 2px;
+    }
+
+        .btn-create-listing button:hover {
+            opacity: 0.7
+        }
+
+.c100 {
+    background-color: #DEDEDE;
+}
+
+    .c100:after {
+        background-color: #F8F8F8;
+        top: 0.04em;
+        left: 0.04em;
+        width: 0.92em;
+        height: 0.92em;
+    }
+.c100 .bar{
+    border-color: #464878;
+}
+.c100 > span {
+    width: 65px;
+    line-height: 60px;
+    font-size: 14px;
+}
+.p100.c100 .bar {
+    border-color: #08D500;
+}
+
+    .p100.c100 .fill {
+        border-color: #08D500;
+    }
+
+    .c100.small {
+        font-size: 60px;
+    }
+
+.apartment-in-listing .summary-apartment {
+    position: relative;
+    overflow: hidden;
+    height: 166.16px;
+}
+.apartment-in-listing .description-apartment {
+    position: absolute;
+    top: 10.4px;
+    left: 0;
+}
+.apartment-in-listing .facilities-apartment {
+    position: absolute;
+    bottom: 10.4px;
+    left: 0;
+}
+.apartment-in-listing .process-aparment {
+    position: absolute;
+    top: 11px;
+    right: 25px;
+}
+
+.apartment-in-listing {
+    margin: 14.4px -15px;
+}
+
+    .apartment-in-listing:hover {
+        background-color: #E4E4E4;
+    }
+
+.listing-all-apartment {
+    background-color: inherit
+}
+
+/*----------------------------------------*/
+/*  Wizard
+/*----------------------------------------*/
+.wizard {
+    margin-top: 40px;
+}
+
+.wizard a {
+    padding-top: 15px;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    border-top: solid #E4E4E4 2px;
+}
+
+.wizard .current .row i {
+    color: #465983;
+    z-index: 999
+}
+
+.wizard .current a.current {
+    /*color: #D0021B;*/
+    border-top: solid #465983 2px;
+}
+
+.wizard .current a:focus {
+    text-decoration: none;
+}
+
+.wizard .row {
+    position: relative;
+}
+
+.wizard .row i {
+    position: absolute;
+    /*left: 50%;*/
+    top: -7px;
+    color: #E4E4E4;
+}
 @media only screen and (max-width: 992px) {
     .thumbnail-choose-home-column .slide-choose-home {
         height: 290px
