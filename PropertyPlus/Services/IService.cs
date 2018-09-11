@@ -31,5 +31,6 @@ namespace PropertyPlus.Services
         void SaveUserAccount(user_account userAcc);
         user_profile GetUserProfileById(int id);
         user_profile GetActiveUserProfileById(int id);
+        string SaveImage(string path, string imageName, string image);
     }
 }
