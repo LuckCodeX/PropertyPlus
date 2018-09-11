@@ -18,214 +18,215 @@
     <script src="/Scripts/owlcarousel/owl.carousel.js"></script>
 </head>
 <body class="scrollbar" ng-controller="MainCtrl" ng-init="loadData()">
+    <header class="clearfix" ng-if="!$state.includes('host')">
+        <a class="logo-header" ui-sref="home">
+            <img src="/Images/logo.svg" alt="Alternate Text" />
+        </a>
+        <div class="logo-name-header" ng-if="$state.includes('home')">
+            <a href="#">Property Plus</a>
+        </div>
+        <div class="search-box box-shadow" ng-if="!$state.includes('home')">
+            <input type="text" class="" placeholder="Type Location or Project or Keyword" name="search" value="" />
+            <button class="btn-search box-shadow">Search</button>
+        </div>
+        <div class="header-navbar-menu float-right">
 
-<header class="clearfix" ng-if="!$state.includes('host')">
-    <a class="logo-header" ui-sref="home">
-        <img src="/Images/logo.svg" alt="Alternate Text"/>
-    </a>
-    <div class="logo-name-header" ng-if="$state.includes('home')">
-        <a href="#">Property Plus</a>
-    </div>
-    <div class="search-box box-shadow" ng-if="!$state.includes('home')">
-        <input type="text" class="" placeholder="Type Location or Project or Keyword" name="search" value=""/>
-        <button class="btn-search box-shadow">Search</button>
-    </div>
-    <div class="header-navbar-menu float-right">
-
-        <div class=" header-navbar-menu-nav">
-            <a class="text-center " href="#">Support: 1800 7856</a>
-        </div>
-        <div class="header-navbar-menu-nav">
-            <a class="text-center" href="/blog">Blog</a>
-        </div>
-        <div class="header-navbar-menu-nav">
-            <a class="text-center" href="#">Become a host</a>
-        </div>
-        <div class="header-navbar-menu-nav">
-            <a class="text-center" href="#">Your visit list</a>
-        </div>
-        <div class="header-navbar-menu-nav">
-            <a class="text-center" href="#">Help</a>
-        </div>
-        <div class="header-navbar-menu-nav">
-            <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#">Sign up</a>
-        </div>
-        <div class="header-navbar-menu-nav">
-            |&nbsp;&nbsp;
-            <a class="text-center" href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login">Login</a>
-        </div>
-    </div>
-    @* signin popup *@
-    <div id="myModal-signup" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content modal-sm">
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <button type="button" class="sign-up-fb">Sign up with Facebook</button>
-                <button type="button" class="sign-up-gg">Sign up with Google</button>
-                <div class="line-or">
-                    <p class="text-or">or</p></div>
-                <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-email" class="sign-up-email">Sign up with Email</button>
-                <span class="text-acc">Already have an account</span>
-                <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">Login</button>
+            <div class=" header-navbar-menu-nav">
+                <a class="text-center " href="#">Support: 1800 7856</a>
+            </div>
+            <div class="header-navbar-menu-nav">
+                <a class="text-center" href="/blog">Blog</a>
+            </div>
+            <div class="header-navbar-menu-nav">
+                <a class="text-center" href="#">Become a host</a>
+            </div>
+            <div class="header-navbar-menu-nav">
+                <a class="text-center" href="#">Your visit list</a>
+            </div>
+            <div class="header-navbar-menu-nav">
+                <a class="text-center" href="#">Help</a>
+            </div>
+            <div class="header-navbar-menu-nav">
+                <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#">Sign up</a>
+            </div>
+            <div class="header-navbar-menu-nav">
+                |&nbsp;&nbsp;
+                <a class="text-center" href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login">Login</a>
             </div>
         </div>
-    </div>
-
-    @* email-signin popup *@
-    <div id="myModal-email" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content modal-sm">
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <span class="text-mail">Sign up with <a class="text-mail-fb-gg" href="#">Facebook</a> or <a class="text-mail-fb-gg" href="#">Google</a></span>
-                <div class="line-or">
-                    <p class="text-or">or</p></div>
-                <input type="text" placeholder="First name" class="mail-submit">
-                <input type="text" placeholder="Last name" class="mail-submit">
-                <input type="text" placeholder="Email Adress" class="mail-submit">
-                <input type="text" placeholder="Create a Password" class="mail-submit">
-                <input type="text" placeholder="Re-type Password" class="mail-submit">
-                <div class="mail-checkbox">
-                    <input type="checkbox">
-                    <span class="text-checkbox">By sign up, I agree to PropertyPlus's <a class="text-mail-fb-gg" href="#">Term of service, Privacy policy,</a> and <a class="text-mail-fb-gg" href="#">Copyright policy</a></span>
+        @* signin popup *@
+        <div id="myModal-signup" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-sm">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="sign-up-fb">Sign up with Facebook</button>
+                    <button type="button" class="sign-up-gg">Sign up with Google</button>
+                    <div class="line-or">
+                        <p class="text-or">or</p>
+                    </div>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-email" class="sign-up-email">Sign up with Email</button>
+                    <span class="text-acc">Already have an account</span>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">Login</button>
                 </div>
-                <button type="button" class="sign-up-email-final">Sign up with Email</button>
-                <span class="text-acc">Already have an account</span>
-                <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">Login</button>
-
-
             </div>
         </div>
-    </div>
-    @* login popup *@
-    <div id="myModal-login" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content modal-sm">
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <button type="button" class="sign-up-fb">Log in with Facebook</button>
-                <button type="button" class="sign-up-gg">Log in with Google</button>
-                <div class="line-or">
-                    <p class="text-or">or</p></div>
-                <input type="text" placeholder="Email Adress" class="mail-submit">
-                <input type="text" placeholder="Password" class="mail-submit">
-                <div class="mail-checkbox">
-                    <input type="checkbox">
-                    <span class="text-checkbox">Remember me</span>
-                    <a href="#" class="text-checkbox-pass">Forgot password</a>
+        @* email-signin popup *@
+        <div id="myModal-email" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-sm">
+                    <form ng-submit="register()">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="text-mail">Sign up with <a class="text-mail-fb-gg" href="#">Facebook</a> or <a class="text-mail-fb-gg" href="#">Google</a></span>
+                        <div class="line-or">
+                            <p class="text-or">or</p>
+                        </div>
+                        <span class="text-danger">{{errorText}}</span>
+                        <input type="text" placeholder="First name" ng-model="user.firstname" class="mail-submit" required="">
+                        <input type="text" placeholder="Last name" ng-model="user.lastname" class="mail-submit" required="">
+                        <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
+                        <input type="password" placeholder="Create a Password" minlength="6" ng-model="user.password" class="mail-submit" required="">
+                        <input type="password" placeholder="Re-type Password" ng-model="user.confirm_password" class="mail-submit" required="">
+                        <div class="mail-checkbox">
+                            <input type="checkbox" required="">
+                            <span class="text-checkbox">By sign up, I agree to PropertyPlus's <a class="text-mail-fb-gg" href="#">Term of service, Privacy policy,</a> and <a class="text-mail-fb-gg" href="#">Copyright policy</a></span>
+                        </div>
+                        <button type="submit" class="sign-up-email-final">Sign up with Email</button>
+                        <span class="text-acc">Already have an account</span>
+                        <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">Login</button>
+                    </form>
                 </div>
-
-                <button type="button" class="sign-up-email-final-2">Login</button>
-                <span class="text-acc">Don't have an account</span>
-                <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
-
-
             </div>
         </div>
-    </div>
+        @* login popup *@
+        <div id="myModal-login" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-sm">
 
-</header>
-<div class="body-content">
-    @RenderBody()
-</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="sign-up-fb">Log in with Facebook</button>
+                    <button type="button" class="sign-up-gg">Log in with Google</button>
+                    <div class="line-or">
+                        <p class="text-or">or</p>
+                    </div>
+                    <input type="text" placeholder="Email Adress" class="mail-submit">
+                    <input type="text" placeholder="Password" class="mail-submit">
+                    <div class="mail-checkbox">
+                        <input type="checkbox">
+                        <span class="text-checkbox">Remember me</span>
+                        <a href="#" class="text-checkbox-pass">Forgot password</a>
+                    </div>
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2 footer-navbar-menu">
-                <div class="title">Property Plus</div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">About Us</a>
+                    <button type="button" class="sign-up-email-final-2">Login</button>
+                    <span class="text-acc">Don't have an account</span>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
+
+
                 </div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Career</a>
-                </div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Policy</a>
-                </div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Help</a>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-offset-4 footer-navbar-menu">
-                <div class="title">Host</div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Why host</a>
-                </div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Hosting</a>
-                </div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Community Center</a>
-                </div>
-            </div>
-            <div class="col-md-2 col-md-offset-2 footer-navbar-menu">
-                <div class="title">
-                    <a href="#">
-                        <i class="footer-icon fab fa-instagram"></i>
-                    </a>
-                    <a href="#">
-                        <i class="footer-icon fab fa-twitter"></i>
-                    </a>
-                    <a href="#">
-                        <i class="footer-icon fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#">
-                        <i class="footer-icon fas fa-globe-americas"></i>
-                    </a>
-                </div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Terms</a>
-                </div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Privacy</a>
-                </div>
-                <div class="footer-navbar-menu-nav">
-                    <a href="#">Site Map</a>
-                </div>
-            </div>
-            <hr/>
-            <div class="col-md-12">
-                <div class="float-left copyright">&copy; PropertyPlus, Inc. 2018</div>
-                <div class="bocongthuong float-left">
-                    <img src="Images/dadangky.png" alt="Alternate Text"/>
-                </div>
-                <div class="float-right copyright">Language: ENG</div>
             </div>
         </div>
+
+    </header>
+    <div class="body-content">
+        @RenderBody()
     </div>
-</footer>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 footer-navbar-menu">
+                    <div class="title">Property Plus</div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">About Us</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Career</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Policy</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Help</a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-4 footer-navbar-menu">
+                    <div class="title">Host</div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Why host</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Hosting</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Community Center</a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-2 footer-navbar-menu">
+                    <div class="title">
+                        <a href="#">
+                            <i class="footer-icon fab fa-instagram"></i>
+                        </a>
+                        <a href="#">
+                            <i class="footer-icon fab fa-twitter"></i>
+                        </a>
+                        <a href="#">
+                            <i class="footer-icon fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#">
+                            <i class="footer-icon fas fa-globe-americas"></i>
+                        </a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Terms</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Privacy</a>
+                    </div>
+                    <div class="footer-navbar-menu-nav">
+                        <a href="#">Site Map</a>
+                    </div>
+                </div>
+                <hr />
+                <div class="col-md-12">
+                    <div class="float-left copyright">&copy; PropertyPlus, Inc. 2018</div>
+                    <div class="bocongthuong float-left">
+                        <img src="Images/dadangky.png" alt="Alternate Text" />
+                    </div>
+                    <div class="float-right copyright">Language: ENG</div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
-<script src="/Scripts/bootstrap.min.js"></script>
-<script src="/Scripts/angular.min.js"></script>
-<script src="/Scripts/angular-translate.min.js"></script>
-<script src="/Scripts/angular-sanitize.min.js"></script>
-<script src="/Scripts/ocLazyLoad.min.js"></script>
-<script src="/Scripts/angular-ui-router.min.js"></script>
-@*<script src="/Scripts/angular-route.js"></script>*@
-<script src="/Scripts/ui-bootstrap-tpls-1.3.3.min.js"></script>
-<script src="/Scripts/angular-idle.js"></script>
-<script src="/Scripts/base64.js"></script>
-<script src="/Scripts/angular-cookies.min.js"></script>
-<script src="/Scripts/angular-animate.js"></script>
-<!--Owl Carousel-->
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/angular.min.js"></script>
+    <script src="/Scripts/angular-translate.min.js"></script>
+    <script src="/Scripts/angular-sanitize.min.js"></script>
+    <script src="/Scripts/ocLazyLoad.min.js"></script>
+    <script src="/Scripts/angular-ui-router.min.js"></script>
+    @*<script src="/Scripts/angular-route.js"></script>*@
+    <script src="/Scripts/ui-bootstrap-tpls-1.3.3.min.js"></script>
+    <script src="/Scripts/angular-idle.js"></script>
+    <script src="/Scripts/base64.js"></script>
+    <script src="/Scripts/angular-cookies.min.js"></script>
+    <script src="/Scripts/angular-animate.js"></script>
+    <!--Owl Carousel-->
 
-<script src="/Scripts/home/init.js"></script>
-<script src="/Scripts/Custom.js"></script>
-<script src="/Scripts/home/app.js"></script>
-<script src="/Scripts/home/config.js"></script>
-<script src="/Scripts/home/services.js"></script>
-<script src="/Scripts/home/directives.js"></script>
-<script src="/Scripts/home/translate.js"></script>
-<script src="/Scripts/home/mainctrl.js"></script>
-<script src="/Scripts/home/homectrl.js"></script>
-<script src="/Scripts/home/apartmentctrl.js"></script>
-<script src="/Scripts/home/detailctrl.js"></script>
-<script src="/Scripts/home/blogctrl.js"></script>
-<script src="/Scripts/home/projectctrl.js"></script>
-<script src="/Scripts/home/userprofilectrl.js"></script>
-<script src="/Scripts/home/hostctrl.js"></script>
+    <script src="/Scripts/home/init.js"></script>
+    <script src="/Scripts/Custom.js"></script>
+    <script src="/Scripts/home/app.js"></script>
+    <script src="/Scripts/home/config.js"></script>
+    <script src="/Scripts/home/services.js"></script>
+    <script src="/Scripts/home/directives.js"></script>
+    <script src="/Scripts/home/translate.js"></script>
+    <script src="/Scripts/home/mainctrl.js"></script>
+    <script src="/Scripts/home/homectrl.js"></script>
+    <script src="/Scripts/home/apartmentctrl.js"></script>
+    <script src="/Scripts/home/detailctrl.js"></script>
+    <script src="/Scripts/home/blogctrl.js"></script>
+    <script src="/Scripts/home/projectctrl.js"></script>
+    <script src="/Scripts/home/userprofilectrl.js"></script>
+    <script src="/Scripts/home/hostctrl.js"></script>
 </body>
 </html>

@@ -36,7 +36,8 @@ namespace PropertyPlus.Controllers
                 last_name = model.LastName,
                 user_profile_id = 0,
                 status = 1,
-                created_date = ConvertDatetime.GetCurrentUnixTimeStamp()
+                created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
+                avatar = "noavatar.jpg"
             };
             _service.SaveUserProfile(userProfile);
 
@@ -45,7 +46,7 @@ namespace PropertyPlus.Controllers
                 user_account_id = 0,
                 user_profile_id = userProfile.user_profile_id,
                 email = model.Email,
-                password = model.Password
+                password = Encrypt.EncodePassword(model.Password),
             };
             _service.SaveUserAccount(userAcc);
 
@@ -61,6 +62,7 @@ namespace PropertyPlus.Controllers
                 FirstName = userProfile.first_name,
                 LastName = userProfile.last_name,
                 Id = userProfile.user_profile_id,
+                Avatar = userProfile.avatar,
                 Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
             };
         }

@@ -18,7 +18,6 @@ namespace PropertyPlus.Models
         public string email { get; set; }
         public string password { get; set; }
         public int user_profile_id { get; set; }
-        public string avatar { get; set; }
     
         public virtual user_profile user_profile { get; set; }
     }

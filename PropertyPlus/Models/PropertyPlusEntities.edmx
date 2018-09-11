@@ -113,7 +113,6 @@
           <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="user_profile_id" Type="int" Nullable="false" />
-          <Property Name="avatar" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="user_profile">
           <Key>
@@ -133,6 +132,7 @@
           <Property Name="work" Type="nvarchar" MaxLength="255" />
           <Property Name="contact" Type="nvarchar" MaxLength="255" />
           <Property Name="description" Type="ntext" />
+          <Property Name="avatar" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <Association Name="FK__aparment___apart__1ED998B2">
           <End Role="apartment" Type="Self.apartment" Multiplicity="1">
@@ -477,7 +477,6 @@
             <End Role="facility" EntitySet="facilities" />
             <End Role="facility_content" EntitySet="facility_content" />
           </AssociationSet>
-          <EntitySet Name="user_account" EntityType="PropertyPlusModel.user_account" />
           <EntitySet Name="admins" EntityType="PropertyPlusModel.admin" />
           <EntitySet Name="blog_content" EntityType="PropertyPlusModel.blog_content" />
           <AssociationSet Name="FK__blog_cont__blog___2E1BDC42" Association="PropertyPlusModel.FK__blog_cont__blog___2E1BDC42">
@@ -485,6 +484,7 @@
             <End Role="blog_content" EntitySet="blog_content" />
           </AssociationSet>
           <EntitySet Name="slides" EntityType="PropertyPlusModel.slide" />
+          <EntitySet Name="user_account" EntityType="PropertyPlusModel.user_account" />
           <EntitySet Name="user_profile" EntityType="PropertyPlusModel.user_profile" />
           <AssociationSet Name="FK__apartment__user___164452B1" Association="PropertyPlusModel.FK__apartment__user___164452B1">
             <End Role="user_profile" EntitySet="user_profile" />
@@ -494,18 +494,7 @@
             <End Role="user_profile" EntitySet="user_profile" />
             <End Role="user_account" EntitySet="user_account" />
           </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="user_account">
-          <Key>
-            <PropertyRef Name="user_account_id" />
-          </Key>
-          <Property Name="user_account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="user_profile_id" Type="Int32" Nullable="false" />
-          <Property Name="avatar" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_account" ToRole="user_profile" />
-        </EntityType>
+          </EntityContainer>
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="admin_id" />
@@ -550,6 +539,16 @@
           <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="user_account">
+          <Key>
+            <PropertyRef Name="user_account_id" />
+          </Key>
+          <Property Name="user_account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_profile_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_account" ToRole="user_profile" />
+        </EntityType>
         <EntityType Name="user_profile">
           <Key>
             <PropertyRef Name="user_profile_id" />
@@ -568,6 +567,7 @@
           <Property Name="work" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="contact" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="apartments" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="user_profile" ToRole="apartment" />
           <NavigationProperty Name="user_account" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_profile" ToRole="user_account" />
         </EntityType>
@@ -599,7 +599,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -683,17 +683,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="user_account">
-            <EntityTypeMapping TypeName="PropertyPlusModel.user_account">
-              <MappingFragment StoreEntitySet="user_account">
-                <ScalarProperty Name="avatar" ColumnName="avatar" />
-                <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="user_account_id" ColumnName="user_account_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="admins">
             <EntityTypeMapping TypeName="PropertyPlusModel.admin">
               <MappingFragment StoreEntitySet="admin">
@@ -726,9 +715,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="user_account">
+            <EntityTypeMapping TypeName="PropertyPlusModel.user_account">
+              <MappingFragment StoreEntitySet="user_account">
+                <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="user_account_id" ColumnName="user_account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="user_profile">
             <EntityTypeMapping TypeName="PropertyPlusModel.user_profile">
               <MappingFragment StoreEntitySet="user_profile">
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="contact" ColumnName="contact" />
                 <ScalarProperty Name="work" ColumnName="work" />

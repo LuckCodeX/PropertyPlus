@@ -6,7 +6,9 @@
     xhrService,
     $anchorScroll) {
 
-    $scope.loadData = function () {
+    $scope.user = {};
+
+    $scope.loadData = function() {
         if (localStorage && localStorage.getItem('language')) {
             $translate.use(localStorage.getItem('language'));
         }
@@ -17,9 +19,9 @@
         //xhrService.get("GetListBlog/1/6/-1/").then(function (data) {
         //    $scope.blogList = data.data.data;
         //}, function (error) { });
-    }
+    };
 
-    $scope.replaceString = function (str) {
+    $scope.replaceString = function(str) {
         if (!str)
             return null;
         str = str.toLowerCase();
@@ -32,13 +34,28 @@
         str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
         str = str.replace(/đ/g, "d");
         return str;
-    }
+    };
 
-    $scope.logout = function () {
+    $scope.logout = function() {
         localStorage.removeItem('user_profile');
         $scope.userProfile = undefined;
         $location.path("/");
-    }
+    };
+
+    $scope.register = function() {
+        if ($scope.user.password !== $scope.user.confirm_password) {
+            $scope.errorText = "Confirm password does not match";
+            return ;
+        }
+        xhrService.post("Register", $scope.user).then(function(data) {
+                localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
+                $scope.userProfile = data.data;
+                console.log($scope.userProfile);
+            },
+            function(error) {
+                $scope.errorText = error.statusText;
+            });
+    };
 }
 
 app.controller('MainCtrl', MainCtrl);
