@@ -146,14 +146,23 @@ header .btn-search {
         margin-right: 15px
     }
 
+    .header-navbar-menu-nav.user-head-bar img {
+        width: 43px;
+        height: 43px;
+        margin-top: 3px;
+        border-radius: 50%;
+    }
 
-
-.header-navbar-menu a {
-    color: #484848;
-    font-size: 12px;
-    line-height: 50px;
-    vertical-align: middle;
+.user-name-head-bar {
+    margin-right: 16.7px;
 }
+
+    .header-navbar-menu a {
+        color: #484848;
+        font-size: 12px;
+        line-height: 50px;
+        vertical-align: middle;
+    }
 
 footer {
     background-color: #465983;
@@ -208,7 +217,6 @@ footer {
     }
 
 .search-bar-section {
-    background-color: #A5A4A4;
     border: 1px solid #707070;
     height: 633.66px;
 }

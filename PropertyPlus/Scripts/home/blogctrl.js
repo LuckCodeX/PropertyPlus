@@ -21,7 +21,13 @@
                 },
                 function(error) {
                     console.log(error.statusText);
-                });
+            });
+        xhrService.get("GetSlide/2").then(function (data) {
+                $scope.slideImg = "Upload/" + data.data.Img;
+            },
+            function (error) {
+                $scope.errorText = error.statusText;
+            });
     };
 
     $scope.loadDetailData = function(id) {

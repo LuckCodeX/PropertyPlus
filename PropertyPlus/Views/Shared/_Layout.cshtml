@@ -32,10 +32,6 @@
             <button class="btn-search box-shadow">Search</button>
         </div>
         <div class="header-navbar-menu float-right">
-
-            <div class=" header-navbar-menu-nav">
-                <a class="text-center " href="#">Support: 1800 7856</a>
-            </div>
             <div class="header-navbar-menu-nav">
                 <a class="text-center" href="/blog">Blog</a>
             </div>
@@ -43,10 +39,13 @@
                 <a class="text-center" href="#">Become a host</a>
             </div>
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="#">Your visit list</a>
+                <a class="text-center" href="#">Help</a>
             </div>
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="#">Help</a>
+                <a class="text-center" href="#">Your visit list</a>
+            </div>
+            <div class=" header-navbar-menu-nav">
+                <a class="text-center " href="#">Bookmark</a>
             </div>
             <div class="header-navbar-menu-nav">
                 <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#">Sign up</a>
@@ -54,6 +53,12 @@
             <div class="header-navbar-menu-nav">
                 |&nbsp;&nbsp;
                 <a class="text-center" href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login">Login</a>
+            </div>
+            <div ng-show="user_header_bar" class="header-navbar-menu-nav user-name-head-bar user-head-bar">
+                <a class="text-center" href="#">John Wick</a>
+            </div>
+            <div ng-show="user_header_bar" class="header-navbar-menu-nav user-head-bar">
+                <img src="/Images/img-demo.png" />
             </div>
         </div>
         @* signin popup *@
