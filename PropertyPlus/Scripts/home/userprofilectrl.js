@@ -86,7 +86,11 @@
 
     $scope.logout = function() {
         localStorage.removeItem('user_profile');
-        $scope.userProfile = undefined;
+        var scope = angular.element('body[ng-controller="MainCtrl"]').scope();
+        scope.userProfile = undefined;
+        $timeout(function () {
+            scope.$apply();
+        }, 0);
         $location.path("/");
     }
 }
