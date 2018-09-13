@@ -8,7 +8,7 @@
 
     $scope.user = {};
 
-    $scope.loadData = function() {
+    $scope.loadData = function () {
         if (localStorage && localStorage.getItem('language')) {
             $translate.use(localStorage.getItem('language'));
         }
@@ -21,7 +21,7 @@
         //}, function (error) { });
     };
 
-    $scope.replaceString = function(str) {
+    $scope.replaceString = function (str) {
         if (!str)
             return null;
         str = str.toLowerCase();
@@ -36,40 +36,33 @@
         return str;
     };
 
-    $scope.logout = function() {
+    $scope.logout = function () {
         localStorage.removeItem('user_profile');
         $scope.userProfile = undefined;
         $location.path("/");
     };
 
-    $scope.register = function() {
+    $scope.register = function () {
         if ($scope.user.password !== $scope.user.confirm_password) {
             $scope.errorText = "Confirm password does not match";
-            return ;
+            return;
         }
-        xhrService.post("Register", $scope.user).then(function(data) {
-                localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
-                $scope.userProfile = data.data;
-                console.log($scope.userProfile);
-            },
-            function(error) {
-                $scope.errorText = error.statusText;
+        xhrService.post("Register", $scope.user).then(function (data) {
+            localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
+            $scope.userProfile = data.data;
+            $('#myModal-email').modal('hide');
+        },function (error) {
+                $scope.errorText = error.data;
             });
     };
 
     $scope.login = function () {
-        console.log($scope.user);
         xhrService.post("Login", $scope.user).then(function (data) {
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             $scope.userProfile = data.data;
-                $scope.user_header_bar = true;
-            console.log($scope.userProfile);
-            $scope.ava_user_header_bar = "/Upload/avatar/"+$scope.userProfile.Avatar;
-            $scope.name_user_header_bar = $scope.userProfile.FirstName + " " + $scope.userProfile.LastName;
             $('#myModal-login').modal('hide');
-            },
-            function (error) {
-                $scope.errorText = error.statusText;
+        },function (error) {
+                $scope.errorText = error.data;
             });
     }
 }

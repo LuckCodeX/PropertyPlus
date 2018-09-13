@@ -83,6 +83,12 @@
                 $scope.errorText = error.statusText;
             });
     }
+
+    $scope.logout = function() {
+        localStorage.removeItem('user_profile');
+        $scope.userProfile = undefined;
+        $location.path("/");
+    }
 }
 
 app.controller('UserProfileCtrl', UserProfileCtrl);

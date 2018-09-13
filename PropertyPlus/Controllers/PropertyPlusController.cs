@@ -80,7 +80,7 @@ namespace PropertyPlus.Controllers
             var userAcc = _service.Login(model);
             if (Equals(userAcc, null))
             {
-                var response = new HttpResponseMessage(HttpStatusCode.Unauthorized)
+                var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     Content = new StringContent("err_email_or_password_invalid")
                 };
