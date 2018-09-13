@@ -166,6 +166,35 @@ namespace PropertyPlus.Controllers
         }
 
         [HttpPost]
+        [Route("GetUserProfile")]
+        public UserProfileModel GetUserProfile()
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                var token = values.First();
+                var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                return new UserProfileModel()
+                {
+                    FirstName = userProfile.first_name,
+                    LastName = userProfile.last_name,
+                    Avatar = userProfile.avatar,
+                    Gender = userProfile.gender ?? 0,
+                    BirthDay = userProfile.birthday ?? 0,
+                    Email = userProfile.email,
+                    ImgVerification1 = userProfile.img_verification_1,
+                    ImgVerification2 = userProfile.img_verification_2,
+                    Work = userProfile.work,
+                    Contact = userProfile.contact,
+                    Description = userProfile.description,
+                    Phone = userProfile.phone
+                };
+            }
+            return null;
+        }
+
+        [HttpPost]
         [Route("EditUserProfile")]
         public UserProfileModel EditUserProfile(UserProfileModel model)
         {
