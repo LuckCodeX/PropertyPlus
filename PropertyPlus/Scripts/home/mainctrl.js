@@ -58,11 +58,16 @@
     };
 
     $scope.login = function () {
+        console.log($scope.user);
         xhrService.post("Login", $scope.user).then(function (data) {
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             $scope.userProfile = data.data;
+                $scope.user_header_bar = true;
             console.log($scope.userProfile);
-        },
+            $scope.ava_user_header_bar = "/Upload/avatar/"+$scope.userProfile.Avatar;
+            $scope.name_user_header_bar = $scope.userProfile.FirstName + " " + $scope.userProfile.LastName;
+            $('#myModal-login').modal('hide');
+            },
             function (error) {
                 $scope.errorText = error.statusText;
             });

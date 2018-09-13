@@ -47,18 +47,18 @@
             <div class=" header-navbar-menu-nav">
                 <a class="text-center " href="#">Bookmark</a>
             </div>
-            <div class="header-navbar-menu-nav">
+            <div ng-hide="user_header_bar" class="header-navbar-menu-nav">
                 <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#">Sign up</a>
             </div>
-            <div class="header-navbar-menu-nav">
+            <div ng-hide="user_header_bar" class="header-navbar-menu-nav">
                 |&nbsp;&nbsp;
                 <a class="text-center" href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login">Login</a>
             </div>
             <div ng-show="user_header_bar" class="header-navbar-menu-nav user-name-head-bar user-head-bar">
-                <a class="text-center" href="#">John Wick</a>
+                <a class="text-center" href="#">{{name_user_header_bar}}</a>
             </div>
             <div ng-show="user_header_bar" class="header-navbar-menu-nav user-head-bar">
-                <img src="/Images/img-demo.png" />
+                <img src="{{ava_user_header_bar}}" />
             </div>
         </div>
         @* signin popup *@
@@ -117,8 +117,8 @@
                             <p class="text-or">or</p>
                         </div>
                         <span class="text-danger-1">{{errorText}}</span>
-                        <input type="email" placeholder="Email Adress" ng-model="user.email.login" class="mail-submit" required="">
-                        <input type="password" placeholder="Password" ng-model="user.password.login" class="mail-submit" required="">
+                        <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
+                        <input type="password" placeholder="Password" ng-model="user.password" class="mail-submit" required="">
                         <div class="mail-checkbox">
                             <input type="checkbox">
                             <span class="text-checkbox">Remember me</span>
