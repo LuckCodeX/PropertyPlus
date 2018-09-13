@@ -9,7 +9,8 @@
     //'ngCsv',
     'ngAnimate',
     //'ngclipboard',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ngImgCrop'            //ngImgCrop
 ]);
 
 var API = "http://localhost:10918/api/propertyplus/";

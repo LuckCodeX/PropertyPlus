@@ -2478,6 +2478,35 @@ footer {
     top: -7px;
     color: #E4E4E4;
 }
+
+.note-profile-photo .btn-upload{
+    width: 100%;
+}
+    .note-profile-photo .btn-upload span {
+        width: 100%;
+        text-align: center;
+        padding: 13px 0;
+    }
+
+.img-profile-photo {
+    float: left;
+    width: 211.1px;
+    height: 211.1px;
+    background-color: #EFEFEF;
+    display: inline-block;
+}
+    .img-profile-photo img {
+        width: 211px;
+        height: 211px;
+        border-radius: 50%;
+        padding: 0.01px;
+    }
+.note-profile-photo {
+    margin-left: 14px;
+    float: left;
+    display: inline-block;
+    width: calc(100% - 228px);
+}
 @media only screen and (max-width: 992px) {
     .thumbnail-choose-home-column .slide-choose-home {
         height: 290px
