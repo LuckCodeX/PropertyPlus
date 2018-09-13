@@ -165,7 +165,7 @@ namespace PropertyPlus.Controllers
             };
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetUserProfile")]
         public UserProfileModel GetUserProfile()
         {
