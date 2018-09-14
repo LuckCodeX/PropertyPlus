@@ -1780,7 +1780,7 @@ footer {
     margin-right: 22px;
 }
 
-.user-form-group input[type=email], .user-form-group input[type=number], .user-form-group textarea {
+.user-form-group input[type=email], .user-form-group input[type=text], .user-form-group textarea {
     width: 100%;
     border-radius: 3px;
     border: 1px solid #707070;
