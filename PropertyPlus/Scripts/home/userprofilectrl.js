@@ -43,12 +43,12 @@
         reader.onload = function(evt) {
             $scope.$apply(function($scope) {
                 $scope.myImage = evt.target.result;
-
+                $scope.data.Avatar_Base64 = evt.target.result;
             });
         };
         reader.readAsDataURL(file);
     };
-
+   
     setTimeout(function() {
             angular.element(document.querySelector("#testFile")).on("change", handleFileSelect);
             angular.element(document.querySelector("#file1")).on("change",
@@ -83,7 +83,7 @@
     $scope.submitEditProfile = function () {
         $scope.data.ImgVerification1 = document.getElementById("name-file1").value;
         $scope.data.ImgVerification2 = document.getElementById("name-file2").value;
-        $scope.data.Avatar_Base64 = document.getElementById("Avatar_Base64").src;
+         $scope.data.Avatar_Base64 = document.getElementById("Avatar_Base64").src;
         var cloneObject = $scope.date;
         $scope.data.Gender = cloneObject.gender.value;
         $scope.data.BirthDay =
@@ -105,15 +105,15 @@
 
     $scope.loadUserEdit = function() {
         xhrService.get("GetUserProfile/").then(function (data) {
-            if (data.data.ImgVerification1 != null && data.data.ImgVerification1 != "") {
+            if (data.data.ImgVerification1 != null || data.data.ImgVerification1 != "") {
                 $('#name-file1').val(data.data.ImgVerification1); 
                 $('#delete-file1').addClass('active');
             }
-            if (data.data.ImgVerification2 != null && data.data.ImgVerification2 != "") {
+            if (data.data.ImgVerification2 != null || data.data.ImgVerification2 != "") {
                 $('#name-file2').val(data.data.ImgVerification2); 
                     $('#delete-file2').addClass('active');
                 }
-                document.getElementById("Avatar_Base64").src = data.data.Avatar_Base64;
+            if (data.data.Avatar_Base64 != null) document.getElementById("Avatar_Base64").src = data.data.Avatar_Base64;
                 $scope.data = data.data;
                 var currentDate = Number($scope.data.BirthDay) * 1000;
             if ($scope.data.Gender != 0) {
