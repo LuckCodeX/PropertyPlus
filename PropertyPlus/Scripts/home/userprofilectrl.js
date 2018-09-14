@@ -4,7 +4,8 @@
     $location,
     $timeout,
     xhrService,
-    $anchorScroll) {
+    $anchorScroll,
+    $http) {
     var days = [];
     var years = [];
     for (var i = 1; i <= 31; i++) {
@@ -75,13 +76,21 @@
         $scope.data.Gender = cloneObject.gender.value;
         $scope.data.BirthDay = Math.round((new Date(cloneObject.year.value, Number(cloneObject.month.value - 1), cloneObject.day.value, 0, 0, 0)).getTime() / 1000);
       
-        console.log($scope.data);
         xhrService.post("EditUserProfile", $scope.data).then(function (data) {
             console.log(data);
             },
             function (error) {
                 $scope.errorText = error.statusText;
             });
+    }
+
+    $scope.loadUserEdit = function() {
+        xhrService.get("GetUserProfile/").then(function (data) {
+                console.log(data);
+            },
+                function (error) {
+                    console.log(error.statusText);
+                });
     }
 
     $scope.logout = function() {
