@@ -146,16 +146,54 @@ header .btn-search {
         margin-right: 15px
     }
 
-    .header-navbar-menu-nav.user-head-bar img {
+    .user-head-bar img {
         width: 43px;
         height: 43px;
-        margin-top: 3px;
         border-radius: 50%;
     }
 
-.user-name-head-bar {
-    margin-right: 16.7px;
+.box-user-header-bar {
+    cursor: pointer;
 }
+
+.user-head-bar {
+    display: inline-block;
+    
+}
+.box-user-header-bar:hover .menu-user-header-bar {
+    display: block;
+}
+
+.menu-user-header-bar:hover {
+    display: block;
+}
+
+.menu-user-header-bar {
+    padding-top: 14px;
+    background-color: white;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    z-index: 99;
+}
+    
+    .menu-user-header-bar .element-user-header-bar {
+        display: block;
+        line-height: 24px;
+        width: 219px;
+        padding: 14px 0px 12px 10px;
+        border-top: 1px solid #E4E4E4;
+    }
+
+        .menu-user-header-bar .element-user-header-bar:hover {
+            background-color: #F8F8F8;
+        }
+
+        .user-name-head-bar {
+            margin-right: 0 !important;
+            padding-right: 16.7px;
+        }
 
     .header-navbar-menu a {
         color: #484848;
@@ -213,7 +251,7 @@ footer {
     .logo-name-header a {
         color: #484848;
         font-size: 22px;
-        line-height: 50px;
+        line-height: 47px;
     }
 
 .search-bar-section {

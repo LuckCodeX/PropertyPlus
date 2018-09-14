@@ -7,7 +7,7 @@ function xhrService($q, $http) {
         } else if (localStorage.getItem('user_profile') !== null ||
             localStorage.getItem('user_profile') !== undefined) {
             var user = JSON.parse(Base64.decode(localStorage.getItem('user_profile')));
-            token = user.token;
+            token = user.Token;
         }
         var language = 1;
         if (localStorage && localStorage.getItem('language')) {

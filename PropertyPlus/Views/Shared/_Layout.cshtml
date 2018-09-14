@@ -54,12 +54,24 @@
                 |&nbsp;&nbsp;
                 <a class="text-center" href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login">Login</a>
             </div>
-            <div ng-if="userProfile !== undefined" class="header-navbar-menu-nav user-name-head-bar user-head-bar">
-                <a class="text-center" href="#">{{userProfile.FirstName}} {{userProfile.LastName}}</a>
+            <div ng-if="userProfile !== undefined"  class="header-navbar-menu-nav box-user-header-bar">
+                <div class=" user-name-head-bar user-head-bar">
+                    <a class="text-center" href="#">{{userProfile.FirstName}} {{userProfile.LastName}}</a>
+                </div>
+                <div class="user-head-bar">
+                    <img src="/Upload/avatar/{{userProfile.Avatar}}" />
+                </div>
+                <div class="menu-user-header-bar">
+                    <a ui-sref="userprofile.general" class="element-user-header-bar">General</a>
+                    <a ui-sref="userprofile.manage" class="element-user-header-bar">Manage</a>
+                    <a ui-sref="userprofile.edit" class="element-user-header-bar">Edit profile</a>
+                    <a ui-sref="userprofile.setting" class="element-user-header-bar">Account setting</a>
+                    <a ui-sref="userprofile.refer" class="element-user-header-bar">Refer</a>
+                    <a ui-sref="userprofile.host" class="element-user-header-bar">Host</a>
+                    <a ng-click="logout()" class="element-user-header-bar">Logout</a>
+                </div>
             </div>
-            <div ng-if="userProfile !== undefined" class="header-navbar-menu-nav user-head-bar">
-                <img src="/Upload/avatar/{{userProfile.Avatar}}" />
-            </div>
+            
         </div>
         @* signin popup *@
         <div id="myModal-signup" class="modal fade" tabindex="-1" role="dialog">
