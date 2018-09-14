@@ -24,83 +24,9 @@
 
     </div>
 
-    <!--<div class="container padding-top-30 ">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
+    
 
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container padding-top-60 blogBox extra-box">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
-    <div class="container padding-top-60 blogBox extra-box">
+    <div class="container padding-top-60 blogBox">
         <div class="row">
             <div class="col-md-4" ng-repeat="item in blogList">
                 <div class="blog-box">
@@ -110,204 +36,25 @@
                     <p class="text padding-top-20" data-toggle="modal" data-target="#myModal" ng-click="loadDetail(item.Id)">{{item.Content.Title | limitTo : 50}}{{item.Content.Title.length > 50 ? '...' : ''}}</p>
                     <p class="text1">{{item.CreatedString}}</p>
                     <p class="text2">{{item.Content.Description | limitTo : 100}}{{item.Content.Description.length > 100 ? '...' : ''}}</p>
-                    <button data-toggle="modal" data-target="#myModal" ng-click="loadDetail(item.Id)">READ MORE</button>
+                    <div class="read-more-button"><a ui-sref="blogdetail({id:item.Id})">READ MORE</a></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!--<div class="container padding-top-60 blogBox extra-box">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-fluid" />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container padding-top-60 blogBox extra-box" style="display: none;">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container padding-top-60 blogBox extra-box" style="display: none;">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container padding-top-60 blogBox extra-box" style="display: none;">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-box">
-                    <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                </div>
-                <div class="blog-box-below">
-                    <p class="text padding-top-20">Title</p>
-                    <p class="text1">July 10,2018 / No Comment</p>
-                    <p class="text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dui, interdum ut maximus et, suscipit a tortor.</p>
-                    <button data-toggle="modal" data-target="#myModal">READ MORE</button>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <div class=" container padding-top-60">
+    
+
+
+
+
+    <div class=" container padding-top-60 padding-bottom-60">
         <div class="row">
             <div class="col-md-offset-4 col-md-4 final  text-center">
                 <button id="loadMore" class="text2">Load more</button>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
+    
 
-
-            <div class="modal-content text-popup">
-                <span class="blog-title">{{blog.Content.Title}}</span>
-                <p class="text-show-day">{{blog.CreatedString}}</p>
-                <span class="blog-intro">{{blog.Content.Description}}</span>
-                <img src="/Upload/{{blog.Img}}" alt="#" class="model-content-img" />
-                <div class="blog-content" ng-bind-html="blog.Content.Content | trust"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        /*get date js*/
-        var d = new Date();
-        var day = d.getDate();
-        var month = d.getMonth() + 1;
-        var year = d.getFullYear();
-        var ngay = day + "/" + month + "/" + year;
-        document.getElementById('show-day').innerHTML = "<h1>" + ngay + "</h1>"
-        /* load more js */
-        $(".extra-box").slice(0, 3).show();
-        if ($(".blogBox:hidden").length != 0) {
-            $("#loadMore").show();
-        }
-        $("#loadMore").on('click', function (e) {
-            e.preventDefault();
-            $(".extra-box:hidden").slice(0, 6).slideDown();
-            if ($(".extra-box:hidden").length == 0) {
-                $("#loadMore").fadeOut('slow');
-            }
-        });
-    </script>
+    
 </div>

@@ -1,2 +1,16 @@
-﻿<div ng-controller="BlogCtrl" ng-init="loadDetailData()">
+﻿<div ng-controller="BlogCtrl" class="padding-bottom-30 blogdetail" ng-init="loadDetailData()">
+
+   
+
+    <div class="text-popup">
+        <span class="blog-title">{{blog.Content.Title}}</span>
+        <p class="text-show-day">{{blog.CreatedString}}</p>
+        <span class="blog-intro">{{blog.Content.Description}}</span>
+        <img src="/Upload/{{blog.Img}}" alt="#" class="model-content-img" />
+        <div class="blog-content" ng-bind-html="blog.Content.Content | trust"></div>
+    </div>
+    
+
+
+
 </div>

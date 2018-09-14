@@ -210,3 +210,7 @@
     top: -19px;
     left: 57px;
 }
+
+.modal-open {
+    padding-right: 0px !important;
+}
