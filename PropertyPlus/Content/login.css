@@ -214,3 +214,261 @@
 .modal-open {
     padding-right: 0px !important;
 }
+
+
+
+.contact-info {
+    border: 1px solid transparent;
+    background: #fff;
+    width: 377px;
+    height: 298px;
+    z-index: 1;
+    position: relative;
+    margin-left: 215px;
+    margin-top: 20px;
+    
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+    
+}
+
+.contact-info-box {
+    border: 1px solid transparent;
+    background: #455782;
+    position: absolute;
+    width: 378px;
+    height: 45px;
+    margin:-2px;
+}
+
+.contact-text {
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.contact-info-box-below {
+    font-size: 12px;
+    
+}
+
+
+.contact-text-sm {
+    margin-top: 50px;
+    margin-left: 15px;
+    position: absolute;
+}
+
+.contact-email {
+    padding-left: 90px;
+}
+
+.contact-info-box-below p {
+    margin-top: 110px;
+    position: absolute;
+    margin-left: 15px;
+    
+}
+
+.contact-text-p{
+    line-height:6.5;
+}
+
+.contact-number1 {
+    padding-left: 143px;
+}
+
+.contact-number{
+    padding-left:65px;
+}
+
+.contact-info button {
+    border: 1px solid transparent;
+    background: #473D6F;
+    width: 81px;
+    height: 38px;
+    margin-top: 245px;
+    margin-left: 275px;
+    border-radius:5px;
+}
+
+.contact-text-button {
+    color: #fff;
+    font-size: 14px;
+    text-align:center;
+}
+
+.contact-info-1 {
+    border: 1px solid transparent;
+    background: #fff;
+    width: 279px;
+    height: 298px;
+    z-index: 1;
+    position: absolute;
+    margin-left: 415px;
+    margin-top: -298px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+    display: inline-block;
+    
+}
+
+.contact-info-box-1 {
+    border: 1px solid transparent;
+    background: #455782;
+    position: absolute;
+    width: 279px;
+    height: 45px;
+    margin: -1px;
+}
+
+.contact-checkbox {
+    margin-top: 90px;
+    position: absolute;
+}
+
+
+.contact-checkbox input {
+    border: 1px solid #707070;
+    background: #fff;
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+    position:absolute;
+    margin-top:-1px;
+}
+
+.contact-text-checkbox {
+    font-size: 14px;
+    display: inline-block;
+    padding-left: 55px;
+}
+
+.contact-checkbox-1 {
+    margin-top: 140px;
+    position: absolute;
+    white-space:nowrap;
+}
+
+
+    .contact-checkbox-1 input {
+        border: 1px solid #707070;
+        background: #fff;
+        width: 24px;
+        height: 24px;
+        margin-left: 15px;
+        position: absolute;
+        margin-top: -1px;
+    }
+
+.contact-checkbox-2 {
+    margin-top: 190px;
+    position: absolute;
+    white-space: nowrap;
+}
+
+
+    .contact-checkbox-2 input {
+        border: 1px solid #707070;
+        background: #fff;
+        width: 24px;
+        height: 24px;
+        margin-left: 15px;
+        position: absolute;
+        margin-top: -1px;
+    }
+
+.contact-info-2 {
+    border: 1px solid transparent;
+    background: #fff;
+    width: 674px;
+    height: 390px;
+    z-index: 1;
+    position: relative;
+    margin-left: 215px;
+    margin-top: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+}
+
+.contact-info-box-2 {
+    border: 1px solid transparent;
+    background: #455782;
+    position: absolute;
+    width: 675px;
+    height: 45px;
+    margin: -1px;
+}
+
+.change-pass p {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.change-pass input {
+    position: absolute;
+    top: 23%;
+    margin-left: 240px;
+    width: 333px;
+    height: 39px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+
+.contact-submit {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.change-pass-1 p {
+    margin-top: 55px;
+    margin-left: 95px;
+}
+
+.change-pass-1 input {
+    position: absolute;
+    top: 26%;
+    margin-top:65px;
+    margin-left: 240px;
+    width: 333px;
+    height: 39px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+
+.change-pass-2 p {
+    margin-top: 55px;
+    margin-left: 35px;
+}
+
+.change-pass-2 input {
+    position: absolute;
+    top: 26%;
+    margin-top: 140px;
+    margin-left: 240px;
+    width: 333px;
+    height: 39px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+
+.contact-info-2 button {
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: #473D6F;
+    width: 180px;
+    height: 38px;
+    margin-left: 395px;
+    margin-top: 30px;
+}
+
+.contact-button-final button {
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: #473D6F;
+    width: 219px;
+    height: 38px;
+    margin-top: 80px;
+    margin-left: 215px;
+    margin-bottom: 70px;
+}
