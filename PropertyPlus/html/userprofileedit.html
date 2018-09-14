@@ -28,12 +28,12 @@
                     <input type="hidden" name="avatar-user" ng-model="data.Avatar_Base64" value="" />
                     <div class="profile-photo-input">
                         <div class="cropArea" style="width: 480px; height: 480px; display: none">
-                            <img-crop image="myImage" area-min-size="480" result-image-size="480" result-image="myCroppedImage" area-type="square" result-image-format="image/jpeg"></img-crop>
+                            <img-crop image="myImage" area-min-size="480" result-image-size="480" result-image="data.Avatar_Base64" area-type="square" result-image-format="image/jpeg"></img-crop>
                         </div>
                         <p>{{testt}}</p>
                         <div class="img-profile-photo">
-                            <img ng-if="data.Avatar_Base64 == null" src="/Upload/avatar/noavatar.jpg" alt="Alternate Text" />
-                            <img ng-if="data.Avatar_Base64 != null" ng-src="{{myCroppedImage}}" id="Avatar_Base64" src="Images/img-demo.png" alt="Alternate Text"/>
+                            <img ng-if="data.Avatar_Base64 == null" src="/Upload/avatar/{{data.Avatar}}" alt="Alternate Text" />
+                            <img ng-if="data.Avatar_Base64 != null" ng-src="{{data.Avatar_Base64}}" id="Avatar_Base64" alt="Alternate Text"/>
                         </div>
                         <div class="note-profile-photo">
                             <p>Clear frontal face photos are an important way for hosts and guests to learn about each other. Be sure to use a photo that clearly shows your face and doesn’t include any personal or sensitive info you’d rather not have landlord or tenant see.</p>
