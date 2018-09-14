@@ -1,1 +1,14 @@
-﻿<h1>Step 1 - 1</h1>
+﻿<div class="content-listing-step" ng-init="loadStep1_1">
+    <p>Let's get start listing your apartment</p>
+    <p>What kind of place do you have?</p>
+    <div class="choose-apartment-option input-option">
+        <select class="select-apartment" ng-model="apartment.apartment" ng-options="option.name for option in apartments"></select>
+    </div>
+    <p>Where's your place located</p>
+    <div class="choose-city-option input-option">
+        <select class="select-apartment" ng-model="apartment.city" ng-options="option.name for option in cities"></select>
+    </div>
+    <div class="choose-name-option input-option">
+        <select class="select-apartment" ng-model="apartment.name" ng-options="option.name for option in names"></select>
+    </div>
+</div>

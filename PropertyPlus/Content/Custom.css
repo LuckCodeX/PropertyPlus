@@ -2266,7 +2266,8 @@ footer {
 
     .wizard .current .row i {
         color: #465983;
-        z-index: 999
+        z-index: 999;
+
     }
 
     .wizard .current a.current {
@@ -2490,6 +2491,8 @@ footer {
 /*----------------------------------------*/
 .wizard {
     margin-top: 40px;
+    margin-right: -20%;
+    margin-left: 25px;
 }
 
 .wizard a {
@@ -2520,8 +2523,8 @@ footer {
 
 .wizard .row i {
     position: absolute;
-    /*left: 50%;*/
-    top: -7px;
+    left: -2px;
+    top: -6px;
     color: #E4E4E4;
 }
 
@@ -2553,8 +2556,27 @@ footer {
     display: inline-block;
     width: calc(100% - 228px);
 }
-@media only screen and (max-width: 992px) {
-    .thumbnail-choose-home-column .slide-choose-home {
+
+.content-listing-step {
+    clear: both;
+}
+.body-step-host-create {
+    background-color: #F8F8F8;
+}
+.input-option {
+    display: inline-block;
+}
+    .input-option select {
+        padding: 6.1px 17px 8px 23px;
+        border: 1px solid #707070;
+        border-radius: 3px;
+        font-size: 16px;
+    }
+        .input-option select option{
+            font-size: 16px
+        }
+        @media only screen and (max-width: 992px) {
+            .thumbnail-choose-home-column .slide-choose-home {
         height: 290px
     }
 
