@@ -112,11 +112,11 @@
 
     $scope.loadUserEdit = function () {
         xhrService.get("GetUserProfile/").then(function (data) {
-            if (data.data.ImgVerification1 != null || data.data.ImgVerification1 != "") {
+            if (data.data.ImgVerification1 != null && data.data.ImgVerification1 != "") {
                 $('#name-file1').val(data.data.ImgVerification1);
                 $('#delete-file1').addClass('active');
             }
-            if (data.data.ImgVerification2 != null || data.data.ImgVerification2 != "") {
+            if (data.data.ImgVerification2 != null && data.data.ImgVerification2 != "") {
                 $('#name-file2').val(data.data.ImgVerification2);
                 $('#delete-file2').addClass('active');
             }

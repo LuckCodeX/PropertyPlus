@@ -2492,8 +2492,7 @@ footer {
 /*----------------------------------------*/
 .wizard {
     margin-top: 40px;
-    margin-right: -20%;
-    margin-left: 25px;
+    margin-left: 17px;
 }
 
 .wizard a {
@@ -2560,6 +2559,7 @@ footer {
 
 .content-listing-step {
     clear: both;
+    margin-top: 60px;
 }
 .body-step-host-create {
     background-color: #F8F8F8;
