@@ -1,7 +1,8 @@
 ﻿<div ng-controller="HomeCtrl" ng-init="loadData()">
     <div class="body-content">
         <div>
-            <div class="container-fluid search-bar-section" style="background: url('{{slideImg}}') no-repeat;background-size: cover;">
+            <div class="container-fluid search-bar-section">
+                <img src="{{slideImg}}" class="background-img" alt="Alternate Text" />
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 search-bar">
@@ -29,7 +30,8 @@
                         <div class="homepage-title-section">
                             Introducing Propert Plus
                         </div>
-                        <div class="introducing-banner box-shadow" style="background: url('{{slideIntroduct}}') no-repeat;background-size: cover;">
+                        <div class="introducing-banner ">
+                            <img src="{{slideIntroduct}}" class="box-shadow background-img" alt="Alternate Text" />
                             <button class="box-shadow btn-introducing">Explore our story</button>
                         </div>
                     </div>
@@ -87,7 +89,8 @@
                             </div>
 
                             <div class="sevice-rating-content">
-                                <div class="section1 box-shadow" style="background: url('{{slideService}}') no-repeat;background-size: cover;">
+                                <div class="section1">
+                                    <img src="{{slideService}}" class="background-img box-shadow" alt="Alternate Text" />
                                     <button class="box-shadow btn-service-rating">Explore all service</button>
                                 </div>
                             </div>
