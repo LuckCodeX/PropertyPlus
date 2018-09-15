@@ -1,15 +1,29 @@
-﻿<div class="content-listing-step" ng-init="loadStep1_1">
-    <div class=""></div>
-    <p>Let's get start listing your apartment</p>
-    <p>What kind of place do you have?</p>
-    <div class="choose-apartment-option input-option">
-        <select class="select-apartment" ng-model="apartment.apartment" ng-options="option.name for option in apartments"></select>
+﻿<div class="content-listing-step" ng-init="loadStep1_1()">
+    <div class="row">
+        
+        <p>Let's get start listing your apartment</p>
+        <p style="margin-top: 38.5px">What kind of place do you have?</p>
+        <div class="choose-apartment-option input-option row" style="">
+            <div class="col-md-4">
+                <select class="select-apartment" ng-model="apartment.apartment" ng-options="option.name for option in apartments"></select>
+            </div>
+        </div>
+        <p>Where's your place located</p>
+        <div class="choose-city-option input-option row">
+            <div class="col-md-2">
+                <select class="select-apartment" ng-model="apartment.city" ng-options="option.name for option in cities"></select>
+            </div>
+
+        </div>
+        <div class="choose-name-option input-option row">
+            <div class="col-md-4">
+                <select class="select-apartment" ng-model="apartment.name" ng-options="option.name for option in names"></select>
+            </div>
+        </div>
+        <div class="btn-continue">
+            <button>Continue</button>
+        </div>
     </div>
-    <p>Where's your place located</p>
-    <div class="choose-city-option input-option">
-        <select class="select-apartment" ng-model="apartment.city" ng-options="option.name for option in cities"></select>
-    </div>
-    <div class="choose-name-option input-option">
-        <select class="select-apartment" ng-model="apartment.name" ng-options="option.name for option in names"></select>
-    </div>
+
+   
 </div>

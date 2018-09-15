@@ -9,6 +9,18 @@
             function (error) {
                 $scope.errorText = error.statusText;
             });
+        xhrService.get("GetSlide/3").then(function (data) {
+                $scope.slideIntroduct = "Upload/" + data.data.Img;
+            },
+            function (error) {
+                $scope.errorText = error.statusText;
+            });
+        xhrService.get("GetSlide/4").then(function (data) {
+                $scope.slideService = "Upload/" + data.data.Img;
+            },
+            function (error) {
+                $scope.errorText = error.statusText;
+            });
     }
 }
 
