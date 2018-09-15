@@ -33,6 +33,7 @@
         str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
         str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
         str = str.replace(/đ/g, "d");
+        str = str.replace(/\”|\“|\"|\[|\]|\?/g, "");
         return str;
     };
 
@@ -52,7 +53,7 @@
             $scope.userProfile = data.data;
             $('#myModal-email').modal('hide');
         },function (error) {
-                $scope.errorText = error.data;
+                $scope.errorText = error.statusText;
             });
     };
 
@@ -62,7 +63,7 @@
             $scope.userProfile = data.data;
             $('#myModal-login').modal('hide');
         },function (error) {
-                $scope.errorText = error.data;
+                $scope.errorText = error.statusText;
             });
     }
 }

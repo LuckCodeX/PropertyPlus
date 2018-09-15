@@ -36,7 +36,7 @@
                     <p class="text padding-top-20" data-toggle="modal" data-target="#myModal" ng-click="loadDetail(item.Id)">{{item.Content.Title | limitTo : 50}}{{item.Content.Title.length > 50 ? '...' : ''}}</p>
                     <p class="text1">{{item.CreatedString}}</p>
                     <p class="text2">{{item.Content.Description | limitTo : 100}}{{item.Content.Description.length > 100 ? '...' : ''}}</p>
-                    <div class="read-more-button"><a ui-sref="blogdetail({id:item.Id})">READ MORE</a></div>
+                    <div class="read-more-button"><a ui-sref="blogdetail({id:item.Id, title: replaceString(item.Content.Title)})">READ MORE</a></div>
                 </div>
             </div>
         </div>

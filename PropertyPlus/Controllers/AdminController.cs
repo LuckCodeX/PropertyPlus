@@ -232,6 +232,23 @@ namespace PropertyPlus.Controllers
                 Url = p.url,
                 Type = p.type
             }).ToList();
+
+            ViewBag.SlideIntro = _service.GetListSlideByType(3).Select(p => new SlideModel()
+            {
+                Id = p.slide_id,
+                Img = p.img,
+                Url = p.url,
+                Type = p.type
+            }).FirstOrDefault();
+
+            ViewBag.SlideService = _service.GetListSlideByType(4).Select(p => new SlideModel()
+            {
+                Id = p.slide_id,
+                Img = p.img,
+                Url = p.url,
+                Type = p.type
+            }).FirstOrDefault();
+
             return View(slides);
         }
 
@@ -283,6 +300,22 @@ namespace PropertyPlus.Controllers
                 return RedirectToAction("SlideProject");
             if (type == 2)
                 return RedirectToAction("SlideBlog");
+            return RedirectToAction("SlideHome");
+        }
+
+        [HttpPost]
+        public ActionResult SaveSingleSlide(SlideModel model)
+        {
+            var slide = _service.GetSlideById(model.Id);
+            if (!Equals(model.ImageFile, null))
+            {
+                var fileName = "Slide_" + slide.slide_id + "_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
+                string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                model.ImageFile.SaveAs(path);
+                slide.img = fileName;
+            }
+            //slide.url = model.Url;
+            _service.SaveSlide(slide);
             return RedirectToAction("SlideHome");
         }
 

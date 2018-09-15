@@ -28,7 +28,7 @@ namespace PropertyPlus.Controllers
                 {
                     var response = new HttpResponseMessage(HttpStatusCode.Unauthorized)
                     {
-                        Content = new StringContent("err_email_already_existed")
+                        ReasonPhrase = "err_email_already_existed"
                     };
                     throw new HttpResponseException(response);
                 }
@@ -65,6 +65,7 @@ namespace PropertyPlus.Controllers
 
                 return new UserProfileModel()
                 {
+                    UserId = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
                     FirstName = userProfile.first_name,
                     LastName = userProfile.last_name,
                     Avatar = userProfile.avatar,
@@ -82,7 +83,7 @@ namespace PropertyPlus.Controllers
             {
                 var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
-                    Content = new StringContent("err_email_or_password_invalid")
+                    ReasonPhrase = "Email or Password is invalid"
                 };
                 throw new HttpResponseException(response);
             }
@@ -96,6 +97,7 @@ namespace PropertyPlus.Controllers
             };
             return new UserProfileModel()
             {
+                UserId = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
                 FirstName = userProfile.first_name,
                 LastName = userProfile.last_name,
                 Avatar = userProfile.avatar,
@@ -175,8 +177,17 @@ namespace PropertyPlus.Controllers
                 var token = values.First();
                 var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
                 var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                if (Equals(userProfile, null))
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                    {
+                        ReasonPhrase = "Account cannot be found !!!"
+                    };
+                    throw new HttpResponseException(response);
+                }
                 return new UserProfileModel()
                 {
+                    UserId = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
                     FirstName = userProfile.first_name,
                     LastName = userProfile.last_name,
                     Avatar = userProfile.avatar,
@@ -210,7 +221,7 @@ namespace PropertyPlus.Controllers
                     {
                         var response = new HttpResponseMessage(HttpStatusCode.NotFound)
                         {
-                            Content = new StringContent("Account cannot be found !!!")
+                            ReasonPhrase = "Account cannot be found !!!"
                         };
                         throw new HttpResponseException(response);
                     }
@@ -267,6 +278,125 @@ namespace PropertyPlus.Controllers
             }
 
             return null;
+        }
+
+        [HttpPut]
+        [Route("ChangePassword")]
+        public void ChangePassword(UserAccountModel model)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                var token = values.First();
+                var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                if (Equals(userProfile, null))
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                    {
+                        ReasonPhrase = "Account cannot be found !!!"
+                    };
+                    throw new HttpResponseException(response);
+                }
+
+                var userAccount = _service.GetUserAccountByUserProfileId(userProfile.user_profile_id);
+                if (Encrypt.EncodePassword(model.Password) != userAccount.password)
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                    {
+                        ReasonPhrase = "Old Password invalid !!!"
+                    };
+                    throw new HttpResponseException(response);
+                }
+
+                userAccount.password = Encrypt.EncodePassword(userAccount.password);
+                _service.SaveUserAccount(userAccount);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetVisitList")]
+        public List<ApartmentModel> GetVisitList()
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                var token = values.First();
+                var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                if (Equals(userProfile, null))
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                    {
+                        ReasonPhrase = "Account cannot be found !!!"
+                    };
+                    throw new HttpResponseException(response);
+                }
+
+                var apartments = _service.GetListVisitApartmentByUserProfileId(userProfile.user_profile_id);
+                return apartments.Select(p => new ApartmentModel()
+                {
+
+                }).ToList();
+            }
+            return new List<ApartmentModel>();
+        }
+
+        [HttpPost]
+        [Route("AddVisitList/{apartmentId}")]
+        public void AddVisitList(int apartmentId)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                var token = values.First();
+                var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                if (Equals(userProfile, null))
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                    {
+                        ReasonPhrase = "Account cannot be found !!!"
+                    };
+                    throw new HttpResponseException(response);
+                }
+
+                var userVisit =
+                    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, apartmentId);
+                if (!Equals(userVisit, null))
+                    return;
+                userVisit = new user_visit()
+                {
+                    user_profile_id = userProfile.user_profile_id,
+                    apartment_id = apartmentId,
+                    user_visit_id = 0
+                };
+                _service.SaveUserVisit(userVisit);
+            }
+        }
+
+        [HttpDelete]
+        [Route("DeleteVisitList/{apartmentId}")]
+        public void DeleteVisitList(int apartmentId)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                var token = values.First();
+                var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                if (Equals(userProfile, null))
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                    {
+                        ReasonPhrase = "Account cannot be found !!!"
+                    };
+                    throw new HttpResponseException(response);
+                }
+                var userVisit =
+                    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, apartmentId);
+                _service.DeleteUserVisit(userVisit);
+            }
         }
 
         protected override void Dispose(bool disposing)

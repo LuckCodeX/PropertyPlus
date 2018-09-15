@@ -142,5 +142,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="user_visit">
+      <EntityTypeMapping TypeName="PropertyPlusModel.user_visit">
+        <MappingFragment StoreEntitySet="user_visit">
+          <ScalarProperty Name="apartment_id" ColumnName="apartment_id" />
+          <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
+          <ScalarProperty Name="user_visit_id" ColumnName="user_visit_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

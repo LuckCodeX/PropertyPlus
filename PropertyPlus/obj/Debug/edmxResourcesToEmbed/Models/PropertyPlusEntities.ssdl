@@ -129,6 +129,14 @@
     <Property Name="description" Type="ntext" />
     <Property Name="avatar" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
+  <EntityType Name="user_visit">
+    <Key>
+      <PropertyRef Name="user_visit_id" />
+    </Key>
+    <Property Name="user_visit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_profile_id" Type="int" Nullable="false" />
+    <Property Name="apartment_id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="FK__aparment___apart__1ED998B2">
     <End Role="apartment" Type="Self.apartment" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -241,6 +249,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__user_visi__apart__44FF419A">
+    <End Role="apartment" Type="Self.apartment" Multiplicity="1" />
+    <End Role="user_visit" Type="Self.user_visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="apartment">
+        <PropertyRef Name="apartment_id" />
+      </Principal>
+      <Dependent Role="user_visit">
+        <PropertyRef Name="apartment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_visi__user___440B1D61">
+    <End Role="user_profile" Type="Self.user_profile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="user_visit" Type="Self.user_visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_profile">
+        <PropertyRef Name="user_profile_id" />
+      </Principal>
+      <Dependent Role="user_visit">
+        <PropertyRef Name="user_profile_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="PropertyPlusModelStoreContainer">
     <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="aparment_image" EntityType="Self.aparment_image" Schema="dbo" store:Type="Tables" />
@@ -254,6 +288,7 @@
     <EntitySet Name="slide" EntityType="Self.slide" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user_account" EntityType="Self.user_account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user_profile" EntityType="Self.user_profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_visit" EntityType="Self.user_visit" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__aparment___apart__1ED998B2" Association="Self.FK__aparment___apart__1ED998B2">
       <End Role="apartment" EntitySet="apartment" />
       <End Role="aparment_image" EntitySet="aparment_image" />
@@ -285,6 +320,14 @@
     <AssociationSet Name="FK__user_acco__user___1273C1CD" Association="Self.FK__user_acco__user___1273C1CD">
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="user_account" EntitySet="user_account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_visi__apart__44FF419A" Association="Self.FK__user_visi__apart__44FF419A">
+      <End Role="apartment" EntitySet="apartment" />
+      <End Role="user_visit" EntitySet="user_visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_visi__user___440B1D61" Association="Self.FK__user_visi__user___440B1D61">
+      <End Role="user_profile" EntitySet="user_profile" />
+      <End Role="user_visit" EntitySet="user_visit" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

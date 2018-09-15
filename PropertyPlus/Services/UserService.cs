@@ -61,5 +61,10 @@ namespace PropertyPlus.Services
         {
             return UserProfileRepository.FindBy(p => p.user_profile_id == id && p.status == 1).FirstOrDefault();
         }
+
+        public user_account GetUserAccountByUserProfileId(int userProfileId)
+        {
+            return UserAccountRepository.FindBy(p => p.user_profile_id == userProfileId).FirstOrDefault();
+        }
     }
 }

@@ -37,5 +37,6 @@ namespace PropertyPlus.Models
         public virtual DbSet<slide> slides { get; set; }
         public virtual DbSet<user_account> user_account { get; set; }
         public virtual DbSet<user_profile> user_profile { get; set; }
+        public virtual DbSet<user_visit> user_visit { get; set; }
     }
 }

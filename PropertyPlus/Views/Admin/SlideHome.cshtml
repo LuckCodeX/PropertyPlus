@@ -1,19 +1,23 @@
-﻿@model List<PropertyPlus.Models.SlideModel>
+﻿@using PropertyPlus.Models
+@model List<PropertyPlus.Models.SlideModel>
 
 @{
-    ViewBag.Title = "Blog";
+    ViewBag.Title = "Slide Home";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    var slideIntro = ViewBag.SlideIntro as SlideModel;
+    var slideService = ViewBag.SlideService as SlideModel;
 }
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Quản lý Slide Blog</h2>
+        <h2>Quản lý Slide Home</h2>
         <ol class="breadcrumb">
             <li>
                 <a>Slide</a>
             </li>
             <li class="active">
-                <strong>Blog</strong>
+                <strong>Home</strong>
             </li>
         </ol>
     </div>
@@ -32,7 +36,7 @@
                         <table class="table table-stripped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Ảnh</th>
+                                    <th>Ảnh Slide</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -55,6 +59,72 @@
                                         </td>
                                     </tr>
                                 }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+
+            <div class="ibox">
+                <div class="ibox-content" id="table_list">
+                    @using (Html.BeginForm("SaveSingleSlide", "Admin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        <table class="table table-stripped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ảnh Giới thiệu</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @Html.Hidden("Id", slideIntro.Id)
+                                @Html.Hidden("Type", slideIntro.Type)
+                                <tr>
+                                    <td>
+                                        @Html.TextBox("ImageFile", slideIntro.ImageFile, new { type = "file", accept = "image/*", onchange = "previewImage('slideIntro', event)", @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        <img src='~/Upload/@slideIntro.Img' alt="" id="instrumentImage_slideIntro"
+                                             height="150" width="300" />
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success">Cập nhật</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+
+            <div class="ibox">
+                <div class="ibox-content" id="table_list">
+                    @using (Html.BeginForm("SaveSingleSlide", "Admin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        <table class="table table-stripped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ảnh Dịch vụ</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @Html.Hidden("Id", slideService.Id)
+                                @Html.Hidden("Type", slideService.Type)
+                                <tr>
+                                    <td>
+                                        @Html.TextBox("ImageFile", slideService.ImageFile, new { type = "file", accept = "image/*", onchange = "previewImage('slideService', event)", @class = "form-control" })
+                                    </td>
+                                    <td>
+                                        <img src='~/Upload/@slideService.Img' alt="" id="instrumentImage_slideService"
+                                             height="150" width="300" />
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success">Cập nhật</button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     }
