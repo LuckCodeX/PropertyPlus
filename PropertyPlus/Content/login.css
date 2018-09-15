@@ -472,3 +472,8 @@
     margin-left: 215px;
     margin-bottom: 70px;
 }
+
+
+body{
+    padding-right:0 !important;
+}
