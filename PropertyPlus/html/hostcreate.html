@@ -3,83 +3,96 @@
     <div class="wizard">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="row" style="left: -61px; bottom: 14px;">
-                        Provide information
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="row" style="left: -50px; bottom: 14px;">
-                        Upload picture
-                    </div>
-                </div>
-                <div class="col-md-3" style="left: -25px; bottom: 14px;">
+                <div class="col-md-11">
                     <div class="row">
-                        Set price
+                        <div class="col-md-4">
+                            <div class="row" style="left: -75px; bottom: 14px;">
+                                Provide information
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row" style="left: -50px; bottom: 14px;">
+                                Upload picture
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="left: -25px; bottom: 14px;">
+                            <div class="row">
+                                Set price
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-1" style="left: -14px; bottom: 14px;">
+                </div>   
+                
+                <div class="col-md-1" style="left: -6px; bottom: 14px;">
                     <div class="row">
                         Verify
                     </div>
                 </div>
             </div>
         </div>
-        <div ng-class="{current : ($state.includes('host.create.step11') || $state.includes('host.create.step12') || $state.includes('host.create.step13') || $state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}" class="col-md-3">
-            <div class="row">
-                <i class="fa fa-circle"></i>
-                <div class="col-md-4">
-                    <div class="row">
-                        <a ng-class="{current : ($state.includes('host.create.step12') || $state.includes('host.create.step13') || $state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+        <div class="row">
+            <div class="col-md-11">
+                <div class="row">
+                    <div ng-class="{current : ($state.includes('host.create.step11') || $state.includes('host.create.step12') || $state.includes('host.create.step13') || $state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}" class="col-md-4">
+                        <div class="row">
+                            <i class="fa fa-circle"></i>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <a ng-class="{current : ($state.includes('host.create.step12') || $state.includes('host.create.step13') || $state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <a ng-class="{current : ($state.includes('host.create.step13') || $state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <a ng-class="{current : ($state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <a ng-class="{current : ($state.includes('host.create.step13') || $state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+                    <div ng-class="{current : ($state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}" class="col-md-4">
+                        <div class="row">
+                            <i class="fa fa-circle"></i>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <a ng-class="{current : ($state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <a ng-class="{current : ($state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <a ng-class="{current : ($state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+                    <div ng-class="{current : ($state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}" class="col-md-4">
+                        <div class="row">
+                            <i class="fa fa-circle"></i>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <a ng-class="{current : ($state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <a ng-class="{current : ($state.includes('host.create.step4'))}"></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div ng-class="{current : ($state.includes('host.create.step21') || $state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}" class="col-md-3">
-            <div class="row">
-                <i class="fa fa-circle"></i>
-                <div class="col-md-6">
-                    <div class="row">
-                        <a ng-class="{current : ($state.includes('host.create.step22') || $state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <a ng-class="{current : ($state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
-                    </div>
+            <div ng-class="{current : ($state.includes('host.create.step4'))}" class="col-md-1">
+                <div class="row">
+                    <i class="fa fa-circle"></i>
                 </div>
             </div>
         </div>
-        <div ng-class="{current : ($state.includes('host.create.step31') || $state.includes('host.create.step32') || $state.includes('host.create.step4'))}" class="col-md-3">
-            <div class="row">
-                <i class="fa fa-circle"></i>
-                <div class="col-md-6">
-                    <div class="row">
-                        <a ng-class="{current : ($state.includes('host.create.step32') || $state.includes('host.create.step4'))}"></a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <a ng-class="{current : ($state.includes('host.create.step4'))}"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div ng-class="{current : ($state.includes('host.create.step4'))}" class="col-md-3">
-            <div class="row">
-                <i class="fa fa-circle"></i>
-            </div>
-        </div>
+        
+       
     </div>
     <div ui-view class="body-content">
     </div>

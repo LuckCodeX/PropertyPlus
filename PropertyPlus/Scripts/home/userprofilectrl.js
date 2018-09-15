@@ -43,7 +43,6 @@
         reader.onload = function (evt) {
             $scope.$apply(function ($scope) {
                 $scope.myImage = evt.target.result;
-                $scope.data.Avatar_Base64 = evt.target.result;
             });
         };
         reader.readAsDataURL(file);
@@ -86,14 +85,18 @@
         //$scope.data.Avatar_Base64 = document.getElementById("Avatar_Base64").src;
         var cloneObject = $scope.date;
         $scope.data.Gender = cloneObject.gender.value;
-        $scope.data.BirthDay =
-            Math.round((new Date(cloneObject.year.value,
-                Number(cloneObject.month.value - 1),
-                cloneObject.day.value,
-                0,
-                0,
-                0)).getTime() /
-                1000);
+        if (cloneObject.year.value == "1900") {
+            $scope.data.BirthDay = null;
+        } else {
+            $scope.data.BirthDay =
+                Math.round((new Date(cloneObject.year.value,
+                        Number(cloneObject.month.value - 1),
+                        cloneObject.day.value,
+                        0,
+                        0,
+                        0)).getTime() /
+                    1000);
+        };
         xhrService.post("EditUserProfile", $scope.data).then(function (data) {
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             var scope = angular.element('body[ng-controller="MainCtrl"]').scope();
@@ -109,20 +112,21 @@
 
     $scope.loadUserEdit = function () {
         xhrService.get("GetUserProfile/").then(function (data) {
-            if (data.data.ImgVerification1 != null || data.data.ImgVerification1 != "") {
+            if (data.data.ImgVerification1 != null && data.data.ImgVerification1 != "") {
                 $('#name-file1').val(data.data.ImgVerification1);
                 $('#delete-file1').addClass('active');
             }
-            if (data.data.ImgVerification2 != null || data.data.ImgVerification2 != "") {
+            if (data.data.ImgVerification2 != null && data.data.ImgVerification2 != "") {
                 $('#name-file2').val(data.data.ImgVerification2);
                 $('#delete-file2').addClass('active');
             }
             if (data.data.Avatar_Base64 != null) document.getElementById("Avatar_Base64").src = data.data.Avatar_Base64;
             $scope.data = data.data;
-            var currentDate = Number($scope.data.BirthDay) * 1000;
+            var currentDate = new Date(Number($scope.data.BirthDay) * 1000);
             if ($scope.data.Gender != 0) {
-                for (var i = 0; i < $scope.genders; i++) {
+                for (var i = 0; i < $scope.genders.length; i++) {
                     if ($scope.data.Gender == $scope.genders[i].value) {
+                        console.log($scope.genders[i]);
                         $scope.date.gender = $scope.genders[i];
                     }
                 }
@@ -130,18 +134,19 @@
                 $scope.date.gender = $scope.genders[0];
             }
             if (currentDate != 0) {
-                for (var i = 0; i < $scope.days; i++) {
+                
+                for (var i = 0; i < $scope.days.length; i++) {
                     if (currentDate.getDate() == $scope.days[i].value) {
                         $scope.date.day = $scope.days[i];
                     }
                 }
-                for (var i = 0; i < $scope.years; i++) {
-                    if (currentDate.getFullYear() == years[i].value) {
+                for (var i = 0; i < $scope.years.length; i++) {
+                    if (currentDate.getFullYear() == $scope.years[i].value) {
                         $scope.date.year = $scope.years[i];
                     }
                 }
-                for (var i = 0; i < $scope.months; i++) {
-                    if ((currentDate.getMonth() + 1) == months[i].value) {
+                for (var i = 0; i < $scope.months.length; i++) {
+                    if ((currentDate.getMonth() + 1) == $scope.months[i].value) {
                         $scope.date.month = $scope.months[i];
                     }
                 }
