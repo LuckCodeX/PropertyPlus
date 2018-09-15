@@ -6,8 +6,14 @@
     xhrService,
     $anchorScroll) {
     $scope.apartment = {};
-    $scope.apartments = [{ name: "Time City", value: "1" }, { name: "Royal City", value: "1" }];
-
+    $scope.apartments = [{ name: "Time City", value: "1" }, { name: "Royal City", value: "2s" }];
+    $scope.cities = [{ name: "Ha Noi", value: "1" }, { name: "Ho Chi Minh", value: "2" }];
+    $scope.names = [{ name: "Time City", value: "1" }, { name: "Royal City", value: "2" }];
+    $scope.loadStep1_1 = function() {
+        $scope.apartment.apartment = $scope.apartments[0];
+        $scope.apartment.city = $scope.cities[0];
+        $scope.apartment.name = $scope.names[0];
+    }
 }
 
 app.controller('HostCtrl', HostCtrl);

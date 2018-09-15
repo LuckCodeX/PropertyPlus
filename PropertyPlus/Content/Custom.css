@@ -2560,24 +2560,73 @@ footer {
 .content-listing-step {
     clear: both;
     margin-top: 60px;
+    min-height: 620px;
+    margin-bottom: 75px; 
 }
 .body-step-host-create {
     background-color: #F8F8F8;
 }
 .input-option {
-    display: inline-block;
+    
 }
     .input-option select {
-        padding: 6.1px 17px 8px 23px;
+        padding: 7.6px 17px 7.6px 15px;
         border: 1px solid #707070;
         border-radius: 3px;
         font-size: 16px;
+        width: 100%;
     }
         .input-option select option{
             font-size: 16px
         }
-        @media only screen and (max-width: 992px) {
-            .thumbnail-choose-home-column .slide-choose-home {
+.choose-apartment-option {
+    margin-top: 9px;
+    margin-bottom: 16px;
+    clear: both;
+}
+.choose-city-option {
+    margin-top: 9px;
+    margin-bottom: 32px;
+    clear: both;
+}
+.choose-name-option {
+    margin-bottom: 63px;
+}
+.btn-continue button {
+    border: none;
+    border-radius: 4px;
+    padding: 9px 21px;
+    background-color: #464878;
+    color: white;
+}
+.span {
+    display: inline-block;
+    width: auto;
+    line-height: 35px;
+}
+.input-text input {
+    padding: 8px 17px 8px 15px;
+    border: 1px solid #707070;
+    border-radius: 3px;
+    font-size: 14px;
+    width: 100%;
+}
+.input-text textarea {
+    padding: 8px 17px 8px 15px;
+    border: 1px solid #707070;
+    border-radius: 3px;
+    font-size: 14px;
+    width: 100%;
+}
+.choose-bedroom-option textarea {
+    height: 230px;
+    resize: none;
+}
+.content-listing-step .input-text, .choose-bedroom-option {
+    margin-top: 9px;
+}
+@media only screen and (max-width: 992px) {
+    .thumbnail-choose-home-column .slide-choose-home {
         height: 290px
     }
 
