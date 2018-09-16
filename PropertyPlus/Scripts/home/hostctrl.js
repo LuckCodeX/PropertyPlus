@@ -13,6 +13,12 @@
         $scope.apartment.apartment = $scope.apartments[0];
         $scope.apartment.city = $scope.cities[0];
         $scope.apartment.name = $scope.names[0];
+        $scope.another_img_1 = '';
+        $scope.another_img_2 = '';
+        $scope.another_img_3 = '';
+    }
+    $scope.test = function() {
+        console.log($scope.another_img_1);
     }
 }
 
