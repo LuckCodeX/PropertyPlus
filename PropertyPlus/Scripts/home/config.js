@@ -131,34 +131,40 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 templateUrl: "html/hostcreatestep13.html",
                 data: { pageTitle: 'Host' }
             })
-        .state('host.create.step21',
+        .state('host.create.step2',
             {
-                url: "/step-2-1",
+                url: "/step-2",
                 templateUrl: "html/hostcreatestep21.html",
                 data: { pageTitle: 'Host' }
             })
-        .state('host.create.step22',
+        //.state('host.create.step22',
+        //    {
+        //        url: "/step-2-2",
+        //        templateUrl: "html/hostcreatestep22.html",
+        //        data: { pageTitle: 'Host' }
+        //    })
+        .state('host.create.step3',
             {
-                url: "/step-2-2",
-                templateUrl: "html/hostcreatestep22.html",
-                data: { pageTitle: 'Host' }
-            })
-        .state('host.create.step31',
-            {
-                url: "/step-3-1",
+                url: "/step-3",
                 templateUrl: "html/hostcreatestep31.html",
                 data: { pageTitle: 'Host' }
             })
-        .state('host.create.step32',
-            {
-                url: "/step-3-2",
-                templateUrl: "html/hostcreatestep32.html",
-                data: { pageTitle: 'Host' }
-            })
+        //.state('host.create.step32',
+        //    {
+        //        url: "/step-3-2",
+        //        templateUrl: "html/hostcreatestep32.html",
+        //        data: { pageTitle: 'Host' }
+        //    })
         .state('host.create.step4',
             {
                 url: "/step-4",
                 templateUrl: "html/hostcreatestep4.html",
+                data: { pageTitle: 'Host' }
+        })
+        .state('host.createfinish',
+            {
+                url: "/create/finish",
+                templateUrl: "html/hostcreatefinish.html",
                 data: { pageTitle: 'Host' }
             });
 }

@@ -37,9 +37,9 @@
             <li class="@Html.IsSelected(action: "Blog") || @Html.IsSelected(action: "BlogDetail")">
                 <a href="@Url.Action("Blog", "Admin")"><i class="far fa-newspaper"></i> <span class="nav-label">Blog</span> </a>
             </li>
-            @*<li class="@Html.IsSelected(action: "Account") || @Html.IsSelected(action: "AccountDetail")">
-                    <a href="@Url.Action("Account", "Admin")"><i class="fas fa-user"></i> <span class="nav-label">Tài khoản</span> </a>
-                </li>*@
+            <li class="@Html.IsSelected(action: "Account") || @Html.IsSelected(action: "AccountDetail")">
+                <a href="@Url.Action("Account", "Admin")"><i class="fas fa-user"></i> <span class="nav-label">Tài khoản</span> </a>
+            </li>
             <li class="@Html.IsSelected(action: "SlideHome") || @Html.IsSelected(action: "SlideProject") || @Html.IsSelected(action: "SlideBlog")">
                 <a href="#"><i class="fas fa-book"></i> <span class="nav-label">Slide</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">

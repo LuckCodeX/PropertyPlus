@@ -105,32 +105,38 @@ namespace PropertyPlus
 
             routes.MapRoute(
                 name: "HostCreateStep21",
-                url: "host/create/step-2-1",
+                url: "host/create/step-2",
                 defaults: new { controller = "Home", action = "HostCreateStep21" }
             );
 
-            routes.MapRoute(
-                name: "HostCreateStep22",
-                url: "host/create/step-2-2",
-                defaults: new { controller = "Home", action = "HostCreateStep22" }
-            );
+            //routes.MapRoute(
+            //    name: "HostCreateStep22",
+            //    url: "host/create/step-2-2",
+            //    defaults: new { controller = "Home", action = "HostCreateStep22" }
+            //);
 
             routes.MapRoute(
                 name: "HostCreateStep31",
-                url: "host/create/step-3-1",
+                url: "host/create/step-3",
                 defaults: new { controller = "Home", action = "HostCreateStep31" }
             );
 
-            routes.MapRoute(
-                name: "HostCreateStep32",
-                url: "host/create/step-3-2",
-                defaults: new { controller = "Home", action = "HostCreateStep32" }
-            );
+            //routes.MapRoute(
+            //    name: "HostCreateStep32",
+            //    url: "host/create/step-3-2",
+            //    defaults: new { controller = "Home", action = "HostCreateStep32" }
+            //);
 
             routes.MapRoute(
                 name: "HostCreateStep4",
                 url: "host/create/step-4",
                 defaults: new { controller = "Home", action = "HostCreateStep4" }
+            );
+
+            routes.MapRoute(
+                name: "HostCreateFinish",
+                url: "host/create/finish",
+                defaults: new { controller = "Home", action = "HostCreateFinish" }
             );
 
             routes.MapRoute(

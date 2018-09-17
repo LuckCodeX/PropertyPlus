@@ -121,5 +121,10 @@ namespace PropertyPlus.Controllers
         {
             return View();
         }
+
+        public ActionResult HostCreateFinish()
+        {
+            return View();
+        }
     }
 }

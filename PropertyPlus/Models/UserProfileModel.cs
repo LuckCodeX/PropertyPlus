@@ -12,6 +12,7 @@ namespace PropertyPlus.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string CreatedString { get; set; }
         public string Avatar { get; set; }
         public string Avatar_Base64 { get; set; }
         public int Status { get; set; }
@@ -26,6 +27,7 @@ namespace PropertyPlus.Models
         public string Contact { get; set; }
         public string Description { get; set; }
         public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
         public string Token { get; set; }
     }
 }

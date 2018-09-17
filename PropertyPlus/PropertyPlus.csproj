@@ -701,6 +701,7 @@
     <Content Include="html\hostcreatestep31.html" />
     <Content Include="html\hostcreatestep32.html" />
     <Content Include="html\hostcreatestep4.html" />
+    <Content Include="html\hostcreatefinish.html" />
     <Content Include="html\hostdashboard.html" />
     <Content Include="html\hostlisting.html" />
     <Content Include="html\project.html" />
@@ -858,6 +859,9 @@
     <Content Include="Views\Home\HostCreateStep31.cshtml" />
     <Content Include="Views\Home\HostCreateStep32.cshtml" />
     <Content Include="Views\Home\HostCreateStep4.cshtml" />
+    <Content Include="Views\Admin\Account.cshtml" />
+    <Content Include="Views\Admin\AccountDetail.cshtml" />
+    <Content Include="Views\Home\HostCreateFinish.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

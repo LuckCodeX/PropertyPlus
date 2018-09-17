@@ -37,5 +37,7 @@ namespace PropertyPlus.Services
         void SaveUserVisit(user_visit userVisit);
         void DeleteUserVisit(user_visit userVisit);
         List<apartment> GetListVisitApartmentByUserProfileId(int userProfileId);
+        List<user_profile> SearchUserProfile(string search);
+        void DeleteAccount(int id);
     }
 }

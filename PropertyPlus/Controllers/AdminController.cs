@@ -110,6 +110,66 @@ namespace PropertyPlus.Controllers
         }
 
         [LoginActionFilter]
+        public ActionResult Account(int? page, string search)
+        {
+            var curPage = page ?? 1;
+            var accounts = _service.SearchUserProfile(search);
+            var accList = accounts.Select(p => new UserProfileModel()
+            {
+                FirstName = p.first_name,
+                LastName = p.last_name,
+                Email = p.email,
+                Id = p.user_profile_id,
+                CreatedString = ConvertDatetime.ConvertUnixTimeStampToDateTime(p.created_date)
+            });
+            return View(accList.ToPagedList(curPage, 10));
+        }
+
+        [LoginActionFilter]
+        public ActionResult AccountDetail(int id)
+        {
+            var userProfile = _service.GetActiveUserProfileById(id);
+            var model = new UserProfileModel()
+            {
+                Id = userProfile.user_profile_id,
+                FirstName = userProfile.first_name,
+                LastName = userProfile.last_name,
+                Email = userProfile.email
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AccountDetail(UserProfileModel model)
+        {
+            if (!Equals(model.Password, model.ConfirmPassword))
+            {
+                ModelState.AddModelError("ConfirmPassword", "Xác nhận mật khẩu không chính xác");
+                return View(model);
+            }
+
+            var userProfile = _service.GetActiveUserProfileById(model.Id);
+            userProfile.first_name = model.FirstName;
+            userProfile.last_name = model.LastName;
+            _service.SaveUserProfile(userProfile);
+
+            if (Equals(model.Password, null))
+            {
+                var userAccount = _service.GetUserAccountByUserProfileId(userProfile.user_profile_id);
+                userAccount.password = Encrypt.EncodePassword(model.Password);
+                _service.SaveUserAccount(userAccount);
+            }
+
+            return RedirectToAction("Account");
+        }
+
+        public ActionResult DeleteAccount(int id)
+        {
+            _service.DeleteAccount(id);
+            return RedirectToAction("Account");
+        }
+
+        [LoginActionFilter]
         public ActionResult Blog(int? page, int? type, string search)
         {
             int curPage = page ?? 1;

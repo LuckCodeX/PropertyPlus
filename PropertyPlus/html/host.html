@@ -4,9 +4,9 @@
             <a class="logo-header" ui-sref="home">
                 <img src="/Images/logo.svg" alt="Alternate Text" />
             </a>
-            <a href="#">Dashboard</a>
+            <a ui-sref="host.dashboard" ng-class="{active : $state.includes('host.dashboard')}">Dashboard</a>
             <a href="#">Manage</a>
-            <a href="#">Listing</a>
+            <a ui-sref="host.listing" ng-class="{active : $state.includes('host.listing')}">Listing</a>
             <a href="#">Help</a>
         </div>
         <div class="user-header-listing">
@@ -18,7 +18,7 @@
                 <a ui-sref="userprofile.edit" class="element-user-header-bar">Edit profile</a>
                 <a ui-sref="userprofile.setting" class="element-user-header-bar">Account setting</a>
                 <a ui-sref="userprofile.refer" class="element-user-header-bar">Refer</a>
-                <a ui-sref="userprofile.host" class="element-user-header-bar">Host</a>
+                <a ui-sref="host.dashboard" class="element-user-header-bar">Host</a>
                 <a ng-click="logout()" class="element-user-header-bar">Logout</a>
             </div>
         </div>
