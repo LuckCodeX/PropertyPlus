@@ -545,11 +545,14 @@ footer {
     background: #EDECEC;
 }
 
-.choose-home .btn-see-more button {
+.choose-home .btn-see-more a {
     background-color: #473D6F;
     color: white;
     height: 50px;
     width: 100%;
+    text-align: center;
+    padding: 13px 0;
+    display: inline-block
 }
 
 .choose-home .btn-see-more {
@@ -618,15 +621,18 @@ footer {
                 color: #484848;
             }
 
-.project-have-service .btn-explore-all button {
+.project-have-service .btn-explore-all a {
     background-color: #473D6F;
     color: white;
     height: 50px;
     width: 100%;
+    display: inline-block
 }
 
-.project-have-service .btn-explore-all button {
+.project-have-service .btn-explore-all a {
     margin-top: 9.8px;
+    text-align: center;
+    padding: 13px 0;
 }
 
 .homepage-news {
@@ -1415,6 +1421,7 @@ footer {
     background-color: #473D6F;
     height: 462px;
     padding-top: 20px;
+    margin-bottom: 20px;
 }
 
     .left-side-bar .menu-nav {
@@ -1918,7 +1925,7 @@ footer {
 .download-contract-user {
     float: right;
     margin-right: 7px;
-    margin-top: 28px;
+    margin-top: 0px;
 }
 
     .download-contract-user span {
@@ -1951,7 +1958,7 @@ footer {
     border-collapse: collapse;
 }
 
-    #billing-table .tr-first {
+    .tr-first {
         background-color: #E4E4E4;
     }
 
@@ -2580,14 +2587,14 @@ footer {
     
 }
     .input-option select {
-        padding: 7.6px 17px 7.6px 15px;
+        padding: 7.6px 17px 7.6px 8px;
         border: 1px solid #707070;
         border-radius: 3px;
-        font-size: 16px;
+        font-size: 14px;
         width: 100%;
     }
         .input-option select option{
-            font-size: 16px
+            font-size: 14px
         }
 .choose-apartment-option {
     margin-top: 9px;
@@ -2635,8 +2642,146 @@ footer {
 .content-listing-step .input-text, .choose-bedroom-option {
     margin-top: 9px;
 }
-@media only screen and (max-width: 992px) {
-    .thumbnail-choose-home-column .slide-choose-home {
+.footer-step {
+    margin-top: 34px;
+}
+.btn-back {
+    border: none;
+    border-radius: 3px;
+    background-color: transparent;
+    color: #464878;
+    position: relative;
+    padding: 2px 24px;
+    display: inline-block;
+}
+    .btn-back i {
+        color: #464878;
+        margin-right: 13px;
+        position: absolute;
+        left: 0;
+        bottom: 5px;
+    }
+.btn-next {
+    background-color: #464878;
+    color: white;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.btn-cancel {
+    background-color: transparent;
+    color: #464878;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.btn-change {
+    margin-top: 32px;
+    background-color: #473D6F;
+    color: white;
+    text-align: center;
+    padding: 8px 17px;
+    border: none;
+    border-radius: 3px;
+    display: inline-block
+}
+
+.step-2-1 .btn-upload{
+    width: 100%;
+    height: 153px;
+}
+
+    .step-2-1 .btn-upload .btn-file p, .step-2-1 .btn-upload .btn-file i {
+        color: #9A9A9A;
+    }
+.step-2-1 .btn-upload .btn-file i {
+    font-size: 22px;
+}
+
+.step-2-1 .btn-file {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    padding-top: 50px;
+    background-color: transparent;
+    border: 1px dashed #707070;
+}
+
+.another-img-upload {
+    margin-top: 26px;
+}
+.img-upload-current {
+    position: relative;
+}
+    .img-upload-current .img {
+        width: calc(100% - 30px);
+        height: 154px;
+        position: absolute;
+        top: 0;
+        left: 15px;
+        z-index: 10;
+        border-radius: 3px;
+    }
+.list-apartment-step .img-apartment {
+    width: 100%;
+    height: 168px;
+    margin-bottom: 10px;
+}
+.list-apartment-step .apartment-code, .list-apartment-step .apartment-facility, .list-apartment-step .apartment-address {
+    font-size: 11px;
+}
+    .list-apartment-step .price-text {
+        font-size: 23px;
+    }
+    .list-apartment-step .apartment-name {
+        font-size: 16px;
+    }
+.list-apartment-step .summary-apartment {
+    min-height: 130px;
+    position: relative;
+}
+.list-apartment-step .description-apartment {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.list-apartment-step .aparment-price {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.all-list-apartment {
+    height: 635px;
+    padding-right: 18px;
+    border-radius: 2px; 
+}
+    .all-list-apartment.scrollbar::-webkit-scrollbar {
+        width: 8.5px;
+        background-color: white;
+    }
+.text-price-input {
+    position: relative;
+}
+    .text-price-input input {
+        padding-left: 24px;
+    }
+    .text-price-input span {
+        position: absolute;
+        top: 9px;
+        left: 24px;
+    }
+.drag-drop-img {
+    margin-top: 26px;
+}
+    .step-2-1 .drag-drop-img .btn-file p i {
+        font-size: 31px;
+    }
+    @media only screen and (max-width: 992px) {
+        .thumbnail-choose-home-column .slide-choose-home {
         height: 290px
     }
 
@@ -2645,10 +2790,32 @@ footer {
     }
 }
 
+.label-overview {
+    clear: both;
+    margin-left: 11px;
+}
 
+#overview-table {
+    width: 100%;
+}
+    #overview-table th {
+        font-weight: 400;
+        padding: 7px 0;
+        font-size: 12px;
+    }
+    #overview-table tr:nth-child(2) td {
+        padding-top: 12px;
+    }
+    #overview-table tr td {
+        padding: 5px 0;
+        font-size: 12px;
+    }
+    #overview-table th:first-child, #overview-table tr td:first-child {
+        padding-left: 11px;
+    }
 
-@media only screen and (max-width: 600px) {
-    .pagination-apartment .pagination-sm {
+        @media only screen and (max-width: 600px) {
+            .pagination-apartment .pagination-sm {
         margin-left: 30%;
     }
 

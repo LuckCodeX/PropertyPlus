@@ -30,7 +30,6 @@
                         <div class="cropArea" style="width: 480px; height: 480px; display: none">
                             <img-crop image="myImage" area-min-size="480" result-image-size="480" result-image="data.Avatar_Base64" area-type="square" result-image-format="image/jpeg"></img-crop>
                         </div>
-                        <p>{{testt}}</p>
                         <div class="img-profile-photo">
                             <img ng-if="data.Avatar_Base64 == null" src="/Upload/avatar/{{data.Avatar}}" alt="Alternate Text" />
                             <img ng-if="data.Avatar_Base64 != null" ng-src="{{data.Avatar_Base64}}" id="Avatar_Base64" alt="Alternate Text"/>

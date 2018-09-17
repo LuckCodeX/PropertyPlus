@@ -620,3 +620,4 @@ app.directive('pageTitle', pageTitle)
     .directive('filereaded', fileReaded)
     .directive('openHour', openHour)
     .directive('googleplace', googleplace);
+
