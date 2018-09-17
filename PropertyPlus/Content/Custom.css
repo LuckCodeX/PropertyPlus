@@ -86,6 +86,12 @@ header .search-box {
 
 .list-apartment .google-map {
     height: 774px;
+    padding-top: 10px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin-bottom: 20px;
 }
 
 header .search-box input {
@@ -1312,10 +1318,11 @@ footer {
 }
 
 .quantity-service {
-    margin-left: 81.3px;
+    width: 50px;
+    margin-left: 61.3px;
 }
 
-.line-service:nth-child(6) {
+.line-service:nth-child(7) {
     margin-bottom: 80px;
 }
 
@@ -2313,26 +2320,40 @@ footer {
     
 }
 
-    .menu-header-listing ul li {
+    .menu-header-listing a {
         width: 81px;
         margin-right: 18px;
         text-align: center;
         display: inline-block;
-        padding: 26px 0;
+        
     }
+        .menu-header-listing a:first-child:hover {
+            border: none;
+        }
 
-        .menu-header-listing ul li:hover, .menu-header-listing ul li.active {
+        .menu-header-listing a:hover, .menu-header-listing a.active {
             padding-bottom: 19px;
             border-bottom: 7px solid #464878;
         }
 
-        .menu-header-listing ul li:first-child {
+        .menu-header-listing a:first-child {
             text-align: left;
         }
 
-        .menu-header-listing ul li a {
+        .menu-header-listing a {
+            
             color: black;
+            padding: 26px 0;
         }
+.header-listing-dasboard .menu-header-listing a:first-child img {
+    height: 46.28px;
+    width: 46.28px;
+}
+
+.header-listing-dasboard .menu-header-listing a:first-child {
+    padding-top: 14px;
+    margin-right: 0px;
+}
 
 .user-header-listing {
     margin-right: 31px;
@@ -2780,6 +2801,36 @@ footer {
     .step-2-1 .drag-drop-img .btn-file p i {
         font-size: 31px;
     }
+.user-header-listing:hover .menu-user-header-bar {
+    display: block;
+}
+.user-header-listing .menu-user-header-bar:hover {
+    display: block;
+}
+
+.user-header-listing .menu-user-header-bar {
+    padding-top: 13px;
+    background-color: white;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    z-index: 99;
+}
+
+    .user-header-listing .menu-user-header-bar .element-user-header-bar {
+        display: block;
+        line-height: 24px;
+        width: 219px;
+        padding: 14px 0px 12px 10px;
+        border: 1px solid #E4E4E4;
+        border-bottom: none;
+        color: black;
+    }
+
+        .user-header-listing .menu-user-header-bar .element-user-header-bar:hover {
+            background-color: #F8F8F8;
+        }
     @media only screen and (max-width: 992px) {
         .thumbnail-choose-home-column .slide-choose-home {
         height: 290px

@@ -209,59 +209,59 @@
         </div>
         <div class="line-service">
             <span class="float-left sm-text">Service package:</span>
-            <span class="float-right" style="margin-left: 18px">Recommend</span>
-            <span class="float-right">Custom</span>
+            <span class="float-right" style="margin: 0 18px">Custom</span>
+            <span class="float-right">Recommend</span>
         </div>
         <div class="line-service">
-            <input class="float-right radio-service" type="radio" name="1" />
-            <input class="float-right radio-service" type="radio" name="1" checked />
+            <input class="float-right radio-service radio-custom" id="radio-custom" type="radio" name="1" />
+            <input class="float-right radio-service radio-recommend" id="radio-recommend" type="radio" name="1" checked />
         </div>
         <div class="line-service bg-gray">
             <p class="inline float-left">Mantance & management fee</p>
-            <input class="float-right radio-service" type="radio" name="a" />
-            <input class="float-right radio-service" type="radio" name="a" checked />
+            <input class="float-right radio-service radio-custom" type="radio" name="a" />
+            <input class="float-right radio-service radio-recommend" type="radio" name="a" checked />
         </div>
         <div class="line-service">
             <p class="inline float-left">High speed internet/ wifi</p>
-            <input class="float-right radio-service" type="radio" name="b" />
-            <input class="float-right radio-service" type="radio" name="b" checked />
+            <input class="float-right radio-service radio-custom" type="radio" name="b" />
+            <input class="float-right radio-service radio-recommend" type="radio" name="b" checked />
         </div>
         <div class="line-service bg-gray">
             <p class="inline float-left">Foreign cable TV </p>
-            <input class="float-right radio-service" type="radio" name="c" />
-            <input class="float-right radio-service" type="radio" name="c" checked />
+            <input class="float-right radio-service radio-custom" type="radio" name="c" />
+            <input class="float-right radio-service radio-recommend" type="radio" name="c" checked />
         </div>
         <div class="line-service bg-gray">
             <p class="inline float-left">Laundry & Cleaning  </p>
-            <input class="float-right radio-service" type="radio" name="d" />
-            <input class="float-right radio-service" type="radio" name="d" checked />
+            <input class="float-right radio-service radio-custom" type="radio" name="d" />
+            <input class="float-right radio-service radio-recommend" type="radio" name="d" checked />
         </div>
-        <div class="line-service">
+        <div class="line-service" ng-init="cleaning = 1">
             <div class="float-right group-btn-service">
-                <button class="minus">-</button>
-                <button class="plus">+</button>
+                <button class="minus" ng-click="cleaning = cleaning - 1">-</button>
+                <button class="plus" ng-click="cleaning = cleaning + 1">+</button>
             </div>
-            <span class="float-right quantity-service">3</span>
+            <span class="float-right quantity-service">{{cleaning}}</span>
             <span class="float-right sm-text">Times per week</span>
         </div>
         <div class="line-service bg-gray">
             <p class="inline float-left">Drinking water</p>
-            <input class="float-right radio-service" type="radio" name="e" />
-            <input class="float-right radio-service" type="radio" name="e" checked />
+            <input class="float-right radio-service radio-custom" type="radio" name="e" />
+            <input class="float-right radio-service radio-recommend" type="radio" name="e" checked />
         </div>
-        <div class="line-service">
+        <div class="line-service" ng-init="bottle = 1">
             <div class="float-right group-btn-service">
-                <button class="minus">-</button>
-                <button class="plus">+</button>
+                <button class="minus" ng-click="bottle = bottle - 1">-</button>
+                <button class="plus" ng-click="bottle = bottle + 1">+</button>
             </div>
-            <span class="float-right quantity-service">3</span>
+            <span class="float-right quantity-service">{{bottle}}</span>
             <span class="float-right sm-text">Bottles</span>
         </div>
 
         <div class="line-service bg-gray">
             <span class="float-left sm-text">Electric & water  bill</span>
-            <input class="float-right radio-service" type="radio" name="g" />
-            <input class="float-right radio-service" type="radio" name="g" checked />
+            <input class="float-right radio-service radio-custom" type="radio" name="g" />
+            <input class="float-right radio-service radio-recommend" type="radio" name="g" checked />
 
         </div>
 
@@ -469,7 +469,20 @@
 </div>
 </div>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
+
+        $('#radio-custom').click(function() {
+            $(".radio-custom").each(function (index) {
+                var status = $("#radio-custom").prop("checked");
+                $(this).prop("checked",status);
+            });
+        });
+        $('#radio-recommend').click(function () {
+            $(".radio-recommend").each(function (index) {
+                var status = $("#radio-recommend").prop("checked");
+                $(this).prop("checked", status);
+            });
+        });
 
         var owl = $('.tour-this-home .owl-carousel');
         owl.owlCarousel({

@@ -1,16 +1,26 @@
 ﻿<div ng-controller="HostCtrl">
     <div class="header-listing-dasboard">
         <div class="menu-header-listing">
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Manage</a></li>
-                <li><a href="#">Listing</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
+            <a class="logo-header" ui-sref="home">
+                <img src="/Images/logo.svg" alt="Alternate Text" />
+            </a>
+            <a href="#">Dashboard</a>
+            <a href="#">Manage</a>
+            <a href="#">Listing</a>
+            <a href="#">Help</a>
         </div>
         <div class="user-header-listing">
             <a class="user-name-header" href="#">John Wick</a>
             <img src="Images/img-demo.png" alt="Alternate Text" />
+            <div class="menu-user-header-bar">
+                <a ui-sref="userprofile.general" class="element-user-header-bar">General</a>
+                <a ui-sref="userprofile.manage" class="element-user-header-bar">Manage</a>
+                <a ui-sref="userprofile.edit" class="element-user-header-bar">Edit profile</a>
+                <a ui-sref="userprofile.setting" class="element-user-header-bar">Account setting</a>
+                <a ui-sref="userprofile.refer" class="element-user-header-bar">Refer</a>
+                <a ui-sref="userprofile.host" class="element-user-header-bar">Host</a>
+                <a ng-click="logout()" class="element-user-header-bar">Logout</a>
+            </div>
         </div>
     </div>
     <div ui-view class="body-content">
