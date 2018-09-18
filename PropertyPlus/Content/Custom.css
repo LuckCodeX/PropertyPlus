@@ -1278,7 +1278,7 @@ footer {
 .body-service {
     background: white;
     border: 1px solid #473E70;
-    height: 580px;
+    height: 750px;
     padding: 20.6px 25px;
 }
 
@@ -1289,15 +1289,19 @@ footer {
 .line-service {
     clear: both;
     display: block;
-    height: 30px;
-    padding: 5px 0 5px 5px;
+    height: 50px;
+    padding: 11px 0 5px 5px;
     width: 100%;
 }
 
-.header-service p, .header-service span {
-    color: white;
-    font-size: 14px;
-}
+    .line-service p, .line-service .quantity-service, .line-service .checkbox-service, .line-service .group-btn-service, .line-service .electric-bill-block {
+        margin-top: 3px;
+    }
+
+    .header-service p, .header-service span {
+        color: white;
+        font-size: 14px;
+    }
 
     .header-service span:last-child {
         color: #F0D66A;
@@ -2939,14 +2943,26 @@ footer {
     font-size: 12px;
 }
 .select-foreign-tv {
+    padding: 5px;
+    margin-right: 30px;
     border: none;
     background: transparent;
+    text-indent: 5px;
 }
-.electric-bill-input {
-    width: 50px;
-    border: none;
-    background: transparent;
-}
+    .select-foreign-tv option {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 5px;
+    }
+    .select-foreign-tv:focus {
+        background: white;
+    }
+    .electric-bill-input {
+        width: 50px;
+        border: none;
+        background: transparent;
+    }
 .electric-bill-block {
     width: 70px;
     margin-right: 45px;
@@ -2965,6 +2981,10 @@ footer {
 /*.apartment-detail-body {
     margin-top: 30px;
 }*/
+.line-service.small-line {
+    height: 30px;
+    padding: 5px 0 5px 5px;
+}
 @media only screen and (max-width: 992px) {
     .thumbnail-choose-home-column .slide-choose-home {
         height: 290px
