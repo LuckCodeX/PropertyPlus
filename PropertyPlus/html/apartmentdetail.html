@@ -195,26 +195,26 @@
         <p class="label-service">
             Estimate price included service:
         </p>
-        <span class="price-service-left float-left med-text">{{perNightPrice}} $ /per night</span>
+        <span class="price-service-left float-left med-text">{{perNightPrice}} $ / per night</span>
         <span class="price-service-right float-right med-text">$ {{totalPrice}} / per month</span>
     </div>
     <div class="body-service">
-        <div class="line-service">
+        <div class="line-service small-line">
             <span class="net-price-label float-left med-text">Apartment net price</span>
             <span class="net-price-value float-right med-text">$ {{apartmentPrice}} / month</span>
         </div>
-        <div class="line-service">
+        <div class="line-service small-line">
             <span class="total-price-label float-left med-text">Service total price:</span>
             <span class="total-price-value float-right med-text">$ {{servicePrice}} / month</span>
         </div>
-        <div class="line-service">
+        <div class="line-service small-line">
             <span class="float-left sm-text">Service package:</span>
             <span class="float-right" style="margin-right: 54px">Custom</span>
             <span class="float-right" style="margin-right: 66px">Basic</span>
         </div>
-        <div class="line-service">
-            <input class="float-right" style="margin-right: 63px" id="radioCustom" ng-click="radioService()" type="radio" name="a"  />
-            <input class="float-right  " style="margin-right: 63px" id="radioBasic" ng-click="radioService()" type="radio" name="a" checked/>
+        <div class="line-service small-line">
+            <input class="float-right" style="  margin-bottom: 20px; margin-right: 70px" id="radioCustom" ng-click="radioService()" type="radio" name="a"  />
+            <input class="float-right  " style="  margin-bottom: 20px;margin-right: 63px" id="radioBasic" ng-click="radioService()" type="radio" name="a" checked/>
 
         </div>
         <div class="line-service bg-gray" ng-class="basic">
@@ -278,7 +278,7 @@
         </div>
 
         <div class="line-service bg-gray" ng-class="basic" ng-click="changeService()">
-            <span class="float-left sm-text">Electric & water  bill</span>
+            <p class="float-left sm-text">Electric & water  bill</p>
             <div class="electric-bill-block float-right">
                 <span>$ </span><input type="text" ng-change="changeBill();changeService()" ng-model="electricBill" class="electric-bill-input" name="electric-bill" />
             </div>
