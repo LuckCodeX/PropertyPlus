@@ -711,7 +711,14 @@
     <Content Include="html\hostcreatestep4.html" />
     <Content Include="html\hostcreatefinish.html" />
     <Content Include="html\hostdashboard.html" />
+    <Content Include="html\hostmanagedescribe.html" />
+    <Content Include="html\hostmanageinformation.html" />
     <Content Include="html\hostlisting.html" />
+    <Content Include="html\hostmanagelocation.html" />
+    <Content Include="html\hostmanage.html" />
+    <Content Include="html\hostmanageoverview.html" />
+    <Content Include="html\hostmanagephoto.html" />
+    <Content Include="html\hostmanageproblem.html" />
     <Content Include="html\project.html" />
     <Content Include="html\userprofile.html" />
     <Content Include="html\userprofileedit.html" />
