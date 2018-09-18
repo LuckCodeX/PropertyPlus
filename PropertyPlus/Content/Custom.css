@@ -1007,7 +1007,7 @@ footer {
     text-align: center;
 }
 
-    .apartment-interacts p i {
+    .apartment-interact i {
         color: white;
         font-size: 23px;
         text-shadow: 0px 0px 3px black;
@@ -1017,13 +1017,14 @@ footer {
     font-size: 8px;
 }
 
-.apartment-interacts p i.fa-bookmark:hover {
+.apartment-interact i.fa-bookmark:hover {
     color: #7698E7;
 }
 
-.apartment-interacts p i.fa-heart:hover {
+.apartment-interact i.fa-heart:hover {
     color: #FF7487;
 }
+
 
 /* Style the active class, and buttons on mouse-over */
 
@@ -1277,7 +1278,7 @@ footer {
 .body-service {
     background: white;
     border: 1px solid #473E70;
-    height: 700px;
+    height: 580px;
     padding: 20.6px 25px;
 }
 
@@ -1311,20 +1312,15 @@ footer {
     border: 1px solid black;
     border-radius: 3px;
     height: 22px;
-    margin-left: 67px;
     margin-right: 18px;
     position: relative;
     width: 52px;
 }
 
 .quantity-service {
-    width: 50px;
-    margin-left: 61.3px;
+    width: 40px;
 }
 
-.line-service:nth-child(7) {
-    margin-bottom: 80px;
-}
 
 .bg-gray {
     background-color: #F2F2F2 !important;
@@ -1376,7 +1372,6 @@ footer {
     background: #473d6f;
     border-radius: 6px;
     color: white;
-    margin-left: 14%;
     margin-top: 30px;
     padding: 17px 0;
     width: 70%;
@@ -2834,8 +2829,144 @@ footer {
         .user-header-listing .menu-user-header-bar .element-user-header-bar:hover {
             background-color: #F8F8F8;
         }
-    @media only screen and (max-width: 992px) {
-        .thumbnail-choose-home-column .slide-choose-home {
+.material-checkbox {
+    position: relative;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+    font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+    .material-checkbox > input {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        position: absolute;
+        z-index: -1;
+        left: -15px;
+        top: -15px;
+        display: block;
+        margin: 0;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        background-color: rgba(0, 0, 0, 0.42);
+        outline: none;
+        opacity: 0;
+        transform: scale(1);
+        -ms-transform: scale(0); /* Graceful degradation for IE */
+        transition: opacity 0.5s, transform 0.5s;
+    }
+
+        .material-checkbox > input:checked {
+            background-color: #2196f3;
+        }
+
+    .material-checkbox:active > input {
+        opacity: 1;
+        transform: scale(0);
+        transition: opacity 0s, transform 0s;
+    }
+
+    .material-checkbox > input:disabled {
+        opacity: 0;
+    }
+
+        .material-checkbox > input:disabled + span {
+            color: rgba(0, 0, 0, 0.38);
+            cursor: initial;
+        }
+
+    .material-checkbox > span::before {
+        content: "";
+        display: inline-block;
+        margin-right: 15px;
+        border: solid 2px #56be8e;
+        border-radius: 2px;
+        width: 19px;
+        height: 19px;
+        vertical-align: -4px;
+        transition: border-color 0.5s, background-color 0.5s;
+    }
+
+    .material-checkbox > input:checked + span::before {
+        border-color: #56be8e;
+        background-color: #56be8e;
+    }
+
+    .material-checkbox > input:active + span::before {
+        border-color: #56be8e;
+    }
+
+    .material-checkbox > input:checked:active + span::before {
+        border-color: transparent;
+        background-color: rgba(0, 0, 0, 0.42);
+    }
+
+    .material-checkbox > input:disabled + span::before {
+        border-color: rgba(0, 0, 0, 0.26);
+    }
+
+    .material-checkbox > input:checked:disabled + span::before {
+        border-color: transparent;
+        background-color: rgba(0, 0, 0, 0.26);
+    }
+
+    .material-checkbox > span::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        width: 7px;
+        height: 13px;
+        border: solid 2px transparent;
+        border-left: none;
+        border-top: none;
+        transform: translate(5.5px, 1px) rotate(45deg);
+        -ms-transform: translate(5.5px, 2px) rotate(45deg);
+    }
+
+    .material-checkbox > input:checked + span::after {
+        border-color: #fff;
+    }
+.checkbox-service {
+    margin-right: 80px;
+}
+.select-foreign-tv option{
+    font-size: 12px;
+}
+.select-foreign-tv {
+    border: none;
+    background: transparent;
+}
+.electric-bill-input {
+    width: 50px;
+    border: none;
+    background: transparent;
+}
+.electric-bill-block {
+    width: 70px;
+    margin-right: 45px;
+}
+.apartment-service-box .apartment-interact {
+    margin: 0;
+    margin-top: 40px;
+}
+.service-basic {
+    pointer-events: none;
+    opacity: 0.5;
+}
+.electric-bill-input:hover, .electric-bill-input:focus {
+    background: white;
+}
+/*.apartment-detail-body {
+    margin-top: 30px;
+}*/
+@media only screen and (max-width: 992px) {
+    .thumbnail-choose-home-column .slide-choose-home {
         height: 290px
     }
 
@@ -2875,6 +3006,13 @@ footer {
 .btn-next:hover {
     opacity: 0.8;
     color: white;
+}
+
+.group-btn-service button.minus:disabled,
+.group-btn-service button.minus[disabled],
+.group-btn-service button.plus:disabled,
+.group-btn-service button.plus[disabled] {
+    background-color: #cccccc;
 }
 
 @media only screen and (max-width: 600px) {
