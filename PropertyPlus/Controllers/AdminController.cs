@@ -170,6 +170,112 @@ namespace PropertyPlus.Controllers
         }
 
         [LoginActionFilter]
+        public ActionResult Project(int? page, string search)
+        {
+            int curPage = page ?? 1;
+            var projects = _service.SearchProjectList(search);
+            var projectList = projects.Select(p => new ProjectModel()
+            {
+                Id = p.project_id,
+                Img = p.img,
+                Content = _service.ConvertProjectContentToModel(p.project_content.FirstOrDefault(q => q.language == 0))
+            });
+            ViewBag.KeySearch = search;
+            return View(projectList.ToPagedList(curPage, 10));
+        }
+
+        [LoginActionFilter]
+        public ActionResult ProjectDetail(int? id)
+        {
+            ProjectModel model;
+            if (!Equals(id, null))
+            {
+                var project = _service.GetProjectById(id.Value);
+                var projectContent = project.project_content.Select(p => new ProjectContentModel()
+                {
+                    Id = p.project_content_id,
+                    Name = p.name
+                }).ToList();
+                model = new ProjectModel()
+                {
+                    Id = project.project_id,
+                    Img = project.img,
+                    ContentList = projectContent
+                };
+            }
+            else
+            {
+                var projectContent = new List<ProjectContentModel>();
+                for (int i = 0; i < 3; i++)
+                {
+                    var content = new ProjectContentModel()
+                    {
+                        Id = 0,
+                        Language = i
+                    };
+                    projectContent.Add(content);
+                }
+                model = new ProjectModel()
+                {
+                    Id = 0,
+                    ContentList = projectContent
+                };
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ProjectDetail(ProjectModel model)
+        {
+            var project = _service.GetProjectById(model.Id);
+            if (Equals(project, null))
+            {
+                project = new project()
+                {
+                    project_id = 0
+                };
+            }
+            if (!Equals(model.ImageFile, null))
+            {
+                string fileName = "Project_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
+                string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                model.ImageFile.SaveAs(path);
+                project.img = fileName;
+            }
+            _service.SaveProject(project);
+
+            int idx = 0;
+            foreach (var projectContent in model.ContentList)
+            {
+                var content = _service.GetProjectContentById(projectContent.Id);
+                if (Equals(content, null))
+                {
+                    content = new project_content()
+                    {
+                        project_content_id = 0,
+                        project_id = project.project_id,
+                        language = idx
+                    };
+                }
+                content.name = projectContent.Name;
+                _service.SaveProjectContent(content);
+                idx++;
+            }
+
+            return RedirectToAction("Project");
+        }
+
+        public ActionResult DeleteProject(int id)
+        {
+            var project = _service.GetProjectById(id);
+            project.status = 2;
+            _service.SaveProject(project);
+            return RedirectToAction("Project");
+        }
+
+        [LoginActionFilter]
         public ActionResult Blog(int? page, int? type, string search)
         {
             int curPage = page ?? 1;
@@ -243,14 +349,13 @@ namespace PropertyPlus.Controllers
                     created_date = ConvertDatetime.GetCurrentUnixTimeStamp()
                 };
             }
-            string fileName = null;
             if (!Equals(model.ImageFile, null))
             {
-                fileName = "Blog_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
+                string fileName = "Blog_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
                 string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
                 model.ImageFile.SaveAs(path);
+                blog.img = fileName;
             }
-            blog.img = fileName;
             blog.type = model.Type;
             _service.SaveBlog(blog);
 

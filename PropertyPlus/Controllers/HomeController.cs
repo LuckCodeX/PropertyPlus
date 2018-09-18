@@ -126,5 +126,35 @@ namespace PropertyPlus.Controllers
         {
             return View();
         }
+
+        public ActionResult HostManageOverview()
+        {
+            return View();
+        }
+
+        public ActionResult HostManageProblem()
+        {
+            return View();
+        }
+
+        public ActionResult HostManageDescribe()
+        {
+            return View();
+        }
+
+        public ActionResult HostManageInformation()
+        {
+            return View();
+        }
+
+        public ActionResult HostManagePhoto()
+        {
+            return View();
+        }
+
+        public ActionResult HostManageLocation()
+        {
+            return View();
+        }
     }
 }

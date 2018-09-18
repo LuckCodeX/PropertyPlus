@@ -39,5 +39,11 @@ namespace PropertyPlus.Services
         List<apartment> GetListVisitApartmentByUserProfileId(int userProfileId);
         List<user_profile> SearchUserProfile(string search);
         void DeleteAccount(int id);
+        List<project> SearchProjectList(string search);
+        ProjectContentModel ConvertProjectContentToModel(project_content model);
+        project GetProjectById(int id);
+        void SaveProject(project project);
+        project_content GetProjectContentById(int id);
+        void SaveProjectContent(project_content content);
     }
 }

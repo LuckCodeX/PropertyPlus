@@ -166,6 +166,49 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/create/finish",
                 templateUrl: "html/hostcreatefinish.html",
                 data: { pageTitle: 'Host' }
+        })
+        .state('host.manage',
+            {
+                url: "/manage",
+                abstract: true,
+                templateUrl: "html/hostmanage.html",
+                data: { pageTitle: 'Host' }
+        })
+        .state('host.manage.overview',
+            {
+                url: "/overview",
+                templateUrl: "html/hostoverview.html",
+                data: { pageTitle: 'Host' }
+        })
+        .state('host.manage.problem',
+            {
+                url: "/problem",
+                templateUrl: "html/hostproblem.html",
+                data: { pageTitle: 'Host' }
+        })
+        .state('host.manage.describe',
+            {
+                url: "/overview",
+                templateUrl: "html/hostdescribe.html",
+                data: { pageTitle: 'Host' }
+        })
+        .state('host.manage.information',
+            {
+                url: "/overview",
+                templateUrl: "html/hostinformation.html",
+                data: { pageTitle: 'Host' }
+        })
+        .state('host.manage.photo',
+            {
+                url: "/overview",
+                templateUrl: "html/hostphoto.html",
+                data: { pageTitle: 'Host' }
+        })
+        .state('host.manage.location',
+            {
+                url: "/location",
+                templateUrl: "html/hostlocation.html",
+                data: { pageTitle: 'Host' }
             });
 }
 

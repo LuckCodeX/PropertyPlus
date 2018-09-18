@@ -34,7 +34,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -233,6 +233,13 @@
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PagingResult.cs" />
+    <Compile Include="Models\project.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjectModel.cs" />
+    <Compile Include="Models\project_content.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PropertyPlusEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -270,6 +277,7 @@
     <Compile Include="Services\BlogService.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\ProjectService.cs" />
     <Compile Include="Services\Services.cs" />
     <Compile Include="Services\SlideService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -862,6 +870,14 @@
     <Content Include="Views\Admin\Account.cshtml" />
     <Content Include="Views\Admin\AccountDetail.cshtml" />
     <Content Include="Views\Home\HostCreateFinish.cshtml" />
+    <Content Include="Views\Admin\Project.cshtml" />
+    <Content Include="Views\Admin\ProjectDetail.cshtml" />
+    <Content Include="Views\Home\HostManageOverview.cshtml" />
+    <Content Include="Views\Home\HostManageProblem.cshtml" />
+    <Content Include="Views\Home\HostManageDescribe.cshtml" />
+    <Content Include="Views\Home\HostManageInformation.cshtml" />
+    <Content Include="Views\Home\HostManagePhoto.cshtml" />
+    <Content Include="Views\Home\HostManageLocation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

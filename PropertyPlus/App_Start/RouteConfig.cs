@@ -140,6 +140,42 @@ namespace PropertyPlus
             );
 
             routes.MapRoute(
+                name: "HostManageOverview",
+                url: "host/manage/overview",
+                defaults: new { controller = "Home", action = "HostManageOverview" }
+            );
+
+            routes.MapRoute(
+                name: "HostManageProblem",
+                url: "host/manage/problem",
+                defaults: new { controller = "Home", action = "HostManageProblem" }
+            );
+
+            routes.MapRoute(
+                name: "HostManageDescribe",
+                url: "host/manage/describe",
+                defaults: new { controller = "Home", action = "HostManageDescribe" }
+            );
+
+            routes.MapRoute(
+                name: "HostManageInformation",
+                url: "host/manage/information",
+                defaults: new { controller = "Home", action = "HostManageInformation" }
+            );
+
+            routes.MapRoute(
+                name: "HostManagePhoto",
+                url: "host/manage/photo",
+                defaults: new { controller = "Home", action = "HostManagePhoto" }
+            );
+
+            routes.MapRoute(
+                name: "HostManageLocation",
+                url: "host/manage/location",
+                defaults: new { controller = "Home", action = "HostManageLocation" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

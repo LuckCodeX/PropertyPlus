@@ -32,6 +32,8 @@
     <NavigationProperty Name="apartment_facility" Relationship="Self.FK__apartment__apart__276EDEB3" FromRole="apartment" ToRole="apartment_facility" />
     <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="apartment" ToRole="user_profile" />
     <NavigationProperty Name="user_visit" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="apartment" ToRole="user_visit" />
+    <Property Name="project_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="project" Relationship="PropertyPlusModel.FK__apartment__proje__4AB81AF0" FromRole="apartment" ToRole="project" />
   </EntityType>
   <EntityType Name="apartment_content">
     <Key>
@@ -208,6 +210,16 @@
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="user_visit" EntitySet="user_visit" />
     </AssociationSet>
+    <EntitySet Name="projects" EntityType="PropertyPlusModel.project" />
+    <EntitySet Name="project_content" EntityType="PropertyPlusModel.project_content" />
+    <AssociationSet Name="FK__apartment__proje__4AB81AF0" Association="PropertyPlusModel.FK__apartment__proje__4AB81AF0">
+      <End Role="project" EntitySet="projects" />
+      <End Role="apartment" EntitySet="apartments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__project_c__proje__4E88ABD4" Association="PropertyPlusModel.FK__project_c__proje__4E88ABD4">
+      <End Role="project" EntitySet="projects" />
+      <End Role="project_content" EntitySet="project_content" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="admin">
     <Key>
@@ -347,6 +359,54 @@
       </Principal>
       <Dependent Role="user_visit">
         <PropertyRef Name="user_profile_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="project_id" />
+    </Key>
+    <Property Name="project_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="img" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="apartments" Relationship="PropertyPlusModel.FK__apartment__proje__4AB81AF0" FromRole="project" ToRole="apartment" />
+    <NavigationProperty Name="project_content" Relationship="PropertyPlusModel.FK__project_c__proje__4E88ABD4" FromRole="project" ToRole="project_content" />
+  </EntityType>
+  <EntityType Name="project_content">
+    <Key>
+      <PropertyRef Name="project_content_id" />
+    </Key>
+    <Property Name="project_content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="project_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="language" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="project" Relationship="PropertyPlusModel.FK__project_c__proje__4E88ABD4" FromRole="project_content" ToRole="project" />
+  </EntityType>
+  <Association Name="FK__apartment__proje__4AB81AF0">
+    <End Type="PropertyPlusModel.project" Role="project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="project_id" />
+      </Principal>
+      <Dependent Role="apartment">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__project_c__proje__4E88ABD4">
+    <End Type="PropertyPlusModel.project" Role="project" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PropertyPlusModel.project_content" Role="project_content" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="project">
+        <PropertyRef Name="project_id" />
+      </Principal>
+      <Dependent Role="project_content">
+        <PropertyRef Name="project_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

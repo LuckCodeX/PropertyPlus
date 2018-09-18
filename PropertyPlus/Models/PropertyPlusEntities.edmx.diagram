@@ -28,6 +28,10 @@
         <EntityTypeShape EntityType="PropertyPlusModel.user_visit" Width="1.5" PointX="5.25" PointY="10.75" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_visi__apart__44FF419A" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_visi__user___440B1D61" />
+        <EntityTypeShape EntityType="PropertyPlusModel.project" Width="1.5" PointX="10.375" PointY="3.875" />
+        <EntityTypeShape EntityType="PropertyPlusModel.project_content" Width="1.5" PointX="12.625" PointY="3.875" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__proje__4AB81AF0" />
+        <AssociationConnector Association="PropertyPlusModel.FK__project_c__proje__4E88ABD4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -29,14 +29,28 @@
                     @using (Html.BeginForm("BlogDetail", "Admin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
                     {
                         @Html.HiddenFor(m => m.Id)
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Ảnh mô tả</label>
-                            <div class="col-sm-9">
-                                @Html.TextBoxFor(m => m.ImageFile, new { type = "file", accept = "image/*", onchange = "previewImage(event)", @class = "form-control", required = true })
-                                <img src='~/Upload/@Model.Img' alt="" id="instrumentImage"
-                                     height="150" />
+                        if (Model.Id == 0)
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh mô tả</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.ImageFile, new { type = "file", accept = "image/*", onchange = "previewImage(event)", @class = "form-control", required = true })
+                                    <img src='~/Upload/@Model.Img' alt="" id="instrumentImage"
+                                         height="150" />
+                                </div>
                             </div>
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh mô tả</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.ImageFile, new { type = "file", accept = "image/*", onchange = "previewImage(event)", @class = "form-control" })
+                                    <img src='~/Upload/@Model.Img' alt="" id="instrumentImage"
+                                         height="150" />
+                                </div>
+                            </div>
+                        }
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Thể loại</label>
@@ -59,6 +73,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div id="tab-1" class="tab-pane active">
+                                    @Html.HiddenFor(m => m.ContentList[0].Id)
                                     <div class="panel-body">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Tiêu đề</label>
@@ -77,12 +92,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Nội dung</label>
                                             <div class="col-sm-9">
-                                                @Html.TextAreaFor(m => m.ContentList[0].Content, new {@required = true })
+                                                @Html.TextAreaFor(m => m.ContentList[0].Content, new { @required = true })
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="tab-2" class="tab-pane">
+                                    @Html.HiddenFor(m => m.ContentList[1].Id)
                                     <div class="panel-body">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Tiêu đề</label>
@@ -101,12 +117,13 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Nội dung</label>
                                             <div class="col-sm-9">
-                                                @Html.TextAreaFor(m => m.ContentList[1].Content, new{@required = true })
+                                                @Html.TextAreaFor(m => m.ContentList[1].Content, new { @required = true })
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div id="tab-3" class="tab-pane">
+                                    @Html.HiddenFor(m => m.ContentList[2].Id)
                                     <div class="panel-body">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Tiêu đề</label>
@@ -125,7 +142,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Nội dung</label>
                                             <div class="col-sm-9">
-                                                @Html.TextAreaFor(m => m.ContentList[2].Content, new {@required = true })
+                                                @Html.TextAreaFor(m => m.ContentList[2].Content, new { @required = true })
                                             </div>
                                         </div>
                                     </div>

@@ -36,6 +36,7 @@ namespace PropertyPlus.Models
         public double latitude { get; set; }
         public double longitude { get; set; }
         public string county { get; set; }
+        public int project_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aparment_image> aparment_image { get; set; }
@@ -46,5 +47,6 @@ namespace PropertyPlus.Models
         public virtual user_profile user_profile { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user_visit> user_visit { get; set; }
+        public virtual project project { get; set; }
     }
 }
