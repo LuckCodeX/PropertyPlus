@@ -209,12 +209,13 @@
         </div>
         <div class="line-service small-line">
             <span class="float-left sm-text">Service package:</span>
-            <span class="float-right" style="margin-right: 54px">Custom</span>
-            <span class="float-right" style="margin-right: 66px">Basic</span>
+            <span class="float-right" style="margin-right: 81px">Custom</span>
+            <span class="float-right" style="margin-right: 48px">Basic</span>
         </div>
         <div class="line-service small-line">
-            <input class="float-right" style="  margin-bottom: 20px; margin-right: 70px" id="radioCustom" ng-click="radioService()" type="radio" name="a"  />
-            <input class="float-right  " style="  margin-bottom: 20px;margin-right: 63px" id="radioBasic" ng-click="radioService()" type="radio" name="a" checked/>
+            <div class="float-left" style="width: 117px;display: inline-block;height:20px"></div>
+            <input class="float-right" style="margin-bottom: 20px; margin-right: 98px" id="radioCustom" ng-click="radioService()" type="radio" name="a" />
+            <input class="float-right  " style="margin-bottom: 20px; margin-right: 40px" id="radioBasic" ng-click="radioService()" type="radio" name="a" checked/>
 
         </div>
         <div class="line-service bg-gray" ng-class="basic">
@@ -236,20 +237,26 @@
                 </label>
             </span>
         </div>
-        <div class="line-service bg-gray" ng-class="basic">
-            <p class="inline float-left">Foreign TV  </p>
-            <select class="select-foreign-tv float-right" id="foreign-tv">
-                <option value="0">None</option>
-                <option value="25">Japanese TV PP1 Package</option>
-                <option value="35">Japanese TV PP2 Package</option>
-                <option value="50">Japanese TV PP3 Package</option>
-                <option value="35">Japanese TV BB max 1</option>
-                <option value="50">Japanese TV BB max 2</option>
-                <option value="70">Japanese TV BB max 3</option>
-                <option value="40">Korean TV</option>
-                <option value="10">Vietnamese K+ TV</option>
-                <option value="10">An Vien TV</option>
-            </select>
+        <div class="line-service bg-gray foreign-tv-box"  ng-class="basic">
+            <p style="margin-top: 10px;" class="inline float-left">Foreign TV  </p>
+            <ui-select ng-model="foreignTv.selected" theme="selectize" search-enabled="false" ng-disabled="disabled" class="select-foreign-tv " title="Choose a foreign TV">
+                <ui-select-match placeholder="Select foreign TV">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="foreignTv in foreignTvs">
+                    <span ng-bind-html="foreignTv.name "></span>
+                </ui-select-choices>
+            </ui-select>
+            <!-- <select class="select-foreign-tv float-right" id="foreign-tv"> -->
+            <!--     <option value="0">None</option> -->
+            <!--     <option value="25">Japanese TV PP1 Package</option> -->
+            <!--     <option value="35">Japanese TV PP2 Package</option> -->
+            <!--     <option value="50">Japanese TV PP3 Package</option> -->
+            <!--     <option value="35">Japanese TV BB max 1</option> -->
+            <!--     <option value="50">Japanese TV BB max 2</option> -->
+            <!--     <option value="70">Japanese TV BB max 3</option> -->
+            <!--     <option value="40">Korean TV</option> -->
+            <!--     <option value="10">Vietnamese K+ TV</option> -->
+            <!--     <option value="10">An Vien TV</option> -->
+            <!-- </select> -->
         </div>
         <div class="line-service" ng-class="basic">
             <p class="inline float-left">Laundry & Cleaning  </p>
