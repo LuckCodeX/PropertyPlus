@@ -10,6 +10,7 @@
     'ngAnimate',
     //'ngclipboard',
     'pascalprecht.translate',
+    'ui.select',            //ui-select
     'ngImgCrop'            //ngImgCrop
 ]);
 

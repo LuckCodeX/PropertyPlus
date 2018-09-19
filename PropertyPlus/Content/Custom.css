@@ -2939,30 +2939,87 @@ footer {
 .checkbox-service {
     margin-right: 80px;
 }
-.select-foreign-tv option{
-    font-size: 12px;
-}
+/* .select-foreign-tv option{ */
+/*     font-size: 12px; */
+/* } */
 .select-foreign-tv {
-    padding: 5px;
+    cursor: pointer;
+    position: relative;
+    padding: 3px 0;
     margin-right: 30px;
     border: none;
     background: transparent;
-    text-indent: 5px;
+    font-size: 12px;
+    width: 220px;
 }
-    .select-foreign-tv option {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        padding: 5px;
+.ui-select-choices.ui-select-dropdown.selectize-dropdown.single {
+    top: 35px !important;
+    box-shadow: none;
+    background: white;
+    left: 0;
+    z-index: 10;
+    padding: 0 10px;
+}
+.ui-select-choices-content.selectize-dropdown-content {
+    border-top: 2px solid #707070;
+}
+.ui-select-match span {
+    padding-left: 10px;
+}
+    .ui-select-match span:nth-child(2) {
+        padding-top: 7px;
+        position: relative;
+        display: inline-block;
+        top: 0
     }
-    .select-foreign-tv:focus {
-        background: white;
+    .ui-select-match span:nth-child(2).ng-hide {
+        display: block !important;
+        
     }
-    .electric-bill-input {
-        width: 50px;
-        border: none;
-        background: transparent;
+    .ui-select-match span:nth-child(2)::after {
+        position: absolute;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f0d7";
+        right: -25px;
+        top: 7px;
     }
+        .ui-select-match span:nth-child(2).ng-hide::after {
+            top: 5px;
+            right: 20px;
+            content: "\f0d8";
+        }
+        .ui-select-placeholder {
+            display: none !important;
+        }
+.ui-select-choices-row {
+    cursor: pointer;
+    padding: 6px 10px;
+    height: 28px;
+    background: white;
+}
+/* .select-foreign-tv option { */
+/*     -webkit-appearance: none; */
+/*     -moz-appearance: none; */
+/*     appearance: none; */
+/*     padding: 5px; */
+/* } */
+.select-foreign-tv .selectize-input {
+    height: 30px;
+}
+.select-foreign-tv .selectize-input.focus {
+    background: white;
+}
+.foreign-tv-box {
+    padding-top: 5px;
+}
+
+
+.electric-bill-input {
+    width: 50px;
+    border: none;
+    background: transparent;
+}
 .electric-bill-block {
     width: 70px;
     margin-right: 45px;

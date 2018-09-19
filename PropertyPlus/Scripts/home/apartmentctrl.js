@@ -19,13 +19,53 @@
     drink[4] = 11;
     drink[5] = 13;
     drink[6] = 15;
+    $scope.foreignTv = {};
+    $scope.foreignTvs = [
+        { name: 'None', value: '0' },
+        { name: 'Japanese TV PP1 Package', value: '25' },
+        { name: 'Japanese TV PP2 Package', value: '35' },
+        { name: 'Japanese TV PP3 Package', value: '50' },
+        { name: 'Japanese TV BB max 1', value: '35' },
+        { name: 'Japanese TV BB max 2', value: '50' },
+        { name: 'Japanese TV BB max 3', value: '70' },
+        { name: 'Korean TV', value: '40' },
+        { name: 'Vietnamese K+ TV', value: '10' },
+        { name: 'An Vien TV', value: '10' }
+    ];
     $scope.loadApartmentDetail = function () {
+        $scope.disabled = undefined;
+        $scope.searchEnabled = undefined;
+
+        $scope.setInputFocus = function () {
+            $scope.$broadcast('UiSelectDemo1');
+        };
+
+
+        $scope.someGroupFn = function (item) {
+
+            if (item.name[0] >= 'A' && item.name[0] <= 'M')
+                return 'From A - M';
+
+            if (item.name[0] >= 'N' && item.name[0] <= 'Z')
+                return 'From N - Z';
+
+        };
+
+        $scope.firstLetterGroupFn = function (item) {
+            return item.name[0];
+        };
+
+        $scope.reverseOrderFilterFn = function (groups) {
+            return groups.reverse();
+        };
+
+        
+        $scope.foreignTv.selected = $scope.foreignTvs[1];
         $scope.apartmentPrice = 1500;
         $scope.cleaning = 3;
         $scope.bottle = 4;
         $scope.basic = "service-basic";
         $scope.electricBill = 0;
-        document.getElementById("foreign-tv").value = 25;
         $scope.changeService();
     }
     $scope.changeBill = function() {
@@ -46,7 +86,7 @@
             $scope.cleaning = 3;
             $scope.bottle = 4;
             $scope.electricBill = 0;
-            document.getElementById("foreign-tv").value = 25;
+            $scope.foreignTv.selected = $scope.foreignTvs[1];
             document.getElementById("checkboxInternet").checked = true;
             document.getElementById("checkboxToilet").checked = true;
             document.getElementById("checkboxExtra").checked = false;
@@ -69,7 +109,7 @@
             detergent = 10;
         }
         var tv = document.getElementById("foreign-tv");
-        var foreignTv = Number(tv.options[tv.selectedIndex].value);
+        var foreignTv = Number($scope.foreignTv.selected.value);
         var laundry = clean[$scope.cleaning];
         var water = drink[$scope.bottle];
         var electricBill = Number($scope.electricBill);
@@ -78,6 +118,7 @@
         $scope.totalPrice = $scope.apartmentPrice + $scope.servicePrice;
         $scope.perNightPrice = (($scope.totalPrice / 30) * 1.6).toFixed(2);
     }
+
 }
 
 app.controller('ApartmentCtrl', ApartmentCtrl);
