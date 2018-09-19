@@ -209,13 +209,13 @@
         </div>
         <div class="line-service small-line">
             <span class="float-left sm-text">Service package:</span>
-            <span class="float-left" style="margin-left: 54px">Basic</span>
-            <span class="float-left" style="margin-left: 48px">Custom</span>
+            <span class="float-right" style="margin-right: 81px">Custom</span>
+            <span class="float-right" style="margin-right: 48px">Basic</span>
         </div>
         <div class="line-service small-line">
             <div class="float-left" style="width: 117px;display: inline-block;height:20px"></div>
-            <input class="float-left" style="margin-bottom: 20px; margin-left: 65px" id="radioBasic" ng-click="radioService()" type="radio" name="a" checked/>
-            <input class="float-left  " style="margin-bottom: 20px; margin-left: 40px" id="radioCustom" ng-click="radioService()" type="radio" name="a" />
+            <input class="float-right" style="margin-bottom: 20px; margin-right: 98px" id="radioCustom" ng-click="radioService()" type="radio" name="a" />
+            <input class="float-right  " style="margin-bottom: 20px; margin-right: 40px" id="radioBasic" ng-click="radioService()" type="radio" name="a" checked/>
 
         </div>
         <div class="line-service bg-gray" ng-class="basic">
@@ -239,7 +239,7 @@
         </div>
         <div class="line-service bg-gray foreign-tv-box"  ng-class="basic">
             <p style="margin-top: 10px;" class="inline float-left">Foreign TV  </p>
-            <ui-select ng-model="foreignTv.selected" theme="selectize" search-enabled="false" ng-disabled="disabled" class="select-foreign-tv float-right" title="Choose a foreign TV">
+            <ui-select ng-model="foreignTv.selected" theme="selectize" search-enabled="false" ng-disabled="disabled" class="select-foreign-tv " title="Choose a foreign TV">
                 <ui-select-match placeholder="Select foreign TV">{{$select.selected.name}}</ui-select-match>
                 <ui-select-choices repeat="foreignTv in foreignTvs">
                     <span ng-bind-html="foreignTv.name "></span>
