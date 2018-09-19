@@ -68,17 +68,25 @@
         $scope.electricBill = 0;
         $scope.changeService();
     }
-    $scope.changeBill = function() {
-        if ($scope.electricBill > 999) {
-            $scope.electricBill = $scope.electricBill.slice(0, -1);
+    $scope.changeBill = function () {
+        
+        if ($scope.electricBill > 999 || isNaN($scope.electricBill.substr($scope.electricBill.length - 1))) {
+            
+                $scope.electricBill = $scope.electricBill.slice(0, -1);
+            
+            
         } else if ($scope.electricBill < 0) {
             $scope.electricBill = 0;
         } else if ($scope.electricBill == "") {
             $scope.electricBill = 0;
         }
-        while ($scope.electricBill.charAt(0) === '0') {
-            $scope.electricBill = $scope.electricBill.substr(1);
+        if ($scope.electricBill != "0") {
+            while ($scope.electricBill.charAt(0) === '0') {
+                $scope.electricBill = $scope.electricBill.substr(1);
+            }
         }
+        
+        
     }
     $scope.radioService = function () {
         if (document.getElementById("radioBasic").checked) {

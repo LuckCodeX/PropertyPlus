@@ -1290,7 +1290,7 @@ footer {
     clear: both;
     display: block;
     height: 50px;
-    padding: 11px 0 5px 5px;
+    padding: 11px 0 5px 10px;
     width: 100%;
 }
 
@@ -2741,8 +2741,8 @@ footer {
     position: relative;
 }
     .img-upload-current .img {
-        width: calc(100% - 30px);
-        height: 154px;
+        width: calc(100% - 29px);
+        height: 157px;
         position: absolute;
         top: 0;
         left: 15px;
@@ -3041,7 +3041,7 @@ footer {
 }*/
 .line-service.small-line {
     height: 30px;
-    padding: 5px 0 5px 5px;
+    padding: 5px 0 5px 10px;
 }
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {

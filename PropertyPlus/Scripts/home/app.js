@@ -11,6 +11,7 @@
     //'ngclipboard',
     'pascalprecht.translate',
     'ui.select',            //ui-select
+    'imageupload',
     'ngImgCrop'            //ngImgCrop
 ]);
 

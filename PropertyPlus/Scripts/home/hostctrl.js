@@ -18,6 +18,16 @@
         $scope.another_img_3 = '';
     };
 
+    $scope.loadStep2_1 = function () {
+        $scope.data = { banner_img: { file: null, url: null ,type:null}, images: [] };
+        $scope.data.images.push({ file: null, url: null });
+    }
+    $scope.uploadImg = function (event) {
+        if ($scope.data.images.length < 6) {
+            $scope.data.images.push({ file: null, url: null });
+        }
+    };
+
     $scope.submitStep1_1 = function() {
         $location.url("host/create/step-1-2");
     }
