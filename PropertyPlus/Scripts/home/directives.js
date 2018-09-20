@@ -554,6 +554,16 @@ function openHour() {
 
 }
 
+function uploadImg() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var onChangeHandler = scope.$eval(attrs.uploadImg);
+            element.bind('change', onChangeHandler);
+        }
+    }
+}
+
 function googleplace() {
     return {
         require: 'ngModel',
@@ -619,5 +629,6 @@ app.directive('pageTitle', pageTitle)
     .directive('fileread', fileRead)
     .directive('filereaded', fileReaded)
     .directive('openHour', openHour)
-    .directive('googleplace', googleplace);
+    .directive('googleplace', googleplace)
+    .directive('uploadImg', uploadImg);
 

@@ -6,46 +6,30 @@
             <p style="margin-bottom: 19px">Tips : Apartment have reality image help rentel make decision faster. </p>
             <div class="row">
                 <div class="col-md-12 img-upload-current">
-                    <img ng-show="banner_img" class="img" ng-src="{{banner_img}}" alt="Alternate Text" />
+                    <img ng-show="data.banner_img.url" class="img" ng-src="{{data.banner_img.url}}" alt="Alternate Text" />
                     <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-plus"></i></p>
                             <p>Add banner image</p>
-                            <input fileReaded="banner_img" type="file" accept="image/png, image/jpeg, image/gif"/>
+                            <input accept="image/*" image="data.banner_img" type="file"  type="{{data.banner_img.file.type}}"/>
                         </span>
                     </div>
                 </div>
-                <div class="col-md-4 another-img-upload img-upload-current">
-                    <img ng-show="another_img_1" class="img" ng-src="{{another_img_1}}" alt="Alternate Text" />
-                    <div class="btn-upload">
-                        <span class="btn-file">
-                            <p> <i class="fas fa-plus"></i></p>
-                            <p>Add another</p>
-                            <input type="file" fileReaded="another_img_1" accept="image/png, image/jpeg, image/gif"/>
 
-                        </span>
-                    </div>
-                </div>
-                <div ng-show="another_img_1" class="col-md-4 another-img-upload img-upload-current">
-                    <img ng-show="another_img_2" class="img" ng-src="{{another_img_2}}" alt="Alternate Text" />
+                <div ng-repeat="image in data.images track by $index" class="col-md-4 another-img-upload img-upload-current">
+                    <img ng-show="data.images[$index].url" class="img" ng-src="{{data.images[$index].url}}" />
                     <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-plus"></i></p>
-                            <p>Add another</p>
-                            <input type="file" fileReaded="another_img_2" accept="image/png, image/jpeg, image/gif" />
+                            <p>add another</p>
+                            <input type="file" accept="image/*" upload-img="uploadImg" image="data.images[$index]"
+                                   resize-max-height="300"
+                                   resize-max-width="250"
+                                   resize-quality="0.7" />
                         </span>
                     </div>
                 </div>
-                <div ng-show="another_img_2" class="col-md-4 another-img-upload img-upload-current">
-                    <img ng-show="another_img_3" class="img" ng-src="{{another_img_3}}" alt="Alternate Text" />
-                    <div class="btn-upload">
-                        <span class="btn-file">
-                            <p> <i class="fas fa-plus"></i></p>
-                            <p>Add another</p>
-                            <input type="file" fileReaded="another_img_3" accept="image/png, image/jpeg, image/gif" />
-                        </span>
-                    </div>
-                </div>
+                
                 <div class="footer-step col-md-12">
                     <a ui-sref="host.create.step13" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
                     <a ui-sref="host.create.step3" class="float-right btn-next">Next</a>
