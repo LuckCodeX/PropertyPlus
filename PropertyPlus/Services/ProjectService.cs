@@ -65,5 +65,10 @@ namespace PropertyPlus.Services
         {
             ProjectContentRepository.Save(content);
         }
+
+        public List<project> GetAllProject()
+        {
+            return ProjectRepository.GetAll().ToList();
+        }
     }
 }

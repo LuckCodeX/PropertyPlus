@@ -18,9 +18,9 @@ namespace PropertyPlus.Models
         public apartment()
         {
             this.aparment_image = new HashSet<aparment_image>();
-            this.apartment_content = new HashSet<apartment_content>();
             this.apartment_facility = new HashSet<apartment_facility>();
             this.user_visit = new HashSet<user_visit>();
+            this.apartment_content = new HashSet<apartment_content>();
         }
     
         public int apartment_id { get; set; }
@@ -28,25 +28,27 @@ namespace PropertyPlus.Models
         public int created_date { get; set; }
         public int status { get; set; }
         public string code { get; set; }
-        public decimal price { get; set; }
+        public int price { get; set; }
         public decimal area { get; set; }
         public int no_bedroom { get; set; }
         public int no_bathroom { get; set; }
         public string address { get; set; }
         public double latitude { get; set; }
         public double longitude { get; set; }
-        public string county { get; set; }
-        public int project_id { get; set; }
+        public string city { get; set; }
+        public Nullable<int> project_id { get; set; }
+        public int type { get; set; }
+        public int management_fee { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aparment_image> aparment_image { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<apartment_content> apartment_content { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<apartment_facility> apartment_facility { get; set; }
+        public virtual project project { get; set; }
         public virtual user_profile user_profile { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user_visit> user_visit { get; set; }
-        public virtual project project { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<apartment_content> apartment_content { get; set; }
     }
 }

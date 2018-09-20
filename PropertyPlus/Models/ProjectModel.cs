@@ -9,6 +9,7 @@ namespace PropertyPlus.Models
     {
         public int Id { get; set; }
         public string Img { get; set; }
+        public string Name { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
         public List<ProjectContentModel> ContentList { get; set; }
         public ProjectContentModel Content { get; set; }

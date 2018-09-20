@@ -399,6 +399,121 @@ namespace PropertyPlus.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("CreateApartment")]
+        public void CreateApartment(ApartmentModel model)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                try
+                {
+                    var token = values.First();
+                    var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                    var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                    if (Equals(userProfile, null))
+                    {
+                        var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                        {
+                            ReasonPhrase = "Account cannot be found !!!"
+                        };
+                        throw new HttpResponseException(response);
+                    }
+                    IEnumerable<string> languages;
+                    this.Request.Headers.TryGetValues("Language", out languages);
+                    var language = Convert.ToInt32(languages.First());
+                    using (var scope = new TransactionScope())
+                    {
+                        var count = _service.GetListApartmentByUserProfileId(userProfile.user_profile_id).Count + 1;
+                        var apartment = new apartment()
+                        {
+                            apartment_id = 0,
+                            user_profile_owner_id = userProfile.user_profile_id,
+                            code = "AID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0') + "_" +
+                                   count.ToString().PadLeft(3, '0'),
+                            created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
+                            type = model.Type,
+                            project_id = model.ProjectId,
+                            no_bathroom = model.NoBathRoom,
+                            no_bedroom = model.NoBedRoom,
+                            area = model.Area,
+                            address = model.Address,
+                            city = model.City,
+                            latitude = model.Latitude,
+                            longitude = model.Longitude,
+                            price = model.Price,
+                            management_fee = model.ManagementFee,
+                            status = 0
+                        };
+                        _service.SaveApartment(apartment);
+
+                        var apartmentContent = new apartment_content()
+                        {
+                            apartment_id = apartment.apartment_id,
+                            name = model.Name,
+                            description = model.Description,
+                            language = language,
+                            apartment_content_id = 0,
+                        };
+                        _service.SaveApartmentContent(apartmentContent);
+
+                        int idx = 0;
+                        foreach (var img in model.ImgList)
+                        {
+                            var apartmentImage = new aparment_image()
+                            {
+                                apartment_id = apartment.apartment_id,
+                                type = img.Type,
+                                img = _service.SaveImage("~/Upload/apartment/",
+                                    "apt_" + ConvertDatetime.GetCurrentUnixTimeStamp() + "_" + idx + ".png",
+                                    img.Img_Base64)
+                            };
+                            _service.SaveApartmentImage(apartmentImage);
+                        }
+
+                        foreach (var fac in model.FacilityList)
+                        {
+                            var apartmentFacility = new apartment_facility()
+                            {
+                                apartment_id = apartment.apartment_id,
+                                facility_id = fac.Id,
+                                apartment_facility_id = 0
+                            };
+                            _service.SaveApartmentFacility(apartmentFacility);
+                        }
+
+                        scope.Complete();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                    {
+                        ReasonPhrase = ex.Message
+                    };
+                    throw new HttpResponseException(response);
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("GetAllProject")]
+        public List<ProjectModel> GetAllProject()
+        {
+            IEnumerable<string> languages;
+            if (this.Request.Headers.TryGetValues("Language", out languages))
+            {
+                var language = Convert.ToInt32(languages.First());
+                return _service.GetAllProject().Select(p => new ProjectModel()
+                {
+                    Id = p.project_id,
+                    Name = p.project_content.FirstOrDefault(q => q.language == language).name
+                }).ToList();
+            }
+
+            return null;
+        }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();

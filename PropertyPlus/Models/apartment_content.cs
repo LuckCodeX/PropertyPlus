@@ -19,7 +19,6 @@ namespace PropertyPlus.Models
         public int language { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public string highlight { get; set; }
     
         public virtual apartment apartment { get; set; }
     }

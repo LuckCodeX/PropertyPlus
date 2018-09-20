@@ -45,5 +45,11 @@ namespace PropertyPlus.Services
         void SaveProject(project project);
         project_content GetProjectContentById(int id);
         void SaveProjectContent(project_content content);
+        List<apartment> GetListApartmentByUserProfileId(int userProfileId);
+        void SaveApartment(apartment apartment);
+        void SaveApartmentContent(apartment_content apartmentContent);
+        void SaveApartmentImage(aparment_image apartmentImage);
+        void SaveApartmentFacility(apartment_facility apartmentFacility);
+        List<project> GetAllProject();
     }
 }

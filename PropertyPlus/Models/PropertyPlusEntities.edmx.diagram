@@ -5,16 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="15f087889fa34a45acb5cfe390a52365" Name="Diagram1" ZoomLevel="80">
-        <EntityTypeShape EntityType="PropertyPlusModel.aparment_image" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PropertyPlusModel.apartment" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PropertyPlusModel.apartment_content" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PropertyPlusModel.apartment_facility" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PropertyPlusModel.blog" Width="1.5" PointX="7.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PropertyPlusModel.facility" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PropertyPlusModel.facility_content" Width="1.5" PointX="8.25" PointY="2.375" IsExpanded="true" />
-        <AssociationConnector Association="PropertyPlusModel.FK__aparment___apart__1ED998B2" ManuallyRouted="false" />
-        <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__276EDEB3" ManuallyRouted="false" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__facil__286302EC" ManuallyRouted="false" />
         <AssociationConnector Association="PropertyPlusModel.FK__facility___facil__24927208" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PropertyPlusModel.admin" Width="1.5" PointX="0.75" PointY="0.75" />
@@ -23,16 +17,22 @@
         <EntityTypeShape EntityType="PropertyPlusModel.slide" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="PropertyPlusModel.user_account" Width="1.5" PointX="3" PointY="9.625" />
         <EntityTypeShape EntityType="PropertyPlusModel.user_profile" Width="1.5" PointX="0.75" PointY="4.5" />
-        <AssociationConnector Association="PropertyPlusModel.FK__apartment__user___164452B1" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_acco__user___1273C1CD" />
         <EntityTypeShape EntityType="PropertyPlusModel.user_visit" Width="1.5" PointX="5.25" PointY="10.75" />
-        <AssociationConnector Association="PropertyPlusModel.FK__user_visi__apart__44FF419A" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_visi__user___440B1D61" />
         <EntityTypeShape EntityType="PropertyPlusModel.project" Width="1.5" PointX="10.375" PointY="3.875" />
         <EntityTypeShape EntityType="PropertyPlusModel.project_content" Width="1.5" PointX="12.625" PointY="3.875" />
-        <AssociationConnector Association="PropertyPlusModel.FK__apartment__proje__4AB81AF0" />
         <AssociationConnector Association="PropertyPlusModel.FK__project_c__proje__4E88ABD4" />
-      </Diagram>
+        <EntityTypeShape EntityType="PropertyPlusModel.aparment_image" Width="1.5" PointX="14.875" PointY="8.375" />
+        <EntityTypeShape EntityType="PropertyPlusModel.apartment" Width="1.5" PointX="12.625" PointY="6.75" />
+        <AssociationConnector Association="PropertyPlusModel.FK__aparment___apart__1ED998B2" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__276EDEB3" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__proje__4AB81AF0" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__user___164452B1" />
+        <AssociationConnector Association="PropertyPlusModel.FK__user_visi__apart__44FF419A" />
+        <EntityTypeShape EntityType="PropertyPlusModel.apartment_content" Width="1.5" PointX="14.875" PointY="11.25" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__1A14E395" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -188,19 +188,19 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
         })
         .state('host.manage.describe',
             {
-                url: "/overview",
+                url: "/describe",
                 templateUrl: "html/hostmanagedescribe.html",
                 data: { pageTitle: 'Host' }
         })
         .state('host.manage.information',
             {
-                url: "/overview",
+                url: "/information",
                 templateUrl: "html/hostmanageinformation.html",
                 data: { pageTitle: 'Host' }
         })
         .state('host.manage.photo',
             {
-                url: "/overview",
+                url: "/photo",
                 templateUrl: "html/hostmanagephoto.html",
                 data: { pageTitle: 'Host' }
         })

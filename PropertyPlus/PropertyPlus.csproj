@@ -229,6 +229,7 @@
     <Compile Include="Models\facility.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FacilityModel.cs" />
     <Compile Include="Models\facility_content.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
