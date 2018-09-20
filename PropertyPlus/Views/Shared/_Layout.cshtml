@@ -106,7 +106,7 @@
                         <span class="text-danger">{{errorText}}</span>
                         <input type="text" placeholder="First name" ng-model="user.firstname" class="mail-submit" required="">
                         <input type="text" placeholder="Last name" ng-model="user.lastname" class="mail-submit" required="">
-                        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
+                        <input type="email" pattern="^[a-zA-Z0-9._+-]+@("@")[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
                         <input type="password" placeholder="Create a Password" minlength="6" ng-model="user.password" class="mail-submit" required="">
                         <input type="password" placeholder="Re-type Password" ng-model="user.confirm_password" class="mail-submit" required="">
                         <div class="mail-checkbox">
