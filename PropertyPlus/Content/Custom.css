@@ -3043,8 +3043,27 @@ footer {
     height: 30px;
     padding: 5px 0 5px 10px;
 }
-@media only screen and (max-width: 1400px) {
-    .select-foreign-tv {
+.messageError {
+    min-width: 1px;
+    height: 29px;
+    display: inline-block;
+    overflow: hidden
+}
+    .messageError span {
+        color: red;
+        padding-top: 5px;
+        display: inline-block
+    }
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+    @media only screen and (max-width: 1400px) {
+        .select-foreign-tv {
         margin-left: 70px;
     }
     }

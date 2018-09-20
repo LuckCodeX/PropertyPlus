@@ -9,10 +9,20 @@
     $scope.apartments = [{ name: "Time City", value: "1" }, { name: "Royal City", value: "2s" }];
     $scope.cities = [{ name: "Ha Noi", value: "1" }, { name: "Ho Chi Minh", value: "2" }];
     $scope.names = [{ name: "Time City", value: "1" }, { name: "Royal City", value: "2" }];
+    $scope.bedrooms = [
+        { name: "1", value: 1 }, { name: "2", value: 2 }, { name: "3", value: 3 }, { name: "4", value: 5 },
+        { name: "5", value: 5 }, { name: "6", value: 6 }
+    ];
+    $scope.bathrooms = [
+        { name: "1", value: 1 }, { name: "2", value: 2 }, { name: "3", value: 3 }, { name: "4", value: 5 },
+        { name: "5", value: 5 }, { name: "6", value: 6 }
+    ];
     $scope.loadStep1_1 = function() {
         $scope.apartment.apartment = $scope.apartments[0];
         $scope.apartment.city = $scope.cities[0];
         $scope.apartment.name = $scope.names[0];
+        $scope.apartment.bedrooms = $scope.bedrooms[0];
+        $scope.apartment.bathrooms = $scope.bathrooms[0];
         $scope.another_img_1 = '';
         $scope.another_img_2 = '';
         $scope.another_img_3 = '';
@@ -27,6 +37,14 @@
             $scope.data.images.push({ file: null, url: null });
         }
     };
+
+    $scope.disableBtn = "service-basic";
+
+    //$scope.checkValid = function (status) {
+    //    if (status)
+    //        return ""
+    //    else return 'service-basic';
+    //}
 
     $scope.submitStep1_1 = function() {
         $location.url("host/create/step-1-2");
