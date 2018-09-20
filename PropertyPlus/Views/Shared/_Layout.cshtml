@@ -3,7 +3,7 @@
 <head>
     <base href="/">
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="/Images/logo.png"/>
+    <link rel="shortcut icon" href="/Images/logo.png" />
     <meta name="viewport" content="width=device-width" />
     <link href="/Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -17,6 +17,7 @@
     <link href="/Content/blog.css" rel="stylesheet" />
     <link href="/Content/project.css" rel="stylesheet" />
     <link href="/Content/login.css" rel="stylesheet" />
+    <link href="~/Content/manage.css" rel="stylesheet" />
     <script src="/Scripts/jquery-3.3.1.min.js"></script>
     <script src="/Scripts/owlcarousel/owl.carousel.js"></script>
 </head>
@@ -104,7 +105,7 @@
                         <span class="text-danger">{{errorText}}</span>
                         <input type="text" placeholder="First name" ng-model="user.firstname" class="mail-submit" required="">
                         <input type="text" placeholder="Last name" ng-model="user.lastname" class="mail-submit" required="">
-                        <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
+                        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
                         <input type="password" placeholder="Create a Password" minlength="6" ng-model="user.password" class="mail-submit" required="">
                         <input type="password" placeholder="Re-type Password" ng-model="user.confirm_password" class="mail-submit" required="">
                         <div class="mail-checkbox">
