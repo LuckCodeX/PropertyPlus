@@ -1,53 +1,62 @@
-﻿<div class="content-listing-step" ng-init="loadStep1_2()">
+﻿<div class="content-listing-step" ng-init="loadStep1_1()">
     <p>Let's us know more about your apartment</p>
-    <div class="row">
+    <form name="myForm" class="row">
         <div class="col-md-6">
             <p style="margin-top: 29px">How many total bedroom your property have?</p>
             <div class="choose-bedroom-option input-option row">
                 <div class="col-md-3">
-                    <select class="select-apartment" ng-model="apartment.city" ng-options="option.name for option in cities"></select>
+                    <select class="select-apartment" ng-model="apartment.bedrooms" ng-options="option.name for option in bedrooms"></select>
                 </div>
             </div>
             <p style="margin-top: 32px">How many total bathrooms your property have?</p>
             <div class="choose-bedroom-option input-option row">
                 <div class="col-md-3">
-                    <select class="select-apartment" ng-model="apartment.city" ng-options="option.name for option in cities"></select>
+                    <select class="select-apartment" ng-model="apartment.bathrooms" ng-options="option.name for option in bathrooms"></select>
                 </div>
             </div>
             <p style="margin-top: 32px">How much area of your house</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-3">
-                    <input type="text" name="name" value="" />
+                    <input type="number" name="area" ng-model="area" value="" required="" />
                 </div>
                 <div class="span">
                     <span>m<sup> 2</sup></span>
                 </div>
+
             </div>
-            <p style="margin-top: 24px">Address</p>
+            <div class="messageError">
+                <span ng-if="!myForm.area.$valid">Area is required</span>
+            </div>
+            <p style="">Address</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-9">
-                    <input type="text" name="name" value="" />
+                    <input type="text" name="address" ng-model="address" value="" required="" />
+
                 </div>
             </div>
+            <div class="messageError">
+                <span ng-if="!myForm.address.$valid">Address is required</span>
+            </div>
+            
         </div>
         <div class="col-md-6">
             <p style="margin-top: 29px">Name your apartment ( Optional )</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-12">
-                    <input type="text" name="name" value="" />
+                    <input type="text" name="nameApartment" ng-model="nameApartment" value="" />
                 </div>
             </div>
             <p style="margin-top: 32px">Describe about your apartment ( Optional )</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-12">
-                    <textarea type="text" name="name" value="" />
+                    <textarea type="text" name="describe" ng-model="describe" value="" />
                 </div>
             </div>
         </div>
         <div class="col-md-12 footer-step">
             <a ui-sref="host.create.step11" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-            <a class="float-right btn-next" ui-sref="host.create.step13">Next</a>
+            <a class="float-right btn-next" ng-class="(myForm.address.$valid && myForm.area.$valid) ? '':'service-basic'" ui-sref="host.create.step13">Next</a>
             <a ui-sref="host.listing"  class="float-right btn-cancel">Cancel</a>
         </div>
-    </div>
+    </form>
 </div>
