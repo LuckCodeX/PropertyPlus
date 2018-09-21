@@ -12,6 +12,7 @@
     'pascalprecht.translate',
     'ui.select',            //ui-select
     'imageupload',
+    'ngAutocomplete',
     'ngImgCrop'            //ngImgCrop
 ]);
 

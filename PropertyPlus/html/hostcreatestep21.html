@@ -6,34 +6,32 @@
             <p style="margin-bottom: 19px">Tips : Apartment have reality image help rentel make decision faster. </p>
             <div class="row">
                 <div class="col-md-12 img-upload-current">
-                    <img ng-show="data.banner_img.url" class="img" ng-src="{{data.banner_img.url}}" alt="Alternate Text" />
+                    <img ng-show="banner_img.url" class="img" ng-src="{{banner_img.url}}" alt="Alternate Text" />
                     <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-plus"></i></p>
                             <p>Add banner image</p>
-                            <input accept="image/*" image="data.banner_img" type="file"  type="{{data.banner_img.file.type}}"/>
+                            <input accept="image/*" image="banner_img" type="file" type="{{banner_img.file.type}}" />
                         </span>
                     </div>
                 </div>
-
-                <div ng-repeat="image in data.images track by $index" class="col-md-4 another-img-upload img-upload-current">
-                    <img ng-show="data.images[$index].url" class="img" ng-src="{{data.images[$index].url}}" />
+                <div ng-repeat="image in images track by $index" class="col-md-4 another-img-upload img-upload-current">
+                    <img ng-show="images[$index].url" class="img" ng-src="{{images[$index].url}}" />
                     <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-plus"></i></p>
                             <p>add another</p>
-                            <input type="file" accept="image/*" upload-img="uploadImg" image="data.images[$index]"
+                            <input type="file" accept="image/*" upload-img="uploadImg" image="images[$index]"
                                    resize-max-height="300"
                                    resize-max-width="250"
                                    resize-quality="0.7" />
                         </span>
                     </div>
                 </div>
-                
                 <div class="footer-step col-md-12">
                     <a ui-sref="host.create.step13" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-                    <a ui-sref="host.create.step3" class="float-right btn-next">Next</a>
-                    <a ui-sref="host.createfinish" class="float-right btn-cancel">Skip</a>
+                    <a ui-sref="host.create.step3" ng-click="saveStep2(images,banner_img)"  ng-class="(banner_img.url || !(images.length == 1)) ? '':'service-basic'" class="float-right btn-next">Next</a>
+                    <a ui-sref="host.create.step3" class="float-right btn-cancel">Skip</a>
                 </div>
             </div>
         </div>

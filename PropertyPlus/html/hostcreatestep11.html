@@ -5,21 +5,17 @@
         <p style="margin-top: 38.5px">What kind of place do you have?</p>
         <div class="choose-apartment-option input-option row" style="">
             <div class="col-md-4">
-                <select class="select-apartment" ng-model="apartment.apartment" ng-options="option.name for option in apartments"></select>
+                <select class="select-apartment" ng-model="apartment" ng-options="option.name for option in apartments"></select>
             </div>
         </div>
-        <p>Where's your place located</p>
+        <p>Name your apartment's propject</p>
         <div class="choose-city-option input-option row">
             <div class="col-md-2">
-                <select class="select-apartment" ng-model="apartment.city" ng-options="option.name for option in cities"></select>
+                <select class="select-apartment" ng-model="project" ng-options="option.name for option in projectList"></select>
             </div>
 
         </div>
-        <div class="choose-name-option input-option row">
-            <div class="col-md-4">
-                <select class="select-apartment" ng-model="apartment.name" ng-options="option.name for option in names"></select>
-            </div>
-        </div>
+        
         <div class="footer-step">
             <a ui-sref="host.create.step12" class="float-left btn-next">Continue</a>
         </div>
