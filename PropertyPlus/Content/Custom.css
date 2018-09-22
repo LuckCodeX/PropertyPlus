@@ -2741,7 +2741,7 @@ footer {
     position: relative;
 }
     .img-upload-current .img {
-        width: calc(100% - 29px);
+        width: calc(100% - 25px);
         height: 157px;
         position: absolute;
         top: 0;
