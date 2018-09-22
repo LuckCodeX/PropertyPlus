@@ -276,6 +276,7 @@
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\ApartmentService.cs" />
     <Compile Include="Services\BlogService.cs" />
+    <Compile Include="Services\FacilityService.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ProjectService.cs" />
@@ -886,6 +887,8 @@
     <Content Include="Views\Home\HostManageInformation.cshtml" />
     <Content Include="Views\Home\HostManagePhoto.cshtml" />
     <Content Include="Views\Home\HostManageLocation.cshtml" />
+    <Content Include="Views\Admin\Facility.cshtml" />
+    <Content Include="Views\Admin\FacilityDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

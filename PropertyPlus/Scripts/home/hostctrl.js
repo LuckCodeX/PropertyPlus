@@ -7,34 +7,32 @@
     xhrService,
     $anchorScroll) {
     $scope.data = {};
-    $scope.apartments = [{ name: "Time City", value: "1" }, { name: "Royal City", value: "2s" }];
+    $scope.apartments = [{ name: "Apartment", value: "1" }];
     $scope.bedrooms = [
-        { name: "1", value: 1 }, { name: "2", value: 2 }, { name: "3", value: 3 }, { name: "4", value: 5 },
+        { name: "1", value: 1 }, { name: "2", value: 2 }, { name: "3", value: 3 }, { name: "4", value: 4 },
         { name: "5", value: 5 }, { name: "6", value: 6 }
     ];
     $scope.bathrooms = [
-        { name: "1", value: 1 }, { name: "2", value: 2 }, { name: "3", value: 3 }, { name: "4", value: 5 },
+        { name: "1", value: 1 }, { name: "2", value: 2 }, { name: "3", value: 3 }, { name: "4", value: 4 },
         { name: "5", value: 5 }, { name: "6", value: 6 }
     ];
     $scope.loadStep1_1 = function () {
         $scope.projectList = [];
         xhrService.get("GetAllProject/")
             .then(function (data) {
-                    for (var i = 0; i < data.data.length; i++) {
-                        $scope.projectList.push({
-                            name: data.data[i].Name,
-                            value: data.data[i].Id
-                        });
-
-                    }
-                    $scope.project = $scope.projectList[0];
+                    $scope.projectList = data.data;
+                    $scope.data.project_id = "-1";
                 },
                 function (error) {
                     console.log(error.statusText);
                 });
-        $scope.apartment = $scope.apartments[0];
-        $scope.data.NoBedRoom = $scope.bedrooms[0];
-        $scope.data.NoBathRoom = $scope.bathrooms[0];
+        $scope.data.type = "1";
+       
+    };
+
+    $scope.loadStep1_2 = function() {
+        $scope.data.NoBedRoom = "1";
+        $scope.data.NoBathRoom = "1";
     };
 
     $scope.loadStep2_1 = function () {

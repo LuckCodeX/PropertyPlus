@@ -5,13 +5,16 @@
         <p style="margin-top: 38.5px">What kind of place do you have?</p>
         <div class="choose-apartment-option input-option row" style="">
             <div class="col-md-4">
-                <select class="select-apartment" ng-model="apartment" ng-options="option.name for option in apartments"></select>
+                <select class="select-apartment" ng-model="data.type" ng-options="option.value as option.name for option in apartments"></select>
             </div>
         </div>
         <p>Name your apartment's propject</p>
         <div class="choose-city-option input-option row">
             <div class="col-md-2">
-                <select class="select-apartment" ng-model="project" ng-options="option.name for option in projectList"></select>
+                <select class="select-apartment" ng-model="data.project_id">
+                    <option value="-1">None</option>
+                    <option ng-repeat="option in projectList" value="{{option.Id}}">{{option.Name}}</option>
+                </select>
             </div>
 
         </div>

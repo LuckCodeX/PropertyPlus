@@ -1,0 +1,134 @@
+﻿@model PropertyPlus.Models.FacilityModel
+
+@{
+    ViewBag.Title = "Facility";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Dịch vụ</h2>
+        <ol class="breadcrumb">
+            @*<li>
+                    <a href="@Url.Action("Index", "Admin")">Trang chủ</a>
+                </li>*@
+            <li>
+                <a href="@Url.Action("Facility", "Admin")">Dịch vụ</a>
+            </li>
+            <li class="active">
+                <strong>Chi tiết dịch vụ</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    @using (Html.BeginForm("FacilityDetail", "Admin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        @Html.HiddenFor(m => m.Id)
+                        if (Model.Id == 0)
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh mô tả</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.ImageFile, new { type = "file", accept = "image/*", onchange = "previewImage(event)", @class = "form-control", required = true })
+                                    <img src='~/Upload/@Model.Img' alt="" id="instrumentImage"
+                                         height="150" />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh mô tả</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.ImageFile, new { type = "file", accept = "image/*", onchange = "previewImage(event)", @class = "form-control" })
+                                    <img src='~/Upload/@Model.Img' alt="" id="instrumentImage"
+                                         height="150" />
+                                </div>
+                            </div>
+                        }
+                        <div class="hr-line-dashed"></div>
+                        <div class="tabs-container">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tab-1"> Tiếng Việt</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-2">Tiếng Anh</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-3">Tiếng Nhật</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane active">
+                                    @Html.HiddenFor(m => m.ContentList[0].Id)
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tên</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[0].Name, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-2" class="tab-pane">
+                                    @Html.HiddenFor(m => m.ContentList[1].Id)
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tên</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[1].Name, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-3" class="tab-pane">
+                                    @Html.HiddenFor(m => m.ContentList[2].Id)
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tên</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[2].Name, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" id="submitButton" type="submit">Lưu</button>
+                                <a class="btn btn-white marleft-30" href="@Url.Action("Facility", "Admin")">Thoát</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewImage(event) {
+        // Get a reference to the image element
+        var image = document.querySelector("#instrumentImage");
+        // Set its source to the file in the <input type=file element
+        image.src = URL.createObjectURL(event.target.files[0]);
+        //$("#instrumentImage").css('display', 'block');
+    }
+
+    $('#submitButton').click(function () {
+        $('input:invalid').each(function () {
+            // Find the tab-pane that this element is inside, and get the id
+            var $closest = $(this).closest('.tab-pane');
+            var id = $closest.attr('id');
+
+            // Find the link that corresponds to the pane and have it show
+            $('.nav a[href="#' + id + '"]').tab('show');
+
+            // Only want to do it once
+            return false;
+        });
+    });
+</script>

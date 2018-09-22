@@ -24,16 +24,6 @@
                     P+
                 </div>
             </li>
-            @*<li class="@Html.IsSelected(action: "Post") || @Html.IsSelected(action: "PostDetail") || @Html.IsSelected(action: "Category") || @Html.IsSelected(action: "CategoryDetail") || @Html.IsSelected(action: "FilterWord") || @Html.IsSelected(action: "Symbol") || @Html.IsSelected(action: "SymbolDetail") || @Html.IsSelected(action: "Report")">
-            <a href="#"><i class="fas fa-book"></i> <span class="nav-label">Bài viết</span><span class="fa arrow"></span></a>
-            <ul class="nav nav-second-level collapse">
-                <li class="@Html.IsSelected(action: "Post") || @Html.IsSelected(action: "PostDetail")"><a href="@Url.Action("Post", "Admin")">Bài viết</a></li>
-                <li class="@Html.IsSelected(action: "Category") || @Html.IsSelected(action: "CategoryDetail")"><a href="@Url.Action("Category", "Admin")">Danh mục</a></li>
-                <li class="@Html.IsSelected(action: "Symbol") || @Html.IsSelected(action: "SymbolDetail")"><a href="@Url.Action("Symbol", "Admin")">Mã chứng khoán</a></li>
-                <li class="@Html.IsSelected(action: "FilterWord")"><a href="@Url.Action("FilterWord", "Admin")">Bộ lọc từ</a></li>
-                <li class="@Html.IsSelected(action: "Report")"><a href="@Url.Action("Report", "Admin")">Báo cáo</a></li>
-            </ul>
-        </li>*@
             <li class="@Html.IsSelected(action: "Blog") || @Html.IsSelected(action: "BlogDetail")">
                 <a href="@Url.Action("Blog", "Admin")"><i class="far fa-newspaper"></i> <span class="nav-label">Blog</span> </a>
             </li>
@@ -50,6 +40,9 @@
             </li>
             <li class="@Html.IsSelected(action: "Project") || @Html.IsSelected(action: "ProjectDetail")">
                 <a href="@Url.Action("Project", "Admin")"><i class="fas fa-user"></i> <span class="nav-label">Dự án</span> </a>
+            </li>
+            <li class="@Html.IsSelected(action: "Facility") || @Html.IsSelected(action: "FacilityDetail")">
+                <a href="@Url.Action("Facility", "Admin")"><i class="fas fa-concierge-bell"></i> <span class="nav-label">Dịch vụ</span> </a>
             </li>
         </ul>
     </div>

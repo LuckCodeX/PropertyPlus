@@ -23,6 +23,7 @@ namespace PropertyPlus.Models
     
         public int facility_id { get; set; }
         public string img { get; set; }
+        public int status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<apartment_facility> apartment_facility { get; set; }

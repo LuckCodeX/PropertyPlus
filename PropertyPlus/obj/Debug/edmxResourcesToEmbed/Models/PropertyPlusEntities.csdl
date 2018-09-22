@@ -28,6 +28,7 @@
     <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="apartment_facility" Relationship="Self.FK__apartment__facil__286302EC" FromRole="facility" ToRole="apartment_facility" />
     <NavigationProperty Name="facility_content" Relationship="Self.FK__facility___facil__24927208" FromRole="facility" ToRole="facility_content" />
+    <Property Name="status" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="facility_content">
     <Key>

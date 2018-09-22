@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using PropertyPlus.Models;
 
 namespace PropertyPlus.Services
@@ -51,5 +52,11 @@ namespace PropertyPlus.Services
         void SaveApartmentImage(aparment_image apartmentImage);
         void SaveApartmentFacility(apartment_facility apartmentFacility);
         List<project> GetAllProject();
+        List<facility> GetAllFacility();
+        FacilityContentModel ConvertFacilityContentToModel(facility_content model);
+        facility GetFacilityById(int id);
+        void SaveFacility(facility facility);
+        facility_content GetFacilityContentById(int id);
+        void SaveFacilityContent(facility_content content);
     }
 }

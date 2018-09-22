@@ -88,6 +88,7 @@
           </Key>
           <Property Name="facility_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="img" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="facility_content">
           <Key>
@@ -424,6 +425,7 @@
           <Property Name="img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="apartment_facility" Relationship="Self.FK__apartment__facil__286302EC" FromRole="facility" ToRole="apartment_facility" />
           <NavigationProperty Name="facility_content" Relationship="Self.FK__facility___facil__24927208" FromRole="facility" ToRole="facility_content" />
+          <Property Name="status" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="facility_content">
           <Key>
@@ -835,6 +837,7 @@
           <EntitySetMapping Name="facilities">
             <EntityTypeMapping TypeName="PropertyPlusModel.facility">
               <MappingFragment StoreEntitySet="facility">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="facility_id" ColumnName="facility_id" />
                 <ScalarProperty Name="img" ColumnName="img" />
               </MappingFragment>

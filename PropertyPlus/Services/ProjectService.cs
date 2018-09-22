@@ -48,7 +48,7 @@ namespace PropertyPlus.Services
 
         public project GetProjectById(int id)
         {
-            return ProjectRepository.FindBy(p => p.project_id == id).Include(p => p.project_content).FirstOrDefault();
+            return ProjectRepository.FindBy(p => p.project_id == id && p.status == 1).Include(p => p.project_content).FirstOrDefault();
         }
 
         public void SaveProject(project project)
@@ -68,7 +68,7 @@ namespace PropertyPlus.Services
 
         public List<project> GetAllProject()
         {
-            return ProjectRepository.GetAll().ToList();
+            return ProjectRepository.FindBy(p => p.status == 1).ToList();
         }
     }
 }

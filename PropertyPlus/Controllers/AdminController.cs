@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -142,22 +143,27 @@ namespace PropertyPlus.Controllers
         [HttpPost]
         public ActionResult AccountDetail(UserProfileModel model)
         {
-            if (!Equals(model.Password, model.ConfirmPassword))
+            using (var scope = new TransactionScope())
             {
-                ModelState.AddModelError("ConfirmPassword", "Xác nhận mật khẩu không chính xác");
-                return View(model);
-            }
+                if (!Equals(model.Password, model.ConfirmPassword))
+                {
+                    ModelState.AddModelError("ConfirmPassword", "Xác nhận mật khẩu không chính xác");
+                    return View(model);
+                }
 
-            var userProfile = _service.GetActiveUserProfileById(model.Id);
-            userProfile.first_name = model.FirstName;
-            userProfile.last_name = model.LastName;
-            _service.SaveUserProfile(userProfile);
+                var userProfile = _service.GetActiveUserProfileById(model.Id);
+                userProfile.first_name = model.FirstName;
+                userProfile.last_name = model.LastName;
+                _service.SaveUserProfile(userProfile);
 
-            if (Equals(model.Password, null))
-            {
-                var userAccount = _service.GetUserAccountByUserProfileId(userProfile.user_profile_id);
-                userAccount.password = Encrypt.EncodePassword(model.Password);
-                _service.SaveUserAccount(userAccount);
+                if (Equals(model.Password, null))
+                {
+                    var userAccount = _service.GetUserAccountByUserProfileId(userProfile.user_profile_id);
+                    userAccount.password = Encrypt.EncodePassword(model.Password);
+                    _service.SaveUserAccount(userAccount);
+                }
+
+                scope.Complete();
             }
 
             return RedirectToAction("Account");
@@ -229,39 +235,45 @@ namespace PropertyPlus.Controllers
         [ValidateInput(false)]
         public ActionResult ProjectDetail(ProjectModel model)
         {
-            var project = _service.GetProjectById(model.Id);
-            if (Equals(project, null))
+            using (var scope = new TransactionScope())
             {
-                project = new project()
+                var project = _service.GetProjectById(model.Id);
+                if (Equals(project, null))
                 {
-                    project_id = 0
-                };
-            }
-            if (!Equals(model.ImageFile, null))
-            {
-                string fileName = "Project_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
-                string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
-                model.ImageFile.SaveAs(path);
-                project.img = fileName;
-            }
-            _service.SaveProject(project);
-
-            int idx = 0;
-            foreach (var projectContent in model.ContentList)
-            {
-                var content = _service.GetProjectContentById(projectContent.Id);
-                if (Equals(content, null))
-                {
-                    content = new project_content()
+                    project = new project()
                     {
-                        project_content_id = 0,
-                        project_id = project.project_id,
-                        language = idx
+                        project_id = 0,
+                        status = 1
                     };
                 }
-                content.name = projectContent.Name;
-                _service.SaveProjectContent(content);
-                idx++;
+                if (!Equals(model.ImageFile, null))
+                {
+                    string fileName = "Project_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                    model.ImageFile.SaveAs(path);
+                    project.img = fileName;
+                }
+                _service.SaveProject(project);
+
+                int idx = 0;
+                foreach (var projectContent in model.ContentList)
+                {
+                    var content = _service.GetProjectContentById(projectContent.Id);
+                    if (Equals(content, null))
+                    {
+                        content = new project_content()
+                        {
+                            project_content_id = 0,
+                            project_id = project.project_id,
+                            language = idx
+                        };
+                    }
+                    content.name = projectContent.Name;
+                    _service.SaveProjectContent(content);
+                    idx++;
+                }
+
+                scope.Complete();
             }
 
             return RedirectToAction("Project");
@@ -273,6 +285,114 @@ namespace PropertyPlus.Controllers
             project.status = 2;
             _service.SaveProject(project);
             return RedirectToAction("Project");
+        }
+
+        [LoginActionFilter]
+        public ActionResult Facility()
+        {
+            var facilities = _service.GetAllFacility().Select(p => new FacilityModel()
+            {
+                Id = p.facility_id,
+                Img = p.img,
+                Content = _service.ConvertFacilityContentToModel(p.facility_content.FirstOrDefault(q => q.language == 0))
+            }).ToList();
+            return View(facilities);
+        }
+
+        [LoginActionFilter]
+        public ActionResult FacilityDetail(int? id)
+        {
+            FacilityModel model;
+            if (!Equals(id, null))
+            {
+                var facility = _service.GetFacilityById(id.Value);
+                var facilityContent = facility.facility_content.Select(p => new FacilityContentModel()
+                {
+                    Id = p.facility_content_id,
+                    Name = p.name
+                }).ToList();
+                model = new FacilityModel()
+                {
+                    Id = facility.facility_id,
+                    Img = facility.img,
+                    ContentList = facilityContent
+                };
+            }
+            else
+            {
+                var facilityContent = new List<FacilityContentModel>();
+                for (int i = 0; i < 3; i++)
+                {
+                    var content = new FacilityContentModel()
+                    {
+                        Id = 0,
+                        Language = i
+                    };
+                    facilityContent.Add(content);
+                }
+                model = new FacilityModel()
+                {
+                    Id = 0,
+                    ContentList = facilityContent
+                };
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult FacilityDetail(FacilityModel model)
+        {
+            using (var scope = new TransactionScope())
+            {
+                var facility = _service.GetFacilityById(model.Id);
+                if (Equals(facility, null))
+                {
+                    facility = new facility()
+                    {
+                        facility_id = 0,
+                        status = 1
+                    };
+                }
+                if (!Equals(model.ImageFile, null))
+                {
+                    string fileName = "Facility_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                    model.ImageFile.SaveAs(path);
+                    facility.img = fileName;
+                }
+                _service.SaveFacility(facility);
+
+                int idx = 0;
+                foreach (var facilityContent in model.ContentList)
+                {
+                    var content = _service.GetFacilityContentById(facilityContent.Id);
+                    if (Equals(content, null))
+                    {
+                        content = new facility_content()
+                        {
+                            facility_content_id = 0,
+                            facility_id = facility.facility_id,
+                            language = idx
+                        };
+                    }
+                    content.name = facilityContent.Name;
+                    _service.SaveFacilityContent(content);
+                    idx++;
+                }
+
+                scope.Complete();
+            }
+            return RedirectToAction("Facility");
+        }
+
+        public ActionResult DeleteFacility(int id)
+        {
+            var facility = _service.GetFacilityById(id);
+            facility.status = 2;
+            _service.SaveFacility(facility);
+            return RedirectToAction("Facility");
         }
 
         [LoginActionFilter]
@@ -340,43 +460,48 @@ namespace PropertyPlus.Controllers
         [ValidateInput(false)]
         public ActionResult BlogDetail(BlogModel model)
         {
-            var blog = _service.GetBlogById(model.Id);
-            if (Equals(blog, null))
+            using (var scope = new TransactionScope())
             {
-                blog = new blog()
+                var blog = _service.GetBlogById(model.Id);
+                if (Equals(blog, null))
                 {
-                    blog_id = 0,
-                    created_date = ConvertDatetime.GetCurrentUnixTimeStamp()
-                };
-            }
-            if (!Equals(model.ImageFile, null))
-            {
-                string fileName = "Blog_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
-                string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
-                model.ImageFile.SaveAs(path);
-                blog.img = fileName;
-            }
-            blog.type = model.Type;
-            _service.SaveBlog(blog);
-
-            int idx = 0;
-            foreach (var blogContent in model.ContentList)
-            {
-                var content = _service.GetBlogContentById(blogContent.Id);
-                if (Equals(content, null))
-                {
-                    content = new blog_content()
+                    blog = new blog()
                     {
-                        blog_content_id = 0,
-                        blog_id = blog.blog_id,
-                        language = idx
+                        blog_id = 0,
+                        created_date = ConvertDatetime.GetCurrentUnixTimeStamp()
                     };
                 }
-                content.title = blogContent.Title;
-                content.description = blogContent.Description;
-                content.content = blogContent.Content;
-                _service.SaveBlogContent(content);
-                idx++;
+                if (!Equals(model.ImageFile, null))
+                {
+                    string fileName = "Blog_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                    model.ImageFile.SaveAs(path);
+                    blog.img = fileName;
+                }
+                blog.type = model.Type;
+                _service.SaveBlog(blog);
+
+                int idx = 0;
+                foreach (var blogContent in model.ContentList)
+                {
+                    var content = _service.GetBlogContentById(blogContent.Id);
+                    if (Equals(content, null))
+                    {
+                        content = new blog_content()
+                        {
+                            blog_content_id = 0,
+                            blog_id = blog.blog_id,
+                            language = idx
+                        };
+                    }
+                    content.title = blogContent.Title;
+                    content.description = blogContent.Description;
+                    content.content = blogContent.Content;
+                    _service.SaveBlogContent(content);
+                    idx++;
+                }
+
+                scope.Complete();
             }
             return RedirectToAction("Blog");
         }

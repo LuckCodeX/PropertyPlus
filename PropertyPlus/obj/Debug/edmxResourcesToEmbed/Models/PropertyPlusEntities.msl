@@ -23,6 +23,7 @@
     <EntitySetMapping Name="facilities">
       <EntityTypeMapping TypeName="PropertyPlusModel.facility">
         <MappingFragment StoreEntitySet="facility">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="facility_id" ColumnName="facility_id" />
           <ScalarProperty Name="img" ColumnName="img" />
         </MappingFragment>
