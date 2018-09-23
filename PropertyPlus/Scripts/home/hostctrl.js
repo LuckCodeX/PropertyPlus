@@ -10,7 +10,6 @@
         if (!(localStorage && localStorage.getItem('user_profile'))) {
             window.location.href = "/";
         }
-
     }
     $scope.apartments = [{ name: "Apartment", value: "1" }];
     $scope.bedrooms = [
@@ -38,10 +37,29 @@
             });
     };
 
+    $scope.changeAddress = function () {
+        if ($scope.data.Latitude == undefined ||
+            $scope.data.Latitude == 0 ||
+            $scope.data.Longitude == undefined ||
+            $scope.data.Longitude == 0 ||
+            $scope.data.Longitude == $scope.oldLong ||
+            $scope.data.Latitude == $scope.oldLat) {
+            $scope.statusAddress = false;
+
+        } else {
+            $scope.oldLat = $scope.data.Latitude;
+            $scope.oldLong = $scope.data.Longitude;
+            $scope.statusAddress = true;
+        }
+    }
+
     $scope.loadStep1_2 = function () {
         if ($scope.data == undefined) {
             $location.url('/host/listing');
         }
+        $scope.oldLat = undefined;
+        $scope.oldLong = undefined;
+        $scope.statusAddress = true;
     };
 
     $scope.loadStep2_1 = function () {
@@ -74,6 +92,10 @@
         if ($scope.data == undefined) {
             $location.url('/host/listing');
         }
+        if ($scope.imagesConfirm == undefined) {
+            $scope.imagesConfirm = [];
+            $scope.imagesConfirm.push({ file: null, url: null });
+        }
     }
 
     $scope.loadStep3_1 = function () {
@@ -85,6 +107,12 @@
     $scope.uploadImg = function (event) {
         if ($scope.images.length < 6) {
             $scope.images.push({ file: null, url: null });
+        }
+    };
+
+    $scope.uploadConfirmImg = function (event) {
+        if ($scope.imagesConfirm.length < 5) {
+            $scope.imagesConfirm.push({ file: null, url: null });
         }
     };
 
@@ -124,14 +152,21 @@
                 $scope.data.ImgList.push(item);
             }
         }
-        if (confirm_img.url != null) {
-            $scope.data.ImgList.push({
-                "Img_Base64": confirm_img.url,
-                "Type": 2
-            });
+        if ($scope.confirm_img.length > 1) {
+            if ($scope.confirm_img[$scope.confirm_img.length - 1].url == null) {
+                $scope.confirm_img.splice(-1, 1);
+            }
+            for (var i = 0; i < $scope.confirm_img.length; i++) {
+                var item = {
+                    "Img_Base64": $scope.confirm_img[i].url,
+                    "Type": 1
+                }
+                $scope.data.ImgList.push(item);
+            }
         }
         xhrService.post("CreateApartment", $scope.data).then(function (data) {
             $scope.data = undefined;
+            $location.url("host/create/finish");
         }, function (error) {
             $scope.errorText = error.statusText;
         });
