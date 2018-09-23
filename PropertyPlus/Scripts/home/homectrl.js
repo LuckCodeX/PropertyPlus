@@ -21,6 +21,13 @@
             function (error) {
                 $scope.errorText = error.statusText;
             });
+        xhrService.get("GetListApartment/1/8")
+            .then(function (data) {
+                    $scope.apartmentList = data.data.data;
+                },
+                function (error) {
+                    console.log(error.statusText);
+                });
     }
 }
 

@@ -1,4 +1,4 @@
-﻿<div ng-controller="ApartmentCtrl">
+﻿<div ng-controller="ApartmentCtrl" ng-init="loadApartment()">
     <div class="container-fluid second-header">
         <div class="container">
             <div class="row">
@@ -45,67 +45,51 @@
             </div>
             <div class="col-xs-12 list-apartment-content">
                 <div class="row">
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home">
-                        <div class="slide-choose-home">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home" ng-repeat="apartment in apartmentList">
+                        <div class="slide-choose-home" >
+                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})"><img ng-src="Upload/apartment/{{apartment.ImgList[0].Img}}" class="img-full" alt="Alternate Text" /></a>
                         </div>
                         <div class="choose-home-summary-column clearfix col-md-7 display-none">
                             <div class="sumary-detail">
-                                <div class="apartment-code">
-                                    HOUSE P123456
-                                </div>
-                                <div class="apartment-name">
-                                    Royal City R2 Apartment Fully Furnished & Marble Floor
-                                </div>
+                                <a  ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="apartment-code">
+                                    {{apartment.Code}}
+                                </a>
+                                <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="apartment-name">
+                                    {{apartment.Name}}
+                                </a>
                                 <div class="apartment-address">
-                                    72 Nguyen Trai, Thanh Xuan, Dong Da, Hanoi
+                                    {{apartment.Address}}
                                 </div>
                                 <div class="apartment-facilities">
                                     <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
+                                        <img src="/Images/icon/apartment.png" alt="">
                                         <p>Apartment</p>
                                     </div>
                                     <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>3 Bedrooms</p>
+                                        <img src="/Images/icon/bedroom.png" alt="">
+                                        <p>{{apartment.NoBedRoom}} Bedrooms</p>
                                     </div>
                                     <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>2 Bathrooms</p>
+                                        <img src="/Images/icon/bathroom.png" alt="">
+                                        <p>{{apartment.NoBathRoom}} Bathrooms</p>
                                     </div>
                                     <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>128.24 m</p>
+                                        <img src="/Images/icon/area.png" alt="">
+                                        <p>{{apartment.Area}} m<sup>2</sup></p>
                                     </div>
                                 </div>
                                 <div class="apartment-description">
-                                    This is a beautiful (75m2) Two-Bedroom apartment with large full-kitchen and a spacious living room.You will have the whole apartment to yourself and friends/family. ...
+                                    {{apartment.Description | limitTo : 170}}{{apartment.Description.length > 170 ? '...' : ''}}
                                 </div>
                                 <div class="apartment-price">
                                     <span class="price-label">Estimate price :</span>
-                                    <span>$ 2400 / month <span class="tiny-text">or</span> 130$/ night</span>
+                                    <span>$ {{apartment.Price}} / month <span class="tiny-text">or</span> {{(apartment.Price/30).toFixed(2)}} $/ night</span>
                                 </div>
                             </div>
                             <div class="apartment-owner">
                                 <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                <p class="owner-name"></p>
+                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;border:1px solid #707070;" ng-src="/Upload/avatar/{{apartment.UserProfileOwner.Avatar}}" alt="">
+                                <p class="owner-name">{{apartment.UserProfileOwner.FirstName}} {{apartment.UserProfileOwner.LastName}}</p>
                             </div>
                             <div class="apartment-interacts">
                                 <div class="apartment-interact">
@@ -123,677 +107,19 @@
                             </div>
                         </div>
                         <div class="choose-home-summary">
-                            <div class="choose-home-code">
-                                House P123456
-                            </div>
-                            <div class="choose-home-name">
-                                Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                            </div>
+                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-code">
+                                {{apartment.Code}}
+                            </a>
+                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-name">
+                                {{apartment.Name}}
+                            </a>
                             <div class="choose-home-detail float-left">
-                                <p>Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
+                                <p>Bedrooms: {{apartment.NoBedRoom}}</p>
+                                <p> {{apartment.City}}</p>
                             </div>
                             <div class="choose-home-price float-right">
                                 <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home">
-                        <div class="slide-choose-home">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary-column clearfix col-md-7 display-none">
-                            <div class="sumary-detail">
-                                <div class="apartment-code">
-                                    HOUSE P123456
-                                </div>
-                                <div class="apartment-name">
-                                    Royal City R2 Apartment Fully Furnished & Marble Floor
-                                </div>
-                                <div class="apartment-address">
-                                    72 Nguyen Trai, Thanh Xuan, Dong Da, Hanoi
-                                </div>
-                                <div class="apartment-facilities">
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>Apartment</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>3 Bedrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>2 Bathrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>128.24 m</p>
-                                    </div>
-                                </div>
-                                <div class="apartment-description">
-                                    This is a beautiful (75m2) Two-Bedroom apartment with large full-kitchen and a spacious living room.You will have the whole apartment to yourself and friends/family. ...
-                                </div>
-                                <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ 2400 / month <span class="tiny-text">or</span> 130$/ night</span>
-                                </div>
-                            </div>
-                            <div class="apartment-owner">
-                                <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                <p class="owner-name"></p>
-                            </div>
-                            <div class="apartment-interacts">
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-share"></i></p>
-                                    <p>Share</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-heart"></i></p>
-                                    <p>Add to list</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark"></i></p>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary">
-                            <div class="choose-home-code">
-                                House P123456
-                            </div>
-                            <div class="choose-home-name">
-                                Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                            </div>
-                            <div class="choose-home-detail float-left">
-                                <p>Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="choose-home-price float-right">
-                                <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home">
-                        <div class="slide-choose-home">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary-column clearfix col-md-7 display-none">
-                            <div class="sumary-detail">
-                                <div class="apartment-code">
-                                    HOUSE P123456
-                                </div>
-                                <div class="apartment-name">
-                                    Royal City R2 Apartment Fully Furnished & Marble Floor
-                                </div>
-                                <div class="apartment-address">
-                                    72 Nguyen Trai, Thanh Xuan, Dong Da, Hanoi
-                                </div>
-                                <div class="apartment-facilities">
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>Apartment</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>3 Bedrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>2 Bathrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>128.24 m</p>
-                                    </div>
-                                </div>
-                                <div class="apartment-description">
-                                    This is a beautiful (75m2) Two-Bedroom apartment with large full-kitchen and a spacious living room.You will have the whole apartment to yourself and friends/family. ...
-                                </div>
-                                <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ 2400 / month <span class="tiny-text">or</span> 130$/ night</span>
-                                </div>
-                            </div>
-                            <div class="apartment-owner">
-                                <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                <p class="owner-name"></p>
-                            </div>
-                            <div class="apartment-interacts">
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-share"></i></p>
-                                    <p>Share</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-heart"></i></p>
-                                    <p>Add to list</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark"></i></p>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary">
-                            <div class="choose-home-code">
-                                House P123456
-                            </div>
-                            <div class="choose-home-name">
-                                Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                            </div>
-                            <div class="choose-home-detail float-left">
-                                <p>Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="choose-home-price float-right">
-                                <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home">
-                        <div class="slide-choose-home">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary-column clearfix col-md-7 display-none">
-                            <div class="sumary-detail">
-                                <div class="apartment-code">
-                                    HOUSE P123456
-                                </div>
-                                <div class="apartment-name">
-                                    Royal City R2 Apartment Fully Furnished & Marble Floor
-                                </div>
-                                <div class="apartment-address">
-                                    72 Nguyen Trai, Thanh Xuan, Dong Da, Hanoi
-                                </div>
-                                <div class="apartment-facilities">
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>Apartment</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>3 Bedrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>2 Bathrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>128.24 m</p>
-                                    </div>
-                                </div>
-                                <div class="apartment-description">
-                                    This is a beautiful (75m2) Two-Bedroom apartment with large full-kitchen and a spacious living room.You will have the whole apartment to yourself and friends/family. ...
-                                </div>
-                                <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ 2400 / month <span class="tiny-text">or</span> 130$/ night</span>
-                                </div>
-                            </div>
-                            <div class="apartment-owner">
-                                <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                <p class="owner-name"></p>
-                            </div>
-                            <div class="apartment-interacts">
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-share"></i></p>
-                                    <p>Share</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-heart"></i></p>
-                                    <p>Add to list</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark"></i></p>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary">
-                            <div class="choose-home-code">
-                                House P123456
-                            </div>
-                            <div class="choose-home-name">
-                                Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                            </div>
-                            <div class="choose-home-detail float-left">
-                                <p>Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="choose-home-price float-right">
-                                <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home">
-                        <div class="slide-choose-home">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary-column clearfix col-md-7 display-none">
-                            <div class="sumary-detail">
-                                <div class="apartment-code">
-                                    HOUSE P123456
-                                </div>
-                                <div class="apartment-name">
-                                    Royal City R2 Apartment Fully Furnished & Marble Floor
-                                </div>
-                                <div class="apartment-address">
-                                    72 Nguyen Trai, Thanh Xuan, Dong Da, Hanoi
-                                </div>
-                                <div class="apartment-facilities">
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>Apartment</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>3 Bedrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>2 Bathrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>128.24 m</p>
-                                    </div>
-                                </div>
-                                <div class="apartment-description">
-                                    This is a beautiful (75m2) Two-Bedroom apartment with large full-kitchen and a spacious living room.You will have the whole apartment to yourself and friends/family. ...
-                                </div>
-                                <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ 2400 / month <span class="tiny-text">or</span> 130$/ night</span>
-                                </div>
-                            </div>
-                            <div class="apartment-owner">
-                                <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                <p class="owner-name"></p>
-                            </div>
-                            <div class="apartment-interacts">
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-share"></i></p>
-                                    <p>Share</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-heart"></i></p>
-                                    <p>Add to list</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark"></i></p>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary">
-                            <div class="choose-home-code">
-                                House P123456
-                            </div>
-                            <div class="choose-home-name">
-                                Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                            </div>
-                            <div class="choose-home-detail float-left">
-                                <p>Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="choose-home-price float-right">
-                                <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home">
-                        <div class="slide-choose-home">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary-column clearfix col-md-7 display-none">
-                            <div class="sumary-detail">
-                                <div class="apartment-code">
-                                    HOUSE P123456
-                                </div>
-                                <div class="apartment-name">
-                                    Royal City R2 Apartment Fully Furnished & Marble Floor
-                                </div>
-                                <div class="apartment-address">
-                                    72 Nguyen Trai, Thanh Xuan, Dong Da, Hanoi
-                                </div>
-                                <div class="apartment-facilities">
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>Apartment</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>3 Bedrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>2 Bathrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>128.24 m</p>
-                                    </div>
-                                </div>
-                                <div class="apartment-description">
-                                    This is a beautiful (75m2) Two-Bedroom apartment with large full-kitchen and a spacious living room.You will have the whole apartment to yourself and friends/family. ...
-                                </div>
-                                <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ 2400 / month <span class="tiny-text">or</span> 130$/ night</span>
-                                </div>
-                            </div>
-                            <div class="apartment-owner">
-                                <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                <p class="owner-name"></p>
-                            </div>
-                            <div class="apartment-interacts">
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-share"></i></p>
-                                    <p>Share</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-heart"></i></p>
-                                    <p>Add to list</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark"></i></p>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary">
-                            <div class="choose-home-code">
-                                House P123456
-                            </div>
-                            <div class="choose-home-name">
-                                Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                            </div>
-                            <div class="choose-home-detail float-left">
-                                <p>Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="choose-home-price float-right">
-                                <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home">
-                        <div class="slide-choose-home">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary-column clearfix col-md-7 display-none">
-                            <div class="sumary-detail">
-                                <div class="apartment-code">
-                                    HOUSE P123456
-                                </div>
-                                <div class="apartment-name">
-                                    Royal City R2 Apartment Fully Furnished & Marble Floor
-                                </div>
-                                <div class="apartment-address">
-                                    72 Nguyen Trai, Thanh Xuan, Dong Da, Hanoi
-                                </div>
-                                <div class="apartment-facilities">
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>Apartment</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>3 Bedrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>2 Bathrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>128.24 m</p>
-                                    </div>
-                                </div>
-                                <div class="apartment-description">
-                                    This is a beautiful (75m2) Two-Bedroom apartment with large full-kitchen and a spacious living room.You will have the whole apartment to yourself and friends/family. ...
-                                </div>
-                                <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ 2400 / month <span class="tiny-text">or</span> 130$/ night</span>
-                                </div>
-                            </div>
-                            <div class="apartment-owner">
-                                <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                <p class="owner-name"></p>
-                            </div>
-                            <div class="apartment-interacts">
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-share"></i></p>
-                                    <p>Share</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-heart"></i></p>
-                                    <p>Add to list</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark"></i></p>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary">
-                            <div class="choose-home-code">
-                                House P123456
-                            </div>
-                            <div class="choose-home-name">
-                                Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                            </div>
-                            <div class="choose-home-detail float-left">
-                                <p>Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="choose-home-price float-right">
-                                <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home">
-                        <div class="slide-choose-home">
-                            <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="choose-home-item">
-                                        <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary-column clearfix col-md-7 display-none">
-                            <div class="sumary-detail">
-                                <div class="apartment-code">
-                                    HOUSE P123456
-                                </div>
-                                <div class="apartment-name">
-                                    Royal City R2 Apartment Fully Furnished & Marble Floor
-                                </div>
-                                <div class="apartment-address">
-                                    72 Nguyen Trai, Thanh Xuan, Dong Da, Hanoi
-                                </div>
-                                <div class="apartment-facilities">
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>Apartment</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>3 Bedrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>2 Bathrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img class="box-shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                        <p>128.24 m</p>
-                                    </div>
-                                </div>
-                                <div class="apartment-description">
-                                    This is a beautiful (75m2) Two-Bedroom apartment with large full-kitchen and a spacious living room.You will have the whole apartment to yourself and friends/family. ...
-                                </div>
-                                <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ 2400 / month <span class="tiny-text">or</span> 130$/ night</span>
-                                </div>
-                            </div>
-                            <div class="apartment-owner">
-                                <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAP1BMVEX///+rq6uXl5eEhIRycnJhYWFAQECMjIyxsbFgYGB3d3eampqnp6eTk5OCgoJra2sAAABPT09JSUkzMzMqKioxKoHcAAABgklEQVR4nO3dTU7DQBAF4R577DiQH0Jy/7OSBRvEggip1SpPfXOBV/uWJj4e9/Xzdjsux2t/mr+dpx/av52mPx3mF1z6K5Zf1rjGvm3RqyckawMUvlVPSNZirp6QzEI+C/ks5LOQz0K+EQoP1ROStZiqJySzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5Rih8r56QrD3fvlnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwW8lnIZyGfhXwtTtUTko1wE2UhnYV8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvJZyGchn4V8FvKNUHiunpBshH9mLKSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOSzkM9CPgv5LOQbofBSPSFZi149IZmFfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbyWchnIZ+FfBbytViqJySzkM9CPgv5LOSzkM9CPgv5LOTbf+EW69b2bOtf0joHWxqvTk0AAAAASUVORK5CYII=" alt="">
-                                <p class="owner-name"></p>
-                            </div>
-                            <div class="apartment-interacts">
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-share"></i></p>
-                                    <p>Share</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-heart"></i></p>
-                                    <p>Add to list</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark"></i></p>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary">
-                            <div class="choose-home-code">
-                                House P123456
-                            </div>
-                            <div class="choose-home-name">
-                                Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                            </div>
-                            <div class="choose-home-detail float-left">
-                                <p>Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="choose-home-price float-right">
-                                <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>2400</span></p>
+                                <p class="price">$ <span>{{apartment.Price}}</span></p>
                             </div>
                         </div>
                     </div>
@@ -808,19 +134,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-xs-12 google-map hide-block">
-                <div class="mapouter"><div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=2-135%20Ph%E1%BB%91%20Kh%C6%B0%C6%A1ng%20Th%C6%B0%E1%BB%A3ng%2C%20Trung%20Li%E1%BB%87t%2C%20%C4%90%E1%BB%91ng%20%C4%90a%2C%20H%C3%A0%20N%E1%BB%99i%2C%20Vietnam&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
-                <style>
-                    .mapouter {
-                        text-align: right;
-                        height: 500px;
-                        width: 600px;
-                    }
-
-                    .gmap_canvas {
-                        overflow: hidden;
-                        background: none !important;
-                    }
-                </style></div>
+                <div id="map"></div>
             </div>
         </div>
     </div>

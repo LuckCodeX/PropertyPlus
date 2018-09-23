@@ -32,6 +32,31 @@
         { name: 'Vietnamese K+ TV', value: '10' },
         { name: 'An Vien TV', value: '10' }
     ];
+
+    $scope.loadApartment = function() {
+        $scope.bigCurrentPage = $stateParams.page === undefined ? 1 : $stateParams.page;
+        var limit = 8;
+
+        xhrService.get("GetListApartment/" + $scope.bigCurrentPage + "/" + limit)
+            .then(function (data) {
+                $scope.apartmentList = data.data.data;
+                var myLatLng = { lat: $scope.apartmentList[0].Latitude, lng: $scope.apartmentList[0].Longitude };
+                    var map = new google.maps.Map(document.getElementById('map'),
+                        {
+                            zoom: 17,
+                            center: myLatLng
+                        });
+                    var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        title: $scope.apartmentList[0].Address
+                    });
+                },
+                function (error) {
+                    console.log(error.statusText);
+                });
+    }
+
     $scope.loadApartmentDetail = function () {
         $scope.disabled = undefined;
         $scope.searchEnabled = undefined;
@@ -39,7 +64,41 @@
         $scope.setInputFocus = function () {
             $scope.$broadcast('UiSelectDemo1');
         };
+        $scope.apartmentId = $stateParams.id;
+        xhrService.get("GetApartmentDetail/" + $scope.apartmentId)
+            .then(function (data) {
+                $scope.apartment = data.data;
+                    for (var i = 0; i < $scope.apartment.ImgList.length; i++) {
+                        if ($scope.apartment.ImgList[i].Type == 0) {
+                            $scope.apartment.banner = $scope.apartment.ImgList[i].Img;
+                            console.log($scope.apartment.banner);
+                        }
+                    }
+                    var myLatLng = { lat: $scope.apartment.Latitude, lng: $scope.apartment.Longitude };
+                    var map = new google.maps.Map(document.getElementById('map'),
+                        {
+                            zoom: 17,
+                            center: myLatLng
+                        });
+                    var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        title: $scope.apartment.Address
+                    });
+                console.log(data);
+                },
+                function (error) {
+                    console.log(error.statusText);
+            });
+        xhrService.get("GetListApartment/" + 1 + "/" + 6)
+            .then(function (data) {
+                    $scope.apartmentList = data.data.data;
+                },
+                function (error) {
+                    console.log(error.statusText);
+            });
 
+        $timeout(loadApartmentDetail, 1000);
 
         $scope.someGroupFn = function (item) {
 
@@ -58,7 +117,6 @@
         $scope.reverseOrderFilterFn = function (groups) {
             return groups.reverse();
         };
-
         
         $scope.foreignTv.selected = $scope.foreignTvs[1];
         $scope.apartmentPrice = 1500;
@@ -107,6 +165,7 @@
         var managamentFee = 0;
         var internet = 0;
         var detergent = 0;
+        var extra = 1;
         if (document.getElementById("checkboxFee").checked) {
             managamentFee = 50;
         };
@@ -116,6 +175,9 @@
         if (document.getElementById("checkboxToilet").checked) {
             detergent = 10;
         }
+        if (document.getElementById("checkboxExtra").checked) {
+            extra = 0.9;
+        }
         var tv = document.getElementById("foreign-tv");
         var foreignTv = Number($scope.foreignTv.selected.value);
         var laundry = clean[$scope.cleaning];
@@ -123,7 +185,7 @@
         var electricBill = Number($scope.electricBill);
         var servicePrice = managamentFee + internet + foreignTv + laundry + water + detergent + electricBill;
         $scope.servicePrice = servicePrice;
-        $scope.totalPrice = $scope.apartmentPrice + $scope.servicePrice;
+        $scope.totalPrice = (($scope.apartmentPrice + $scope.servicePrice)/extra).toFixed(2);
         $scope.perNightPrice = (($scope.totalPrice / 30) * 1.6).toFixed(2);
     }
 
