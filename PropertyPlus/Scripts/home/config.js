@@ -40,7 +40,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
             })
         .state('apartmentdetail',
             {
-                url: "/apartment-detail",
+                url: "/apartment-detail/:id/:name",
                 templateUrl: "html/apartmentdetail.html",
                 data: { pageTitle: 'Apartment' }
             })

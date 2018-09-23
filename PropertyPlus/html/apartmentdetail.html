@@ -1,79 +1,48 @@
 ﻿<div ng-controller="ApartmentCtrl" ng-init="loadApartmentDetail()">
 <div class="container-fluid header-apartment-detail">
-    <div class="owl-carousel owl-theme">
-        <div class="item">
-            <div class="">
-                <img src="Images/img-demo.png" alt="Alternate Text" />
-            </div>
-        </div>
-        <div class="item">
-            <div class="">
-                <img src="Images/img-demo.png" alt="Alternate Text" />
-            </div>
-        </div>
-        <div class="item">
-            <div class="">
-                <img src="Images/img-demo.png" alt="Alternate Text" />
-            </div>
-        </div>
-    </div>
+    <img ng-src="/Upload/apartment/{{apartment.banner}}" alt="Alternate Text" />
 </div>
 <div class="container">
 <div class="row apartment-detail-body">
 <div class="col-md-7">
-    <div class="sm-text">Property Type - Project</div>
+    <div class="sm-text">{{apartment.Code}}</div>
     <div class="title-detail-apartment">
-        Apartment Elegant Design Funish Suitable for 5 people family
+        {{apartment.Name}}
     </div>
     <div class="address-detail-apartment">
-        Thanh Xuan District, Ha Noi
+        {{apartment.Address}}
     </div>
     <div class="facilities-detail-apartment">
         <div class="facility-detail-apartment">
-            <img src="Images/img-demo.png" class="thumbnail-facility" alt="Alternate Text"/>
+            <img src="/Images/icon/apartment.png" class="thumbnail-facility" alt="Alternate Text"/>
             <p class="text-center facility-text">Apartment</p>
         </div>
         <div class="facility-detail-apartment">
-            <img src="Images/img-demo.png" class="thumbnail-facility" alt="Alternate Text"/>
-            <p class="text-center facility-text">3 Bedrooms</p>
+            <img src="/Images/icon/bedroom.png" class="thumbnail-facility" alt="Alternate Text"/>
+            <p class="text-center facility-text">{{apartment.NoBedRoom}} Bedrooms</p>
         </div>
         <div class="facility-detail-apartment">
-            <img src="Images/img-demo.png" class="thumbnail-facility" alt="Alternate Text"/>
-            <p class="text-center facility-text">2 Bathrooms</p>
+            <img src="/Images/icon/bathroom.png" class="thumbnail-facility" alt="Alternate Text"/>
+            <p class="text-center facility-text">{{apartment.NoBathRoom}} Bathrooms</p>
         </div>
         <div class="facility-detail-apartment">
-            <img src="Images/img-demo.png" class="thumbnail-facility" alt="Alternate Text"/>
-            <p class="text-center facility-text">128.53 m2</p>
+            <img src="/Images/icon/area.png" class="thumbnail-facility" alt="Alternate Text"/>
+            <p class="text-center facility-text">{{apartment.Area}} m<sup>2</sup></p>
         </div>
 
     </div>
     <div class="about-this-listing">
         <div class="title-apartment-detail">ABOUT THIS LISTING</div>
-        <div class="about-this-listing-border">
-            <p class="med-text">- Highlight 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p class="med-text">- Highlight 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div class="about-this-listing-none-border">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        <div class="about-this-listing-none-border" ng-bind-html="apartment.Description | trust">
         </div>
     </div>
     <div class="tour-this-home">
         <div class="title-apartment-detail">TOUR THIS HOME</div>
-        <div class="col-xs-12 tour-this-home-slide">
+        <div class="col-xs-12 tour-this-home-slide" >
             <div class="owl-carousel owl-theme">
-                <div class="item">
+                <div class="item" ng-repeat="livRoom in apartment.ImgList">
                     <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
+                        <img ng-src="/Upload/apartment/{{livRoom.Img}}" alt="Alternate Text" />
                     </div>
                 </div>
             </div>
@@ -83,19 +52,9 @@
         </div>
         <div class="col-xs-12 tour-this-home-slide">
             <div class="owl-carousel owl-theme">
-                <div class="item">
+                <div class="item" ng-repeat="bedRoom in apartment.ImgList" ng-if="bedRoom.Type == 3">
                     <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
+                        <img ng-src="/Upload/apartment/{{bedRoom.Img}}" alt="Alternate Text" />
                     </div>
                 </div>
             </div>
@@ -105,19 +64,9 @@
         </div>
         <div class="col-xs-12 tour-this-home-slide">
             <div class="owl-carousel owl-theme">
-                <div class="item">
+                <div class="item" ng-repeat="bathRoom in apartment.ImgList" ng-if="bathRoom.Type == 4">
                     <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
+                        <img ng-src="/Upload/apartment/{{bathRoom.Img}}" alt="Alternate Text" />
                     </div>
                 </div>
             </div>
@@ -127,19 +76,9 @@
         </div>
         <div class="col-xs-12 tour-this-home-slide">
             <div class="owl-carousel owl-theme">
-                <div class="item">
+                <div class="item" ng-repeat="bedRoom in apartment.ImgList" ng-if="bedRoom.Type == 3">
                     <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="">
-                        <img src="Images/img-demo.png" alt="Alternate Text" />
+                        <img ng-src="/Upload/apartment/{{bedRoom.Img}}" alt="Alternate Text" />
                     </div>
                 </div>
             </div>
@@ -149,45 +88,33 @@
         </div>
     </div>
     <div class="amenities">
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-        <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
+        <div class="title-apartment-detail">AMENITIES </div>
+        <img src="/Images/icon/atm.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/bar.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/camera.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/cinema.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/coffe.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/hospital.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/eleve.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/indoor game.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/lounge.svg" class="amenities-img" alt="Alternate Text" />
+        <img src="/Images/icon/mall.svg" class="amenities-img" alt="Alternate Text" />
     </div>
-    <div class="apartment-detail-owner">
+    <div class="apartment-detail-owner" style="    margin-top: 30px;">
         <div class="title-apartment-detail">Owner</div>
             <div class="avatar-owner">
-                <img src="Images/img-demo.png" alt="Alternate Text"/>
+                <img ng-src="/Upload/avatar/{{apartment.UserProfileOwner.Avatar}}" alt="Alternate Text"/>
             </div>
             <div class=" time-join">
                 Join in October 2018
             </div>
             <div class=" owner-name">
-                Gal Gadot
+                {{apartment.UserProfileOwner.FirstName}} {{apartment.UserProfileOwner.LastName}}
             </div>
         
     </div>
     <div class="apartment-detail-map">
-        <div class="mapouter">
-            <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=2-135%20Ph%E1%BB%91%20Kh%C6%B0%C6%A1ng%20Th%C6%B0%E1%BB%A3ng%2C%20Trung%20Li%E1%BB%87t%2C%20%C4%90%E1%BB%91ng%20%C4%90a%2C%20H%C3%A0%20N%E1%BB%99i%2C%20Vietnam&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
-            <style>
-                .mapouter {
-                    text-align: right;
-                    height: 500px;
-                    width: 600px;
-                }
-
-                .gmap_canvas {
-                    overflow: hidden;
-                    background: none !important;
-                }
-            </style></div>
+        <div id="map"></div>
     </div>
 </div>
 <div class="col-md-5 apartment-detail-service" ng-click="changeService()">
@@ -219,7 +146,7 @@
 
         </div>
         <div class="line-service bg-gray service-basic">
-            <p class="inline float-left">Management fee</p>
+            <p class="inline float-left">Management fee by PP</p>
             <span class="checkbox-service float-right">
                 <label class="material-checkbox">
                     <input type="checkbox" id="checkboxFee" checked>
@@ -294,7 +221,7 @@
 
 
         <div class="line-service" ng-class="basic">
-            <p class="inline float-left">Extra service</p>
+            <p class="inline float-left">Include tax</p>
             <span class="checkbox-service float-right">
                 <label class="material-checkbox">
                     <input type="checkbox" id="checkboxExtra">
@@ -315,256 +242,33 @@
 <div class="col-xs-12 similar-listing">
     <div class="title-apartment-detail">SIMILIAR LISTING</div>
     <div class="slide-similar owl-carousel owl-theme">
-        <div class="item">
+        <div class="item" ng-repeat="item in apartmentList">
             <div class="thumbnail-choose-home">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                </div>
+                <a ui-sref="apartmentdetail({id: item.Id,name: replaceString(item.Name)})" class="aparment-banner">
+                    <img ng-src="Upload/apartment/{{item.ImgList[0].Img}}" alt="Alternate Text" />
+                </a>
                 <div class="choose-home-summary">
-                    <div class="choose-home-code">
-                        House P123456
-                    </div>
-                    <div class="choose-home-name">
-                        Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                    </div>
+                    <a ui-sref="apartmentdetail({id: item.Id,name: replaceString(item.Name)})" class="choose-home-code">
+                        {{item.Code}}
+                    </a>
+                    <a ui-sref="apartmentdetail({id: item.Id,name: replaceString(item.Name)})" class="choose-home-name">
+                        {{item.Name}}
+                    </a>
                     <div class="choose-home-detail float-left">
-                        <p>Bedrooms: 2</p>
-                        <p>Dong Da, Hanoi</p>
+                        <p>Bedrooms: {{item.NoBedRoom}}</p>
+                        <p>{{item.City}}</p>
                     </div>
                     <div class="choose-home-price float-right">
                         <span class="text-price-title">Estimate Price:</span>
-                        <p class="price">$ <span>2400</span></p>
+                        <p class="price">$ <span>{{item.Price}}</span></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="item">
-            <div class="thumbnail-choose-home">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                </div>
-                <div class="choose-home-summary">
-                    <div class="choose-home-code">
-                        House P123456
-                    </div>
-                    <div class="choose-home-name">
-                        Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                    </div>
-                    <div class="choose-home-detail float-left">
-                        <p>Bedrooms: 2</p>
-                        <p>Dong Da, Hanoi</p>
-                    </div>
-                    <div class="choose-home-price float-right">
-                        <span class="text-price-title">Estimate Price:</span>
-                        <p class="price">$ <span>2400</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="thumbnail-choose-home">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                </div>
-                <div class="choose-home-summary">
-                    <div class="choose-home-code">
-                        House P123456
-                    </div>
-                    <div class="choose-home-name">
-                        Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                    </div>
-                    <div class="choose-home-detail float-left">
-                        <p>Bedrooms: 2</p>
-                        <p>Dong Da, Hanoi</p>
-                    </div>
-                    <div class="choose-home-price float-right">
-                        <span class="text-price-title">Estimate Price:</span>
-                        <p class="price">$ <span>2400</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="thumbnail-choose-home">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                </div>
-                <div class="choose-home-summary">
-                    <div class="choose-home-code">
-                        House P123456
-                    </div>
-                    <div class="choose-home-name">
-                        Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                    </div>
-                    <div class="choose-home-detail float-left">
-                        <p>Bedrooms: 2</p>
-                        <p>Dong Da, Hanoi</p>
-                    </div>
-                    <div class="choose-home-price float-right">
-                        <span class="text-price-title">Estimate Price:</span>
-                        <p class="price">$ <span>2400</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="thumbnail-choose-home">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="choose-home-item box-shadow">
-                            <img src="Images/img-demo.png" class="amenities-img" alt="Alternate Text" />
-                        </div>
-                    </div>
-                </div>
-                <div class="choose-home-summary">
-                    <div class="choose-home-code">
-                        House P123456
-                    </div>
-                    <div class="choose-home-name">
-                        Royal City R2 Apartment Fully Furnished &Aacute; Marble Floor
-                    </div>
-                    <div class="choose-home-detail float-left">
-                        <p>Bedrooms: 2</p>
-                        <p>Dong Da, Hanoi</p>
-                    </div>
-                    <div class="choose-home-price float-right">
-                        <span class="text-price-title">Estimate Price:</span>
-                        <p class="price">$ <span>2400</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        
     </div>
 </div>
 </div>
 </div>
 </div>
-<script>
-    $(document).ready(function () {
-
-        var owl = $('.tour-this-home .owl-carousel');
-        owl.owlCarousel({
-            margin: 30,
-            autoplay: true,
-            autoplayTimeout: 2500,
-            autoplayHoverPause: true,
-            loop: true,
-            items: 2,
-            nav: true,
-            animateOut: 'fadeOut'
-        });
-
-        $('.header-apartment-detail .owl-carousel').owlCarousel({
-            margin: 0,
-            autoplay: true,
-            autoplayTimeout: 2500,
-            autoplayHoverPause: true,
-            loop: true,
-            items: 1,
-            nav: true,
-            animateOut: 'fadeOut'
-        });
-
-        $('.similar-listing .slide-similar').owlCarousel({
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 2500,
-            autoplayHoverPause: true,
-            nav: true,
-            loop: true,
-            responsive:{
-                0:{
-                    items:2,
-                    nav: true
-                },
-                600:{
-                    items: 3,
-                    nav:true
-                },
-                1000:{
-                    items:4,
-                    nav: true,
-                    loop:true
-                }
-            },
-            animateOut: 'fadeOut'
-        });
-        $('.similar-listing .thumbnail-choose-home .owl-carousel').owlCarousel({
-            margin: 0,
-            autoplay: true,
-            autoplayTimeout: 2500,
-            autoplayHoverPause: true,
-            loop: true,
-            items: 1,
-            nav: true,
-            animateOut: 'fadeOut'
-        });
-
-    })
-</script>
