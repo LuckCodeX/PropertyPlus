@@ -531,12 +531,13 @@ namespace PropertyPlus.Controllers
                     Description = p.apartment_content.FirstOrDefault(q => q.language == language) == null ? "" : p.apartment_content.FirstOrDefault(q => q.language == language).description,
                     Code = p.code,
                     Address = p.address,
+                    City = p.city,
                     Area = p.area,
                     Latitude = p.latitude,
                     Longitude = p.longitude,
                     NoBathRoom = p.no_bathroom,
                     NoBedRoom = p.no_bedroom,
-                    Price = p.price,
+                    Price = p.price + p.management_fee,
                     UserProfileOwner = new UserProfileModel()
                     {
                         Id = p.user_profile.user_profile_id,
@@ -592,12 +593,13 @@ namespace PropertyPlus.Controllers
                     Description = apartment.apartment_content.FirstOrDefault(q => q.language == language) == null ? "" : apartment.apartment_content.FirstOrDefault(q => q.language == language).description,
                     Code = apartment.code,
                     Address = apartment.address,
+                    City = apartment.city,
                     Area = apartment.area,
                     Latitude = apartment.latitude,
                     Longitude = apartment.longitude,
                     NoBathRoom = apartment.no_bathroom,
                     NoBedRoom = apartment.no_bedroom,
-                    Price = apartment.price,
+                    Price = apartment.price + apartment.management_fee,
                     UserProfileOwner = new UserProfileModel()
                     {
                         Id = apartment.user_profile.user_profile_id,
