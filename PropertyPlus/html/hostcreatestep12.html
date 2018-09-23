@@ -5,13 +5,15 @@
             <p style="margin-top: 29px">How many total bedroom your property have?</p>
             <div class="choose-bedroom-option input-option row">
                 <div class="col-md-3">
-                    <select class="select-apartment" ng-model="data.NoBedRoom" ng-options="option.name for option in bedrooms"></select>
+                    <select class="select-apartment" ng-model="data.NoBedRoom">
+                        <option ng-repeat="option in bedrooms" value="{{option.value}}">{{option.name}}</option>
+                    </select>
                 </div>
             </div>
             <p style="margin-top: 32px">How many total bathrooms your property have?</p>
             <div class="choose-bedroom-option input-option row">
                 <div class="col-md-3">
-                    <select class="select-apartment" ng-model="data.NoBathRoom" ng-options="option.name for option in bathrooms"></select>
+                    <select class="select-apartment" ng-model="data.NoBathRoom" ng-options="option.value as option.name for option in bathrooms"></select>
                 </div>
             </div>
             <p style="margin-top: 32px">How much area of your house</p>
