@@ -549,7 +549,7 @@ namespace PropertyPlus.Controllers
                         Id = p.project.project_id,
                         Name = p.project.project_content.FirstOrDefault(q => q.language == language).name
                     },
-                    ImgList = p.aparment_image.Where(q => q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImage()
+                    ImgList = p.aparment_image.Where(q => q.type != -1 && q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImage()
                     {
                         Id = q.apartment_image_id,
                         Type = q.type,
@@ -610,7 +610,7 @@ namespace PropertyPlus.Controllers
                         Id = apartment.project.project_id,
                         Name = apartment.project.project_content.FirstOrDefault(q => q.language == language).name
                     },
-                    ImgList = apartment.aparment_image.Where(q => q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImage()
+                    ImgList = apartment.aparment_image.Where(q => q.type != -1 && q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImage()
                     {
                         Id = q.apartment_image_id,
                         Type = q.type,
