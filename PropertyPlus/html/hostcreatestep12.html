@@ -50,7 +50,7 @@
             <p style="margin-top: 32px">Describe about your apartment ( Optional )</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-12">
-                    <textarea type="text" name="describe" ng-model="data.Description" value="" />
+                    <textarea type="text" ckeditor="editorOptions" id="describe" name="describe" ng-model="data.Description" value="" />
                 </div>
             </div>
         </div>
@@ -61,3 +61,16 @@
         </div>
     </form>
 </div>
+
+<!--<script>
+    $(function () {
+        createEditor("describe");
+    });
+
+    function createEditor(id) {
+        CKEDITOR.replace(id,
+            {
+                //filebrowserImageUploadUrl: '/Admin/UploadImage',
+            });
+    }
+</script>-->

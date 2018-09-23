@@ -13,7 +13,8 @@
     'ui.select',            //ui-select
     'imageupload',
     'ngAutocomplete',
-    'ngImgCrop'            //ngImgCrop
+    'ngImgCrop',            //ngImgCrop
+    'ngCkeditor'
 ]);
 
 var API = "http://localhost:10918/api/propertyplus/";

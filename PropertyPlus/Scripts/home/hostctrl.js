@@ -72,6 +72,12 @@
         }
 
     }
+
+    $scope.editorOptions = {
+        language: 'vi'
+        // uiColor: '#000000'
+    };
+
     $scope.loadStep1_3 = function () {
         if ($scope.data == undefined) {
             $location.url('/host/listing');
