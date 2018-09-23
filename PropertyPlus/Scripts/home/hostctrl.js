@@ -24,19 +24,18 @@
     $scope.loadStep1_1 = function () {
         $scope.data = {
             NoBedRoom: "1",
-            NoBathRoom: "1"
+            NoBathRoom: "1",
+            Type: "1",
+            ProjectId: "",
+            FacilityList: []
         };
         $scope.projectList = [];
-        xhrService.get("GetAllProject/")
+        xhrService.get("GetAllProject")
             .then(function (data) {
                 $scope.projectList = data.data;
-                $scope.data.ProjectId = "-1";
-            },
-                function (error) {
-                    console.log(error.statusText);
-                });
-        $scope.data.Type = "1";
-
+            }, function (error) {
+                console.log(error.statusText);
+            });
     };
 
     $scope.loadStep1_2 = function () {
@@ -91,7 +90,7 @@
 
     $scope.disableBtn = "service-basic";
 
-    $scope.submitStep1_1 = function() {
+    $scope.submitStep1_1 = function () {
         $location.url("host/create/step-1-2");
     };
 
@@ -99,7 +98,7 @@
         $location.url("host/create/step-1-3");
     };
 
-    $scope.saveStep2 = function(images, banner) {
+    $scope.saveStep2 = function (images, banner) {
         $scope.banner_img = banner;
         $scope.images = images;
     };

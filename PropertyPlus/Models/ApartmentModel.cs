@@ -21,7 +21,7 @@ namespace PropertyPlus.Models
         public string City { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
-        public int ProjectId { get; set; }
+        public int? ProjectId { get; set; }
         public ProjectModel Project { get; set; }
         public int Type { get; set; }
         public string Name { get; set; }

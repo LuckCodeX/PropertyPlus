@@ -51,8 +51,8 @@
           <Property Name="apartment_content_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="apartment_id" Type="int" Nullable="false" />
           <Property Name="language" Type="int" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="description" Type="ntext" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="description" Type="ntext" />
         </EntityType>
         <EntityType Name="apartment_facility">
           <Key>
@@ -791,8 +791,8 @@
           <Property Name="apartment_content_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="apartment_id" Type="Int32" Nullable="false" />
           <Property Name="language" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="apartment" Relationship="PropertyPlusModel.FK__apartment__apart__1A14E395" FromRole="apartment_content" ToRole="apartment" />
         </EntityType>
         <Association Name="FK__apartment__apart__1A14E395">
