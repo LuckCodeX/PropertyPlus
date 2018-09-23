@@ -820,6 +820,7 @@
     <Content Include="Scripts\jquery.slimscroll.min.js" />
     <Content Include="Scripts\metisMenu.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ng-ckeditor.js" />
     <Content Include="Scripts\ocLazyLoad.min.js" />
     <Content Include="Scripts\pace.min.js" />
     <Content Include="Scripts\respond.js" />
