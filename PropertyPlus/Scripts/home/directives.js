@@ -579,6 +579,7 @@ function googleplace() {
                     country: 'vn'
                 }
             };
+           
             var autocomplete = new google.maps.places.Autocomplete(element[0], options);
             google.maps.event.addListener(autocomplete, 'place_changed', function () {
                 scope.$apply(function () {

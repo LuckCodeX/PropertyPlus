@@ -6,19 +6,22 @@
             <p>- Dung lượng mỗi ảnh tải lên không vượt quá 5MB.</p>
             <p style="margin-bottom: 0px">- Số lượng ảnh cho một lần tải không vượt quá 5. </p>
             <div class="row">
-                <div class="col-md-12 img-upload-current drag-drop-img">
-                    <img ng-show="confirm_img.url" class="img" ng-src="{{confirm_img.url}}" alt="Alternate Text" />
+                <div ng-repeat="image in imagesConfirm track by $index" class="col-md-12 img-upload-current drag-drop-img">
+                    <img ng-show="imagesConfirm[$index].url" class="img" ng-src="{{imagesConfirm[$index].url}}" />
                     <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-cloud-upload-alt"></i></p>
                             <p>Drag n drop or click to upload </p>
-                            <input accept="image/*" image="confirm_img" type="file" type="{{confirm_img.file.type}}" />
+                            <input accept="image/*" type="file"  upload-img="uploadConfirmImg" image="imagesConfirm[$index]"
+                                   resize-max-height="300"
+                                   resize-max-width="250"
+                                   resize-quality="0.7" />
                         </span>
                     </div>
                 </div>
                 <div class="footer-step col-md-12">
                     <a ui-sref="host.create.step3" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-                    <a ui-sref="host.createfinish"  ng-click="submitAll(confirm_img)" class="float-right btn-next">Finish</a>
+                    <a  ng-click="submitAll(imagesConfirm)" class="float-right btn-next">Finish</a>
                     <a ui-sref="host.listing" class="float-right btn-cancel">Cancel</a>
                 </div>
             </div>
