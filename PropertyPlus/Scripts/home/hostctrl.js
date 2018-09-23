@@ -10,7 +10,7 @@
         if (!(localStorage && localStorage.getItem('user_profile'))) {
             window.location.href = "/";
         }
-       
+
     }
     $scope.apartments = [{ name: "Apartment", value: "1" }];
     $scope.bedrooms = [
@@ -24,7 +24,7 @@
     $scope.loadStep1_1 = function () {
         $scope.data = {
             NoBedRoom: "1",
-            NoBathRoom : "1"
+            NoBathRoom: "1"
         };
         $scope.projectList = [];
         xhrService.get("GetAllProject/")
@@ -55,18 +55,29 @@
         }
 
     }
-    $scope.loadStep1_3 = function() {
+    $scope.loadStep1_3 = function () {
         if ($scope.data == undefined) {
             $location.url('/host/listing');
         }
+        var myLatLng = { lat: $scope.data.Latitude, lng: $scope.data.Longitude };
+        var map = new google.maps.Map(document.getElementById('map'),
+            {
+                zoom: 17,
+                center: myLatLng
+            });
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: $scope.data.Address
+        });
     }
-    $scope.loadStep4_1 = function() {
+    $scope.loadStep4_1 = function () {
         if ($scope.data == undefined) {
             $location.url('/host/listing');
         }
     }
 
-    $scope.loadStep3_1 = function() {
+    $scope.loadStep3_1 = function () {
         if ($scope.data == undefined) {
             $location.url('/host/listing');
         }
@@ -80,38 +91,21 @@
 
     $scope.disableBtn = "service-basic";
 
-    //$scope.checkValid = function (status) {
-    //    if (status)
-    //        return ""
-    //    else return 'service-basic';
-    //}
-
-    $scope.submitStep1_1 = function () {
+    $scope.submitStep1_1 = function() {
         $location.url("host/create/step-1-2");
-    }
+    };
 
     $scope.submitStep1_3 = function () {
         $location.url("host/create/step-1-3");
     };
-    
-    $scope.saveAddress = function (address) {
-        $scope.address = address;
-        $scope.linkgg = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk&q=" +
-            address.lat +
-            "," +
-            address.lng;
-        $scope.linkMap = $sce.trustAsResourceUrl($scope.linkgg);
-    }
-    $scope.saveStep2 = function (images, banner) {
+
+    $scope.saveStep2 = function(images, banner) {
         $scope.banner_img = banner;
         $scope.images = images;
-    }
+    };
+
     $scope.submitAll = function (confirm_img) {
         $scope.confirm_img = confirm_img;
-        $scope.data.Address = $scope.address.formattedAddress;
-        $scope.data.Latitude = $scope.address.lat;
-        $scope.data.Longitude = $scope.address.lng;
-        $scope.data.City = $scope.address.administrative_area_level_1;
         $scope.data.ImgList = [];
         if ($scope.banner_img.url != null) {
             $scope.data.ImgList.push({
@@ -144,7 +138,7 @@
         });
     }
 
-    
+
 }
 
 app.controller('HostCtrl', HostCtrl);

@@ -19,7 +19,7 @@
             <p style="margin-top: 32px">How much area of your house</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-3">
-                    <input type="number" name="area" ng-model="data.Area" value="" required="" />
+                    <input type="number" name="area" ng-model="data.Area" value="" required="" min="0"/>
                 </div>
                 <div class="span">
                     <span>m<sup> 2</sup></span>
@@ -32,7 +32,7 @@
             <p style="">Address</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-9">
-                    <input type="text" ng-autocomplete ng-model-options="{ debounce: 500 }" ng-change="saveAddress(address)" details="address" name="address" ng-model="address.formattedAddress" required="" />
+                    <input type="text" googleplace ng-model-options="{ debounce: 500 }" details="data" name="address" ng-model="data.Address" required="" />
                 </div>
             </div>
            
