@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using PropertyPlus.Models;
@@ -75,6 +76,20 @@ namespace PropertyPlus.Services
         public void SaveApartmentFacility(apartment_facility apartmentFacility)
         {
             ApartmentFacilityRepository.Save(apartmentFacility);
+        }
+
+        public List<apartment> SearchListApartment()
+        {
+            return ApartmentRepository.FindBy(p => p.status == 1).OrderByDescending(p => p.apartment_id)
+                .Include(p => p.aparment_image).Include(p => p.apartment_content)
+                .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).ToList();
+        }
+
+        public apartment GetActiveApartmentById(int id)
+        {
+            return ApartmentRepository.FindBy(p => p.status == 1 && p.apartment_id == id)
+                .Include(p => p.aparment_image).Include(p => p.apartment_content)
+                .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).FirstOrDefault();
         }
     }
 }

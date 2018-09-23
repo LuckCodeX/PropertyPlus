@@ -19,8 +19,8 @@ namespace PropertyPlus.Models
         public int NoBathRoom { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public int? ProjectId { get; set; }
         public ProjectModel Project { get; set; }
         public int Type { get; set; }

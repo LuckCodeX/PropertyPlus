@@ -469,6 +469,7 @@ namespace PropertyPlus.Controllers
                                     img.Img_Base64)
                             };
                             _service.SaveApartmentImage(apartmentImage);
+                            idx++;
                         }
 
                         foreach (var fac in model.FacilityList)
@@ -512,6 +513,112 @@ namespace PropertyPlus.Controllers
             }
 
             return null;
+        }
+
+        [HttpGet]
+        [Route("GetListApartment/{page}/{limit}")]
+        public PagingResult<ApartmentModel> GetListApartment(int page, int limit)
+        {
+            IEnumerable<string> languages;
+            if (this.Request.Headers.TryGetValues("Language", out languages))
+            {
+                var language = Convert.ToInt32(languages.First());
+                var apartments = _service.SearchListApartment();
+                var apartmentList = apartments.Select(p => new ApartmentModel()
+                {
+                    Id = p.apartment_id,
+                    Name = p.apartment_content.FirstOrDefault(q => q.language == language) == null ? "" : p.apartment_content.FirstOrDefault(q => q.language == language).name,
+                    Description = p.apartment_content.FirstOrDefault(q => q.language == language) == null ? "" : p.apartment_content.FirstOrDefault(q => q.language == language).description,
+                    Code = p.code,
+                    Address = p.address,
+                    Area = p.area,
+                    Latitude = p.latitude,
+                    Longitude = p.longitude,
+                    NoBathRoom = p.no_bathroom,
+                    NoBedRoom = p.no_bedroom,
+                    Price = p.price,
+                    UserProfileOwner = new UserProfileModel()
+                    {
+                        Id = p.user_profile.user_profile_id,
+                        FirstName = p.user_profile.first_name,
+                        LastName = p.user_profile.last_name,
+                        Avatar = p.user_profile.avatar
+                    },
+                    Project = Equals(p.project_id, null) ? new ProjectModel() : new ProjectModel()
+                    {
+                        Id = p.project.project_id,
+                        Name = p.project.project_content.FirstOrDefault(q => q.language == language).name
+                    },
+                    ImgList = p.aparment_image.Where(q => q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImage()
+                    {
+                        Id = q.apartment_image_id,
+                        Type = q.type,
+                        Img = q.img
+                    }).ToList()
+                }).Skip((page - 1) * limit).Take(limit).ToList();
+                return new PagingResult<ApartmentModel>()
+                {
+                    total = apartments.Count,
+                    data = apartmentList
+                };
+            }
+            return new PagingResult<ApartmentModel>()
+            {
+                total = 0
+            };
+        }
+
+        [HttpGet]
+        [Route("GetApartmentDetail/{id}")]
+        public ApartmentModel GetApartmentDetail(int id)
+        {
+            IEnumerable<string> languages;
+            if (this.Request.Headers.TryGetValues("Language", out languages))
+            {
+                var language = Convert.ToInt32(languages.First());
+                var apartment = _service.GetActiveApartmentById(id);
+                if (Equals(apartment, null))
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
+                    {
+                        ReasonPhrase = "Apartment doesn't existed !!!"
+                    };
+                    throw new HttpResponseException(response);
+                }
+                return new ApartmentModel()
+                {
+                    Id = apartment.apartment_id,
+                    Name = apartment.apartment_content.FirstOrDefault(q => q.language == language) == null ? "" : apartment.apartment_content.FirstOrDefault(q => q.language == language).name,
+                    Description = apartment.apartment_content.FirstOrDefault(q => q.language == language) == null ? "" : apartment.apartment_content.FirstOrDefault(q => q.language == language).description,
+                    Code = apartment.code,
+                    Address = apartment.address,
+                    Area = apartment.area,
+                    Latitude = apartment.latitude,
+                    Longitude = apartment.longitude,
+                    NoBathRoom = apartment.no_bathroom,
+                    NoBedRoom = apartment.no_bedroom,
+                    Price = apartment.price,
+                    UserProfileOwner = new UserProfileModel()
+                    {
+                        Id = apartment.user_profile.user_profile_id,
+                        FirstName = apartment.user_profile.first_name,
+                        LastName = apartment.user_profile.last_name,
+                        Avatar = apartment.user_profile.avatar
+                    },
+                    Project = Equals(apartment.project_id, null) ? new ProjectModel() : new ProjectModel()
+                    {
+                        Id = apartment.project.project_id,
+                        Name = apartment.project.project_content.FirstOrDefault(q => q.language == language).name
+                    },
+                    ImgList = apartment.aparment_image.Where(q => q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImage()
+                    {
+                        Id = q.apartment_image_id,
+                        Type = q.type,
+                        Img = q.img
+                    }).ToList()
+                };
+            }
+            return new ApartmentModel();
         }
 
         protected override void Dispose(bool disposing)
