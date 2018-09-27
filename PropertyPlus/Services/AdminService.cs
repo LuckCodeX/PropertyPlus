@@ -28,7 +28,7 @@ namespace PropertyPlus.Services
         public admin LoginAdmin(AdminModel model)
         {
             var pass = Encrypt.EncodePassword(model.Password);
-            return AdminRepository.FindBy(p => p.username == model.Username && p.password == pass).FirstOrDefault();
+            return AdminRepository.FindBy(p => p.username == model.Username && p.password == pass && (p.role == 0 || p.role == 1)).FirstOrDefault();
         }
     }
 }

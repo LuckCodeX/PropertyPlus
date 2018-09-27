@@ -41,17 +41,21 @@ namespace PropertyPlus.Controllers
                         Request.Url.Authority,
                         Url.Content("/Upload/" + vFileName));
                     vMessage = "Tải ảnh thành công !!!";
+
+                    vOutput = "{\"uploaded\": 1,\"fileName\": \"" + vFileName + "\",\"url\": \"" + ("/Upload/" + vFileName) + "\"}";
+                    return Content(vOutput, "text/html");
                 }
             }
             catch (Exception e)
             {
                 vMessage = "There was an issue uploading:" + e.Message;
             }
-            vOutput = string.Format("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction({0}, \"{1}\", \"{2}\");</script>",
-                CKEditorFuncNum,
-                vImagePath,
-                vMessage);
-            return Content(vOutput, "text/html");
+            //vOutput = string.Format("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction({0}, \"{1}\", \"{2}\");</script>",
+            //    CKEditorFuncNum,
+            //    vImagePath,
+            //    vMessage);
+            //return Content(vOutput, "text/html");
+            return null;
         }
 
 

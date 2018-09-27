@@ -5,20 +5,20 @@
     $timeout,
     xhrService,
     $anchorScroll) {
-    var clean = {};
-    clean[1] = 40;
-    clean[2] = 65;
-    clean[3] = 90;
-    clean[4] = 115;
-    clean[5] = 135;
-    clean[6] = 150;
-    var drink = {};
-    drink[1] = 3;
-    drink[2] = 6;
-    drink[3] = 9;
-    drink[4] = 11;
-    drink[5] = 13;
-    drink[6] = 15;
+    var clean = [0, 40, 65, 90, 115, 135, 150];
+    //clean[1] = 40;
+    //clean[2] = 65;
+    //clean[3] = 90;
+    //clean[4] = 115;
+    //clean[5] = 135;
+    //clean[6] = 150;
+    var drink = [0, 3, 6, 9, 11, 13, 15];
+    //drink[1] = 3;
+    //drink[2] = 6;
+    //drink[3] = 9;
+    //drink[4] = 11;
+    //drink[5] = 13;
+    //drink[6] = 15;
     $scope.foreignTv = {};
     $scope.foreignTvs = [
         { name: 'None', value: '0' },
@@ -33,7 +33,7 @@
         { name: 'An Vien TV', value: '10' }
     ];
 
-    $scope.loadApartment = function() {
+    $scope.loadApartment = function () {
         $scope.bigCurrentPage = $stateParams.page === undefined ? 1 : $stateParams.page;
         var limit = 8;
 
@@ -41,17 +41,17 @@
             .then(function (data) {
                 $scope.apartmentList = data.data.data;
                 var myLatLng = { lat: $scope.apartmentList[0].Latitude, lng: $scope.apartmentList[0].Longitude };
-                    var map = new google.maps.Map(document.getElementById('map'),
-                        {
-                            zoom: 17,
-                            center: myLatLng
-                        });
-                    var marker = new google.maps.Marker({
-                        position: myLatLng,
-                        map: map,
-                        title: $scope.apartmentList[0].Address
+                var map = new google.maps.Map(document.getElementById('map'),
+                    {
+                        zoom: 17,
+                        center: myLatLng
                     });
-                },
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: $scope.apartmentList[0].Address
+                });
+            },
                 function (error) {
                     console.log(error.statusText);
                 });
@@ -68,35 +68,35 @@
         xhrService.get("GetApartmentDetail/" + $scope.apartmentId)
             .then(function (data) {
                 $scope.apartment = data.data;
-                    for (var i = 0; i < $scope.apartment.ImgList.length; i++) {
-                        if ($scope.apartment.ImgList[i].Type == 0) {
-                            $scope.apartment.banner = $scope.apartment.ImgList[i].Img;
-                            console.log($scope.apartment.banner);
-                        }
+                for (var i = 0; i < $scope.apartment.ImgList.length; i++) {
+                    if ($scope.apartment.ImgList[i].Type == 0) {
+                        $scope.apartment.banner = $scope.apartment.ImgList[i].Img;
+                        console.log($scope.apartment.banner);
                     }
-                    var myLatLng = { lat: $scope.apartment.Latitude, lng: $scope.apartment.Longitude };
-                    var map = new google.maps.Map(document.getElementById('map'),
-                        {
-                            zoom: 17,
-                            center: myLatLng
-                        });
-                    var marker = new google.maps.Marker({
-                        position: myLatLng,
-                        map: map,
-                        title: $scope.apartment.Address
+                }
+                var myLatLng = { lat: $scope.apartment.Latitude, lng: $scope.apartment.Longitude };
+                var map = new google.maps.Map(document.getElementById('map'),
+                    {
+                        zoom: 17,
+                        center: myLatLng
                     });
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: $scope.apartment.Address
+                });
                 console.log(data);
-                },
+            },
                 function (error) {
                     console.log(error.statusText);
-            });
+                });
         xhrService.get("GetListApartment/" + 1 + "/" + 6)
             .then(function (data) {
-                    $scope.apartmentList = data.data.data;
-                },
+                $scope.apartmentList = data.data.data;
+            },
                 function (error) {
                     console.log(error.statusText);
-            });
+                });
 
         $timeout(loadApartmentDetail, 1000);
 
@@ -117,7 +117,7 @@
         $scope.reverseOrderFilterFn = function (groups) {
             return groups.reverse();
         };
-        
+
         $scope.foreignTv.selected = $scope.foreignTvs[1];
         $scope.apartmentPrice = 1500;
         $scope.cleaning = 3;
@@ -127,12 +127,12 @@
         $scope.changeService();
     }
     $scope.changeBill = function () {
-        
+
         if ($scope.electricBill > 999 || isNaN($scope.electricBill.substr($scope.electricBill.length - 1))) {
-            
-                $scope.electricBill = $scope.electricBill.slice(0, -1);
-            
-            
+
+            $scope.electricBill = $scope.electricBill.slice(0, -1);
+
+
         } else if ($scope.electricBill < 0) {
             $scope.electricBill = 0;
         } else if ($scope.electricBill == "") {
@@ -143,8 +143,8 @@
                 $scope.electricBill = $scope.electricBill.substr(1);
             }
         }
-        
-        
+
+
     }
     $scope.radioService = function () {
         if (document.getElementById("radioBasic").checked) {
@@ -185,7 +185,7 @@
         var electricBill = Number($scope.electricBill);
         var servicePrice = managamentFee + internet + foreignTv + laundry + water + detergent + electricBill;
         $scope.servicePrice = servicePrice;
-        $scope.totalPrice = (($scope.apartmentPrice + $scope.servicePrice)/extra).toFixed(2);
+        $scope.totalPrice = (($scope.apartmentPrice + $scope.servicePrice) / extra).toFixed(2);
         $scope.perNightPrice = (($scope.totalPrice / 30) * 1.6).toFixed(2);
     }
 
