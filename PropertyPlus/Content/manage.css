@@ -1,0 +1,383 @@
+﻿.host-manage {
+    background-color: #EBEBEB;
+}
+
+.choice-apartment-manager {
+    margin-top: 20.4px;
+    padding: 18px 29px 32px 29px;
+    background-color: white;
+    margin-left: -2%;
+    
+    margin-bottom: 20px;
+}
+
+.choice-apartment-manager select {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #707070;
+    padding: 10px 5px 10px 18px;
+    margin-top: 6px;
+}
+
+.left-bar {
+    background-color: #473D6F;
+    height: 365px;
+    width:146px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+    .left-bar .menu-nav {
+        padding: 15px 0px 12px 24px;
+    }
+
+        .left-bar .menu-nav.active, .left-bar .menu-nav:hover {
+            background-color: #464878;
+            border-left: 2px solid white;
+            padding: 15px 0px 12px 22px;
+        }
+
+    .left-bar p, .left-bar .menu-nav {
+        color: white;
+    }
+
+.body-manager {
+    background: #fff;
+    width: 620px;
+    margin-bottom:100px;
+    padding:0 30px;
+}
+
+.text-manager-problem{
+    color:#444;
+    font-size:14px;
+    margin-top:20px;
+}
+
+.text-manager-problem-2 {
+    color: #444;
+    font-size: 14px;
+    margin-top: -20px;
+}
+
+.text-manager-describe{
+    font-size:14px;
+    color:#707070;
+}
+
+
+.manager-describe{
+    margin-top:35px;
+}
+
+    .manager-describe input {
+        border: 1px solid #707070;
+        border-radius: 5px;
+        width: 447px;
+        height: 34px;
+        margin-left: 50px;
+        padding:0 20px;
+    }
+
+    .manager-describe textarea {
+        border: 1px solid #707070;
+        border-radius: 5px;
+        width: 447px;
+        height: 282px;
+        margin-left: 97px;
+        padding: 5px 20px;
+        resize: none;
+        margin-top: -25px;
+    }
+
+.manager-describe-btn{
+    border:1px solid transparent;
+    border-radius:5px;
+    background:#464878;
+    width:81px;
+    height:34px;
+    color:#fff;
+    font-size:14px;
+    margin:30px 0 40px 465px;
+}
+
+.manage-info-text {
+    font-size: 14px;
+    color: #707070;
+    display: inline-block;
+    margin-top: 6px;
+}
+
+    .select-info {
+        border: 1px solid #707070;
+        border-radius:5px;
+        width:171px;
+        height:34px;  
+        display:inline-block;
+        float:right;
+        padding-left:10px;
+    }
+
+.select-info-1 {
+    border: 1px solid #707070;
+    border-radius: 5px;
+    width: 56px;
+    height: 34px;
+    display: inline-block;
+    padding-left: 10px;
+    margin-left:17px;
+}
+
+.manage-info{
+    margin-top:20px;
+}
+
+.manage-info-area {
+    border: 1px solid #707070;
+    border-radius: 5px;
+    height: 34px;
+    width: 87px;
+    display: inline-block;
+    padding-left: 20px;
+    margin-left: 72px;
+}
+
+.manage-info-address {
+    border: 1px solid #707070;
+    border-radius: 5px;
+    height: 34px;
+    width: 433px;
+    display: inline-block;
+    padding-left: 20px;
+    margin-left: 47px;
+}
+
+.manage-info-main {
+   
+    margin-top: 30px;
+}
+
+.body-manager-photo {
+    background: #fff;
+    width: 620px;
+    margin-bottom: 100px;
+    padding: 0 0px;
+}
+
+.body-manager-location {
+    background: #fff;
+    width: 620px;
+    margin-bottom: 100px;
+    padding: 0 40px;
+}
+
+.body-manager-location-text {
+    margin-top: 40px;
+    line-height: 3;
+}
+
+.body-manager-overview {
+    background: #fff;
+    width: 620px;
+    margin-bottom: 100px;
+    padding: 40px 40px;
+}
+
+.avatar-manager {
+    margin-top: 10px;
+    margin-bottom: 45px;
+}
+
+.avatar-manager img{
+    display:inline-block;
+}
+    .avatar-manager p {
+        display: inline-block;
+        padding-left: 15px;
+    }
+
+.manager-overview select{
+    width:100%;
+    height:33px;
+    border-radius:5px;
+    padding:0 10px;
+}
+
+.manager-price {
+    margin-top: 40px;
+}
+
+
+    .manager-price p {
+        font-size: 24px;
+       line-height:0.5;
+    }
+
+.manager-price span {
+    font-size: 10px;
+}
+
+.manager-price-below{
+    margin-top:40px;
+}
+
+.manager-price-below p {
+    font-size:18px;
+}
+
+    .manager-price-below span {
+        font-size: 10px;
+    }
+
+.manager-chart p {
+    font-size: 8px;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}
+
+.manager-chart-right {
+    position: absolute;
+    margin-left: 500px;
+    margin-top: -7%;
+}
+
+
+.manager-chart-right button {
+    position: absolute;
+    border: none;
+    background: #fff;
+    margin-left: 30px;
+    margin-top: -120%;
+}
+
+.manager-chart-left {
+    position: absolute;
+    
+    margin-top: -6.5%;
+}
+
+
+    .manager-chart-left button {
+        position: absolute;
+        border: none;
+        background: #fff;
+        
+        margin-top: -57%;
+    }
+
+.manager-chart i {
+    width: 6px;
+    height: 10px;
+}
+
+.manager-detail{
+    margin-top:30px;
+}
+
+.manager-table{
+    font-size:7px;
+    color:#444;
+}
+
+.manager-table-title {
+    border: 1px solid transparent;
+    background: #E4E4E4;
+    font-weight: normal;
+    width:556px;
+    height:27px;
+}
+
+    .manager-table-title p {
+        position: absolute;
+        margin-top: -4px;
+        font-weight: normal;
+    }
+
+    .manager-table span{
+        margin-left:15px;
+        line-height:2;
+    }
+
+
+.active {
+    background: #3B86FF;
+    color: white;
+}
+
+.month-select {
+    border: 1px solid #E8E9EC;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+
+.year-select {
+    font-size: 10px;
+    color: #43425D;
+    position: absolute;
+    margin-left: 6px;
+    margin-top: -6%;
+    font-weight: unset;
+}
+
+.table-month {
+    margin-bottom: 20px;
+    border-spacing: unset !important;
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+#prev-year {
+    margin-left: 116px;
+    border: none;
+    background: #fff;
+}
+
+    #prev-year i {
+        color: #A4AFB7;
+    }
+
+#next-year {
+    margin-bottom: 20px;
+    border: none;
+    background: #fff;
+    margin-left: 116px;
+}
+
+    #next-year i {
+        color: #A4AFB7;
+    }
+
+.calendar-header {
+    background: #E9E9F0;
+    color: #A3A6B4;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.calendar-header-day {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #E8E9EC;
+    color: #A3A6B4;
+}
+
+.calendar-day {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #E8E9EC;
+    font-size: 10px;
+}
+
+.calendar-table {
+    text-align: center;
+    border-spacing: unset !important;
+}
+
+.month-select:hover {
+    background: #4568B2;
+}

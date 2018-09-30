@@ -1,1 +1,42 @@
-﻿<h1>photo</h1>
+﻿<div class="col-md-10 body-manager-photo">
+    <div style="margin-bottom: -130px;" class="content-listing-step" ng-init="loadStep2_1()">
+        <div class="row step-2-1">
+            <div class="col-md-10 col-md-offset-1">
+                <p>Thumbnail photo - banner photo</p>
+                <p style="margin-top: 10px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                <div class="row">
+                    <div class="col-md-12 img-upload-current">
+                        <img ng-show="banner_img.url" class="img" ng-src="{{banner_img.url}}" alt="Alternate Text" />
+                        <div class="btn-upload">
+                            <span class="btn-file">
+                                <p> <i class="fas fa-plus"></i></p>
+                                <p>Add banner image</p>
+                                <input accept="image/*" image="banner_img" type="file" type="{{banner_img.file.type}}" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <p style="margin-top: 40px;margin-bottom: -13px;">Photos</p>
+                    </div>
+                    <div ng-repeat="image in images track by $index" class="col-md-4 another-img-upload img-upload-current">
+                        <img ng-show="images[$index].url" class="img" ng-src="{{images[$index].url}}" />
+                        <div class="btn-upload" style="height: 96px;">
+                            <span class="btn-file" style="padding-top: 30px;padding-left: 22px;">
+                                <p> <i class="fas fa-plus"></i></p>
+                                <p>add another</p>
+                                <input type="file" accept="image/*" upload-img="uploadImg" image="images[$index]"
+                                       resize-max-height="300"
+                                       resize-max-width="250"
+                                       resize-quality="0.7" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="manager-describe-btn" style="margin-top: 25px;float:right;">Save</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>

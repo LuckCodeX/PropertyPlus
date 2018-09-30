@@ -1,1 +1,99 @@
-﻿<h1>overview</h1>
+﻿<div class="col-md-10 body-manager-overview">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="">Tenant</p>
+        </div>
+        <div class="col-md-12">
+            <div class="avatar-manager">
+
+                <img style="width:62px;height:62px;" src="/Upload/avatar/noavatar.jpg" alt="Alternate Text" />
+                <p class="">Shinzo Anpe</p>
+            </div>
+
+        </div>
+        <div class="col-md-8 manager-overview">
+            <p class="">Time</p>
+            <select>
+                <option value="1">Aug 2018</option>
+                <option value="2">Sep 2018</option>
+                <option value="3">Oct 2018</option>
+            </select>
+        </div>
+        <div class="col-md-12 manager-price">
+            <p class="">$ 570</p>
+           <span>Earning for Aug 2018</span>
+        </div>
+        <div class="col-md-12 manager-price-below">
+            <div class="row">
+                <div class="col-xs-3">
+                    <p>$ 600</p>
+                   <i style="color:#7264EE;display:inline-block" class="fas fa-dot-circle"></i>
+                    <span>In</span>
+                </div>
+                <div class="col-xs-3">
+                    <p>$ 30</p>
+                    <i style="color:#F1212F;display:inline-block" class="fas fa-dot-circle"></i>
+                    <span>Out</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 manager-chart" style="margin-top:50px;">
+            <canvas id="line_chart" width="500" height="200"></canvas>
+            <p>2018</p>
+            <div class="manager-chart-right">
+                <p style="display:inline-block;">2019</p>
+                <button ng-click="type = 0; pageChanged()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="manager-chart-left">
+                <p style="display:inline-block;padding-left: 19px;">2017</p>
+                <button ng-click="type = 1; pageChanged()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-12 manager-detail">
+            <p style="font-size:10px;color:#343434;line-height:2.5;">Aug 2018 Detail</p>
+            <p style="font-size:8px;">Billing detail</p>
+            <div class="billing-tab">
+             
+                <table id="billing-table">
+
+                    <tr class="tr-first">
+                        <th>Property</th>
+                        <th>Article</th>
+                        <th>Date Billed</th>
+                        <th>Amount Billed</th>
+                        <th>Payment Status</th>
+                    </tr>
+                    <tr>
+                        <td class="column-article">HOUSE P1234560122</td>
+                        <td class="column-article">Air condition fixing</td>
+                        <td class="column-date">Aug 23, 2018</td>
+                        <td class="column-amount">$ 10</td>
+                        <td style="text-align: left;" class="column-status"><i class="status-success fas fa-circle"></i>Paid</td>
+                    </tr>
+                    <tr>
+                        <td class="column-article">HOUSE P1234560122</td>
+                        <td class="column-article">Chandelier replace</td>
+                        <td class="column-date">Aug 23, 2018</td>
+                        <td class="column-amount">$ 20</td>
+                        <td style="text-align: left;" class="column-status"><i class="status-danger fas fa-circle"></i> Not paid</td>
+                    </tr>
+                   
+                </table>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script>
+        var data1 = [550, 550, 550, 550, 550, 550, 550, 550, 550, 550, 550, 550];
+        var data2 = [80, 50, 60, 10, 10, 10, 110, 50, 10, 60, 40, 90];
+        
+        $(function () {
+            new Chart(document.getElementById("line_chart").getContext("2d"), getChartJs('line', data1, data2));
+        });
+        
+    </script>
