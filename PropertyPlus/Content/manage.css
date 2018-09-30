@@ -300,7 +300,7 @@
     }
 
 
-.active {
+#mainCalendar .active {
     background: #3B86FF;
     color: white;
 }
