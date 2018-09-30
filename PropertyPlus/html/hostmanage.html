@@ -1,3 +1,80 @@
-﻿<h1>Layout manage</h1>
-<div ui-view class="body-content">
+﻿<div class="host-manage">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="choice-apartment-manager">
+                            <p class="label-choice-apartment">Choose your apartment</p>
+                            <select>
+                                <option value="1">APARTMENT - P1234560122 - NAME</option>
+                                <option value="2">APARTMENT - P1234560133 - NAME</option>
+                                <option value="3">APARTMENT - P1234560144 - NAME</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2 left-bar">
+                        <div class="row">
+
+                            <a ui-sref="hostmanage.overview" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('hostmanage.overview')}">
+                                Overview
+                            </a>
+                            <a ui-sref="hostmanage.problem" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('hostmanage.problem')}">
+                                Problem
+                            </a>
+                            <a ui-sref="hostmanage.describe" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('hostmanage.describe')}">
+                                Describe
+                            </a>
+                            <a ui-sref="hostmanage.information" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('hostmanage.information')}">
+                                Information
+                            </a>
+                            <a ui-sref="hostmanage.photo" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('hostmanage.photo')}">
+                                Photos
+                            </a>
+                            <a ui-sref="hostmanage.location" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('hostmanage.location')}">
+                                Location
+                            </a>
+
+                        </div>
+                    </div>
+                    
+                        <div ui-view class="body-content">
+                        </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3" style="width:279px; height:605px;background:#fff;margin-top: 20px;">
+
+                <p style="margin-top: 8px;">Calendar</p>
+                <div id="mainCalendar">
+                    <button id="prev-year"><i class="fas fa-chevron-up"></i></button>
+                    <div id="table-calendar">
+                    </div>
+                    <button id="next-year"><i class="fas fa-chevron-down"></i></button>
+                    <div id="calendar">
+                    </div>
+                </div>
+                <script>
+
+                        generateCalendar(new Date(2018,10,09),new Date(2019,03,05));
+
+                </script>
+
+
+
+
+
+
+
+            </div>
+            <div class="col-md-3" style="margin-top:20px;">
+                <div class="download-contract-user">
+                    <span>Download contract</span>
+                    <a href="#"><span class="icon glyphicon glyphicon-download-alt"></span></a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </div>
+  
