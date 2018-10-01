@@ -28,7 +28,7 @@
 
     <div class="container padding-top-60 blogBox">
         <div class="row">
-            <div class="col-md-4" ng-repeat="item in blogList">
+            <div class="col-md-4" ng-repeat="item in blogList" style="margin-bottom:50px;">
                 <div class="blog-box">
                     <img src="/Upload/{{item.Img}}" alt="#" class="img-fluid" />
                 </div>
@@ -50,7 +50,7 @@
     <div class=" container padding-top-60 padding-bottom-60">
         <div class="row">
             <div class="col-md-offset-4 col-md-4 final  text-center">
-                <button id="loadMore" class="text2">Load more</button>
+                <button ng-click="loadMore()" ng-hide="loadMoreBtn">Load more</button>
             </div>
         </div>
     </div>

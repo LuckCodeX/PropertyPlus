@@ -378,6 +378,6 @@
     border-spacing: unset !important;
 }
 
-.month-select:hover {
+#mainCalendar .month-select:hover {
     background: #4568B2;
 }
