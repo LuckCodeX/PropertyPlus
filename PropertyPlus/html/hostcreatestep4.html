@@ -7,8 +7,9 @@
             <p style="margin-bottom: 0px">- Số lượng ảnh cho một lần tải không vượt quá 5. </p>
             <div class="row">
                 <div ng-repeat="image in imagesConfirm track by $index" class="col-md-12 img-upload-current drag-drop-img">
+                    <i ng-show="imagesConfirm[$index].url" ng-click="imagesConfirm.splice($index, 1)" class="remove-img-btn fas fa-times"></i>
                     <img ng-show="imagesConfirm[$index].url" class="img" ng-src="{{imagesConfirm[$index].url}}" />
-                    <div class="btn-upload">
+                    <div class="btn-upload" ng-class="imagesConfirm[$index].url ? 'opacityZero':''">
                         <span class="btn-file">
                             <p> <i class="fas fa-cloud-upload-alt"></i></p>
                             <p>Drag n drop or click to upload </p>

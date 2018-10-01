@@ -70,7 +70,7 @@
             $scope.images = [];
             $scope.images.push({ file: null, url: null });
         }
-
+        $scope.oldLengthImg = 1;
     }
 
     $scope.editorOptions = {
@@ -110,17 +110,31 @@
         }
     }
 
+    $scope.uploadImages = function(img){
+
+    }
+
     $scope.uploadImg = function (event) {
-        if ($scope.images.length < 6) {
-            $scope.images.push({ file: null, url: null });
-        }
+        $scope.$watchCollection('images', function() {
+            if ($scope.images[$scope.images.length-1].url != null && $scope.images.length <6) {
+                $scope.images.push({ file: null, url: null });
+                return;
+            }
+         });
     };
 
     $scope.uploadConfirmImg = function (event) {
-        if ($scope.imagesConfirm.length < 5) {
-            $scope.imagesConfirm.push({ file: null, url: null });
-        }
+        $scope.$watchCollection('imagesConfirm', function() {
+            if ($scope.imagesConfirm[$scope.imagesConfirm.length-1].url != null && $scope.imagesConfirm.length <5) {
+                $scope.imagesConfirm.push({ file: null, url: null });
+                return;
+            }
+         });
     };
+
+    $scope.deleteBanner = function(){
+        $scope.banner_img.url = null;
+    }
 
     $scope.disableBtn = "service-basic";
 

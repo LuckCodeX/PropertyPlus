@@ -2774,12 +2774,11 @@ footer {
     position: relative;
 }
     .img-upload-current .img {
-        width: calc(100% - 25px);
-        height: 157px;
+        width: calc(100% - 30px);
+        height: 153px;
         position: absolute;
         top: 0;
         left: 15px;
-        z-index: 10;
         border-radius: 3px;
     }
 .list-apartment-step .img-apartment {
@@ -2849,11 +2848,16 @@ footer {
     display: none;
     position: absolute;
     right: 0;
-    top: 60px;
+    top: 59px;
     z-index: 99;
 }
 
-    .user-header-listing .menu-user-header-bar .element-user-header-bar {
+.menu-user-header-bar{
+    top: 61px;
+}
+
+    .menu-user-header-bar .element-user-header-bar {
+        cursor: pointer;
         display: block;
         line-height: 24px;
         width: 219px;
@@ -3114,6 +3118,26 @@ input::-webkit-inner-spin-button {
 }
 .slide-similar .owl-dots {
     display: none;
+}
+.opacityZero{
+    opacity: 0 !important;
+}
+.img-upload-current:hover .remove-img-btn{
+    visibility: visible;
+}
+.img-upload-current .remove-img-btn{
+    visibility: hidden;
+    position: absolute;
+    top: 7px;
+    right: 24px;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  opacity: 0.9;
 }
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {

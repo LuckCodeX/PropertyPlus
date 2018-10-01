@@ -1,5 +1,5 @@
 ﻿<div class="content-listing-step" ng-init="loadStep3_1()">
-    <div class="row">
+    <form class="row">
         <div class="col-md-6">
             <p>Set up  price for your apartment</p>
             <p>Price <i class="fas fa-question-circle"></i></p>
@@ -18,7 +18,7 @@
             </div>
             <div class="footer-step col-md-12" style="padding: 0">
                 <a ui-sref="host.create.step2" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-                <a ui-sref="host.create.step4" class="float-right btn-next">Next</a>
+                <a ui-sref="host.create.step4" class="float-right btn-next" ng-class="(data.Price != null && data.ManagementFee != null) ? '':'service-basic'">Next</a>
                 <a ui-sref="host.listing" class="float-right btn-cancel">Cancel</a>
             </div>
         </div>
@@ -77,5 +77,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
