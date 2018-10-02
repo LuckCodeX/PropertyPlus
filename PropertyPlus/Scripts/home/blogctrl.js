@@ -5,10 +5,9 @@
     $timeout,
     xhrService,
     $anchorScroll) {
-    var limit = 12; 
 
     $scope.pageChanged = function () {
-        $location.path("/blog").search({ page: $scope.bigCurrentPage, limit: limit, type: $scope.type, search: $scope.search });
+        $location.path("/blog").search({ page: $scope.bigCurrentPage, limit: $scope.limit, type: $scope.type, search: $scope.search });
     }
 
     $scope.loadData = function () {
@@ -19,11 +18,11 @@
             .then(function (data) {
                 $scope.blogList = data.data.data;
                 if ($scope.limit > $scope.blogList.length) {
-            $scope.loadMoreBtn = true;
-        }
-        else{
-            $scope.loadMoreBtn = false;
-        }
+                    $scope.loadMoreBtn = true;
+                }
+                else {
+                    $scope.loadMoreBtn = false;
+                }
             },
                 function (error) {
                     console.log(error.statusText);
@@ -34,22 +33,9 @@
             function (error) {
                 $scope.errorText = error.statusText;
             });
-    }; 
+    };
 
     $scope.limit = 12;
-    $scope.loadMore = function () {
-        $scope.limit += 12;
-        $scope.loadData();
-        if ($scope.limit > $scope.blogList.length) {
-            $scope.loadMoreBtn = true;
-        };
-    }
-
-    
-
-
-
-$scope.limit = 12;
     $scope.loadMore = function () {
         $scope.limit += 12;
         $scope.loadData();

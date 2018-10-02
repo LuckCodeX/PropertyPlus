@@ -13,7 +13,7 @@ using PropertyPlus.Services;
 namespace PropertyPlus.Controllers
 {
     [RoutePrefix("api/propertyplus")]
-    public class PropertyPlusController : ApiController
+    public class PropertyPlusController : BaseController
     {
         private IService _service = new Service();
 
@@ -26,11 +26,7 @@ namespace PropertyPlus.Controllers
                 var userProfile = _service.GetUserProfileByEmail(model.Email);
                 if (!Equals(userProfile, null))
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.Unauthorized)
-                    {
-                        ReasonPhrase = "err_email_already_existed"
-                    };
-                    throw new HttpResponseException(response);
+                    ExceptionContent(HttpStatusCode.Unauthorized, "err_email_already_existed");
                 }
 
                 userProfile = new user_profile()
@@ -81,11 +77,7 @@ namespace PropertyPlus.Controllers
             var userAcc = _service.Login(model);
             if (Equals(userAcc, null))
             {
-                var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                {
-                    ReasonPhrase = "Email or Password is invalid"
-                };
-                throw new HttpResponseException(response);
+                ExceptionContent(HttpStatusCode.InternalServerError, "err_email_or_password_invalid");
             }
 
             var userProfile = _service.GetActiveUserProfileById(userAcc.user_profile_id);
@@ -179,11 +171,7 @@ namespace PropertyPlus.Controllers
                 var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                 if (Equals(userProfile, null))
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                    {
-                        ReasonPhrase = "Account cannot be found !!!"
-                    };
-                    throw new HttpResponseException(response);
+                    ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
                 return new UserProfileModel()
                 {
@@ -219,11 +207,7 @@ namespace PropertyPlus.Controllers
                     var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                     if (Equals(userProfile, null))
                     {
-                        var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                        {
-                            ReasonPhrase = "Account cannot be found !!!"
-                        };
-                        throw new HttpResponseException(response);
+                        ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                     }
 
                     userProfile.first_name = model.FirstName;
@@ -292,21 +276,13 @@ namespace PropertyPlus.Controllers
                 var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                 if (Equals(userProfile, null))
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                    {
-                        ReasonPhrase = "Account cannot be found !!!"
-                    };
-                    throw new HttpResponseException(response);
+                    ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
 
                 var userAccount = _service.GetUserAccountByUserProfileId(userProfile.user_profile_id);
                 if (Encrypt.EncodePassword(model.Password) != userAccount.password)
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                    {
-                        ReasonPhrase = "Old Password invalid !!!"
-                    };
-                    throw new HttpResponseException(response);
+                    ExceptionContent(HttpStatusCode.NotFound, "err_old_password_invalid");
                 }
 
                 userAccount.password = Encrypt.EncodePassword(userAccount.password);
@@ -326,11 +302,7 @@ namespace PropertyPlus.Controllers
                 var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                 if (Equals(userProfile, null))
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                    {
-                        ReasonPhrase = "Account cannot be found !!!"
-                    };
-                    throw new HttpResponseException(response);
+                    ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
 
                 var apartments = _service.GetListVisitApartmentByUserProfileId(userProfile.user_profile_id);
@@ -354,11 +326,7 @@ namespace PropertyPlus.Controllers
                 var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                 if (Equals(userProfile, null))
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                    {
-                        ReasonPhrase = "Account cannot be found !!!"
-                    };
-                    throw new HttpResponseException(response);
+                    ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
 
                 var userVisit =
@@ -387,11 +355,7 @@ namespace PropertyPlus.Controllers
                 var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                 if (Equals(userProfile, null))
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                    {
-                        ReasonPhrase = "Account cannot be found !!!"
-                    };
-                    throw new HttpResponseException(response);
+                   ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
                 var userVisit =
                     _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, apartmentId);
@@ -413,11 +377,7 @@ namespace PropertyPlus.Controllers
                     var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                     if (Equals(userProfile, null))
                     {
-                        var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                        {
-                            ReasonPhrase = "Account cannot be found !!!"
-                        };
-                        throw new HttpResponseException(response);
+                       ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                     }
                     IEnumerable<string> languages;
                     this.Request.Headers.TryGetValues("Language", out languages);
@@ -488,11 +448,7 @@ namespace PropertyPlus.Controllers
                 }
                 catch (Exception ex)
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                    {
-                        ReasonPhrase = ex.Message
-                    };
-                    throw new HttpResponseException(response);
+                    ExceptionContent(HttpStatusCode.InternalServerError, ex.Message);
                 }
             }
         }
@@ -550,7 +506,7 @@ namespace PropertyPlus.Controllers
                         Id = p.project.project_id,
                         Name = p.project.project_content.FirstOrDefault(q => q.language == language).name
                     },
-                    ImgList = p.aparment_image.Where(q => q.type == 0).OrderBy(q => q.type).Select(q => new ApartmentImage()
+                    ImgList = p.aparment_image.Where(q => q.type == 0).OrderBy(q => q.type).Select(q => new ApartmentImageModel()
                     {
                         Id = q.apartment_image_id,
                         Type = q.type,
@@ -580,11 +536,7 @@ namespace PropertyPlus.Controllers
                 var apartment = _service.GetActiveApartmentById(id);
                 if (Equals(apartment, null))
                 {
-                    var response = new HttpResponseMessage(HttpStatusCode.NotFound)
-                    {
-                        ReasonPhrase = "Apartment doesn't existed !!!"
-                    };
-                    throw new HttpResponseException(response);
+                    ExceptionContent(HttpStatusCode.NotFound, "err_apartment_not_found");
                 }
                 return new ApartmentModel()
                 {
@@ -612,7 +564,7 @@ namespace PropertyPlus.Controllers
                         Id = apartment.project.project_id,
                         Name = apartment.project.project_content.FirstOrDefault(q => q.language == language).name
                     },
-                    ImgList = apartment.aparment_image.Where(q => q.type != -1 && q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImage()
+                    ImgList = apartment.aparment_image.Where(q => q.type != -1 && q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImageModel()
                     {
                         Id = q.apartment_image_id,
                         Type = q.type,

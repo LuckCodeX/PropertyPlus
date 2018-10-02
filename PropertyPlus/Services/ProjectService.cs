@@ -33,7 +33,7 @@ namespace PropertyPlus.Services
 
         public List<project> SearchProjectList(string search)
         {
-            return ProjectRepository.FindBy(p => Equals(search, null) || p.project_content.Any(q => q.name.Contains(search))).Include(p => p.project_content).ToList();
+            return ProjectRepository.FindBy(p => p.status == 1 && (Equals(search, null) || p.project_content.Any(q => q.name.Contains(search)))).Include(p => p.project_content).ToList();
         }
 
         public ProjectContentModel ConvertProjectContentToModel(project_content model)

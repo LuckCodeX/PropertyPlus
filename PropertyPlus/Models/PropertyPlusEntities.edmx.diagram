@@ -24,14 +24,15 @@
         <EntityTypeShape EntityType="PropertyPlusModel.project_content" Width="1.5" PointX="12.625" PointY="3.875" />
         <AssociationConnector Association="PropertyPlusModel.FK__project_c__proje__4E88ABD4" />
         <EntityTypeShape EntityType="PropertyPlusModel.aparment_image" Width="1.5" PointX="14.875" PointY="8.375" />
+        <EntityTypeShape EntityType="PropertyPlusModel.apartment_content" Width="1.5" PointX="14.875" PointY="11.25" />
+        <AssociationConnector Association="PropertyPlusModel.FK__admin__parent_id__02084FDA" />
         <EntityTypeShape EntityType="PropertyPlusModel.apartment" Width="1.5" PointX="12.625" PointY="6.75" />
         <AssociationConnector Association="PropertyPlusModel.FK__aparment___apart__1ED998B2" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__1A14E395" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__276EDEB3" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__proje__4AB81AF0" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__user___164452B1" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_visi__apart__44FF419A" />
-        <EntityTypeShape EntityType="PropertyPlusModel.apartment_content" Width="1.5" PointX="14.875" PointY="11.25" />
-        <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__1A14E395" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

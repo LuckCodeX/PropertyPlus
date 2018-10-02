@@ -12,8 +12,8 @@ namespace PropertyPlus.Models
         public UserProfileModel UserProfileOwner { get; set; }
         public int CreatedDate { get; set; }
         public string Code { get; set; }
-        public int Price { get; set; }
-        public int ManagementFee { get; set; }
+        public decimal Price { get; set; }
+        public decimal ManagementFee { get; set; }
         public decimal Area { get; set; }
         public int NoBedRoom { get; set; }
         public int NoBathRoom { get; set; }
@@ -26,7 +26,7 @@ namespace PropertyPlus.Models
         public int Type { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<ApartmentImage> ImgList { get; set; }
+        public List<ApartmentImageModel> ImgList { get; set; }
         public List<FacilityModel> FacilityList { get; set; }
     }
 
@@ -38,7 +38,7 @@ namespace PropertyPlus.Models
         public string Description { get; set; }
     }
 
-    public class ApartmentImage
+    public class ApartmentImageModel
     {
         public int Id { get; set; }
         public int Type { get; set; }
