@@ -18,6 +18,12 @@
         xhrService.get("GetListBlog/" + $scope.bigCurrentPage + "/" + $scope.limit + "/" + $scope.type + "/" + $scope.search)
             .then(function (data) {
                 $scope.blogList = data.data.data;
+                if ($scope.limit > $scope.blogList.length) {
+            $scope.loadMoreBtn = true;
+        }
+        else{
+            $scope.loadMoreBtn = false;
+        }
             },
                 function (error) {
                     console.log(error.statusText);
@@ -42,6 +48,13 @@
     
 
 
+
+$scope.limit = 12;
+    $scope.loadMore = function () {
+        $scope.limit += 12;
+        $scope.loadData();
+
+    }
 
     $scope.loadDetailData = function () {
         var id = $stateParams.id;
