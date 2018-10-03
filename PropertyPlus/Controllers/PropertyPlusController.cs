@@ -424,7 +424,7 @@ namespace PropertyPlus.Controllers
                             {
                                 apartment_id = apartment.apartment_id,
                                 type = img.Type,
-                                img = _service.SaveImage("~/Upload/apartment/",
+                                img = "http://propertyplus.com.vn/Upload/apartment/" + _service.SaveImage("~/Upload/apartment/",
                                     "apt_" + ConvertDatetime.GetCurrentUnixTimeStamp() + "_" + idx + ".png",
                                     img.Img_Base64)
                             };
