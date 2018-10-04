@@ -60,5 +60,7 @@ namespace PropertyPlus.Services
         void SaveFacilityContent(facility_content content);
         List<apartment> SearchListApartment();
         apartment GetActiveApartmentById(int id);
+        List<user_visit> GetListUserVisitByUserProfileId(int userProfileId);
+        user_visit GetUserVisitById(int id);
     }
 }

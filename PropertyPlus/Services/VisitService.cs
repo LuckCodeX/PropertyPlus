@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using PropertyPlus.Models;
@@ -38,6 +39,17 @@ namespace PropertyPlus.Services
         public List<apartment> GetListVisitApartmentByUserProfileId(int userProfileId)
         {
             return ApartmentRepository.FindBy(p => p.user_visit.Any(q => q.user_profile_id == userProfileId)).ToList();
+        }
+
+        public List<user_visit> GetListUserVisitByUserProfileId(int userProfileId)
+        {
+            return UserVisitRepository.FindBy(p => p.user_profile_id == userProfileId).Include(p => p.apartment.apartment_content)
+                .ToList();
+        }
+
+        public user_visit GetUserVisitById(int id)
+        {
+            return UserVisitRepository.FindBy(p => p.user_visit_id == id).FirstOrDefault();
         }
     }
 }

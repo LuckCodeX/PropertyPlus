@@ -158,6 +158,16 @@
     <Property Name="user_visit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="user_profile_id" Type="int" Nullable="false" />
     <Property Name="apartment_id" Type="int" Nullable="false" />
+    <Property Name="is_management_fee" Type="bit" Nullable="false" />
+    <Property Name="is_internet_wifi" Type="bit" Nullable="false" />
+    <Property Name="tv_type" Type="int" Nullable="false" />
+    <Property Name="cleaning" Type="int" Nullable="false" />
+    <Property Name="water" Type="int" Nullable="false" />
+    <Property Name="is_detergent" Type="bit" Nullable="false" />
+    <Property Name="bill" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="is_include_tax" Type="bit" Nullable="false" />
+    <Property Name="total_price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="service_price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
   <Association Name="FK__admin__parent_id__02084FDA">
     <End Role="admin" Type="Self.admin" Multiplicity="0..1" />

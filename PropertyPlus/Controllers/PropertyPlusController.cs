@@ -292,7 +292,7 @@ namespace PropertyPlus.Controllers
 
         [HttpGet]
         [Route("GetVisitList")]
-        public List<ApartmentModel> GetVisitList()
+        public List<UserVisitModel> GetVisitList()
         {
             IEnumerable<string> values;
             if (this.Request.Headers.TryGetValues("Token", out values))
@@ -304,19 +304,30 @@ namespace PropertyPlus.Controllers
                 {
                     ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
-
-                var apartments = _service.GetListVisitApartmentByUserProfileId(userProfile.user_profile_id);
-                return apartments.Select(p => new ApartmentModel()
+                IEnumerable<string> languages;
+                this.Request.Headers.TryGetValues("Language", out languages);
+                var language = Convert.ToInt32(languages.First());
+                var visits = _service.GetListUserVisitByUserProfileId(userProfile.user_profile_id);
+                return visits.Select(p => new UserVisitModel()
                 {
-
+                    TotalPrice = p.total_price,
+                    Id = p.user_visit_id,
+                    Apartment = new ApartmentModel()
+                    {
+                        Id = p.apartment_id,
+                        Code = p.apartment.code,
+                        Name = p.apartment.apartment_content.FirstOrDefault(q => q.language == language).name,
+                        NoBedRoom = p.apartment.no_bedroom,
+                        City = p.apartment.city
+                    }
                 }).ToList();
             }
-            return new List<ApartmentModel>();
+            return new List<UserVisitModel>();
         }
 
         [HttpPost]
-        [Route("AddVisitList/{apartmentId}")]
-        public void AddVisitList(int apartmentId)
+        [Route("AddVisitList")]
+        public void AddVisitList(UserVisitModel model)
         {
             IEnumerable<string> values;
             if (this.Request.Headers.TryGetValues("Token", out values))
@@ -330,22 +341,32 @@ namespace PropertyPlus.Controllers
                 }
 
                 var userVisit =
-                    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, apartmentId);
+                    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, model.ApartmentId);
                 if (!Equals(userVisit, null))
                     return;
                 userVisit = new user_visit()
                 {
                     user_profile_id = userProfile.user_profile_id,
-                    apartment_id = apartmentId,
-                    user_visit_id = 0
+                    apartment_id = model.ApartmentId,
+                    user_visit_id = 0,
+                    bill = model.Bill,
+                    cleaning = model.Cleaning,
+                    is_detergent = model.IsDetergent,
+                    is_include_tax = model.IsIncludeTax,
+                    is_internet_wifi = model.IsInternetWifi,
+                    is_management_fee = model.IsApartmentFee,
+                    service_price = model.ServicePrice,
+                    total_price = model.TotalPrice,
+                    tv_type = model.TvType,
+                    water = model.Water
                 };
                 _service.SaveUserVisit(userVisit);
             }
         }
 
         [HttpDelete]
-        [Route("DeleteVisitList/{apartmentId}")]
-        public void DeleteVisitList(int apartmentId)
+        [Route("DeleteVisitList/{userVisitId}")]
+        public void DeleteVisitList(int userVisitId)
         {
             IEnumerable<string> values;
             if (this.Request.Headers.TryGetValues("Token", out values))
@@ -355,11 +376,12 @@ namespace PropertyPlus.Controllers
                 var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                 if (Equals(userProfile, null))
                 {
-                   ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
+                    ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
                 var userVisit =
-                    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, apartmentId);
-                _service.DeleteUserVisit(userVisit);
+                    _service.GetUserVisitById(userVisitId);
+                if (!Equals(userVisit, null) && userVisit.user_profile_id == userProfile.user_profile_id)
+                    _service.DeleteUserVisit(userVisit);
             }
         }
 
@@ -377,7 +399,7 @@ namespace PropertyPlus.Controllers
                     var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
                     if (Equals(userProfile, null))
                     {
-                       ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
+                        ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                     }
                     IEnumerable<string> languages;
                     this.Request.Headers.TryGetValues("Language", out languages);
