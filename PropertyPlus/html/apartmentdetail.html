@@ -1,6 +1,6 @@
 ﻿<div ng-controller="ApartmentCtrl" ng-init="loadApartmentDetail()">
 <div class="container-fluid header-apartment-detail">
-    <img ng-src="/Upload/apartment/{{apartment.banner}}" alt="Alternate Text" />
+    <img ng-src="{{apartment.banner}}" alt="Alternate Text" />
 </div>
 <div class="container">
 <div class="row apartment-detail-body">
@@ -42,7 +42,7 @@
             <div class="owl-carousel owl-theme">
                 <div class="item" ng-repeat="livRoom in apartment.ImgList">
                     <div class="">
-                        <img ng-src="/Upload/apartment/{{livRoom.Img}}" alt="Alternate Text" />
+                        <img ng-src="{{livRoom.Img}}" alt="Alternate Text" />
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
             <div class="owl-carousel owl-theme">
                 <div class="item" ng-repeat="bedRoom in apartment.ImgList" ng-if="bedRoom.Type == 3">
                     <div class="">
-                        <img ng-src="/Upload/apartment/{{bedRoom.Img}}" alt="Alternate Text" />
+                        <img ng-src="{{bedRoom.Img}}" alt="Alternate Text" />
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             <div class="owl-carousel owl-theme">
                 <div class="item" ng-repeat="bathRoom in apartment.ImgList" ng-if="bathRoom.Type == 4">
                     <div class="">
-                        <img ng-src="/Upload/apartment/{{bathRoom.Img}}" alt="Alternate Text" />
+                        <img ng-src="{{bathRoom.Img}}" alt="Alternate Text" />
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
             <div class="owl-carousel owl-theme">
                 <div class="item" ng-repeat="bedRoom in apartment.ImgList" ng-if="bedRoom.Type == 3">
                     <div class="">
-                        <img ng-src="/Upload/apartment/{{bedRoom.Img}}" alt="Alternate Text" />
+                        <img ng-src="{{bedRoom.Img}}" alt="Alternate Text" />
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
         <div id="map"></div>
     </div>
 </div>
-<div class="col-md-5 apartment-detail-service" ng-click="changeService()">
+<form class="col-md-5 apartment-detail-service" ng-submit="submitApartment()" ng-click="changeService()">
     <div class="header-service">
         <p class="label-service">
             Estimate price included service:
@@ -127,8 +127,8 @@
     </div>
     <div class="body-service">
         <div class="line-service small-line">
-            <span class="net-price-label float-left med-text">Apartment net price</span>
-            <span class="net-price-value float-right med-text">$ {{apartmentPrice}} / month</span>
+            <span class="net-price-label float-left med-text">Apartment price</span>
+            <span class="net-price-value float-right med-text">$ {{apartment.Price}} / month</span>
         </div>
         <div class="line-service small-line">
             <span class="total-price-label float-left med-text">Service total price:</span>
@@ -235,17 +235,17 @@
                 <i style="margin-right: 10px" class="fas fa-heart"></i>
                 <i class="fas fa-bookmark"></i>
             </div>
-            <button class="float-right btn-service box-shadow">SEND VISITING REQUEST</button>
+            <button type="submit" class="float-right btn-service box-shadow">SEND VISITING REQUEST</button>
         </div>
     </div>
-</div>
+</form>
 <div class="col-xs-12 similar-listing">
     <div class="title-apartment-detail">SIMILIAR LISTING</div>
     <div class="slide-similar owl-carousel owl-theme">
         <div class="item" ng-repeat="item in apartmentList">
             <div class="thumbnail-choose-home">
                 <a ui-sref="apartmentdetail({id: item.Id,name: replaceString(item.Name)})" class="aparment-banner">
-                    <img ng-src="Upload/apartment/{{item.ImgList[0].Img}}" alt="Alternate Text" />
+                    <img ng-src="{{item.ImgList[0].Img}}" alt="Alternate Text" />
                 </a>
                 <div class="choose-home-summary">
                     <a ui-sref="apartmentdetail({id: item.Id,name: replaceString(item.Name)})" class="choose-home-code">

@@ -53,9 +53,15 @@ angular.module('imageupload', [])
             reader.readAsDataURL(file);
             reader.onloadend = function () {
                 base64Url = reader.result;
-                var imageResult = {
-                    file: file,
-                    url: base64Url
+                var imageResult;
+                console.log(scope);
+                if (scope.uploadType == "string") {
+                    imageResult = base64Url;
+                }else{
+                    imageResult = {
+                        file: file,
+                        url: base64Url
+                    };
                 };
 
                 scope.$apply(function () {
@@ -78,6 +84,7 @@ angular.module('imageupload', [])
 
         scope: {
             image: '=',
+            uploadType:'=',
             resizeMaxHeight: '@?',
             resizeMaxWidth: '@?',
             resizeQuality: '@?',

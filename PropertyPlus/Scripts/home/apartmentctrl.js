@@ -85,7 +85,13 @@
                     map: map,
                     title: $scope.apartment.Address
                 });
-                console.log(data);
+                $scope.foreignTv.selected = $scope.foreignTvs[1];
+                $scope.apartmentPrice = 1500;
+                $scope.cleaning = 3;
+                $scope.bottle = 4;
+                $scope.basic = "service-basic";
+                $scope.electricBill = 0;
+                $scope.changeService();
             },
                 function (error) {
                     console.log(error.statusText);
@@ -98,7 +104,7 @@
                     console.log(error.statusText);
                 });
 
-        $timeout(loadApartmentDetail, 1000);
+        $timeout(loadApartmentDetail, 4000);
 
         $scope.someGroupFn = function (item) {
 
@@ -117,14 +123,6 @@
         $scope.reverseOrderFilterFn = function (groups) {
             return groups.reverse();
         };
-
-        $scope.foreignTv.selected = $scope.foreignTvs[1];
-        $scope.apartmentPrice = 1500;
-        $scope.cleaning = 3;
-        $scope.bottle = 4;
-        $scope.basic = "service-basic";
-        $scope.electricBill = 0;
-        $scope.changeService();
     }
     $scope.changeBill = function () {
 
@@ -185,8 +183,28 @@
         var electricBill = Number($scope.electricBill);
         var servicePrice = managamentFee + internet + foreignTv + laundry + water + detergent + electricBill;
         $scope.servicePrice = servicePrice;
-        $scope.totalPrice = (($scope.apartmentPrice + $scope.servicePrice) / extra).toFixed(2);
+        $scope.totalPrice = (($scope.apartment.Price + $scope.servicePrice) / extra).toFixed(2);
         $scope.perNightPrice = (($scope.totalPrice / 30) * 1.6).toFixed(2);
+    }
+    $scope.submitApartment = function(){
+        var dataApartment = {
+            "ApartmentId":$scope.apartment.Id,
+            "Bill":Number($scope.electricBill),
+            "Cleaning":$scope.cleaning,
+            "IsDetergent":document.getElementById("checkboxToilet").checked,
+            "IsIncludeTax":document.getElementById("checkboxExtra").checked,
+            "IsInternetWifi":document.getElementById("checkboxInternet").checked,
+            "IsApartmentFee":document.getElementById("checkboxFee").checked,
+            "ServicePrice":$scope.servicePrice,
+            "TotalPrice":$scope.totalPrice,
+            "TvType":$scope.foreignTvs.indexOf($scope.foreignTv.selected),
+            "Water":$scope.bottle
+        };
+        xhrService.post("AddVisitList", dataApartment).then(function (data) {
+            alert("Success!");
+        },function (error) {
+                $scope.errorText = error.statusText;
+            });
     }
 
 }

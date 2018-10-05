@@ -1580,6 +1580,7 @@ footer {
     }
 
 .visiting-list .product-left-side .product-facility {
+    margin-bottom: 10px;
 }
 
 .visiting-list .product-right-side {
@@ -3138,6 +3139,10 @@ input::-webkit-inner-spin-button {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   opacity: 0.9;
+}
+.product a{
+    display: block;
+    color: black;
 }
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {

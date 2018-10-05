@@ -34,48 +34,6 @@
     ];
 
     $scope.genders = [{ name: "Male", value: "0" }, { name: "Female", value: "1" }];
-
-    $scope.myImage = "";
-    $scope.myCroppedImage = "";
-    var handleFileSelect = function (evt) {
-        var file = evt.currentTarget.files[0];
-        var reader = new FileReader();
-        reader.onload = function (evt) {
-            $scope.$apply(function ($scope) {
-                $scope.myImage = evt.target.result;
-            });
-        };
-        reader.readAsDataURL(file);
-    };
-
-    setTimeout(function () {
-        angular.element(document.querySelector("#testFile")).on("change", handleFileSelect);
-        angular.element(document.querySelector("#file1")).on("change",
-            function (evt) {
-                var file = evt.currentTarget.files[0];
-                var reader = new FileReader();
-                reader.onload = function (evt) {
-                    $scope.$apply(function ($scope) {
-                        $scope.data.ImgVerification1_Base64 = evt.target.result;
-                    });
-                };
-                reader.readAsDataURL(file);
-            });
-        angular.element(document.querySelector("#file2")).on("change",
-            function (evt) {
-                var file = evt.currentTarget.files[0];
-                var reader = new FileReader();
-                reader.onload = function (evt) {
-                    $scope.$apply(function ($scope) {
-                        $scope.data.ImgVerification2_Base64 = evt.target.result;
-                    });
-                };
-                reader.readAsDataURL(file);
-
-            });
-    },
-        1000);
-
     $scope.userprofile = {
         verification_images: []
     };
@@ -109,6 +67,26 @@
                 $scope.errorText = error.statusText;
             });
     };
+
+    $scope.loadUserGeneral = function(){
+        xhrService.get("GetVisitList").then(function (data) {
+            $scope.visitList = data.data;
+            console.log($scope.visitList);
+        },
+        function (error) {
+            console.log(error.statusText);
+        });
+    }
+
+    $scope.deleteApartmentVisit = function(id){
+        xhrService.delete("DeleteVisitList/"+ id).then(function (data) {
+            alert('Delete success !');
+            $scope.loadUserGeneral();
+        },
+        function (error) {
+            console.log(error.statusText);
+        });
+    }
 
     $scope.loadUserEdit = function () {
         xhrService.get("GetUserProfile/").then(function (data) {
