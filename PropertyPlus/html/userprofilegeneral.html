@@ -1,98 +1,33 @@
-﻿
+﻿<div ng-init="loadUserGeneral()">
         <div class="col-md-7 body-user">
             <div class="card visiting-list">
                 <div class="card-header">
                     Your visiting list
                 </div>
                 <div class="card-body">
-                    <div class="row product">
-                        <div class="product-img col-xs-4">
+                    <div class="row product" ng-repeat="item in visitList">
+                        <a ui-sref="apartmentdetail({id: item.Apartment.Id,name: replaceString(item.Apartment.Name)})" class="product-img col-xs-4">
                             <img style="width: 100%; height: 100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                        </div>
+                        </a>
                         <div class="product-description col-xs-5">
-                            <p class="product-code">HOUSE P123456</p>
-                            <p class="product-name">Royal City R2 Apartment Fully Fumished & Marble Floor</p>
+                            <a ui-sref="apartmentdetail({id: item.Apartment.Id,name: replaceString(item.Apartment.Name)})" class="product-code">{{item.Apartment.Code}}</a>
+                            <a ui-sref="apartmentdetail({id: item.Apartment.Id,name: replaceString(item.Apartment.Name)})" class="product-name">{{item.Apartment.Name}}</a>
                             <div class="product-left-side">
-                                <p class="product-facility">Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
+                                <p class="product-facility">Bedrooms: {{item.Apartment.NoBedRoom}}</p>
+                                <p>{{item.Apartment.City}}</p>
                             </div>
                             <div class="product-right-side">
                                 <p>Estimate price:</p>
-                                <p class="product-price">$ <span>2400</span></p>
+                                <p class="product-price">$ <span>{{item.Apartment.Price}}</span></p>
                             </div>
                         </div>
-                        <a href="#" class="product-delete col-xs-1">
+                        <a href="#" class="product-delete col-xs-1" ng-click="deleteApartmentVisit(item.Apartment.Id)">
                             <div class="icon-delete">
                                 <i class="far fa-trash-alt"></i>
                             </div>
                         </a>
                     </div>
-                    <div class="row product">
-                        <div class="product-img col-xs-4">
-                            <img style="width: 100%; height: 100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                        </div>
-                        <div class="product-description col-xs-5">
-                            <p class="product-code">HOUSE P123456</p>
-                            <p class="product-name">Royal City R2 Apartment Fully Fumished & Marble Floor</p>
-                            <div class="product-left-side">
-                                <p class="product-facility">Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="product-right-side">
-                                <p>Estimate price:</p>
-                                <p class="product-price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                        <a href="#" class="product-delete col-xs-1">
-                            <div class="icon-delete">
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="row product">
-                        <div class="product-img col-xs-4">
-                            <img style="width: 100%; height: 100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                        </div>
-                        <div class="product-description col-xs-5">
-                            <p class="product-code">HOUSE P123456</p>
-                            <p class="product-name">Royal City R2 Apartment Fully Fumished & Marble Floor</p>
-                            <div class="product-left-side">
-                                <p class="product-facility">Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="product-right-side">
-                                <p>Estimate price:</p>
-                                <p class="product-price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                        <a href="#" class="product-delete col-xs-1">
-                            <div class="icon-delete">
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="row product">
-                        <div class="product-img col-xs-4">
-                            <img style="width: 100%; height: 100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                        </div>
-                        <div class="product-description col-xs-5">
-                            <p class="product-code">HOUSE P123456</p>
-                            <p class="product-name">Royal City R2 Apartment Fully Fumished & Marble Floor</p>
-                            <div class="product-left-side">
-                                <p class="product-facility">Bedrooms: 2</p>
-                                <p>Dong Da, Hanoi</p>
-                            </div>
-                            <div class="product-right-side">
-                                <p>Estimate price:</p>
-                                <p class="product-price">$ <span>2400</span></p>
-                            </div>
-                        </div>
-                        <a href="#" class="product-delete col-xs-1">
-                            <div class="icon-delete">
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </a>
-                    </div>
+                    
                     <div class="btn-send-visiting box-shadow">
                         <button>SEND VISITING REQUEST</button>
                     </div>
@@ -188,4 +123,5 @@
                 </div>
             </div>
         </div>
+    </div>
   

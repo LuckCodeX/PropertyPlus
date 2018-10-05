@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-lg-3 thumbnail-choose-home" ng-repeat="apartment in apartmentList">
                         <div class="slide-choose-home" >
-                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})"><img ng-src="Upload/apartment/{{apartment.ImgList[0].Img}}" class="img-full" alt="Alternate Text" /></a>
+                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})"><img ng-src="{{apartment.ImgList[0].Img}}" class="img-full" alt="Alternate Text" /></a>
                         </div>
                         <div class="choose-home-summary-column clearfix col-md-7 display-none">
                             <div class="sumary-detail">
