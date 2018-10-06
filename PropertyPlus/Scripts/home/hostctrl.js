@@ -185,14 +185,17 @@
             }
         }
         xhrService.post("CreateApartment", $scope.data).then(function (data) {
-            $scope.data = undefined;
             $location.url("host/create/finish");
         }, function (error) {
             $scope.errorText = error.statusText;
         });
     }
 
-
+    $scope.resetData = function () {
+        $scope.banner_img.url = null;
+        $scope.images = undefined;
+        $scope.data = undefined;
+    }
 }
 
 app.controller('HostCtrl', HostCtrl);

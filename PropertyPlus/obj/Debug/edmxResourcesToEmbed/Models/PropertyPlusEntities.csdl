@@ -106,6 +106,11 @@
       <End Role="admin" EntitySet="admins" />
       <End Role="admin1" EntitySet="admins" />
     </AssociationSet>
+    <EntitySet Name="user_visit" EntityType="PropertyPlusModel.user_visit" />
+    <AssociationSet Name="FK__user_visi__user___440B1D61" Association="PropertyPlusModel.FK__user_visi__user___440B1D61">
+      <End Role="user_profile" EntitySet="user_profile" />
+      <End Role="user_visit" EntitySet="user_visit" />
+    </AssociationSet>
     <EntitySet Name="apartments" EntityType="PropertyPlusModel.apartment" />
     <AssociationSet Name="FK__aparment___apart__1ED998B2" Association="PropertyPlusModel.FK__aparment___apart__1ED998B2">
       <End Role="apartment" EntitySet="apartments" />
@@ -127,13 +132,8 @@
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="apartment" EntitySet="apartments" />
     </AssociationSet>
-    <EntitySet Name="user_visit" EntityType="PropertyPlusModel.user_visit" />
     <AssociationSet Name="FK__user_visi__apart__44FF419A" Association="PropertyPlusModel.FK__user_visi__apart__44FF419A">
       <End Role="apartment" EntitySet="apartments" />
-      <End Role="user_visit" EntitySet="user_visit" />
-    </AssociationSet>
-    <AssociationSet Name="FK__user_visi__user___440B1D61" Association="PropertyPlusModel.FK__user_visi__user___440B1D61">
-      <End Role="user_profile" EntitySet="user_profile" />
       <End Role="user_visit" EntitySet="user_visit" />
     </AssociationSet>
   </EntityContainer>
@@ -215,8 +215,8 @@
     <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="avatar" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="user_account" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_profile" ToRole="user_account" />
-    <NavigationProperty Name="apartments" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="user_profile" ToRole="apartment" />
     <NavigationProperty Name="user_visit" Relationship="PropertyPlusModel.FK__user_visi__user___440B1D61" FromRole="user_profile" ToRole="user_visit" />
+    <NavigationProperty Name="apartments" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="user_profile" ToRole="apartment" />
   </EntityType>
   <Association Name="FK__user_acco__user___1273C1CD">
     <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
@@ -299,6 +299,40 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="user_visit">
+    <Key>
+      <PropertyRef Name="user_visit_id" />
+    </Key>
+    <Property Name="user_visit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_profile_id" Type="Int32" Nullable="false" />
+    <Property Name="apartment_id" Type="Int32" Nullable="false" />
+    <Property Name="is_management_fee" Type="Boolean" Nullable="false" />
+    <Property Name="is_internet_wifi" Type="Boolean" Nullable="false" />
+    <Property Name="tv_type" Type="Int32" Nullable="false" />
+    <Property Name="cleaning" Type="Int32" Nullable="false" />
+    <Property Name="water" Type="Int32" Nullable="false" />
+    <Property Name="is_detergent" Type="Boolean" Nullable="false" />
+    <Property Name="bill" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="is_include_tax" Type="Boolean" Nullable="false" />
+    <Property Name="total_price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="service_price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_visi__user___440B1D61" FromRole="user_visit" ToRole="user_profile" />
+    <NavigationProperty Name="apartment" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="user_visit" ToRole="apartment" />
+  </EntityType>
+  <Association Name="FK__user_visi__user___440B1D61">
+    <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PropertyPlusModel.user_visit" Role="user_visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_profile">
+        <PropertyRef Name="user_profile_id" />
+      </Principal>
+      <Dependent Role="user_visit">
+        <PropertyRef Name="user_profile_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="apartment">
     <Key>
       <PropertyRef Name="apartment_id" />
@@ -308,8 +342,8 @@
     <Property Name="created_date" Type="Int32" Nullable="false" />
     <Property Name="status" Type="Int32" Nullable="false" />
     <Property Name="code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="area" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="area" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="no_bedroom" Type="Int32" Nullable="false" />
     <Property Name="no_bathroom" Type="Int32" Nullable="false" />
     <Property Name="address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -318,7 +352,7 @@
     <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="project_id" Type="Int32" />
     <Property Name="type" Type="Int32" Nullable="false" />
-    <Property Name="management_fee" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="management_fee" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <NavigationProperty Name="aparment_image" Relationship="PropertyPlusModel.FK__aparment___apart__1ED998B2" FromRole="apartment" ToRole="aparment_image" />
     <NavigationProperty Name="apartment_content" Relationship="PropertyPlusModel.FK__apartment__apart__1A14E395" FromRole="apartment" ToRole="apartment_content" />
     <NavigationProperty Name="apartment_facility" Relationship="PropertyPlusModel.FK__apartment__apart__276EDEB3" FromRole="apartment" ToRole="apartment_facility" />
@@ -396,26 +430,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="user_visit">
-    <Key>
-      <PropertyRef Name="user_visit_id" />
-    </Key>
-    <Property Name="user_visit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="user_profile_id" Type="Int32" Nullable="false" />
-    <Property Name="apartment_id" Type="Int32" Nullable="false" />
-    <Property Name="is_management_fee" Type="Boolean" Nullable="false" />
-    <Property Name="is_internet_wifi" Type="Boolean" Nullable="false" />
-    <Property Name="tv_type" Type="Int32" Nullable="false" />
-    <Property Name="cleaning" Type="Int32" Nullable="false" />
-    <Property Name="water" Type="Int32" Nullable="false" />
-    <Property Name="is_detergent" Type="Boolean" Nullable="false" />
-    <Property Name="bill" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="is_include_tax" Type="Boolean" Nullable="false" />
-    <Property Name="total_price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="service_price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <NavigationProperty Name="apartment" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="user_visit" ToRole="apartment" />
-    <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_visi__user___440B1D61" FromRole="user_visit" ToRole="user_profile" />
-  </EntityType>
   <Association Name="FK__user_visi__apart__44FF419A">
     <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="1" />
     <End Type="PropertyPlusModel.user_visit" Role="user_visit" Multiplicity="*" />
@@ -425,20 +439,6 @@
       </Principal>
       <Dependent Role="user_visit">
         <PropertyRef Name="apartment_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__user_visi__user___440B1D61">
-    <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="PropertyPlusModel.user_visit" Role="user_visit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="user_profile">
-        <PropertyRef Name="user_profile_id" />
-      </Principal>
-      <Dependent Role="user_visit">
-        <PropertyRef Name="user_profile_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

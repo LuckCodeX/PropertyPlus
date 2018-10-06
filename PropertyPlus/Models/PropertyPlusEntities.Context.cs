@@ -38,7 +38,7 @@ namespace PropertyPlus.Models
         public virtual DbSet<project_content> project_content { get; set; }
         public virtual DbSet<aparment_image> aparment_image { get; set; }
         public virtual DbSet<apartment_content> apartment_content { get; set; }
-        public virtual DbSet<apartment> apartments { get; set; }
         public virtual DbSet<user_visit> user_visit { get; set; }
+        public virtual DbSet<apartment> apartments { get; set; }
     }
 }

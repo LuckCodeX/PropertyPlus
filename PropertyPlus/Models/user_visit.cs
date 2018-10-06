@@ -28,7 +28,7 @@ namespace PropertyPlus.Models
         public decimal total_price { get; set; }
         public decimal service_price { get; set; }
     
-        public virtual apartment apartment { get; set; }
         public virtual user_profile user_profile { get; set; }
+        public virtual apartment apartment { get; set; }
     }
 }
