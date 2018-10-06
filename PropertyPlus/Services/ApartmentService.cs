@@ -98,5 +98,12 @@ namespace PropertyPlus.Services
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).ToList();
         }
+
+        public apartment GetApartmentById(int id)
+        {
+            return ApartmentRepository.FindBy(p => p.apartment_id == id && p.status != 2).OrderByDescending(p => p.apartment_id)
+                .Include(p => p.aparment_image).Include(p => p.apartment_content)
+                .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).FirstOrDefault();
+        }
     }
 }

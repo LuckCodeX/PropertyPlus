@@ -63,5 +63,6 @@ namespace PropertyPlus.Services
         List<user_visit> GetListUserVisitByUserProfileId(int userProfileId);
         user_visit GetUserVisitById(int id);
         List<apartment> SearchListApartmentByUserProfileId(int status, int userProfileId);
+        apartment GetApartmentById(int id);
     }
 }

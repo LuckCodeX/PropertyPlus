@@ -660,6 +660,73 @@ namespace PropertyPlus.Controllers
             return new List<ApartmentModel>();
         }
 
+        [HttpGet]
+        [Route("GetYourApartmentDetail/{id}")]
+        public ApartmentModel GetYourApartmentDetail(int id)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                var token = values.First();
+                var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                if (Equals(userProfile, null))
+                {
+                    ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
+                }
+
+                IEnumerable<string> languages;
+                this.Request.Headers.TryGetValues("Language", out languages);
+                var language = Convert.ToInt32(languages.First());
+                var apartment = _service.GetApartmentById(id);
+                if (Equals(apartment, null) && apartment.user_profile_owner_id != userProfile.user_profile_id)
+                {
+                    ExceptionContent(HttpStatusCode.NotFound, "err_apartment_not_found");
+                }
+                return new ApartmentModel()
+                {
+                    Id = apartment.apartment_id,
+                    Name = apartment.apartment_content.FirstOrDefault(q => q.language == language) == null
+                        ? ""
+                        : apartment.apartment_content.FirstOrDefault(q => q.language == language).name,
+                    Description = apartment.apartment_content.FirstOrDefault(q => q.language == language) == null
+                        ? ""
+                        : apartment.apartment_content.FirstOrDefault(q => q.language == language).description,
+                    Code = apartment.code,
+                    Address = apartment.address,
+                    City = apartment.city,
+                    Area = apartment.area,
+                    Latitude = apartment.latitude,
+                    Longitude = apartment.longitude,
+                    NoBathRoom = apartment.no_bathroom,
+                    NoBedRoom = apartment.no_bedroom,
+                    Price = apartment.price + apartment.management_fee,
+                    UserProfileOwner = new UserProfileModel()
+                    {
+                        Id = apartment.user_profile.user_profile_id,
+                        FirstName = apartment.user_profile.first_name,
+                        LastName = apartment.user_profile.last_name,
+                        Avatar = apartment.user_profile.avatar
+                    },
+                    Project = Equals(apartment.project_id, null)
+                        ? new ProjectModel()
+                        : new ProjectModel()
+                        {
+                            Id = apartment.project.project_id,
+                            Name = apartment.project.project_content.FirstOrDefault(q => q.language == language).name
+                        },
+                    ImgList = apartment.aparment_image.Where(q => q.type == 0).OrderBy(q => q.type).Select(q =>
+                        new ApartmentImageModel()
+                        {
+                            Id = q.apartment_image_id,
+                            Type = q.type,
+                            Img = q.img
+                        }).ToList()
+                };
+            }
+            return new ApartmentModel();
+        }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();
