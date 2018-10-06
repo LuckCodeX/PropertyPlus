@@ -57,6 +57,27 @@
                 });
     }
 
+    $scope.saveToBookmark = function(apartment){
+        if(localStorage.getItem('apartmentList')){
+            var apartmentList = JSON.parse(localStorage.getItem('apartmentList'));
+            var status = true;
+            for (var i = 0; i < apartmentList.length; i++) {
+                if (apartmentList[i].Id == apartment.Id) {
+                    status = false;
+                }
+            }
+            if(status){
+                apartmentList.push(apartment);
+                localStorage.setItem('apartmentList', JSON.stringify(apartmentList));
+            }
+        }else{
+            var apartmentList = [];
+            apartmentList.push(apartment);
+            localStorage.setItem('apartmentList', JSON.stringify(apartmentList));
+        }
+        
+    }
+
     $scope.loadApartmentDetail = function () {
         $scope.disabled = undefined;
         $scope.searchEnabled = undefined;
@@ -71,7 +92,6 @@
                 for (var i = 0; i < $scope.apartment.ImgList.length; i++) {
                     if ($scope.apartment.ImgList[i].Type == 0) {
                         $scope.apartment.banner = $scope.apartment.ImgList[i].Img;
-                        console.log($scope.apartment.banner);
                     }
                 }
                 var myLatLng = { lat: $scope.apartment.Latitude, lng: $scope.apartment.Longitude };

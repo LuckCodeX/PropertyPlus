@@ -78,8 +78,7 @@
                                         <p>{{apartment.Area}} m<sup>2</sup></p>
                                     </div>
                                 </div>
-                                <div class="apartment-description">
-                                    {{apartment.Description | limitTo : 170}}{{apartment.Description.length > 170 ? '...' : ''}}
+                                <div class="apartment-description" ng-bind-html="(apartment.Description | limitTo : 170) + '...'">
                                 </div>
                                 <div class="apartment-price">
                                     <span class="price-label">Estimate price :</span>
@@ -101,7 +100,7 @@
                                     <p>Add to list</p>
                                 </div>
                                 <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark"></i></p>
+                                    <p><i class="fas fa-bookmark" ng-click="saveToBookmark(apartment)"></i></p>
                                     <p>Bookmark</p>
                                 </div>
                             </div>
