@@ -156,5 +156,10 @@ namespace PropertyPlus.Controllers
         {
             return View();
         }
+
+        public ActionResult BookMark()
+        {
+            return View();
+        }
     }
 }

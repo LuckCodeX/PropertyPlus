@@ -645,6 +645,7 @@
     <Content Include="html\apartmentdetail.html" />
     <Content Include="html\blog.html" />
     <Content Include="html\blogdetail.html" />
+    <Content Include="html\bookmark.html" />
     <Content Include="html\detail.html" />
     <Content Include="html\home.html" />
     <Content Include="html\host.html" />
@@ -830,6 +831,7 @@
     <Content Include="Views\Home\HostManageLocation.cshtml" />
     <Content Include="Views\Admin\Facility.cshtml" />
     <Content Include="Views\Admin\FacilityDetail.cshtml" />
+    <Content Include="Views\Home\BookMark.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

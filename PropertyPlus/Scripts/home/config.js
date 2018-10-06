@@ -49,6 +49,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/project",
                 templateUrl: "html/project.html",
                 data: { pageTitle: 'Project' }
+        })
+        .state('bookmark',
+            {
+                url: "/bookmark",
+                templateUrl: "html/bookmark.html",
+                data: { pageTitle: 'Bookmark' }
             })
         .state('userprofile',
             {
