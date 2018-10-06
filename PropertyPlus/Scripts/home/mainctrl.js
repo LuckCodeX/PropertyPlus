@@ -8,6 +8,14 @@
 
     $scope.user = {};
 
+    $scope.redirectHost = function(){
+        if (localStorage && localStorage.getItem('user_profile')) {
+            $location.path("/host/listing");
+        }else{
+            document.getElementById('modalLogin').click();
+        }
+    }
+
     $scope.loadData = function () {
         if (localStorage && localStorage.getItem('language')) {
             $translate.use(localStorage.getItem('language'));

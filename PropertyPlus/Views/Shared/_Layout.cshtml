@@ -40,7 +40,7 @@
                 <a class="text-center" href="/blog">Blog</a>
             </div>
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="#">Become a host</a>
+                <a class="text-center" href="#" ng-click="redirectHost()">Become a host</a>
             </div>
             <div class="header-navbar-menu-nav">
                 <a class="text-center" href="#">Help</a>
@@ -56,7 +56,7 @@
             </div>
             <div ng-if="userProfile === undefined" class="header-navbar-menu-nav">
                 |&nbsp;&nbsp;
-                <a class="text-center" href="#" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login">Login</a>
+                <a class="text-center" href="#" data-dismiss="modal" id="modalLogin" data-toggle="modal" data-target="#myModal-login">Login</a>
             </div>
             <div ng-if="userProfile !== undefined" class="header-navbar-menu-nav box-user-header-bar">
                 <div class=" user-name-head-bar user-head-bar">
