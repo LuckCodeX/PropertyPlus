@@ -3144,6 +3144,49 @@ input::-webkit-inner-spin-button {
     display: block;
     color: black;
 }
+.header-warp{
+    padding-bottom: 5px;
+    border-bottom:solid 1px #d5d6d9 ;
+}
+
+.body-warp{
+    padding-top: 20px;
+}
+
+.title-warp{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.warp{
+    padding: 30px
+}
+.visiting-list.list-apartment-bookmark .product-img,
+.visiting-list.list-apartment-bookmark .product-description{
+    height: 185px;
+}
+.list-apartment-bookmark .product-delete{
+    line-height: 313.14px;
+    text-align: center;
+    background-color: #D2D2D2;
+    float: right;
+    height: 313.14px;
+    padding: 0 19px;
+    visibility: hidden;
+}
+.list-apartment-bookmark .thumbnail-choose-home:hover .product-delete{
+    visibility: visible;
+}
+.list-apartment-bookmark .thumbnail-choose-home{
+    padding: 10px 10px 0px 0;
+}
+.fas.fa-bookmark{
+    cursor: pointer;
+}
+.list-apartment-bookmark{
+    margin-bottom: 30px;
+    overflow: hidden;
+}
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;
