@@ -285,7 +285,7 @@ namespace PropertyPlus.Controllers
                     ExceptionContent(HttpStatusCode.NotFound, "err_old_password_invalid");
                 }
 
-                userAccount.password = Encrypt.EncodePassword(userAccount.password);
+                userAccount.password = Encrypt.EncodePassword(model.NewPassword);
                 _service.SaveUserAccount(userAccount);
             }
         }
