@@ -2507,7 +2507,7 @@ footer {
 }
 .c100 > span {
     width: 65px;
-    line-height: 60px;
+    line-height: 65px;
     font-size: 14px;
 }
 .p100.c100 .bar {
@@ -2519,7 +2519,7 @@ footer {
     }
 
     .c100.small {
-        font-size: 60px;
+        font-size: 65px;
     }
 
 .apartment-in-listing .summary-apartment {
@@ -3186,6 +3186,10 @@ input::-webkit-inner-spin-button {
 .list-apartment-bookmark{
     margin-bottom: 30px;
     overflow: hidden;
+}
+.apartment-in-listing .apartment-name,.apartment-in-listing .apartment-code{
+    display: block;
+    color: black;
 }
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {

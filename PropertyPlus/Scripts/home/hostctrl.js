@@ -196,6 +196,19 @@
         $scope.images = undefined;
         $scope.data = undefined;
     }
+
+    $scope.loadListing = function(){
+        xhrService.get("GetYourListApartment/-1").then(function (data) {
+            $scope.AllListing = data.data;
+        }, function (error) {
+            $scope.errorText = error.statusText;
+        });
+        xhrService.get("GetYourListApartment/1").then(function (data) {
+            $scope.ListedListing = data.data;
+        }, function (error) {
+            $scope.errorText = error.statusText;
+        });
+    }
 }
 
 app.controller('HostCtrl', HostCtrl);

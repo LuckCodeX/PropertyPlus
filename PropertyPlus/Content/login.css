@@ -458,7 +458,7 @@
     width: 180px;
     height: 38px;
     margin-left: 395px;
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
 .contact-button-final button {
@@ -471,6 +471,11 @@
     margin-top: 80px;
     margin-left: 215px;
     margin-bottom: 70px;
+}
+
+.contact-info-2 button:disabled,
+.contact-info-2 button[disabled]{
+  opacity: 0.7;
 }
 
 

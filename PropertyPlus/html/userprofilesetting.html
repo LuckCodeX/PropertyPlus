@@ -1,4 +1,4 @@
-﻿
+﻿<div ng-init="loadUserSetting()">
 
         
             <!--<div class="contact-info">
@@ -38,27 +38,31 @@
             </div>-->
        
 
-            <div class="contact-info-2">
+            <form class="contact-info-2" ng-submit="submitChangePwd()">
                 <div class="contact-info-box-2">
                     <span class="contact-text">Change your password</span>
                 </div>
                 <div class="change-pass">
                     <p>Old password :</p>
-                    <input type="text" class="contact-submit">
+                    <input type="password" ng-model="data.Password" class="contact-submit">
                 </div>
                 <div class="change-pass-1">
                     <p>New password :</p>
-                    <input type="text" class="contact-submit">
+                    <input type="password" ng-model="data.NewPassword" class="contact-submit">
                 </div>
+
                 <div class="change-pass-2">
                     <p>Confirm new password :</p>
-                    <input type="text" class="contact-submit">
+                    <input type="password" ng-model="confirmPassword" class="contact-submit">
                 </div>
-                <button type="button"><span class="contact-text-button">Update Password</span></button>
-            </div>
+                <div class="messageError" style="margin-left: 240px;">
+                    <span ng-show="data.NewPassword != confirmPassword && data.NewPassword && confirmPassword">Passwords does not match</span>
+                </div>
+                <button type="submit" ng-disabled="data.NewPassword != confirmPassword || data.NewPassword == null || confirmPassword == null"><span class="contact-text-button">Update Password</span></button>
+            </form>
 
 
 <!--<div class="contact-button-final">
     <button type="button"><span class="contact-text-button">Deactivate my account</span></button>
 </div>-->
-    
+</div>

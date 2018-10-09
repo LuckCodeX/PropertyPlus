@@ -88,6 +88,19 @@
         });
     }
 
+    $scope.loadUserSetting = function(){
+        $scope.data = {};
+    }
+
+    $scope.submitChangePwd = function(){
+        xhrService.put("ChangePassword",$scope.data).then(function (data) {
+            alert('Change password success !');
+        },
+        function (error) {
+            console.log(error.statusText);
+        });
+    }
+
     $scope.loadUserEdit = function () {
         xhrService.get("GetUserProfile/").then(function (data) {
             if (data.data.ImgVerification1 != null && data.data.ImgVerification1 != "") {
