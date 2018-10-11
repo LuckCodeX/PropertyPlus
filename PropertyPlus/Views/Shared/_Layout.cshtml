@@ -60,7 +60,7 @@
             </div>
             <div ng-if="userProfile !== undefined" class="header-navbar-menu-nav box-user-header-bar">
                 <div class=" user-name-head-bar user-head-bar">
-                    <a class="text-center" href="#">{{userProfile.FirstName}} {{userProfile.LastName}}</a>
+                    <a class="text-center" href="#">{{userProfile.FullName}}</a>
                 </div>
                 <div class="user-head-bar">
                     <img src="/Upload/avatar/{{userProfile.Avatar}}" />
@@ -105,8 +105,7 @@
                             <p class="text-or">or</p>
                         </div>
                         <span class="text-danger">{{errorText}}</span>
-                        <input type="text" placeholder="First name" ng-model="user.firstname" class="mail-submit" required="">
-                        <input type="text" placeholder="Last name" ng-model="user.lastname" class="mail-submit" required="">
+                        <input type="text" placeholder="Full name" ng-model="user.FullName" class="mail-submit" required="">
                         <input type="email" pattern="^[a-zA-Z0-9._+-]+@("@")[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
                         <input type="password" placeholder="Create a Password" minlength="6" ng-model="user.password" class="mail-submit" required="">
                         <input type="password" placeholder="Re-type Password" ng-model="user.confirm_password" class="mail-submit" required="">

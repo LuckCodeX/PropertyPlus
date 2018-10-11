@@ -8,8 +8,8 @@
                             <img style="width:100%;height:100%;" src="/Upload/avatar/{{userProfile.Avatar}}" alt="Alternate Text" />
                         </div>
                         <div class="info">
-                            <p class="user-name">John Wick</p>
-                            <p class="user-id">ID: 123456</p>
+                            <p class="user-name">{{userProfile.FullName}}</p>
+                            <p class="user-id">{{userProfile.Code}}</p>
                         </div>
                     </div>
                     <a ui-sref="userprofile.general" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('userprofile.general')}">

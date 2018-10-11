@@ -93,7 +93,7 @@
     }
 
     $scope.submitChangePwd = function(){
-        xhrService.put("ChangePassword",$scope.data).then(function (data) {
+        xhrService.post("ChangePassword",$scope.data).then(function (data) {
             alert('Change password success !');
         },
         function (error) {

@@ -121,8 +121,7 @@ namespace PropertyPlus.Controllers
             var accounts = _service.SearchUserProfile(search);
             var accList = accounts.Select(p => new UserProfileModel()
             {
-                FirstName = p.first_name,
-                LastName = p.last_name,
+                FullName = p.full_name,
                 Email = p.email,
                 Id = p.user_profile_id,
                 CreatedString = ConvertDatetime.ConvertUnixTimeStampToDateTime(p.created_date)
@@ -137,8 +136,7 @@ namespace PropertyPlus.Controllers
             var model = new UserProfileModel()
             {
                 Id = userProfile.user_profile_id,
-                FirstName = userProfile.first_name,
-                LastName = userProfile.last_name,
+                FullName = userProfile.full_name,
                 Email = userProfile.email
             };
             return View(model);
@@ -156,8 +154,7 @@ namespace PropertyPlus.Controllers
                 }
 
                 var userProfile = _service.GetActiveUserProfileById(model.Id);
-                userProfile.first_name = model.FirstName;
-                userProfile.last_name = model.LastName;
+                userProfile.full_name = model.FullName;
                 _service.SaveUserProfile(userProfile);
 
                 if (Equals(model.Password, null))

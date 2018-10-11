@@ -32,8 +32,7 @@ namespace PropertyPlus.Controllers
                 userProfile = new user_profile()
                 {
                     email = model.Email,
-                    first_name = model.FirstName,
-                    last_name = model.LastName,
+                    full_name = model.FullName,
                     user_profile_id = 0,
                     status = 1,
                     created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
@@ -62,8 +61,7 @@ namespace PropertyPlus.Controllers
                 return new UserProfileModel()
                 {
                     UserId = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
-                    FirstName = userProfile.first_name,
-                    LastName = userProfile.last_name,
+                    FullName = userProfile.full_name,
                     Avatar = userProfile.avatar,
                     Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
                 };
@@ -90,8 +88,7 @@ namespace PropertyPlus.Controllers
             return new UserProfileModel()
             {
                 UserId = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
-                FirstName = userProfile.first_name,
-                LastName = userProfile.last_name,
+                FullName = userProfile.full_name,
                 Avatar = userProfile.avatar,
                 Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
             };
@@ -176,8 +173,7 @@ namespace PropertyPlus.Controllers
                 return new UserProfileModel()
                 {
                     UserId = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
-                    FirstName = userProfile.first_name,
-                    LastName = userProfile.last_name,
+                    FullName = userProfile.full_name,
                     Avatar = userProfile.avatar,
                     Gender = userProfile.gender ?? 0,
                     BirthDay = userProfile.birthday ?? 0,
@@ -210,8 +206,7 @@ namespace PropertyPlus.Controllers
                         ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                     }
 
-                    userProfile.first_name = model.FirstName;
-                    userProfile.last_name = model.LastName;
+                    userProfile.full_name = model.FullName;
                     userProfile.gender = model.Gender;
                     userProfile.birthday = model.BirthDay;
                     userProfile.phone = model.Phone;
@@ -253,8 +248,7 @@ namespace PropertyPlus.Controllers
 
                     return new UserProfileModel()
                     {
-                        FirstName = userProfile.first_name,
-                        LastName = userProfile.last_name,
+                        FullName = userProfile.full_name,
                         Avatar = userProfile.avatar,
                         Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(tok))
                     };
@@ -264,7 +258,7 @@ namespace PropertyPlus.Controllers
             return null;
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("ChangePassword")]
         public void ChangePassword(UserAccountModel model)
         {
@@ -519,8 +513,7 @@ namespace PropertyPlus.Controllers
                     UserProfileOwner = new UserProfileModel()
                     {
                         Id = p.user_profile.user_profile_id,
-                        FirstName = p.user_profile.first_name,
-                        LastName = p.user_profile.last_name,
+                        FullName = p.user_profile.full_name,
                         Avatar = p.user_profile.avatar
                     },
                     Project = Equals(p.project_id, null) ? new ProjectModel() : new ProjectModel()
@@ -577,8 +570,7 @@ namespace PropertyPlus.Controllers
                     UserProfileOwner = new UserProfileModel()
                     {
                         Id = apartment.user_profile.user_profile_id,
-                        FirstName = apartment.user_profile.first_name,
-                        LastName = apartment.user_profile.last_name,
+                        FullName = apartment.user_profile.full_name,
                         Avatar = apartment.user_profile.avatar
                     },
                     Project = Equals(apartment.project_id, null) ? new ProjectModel() : new ProjectModel()
@@ -637,8 +629,7 @@ namespace PropertyPlus.Controllers
                     UserProfileOwner = new UserProfileModel()
                     {
                         Id = p.user_profile.user_profile_id,
-                        FirstName = p.user_profile.first_name,
-                        LastName = p.user_profile.last_name,
+                        FullName = p.user_profile.full_name,
                         Avatar = p.user_profile.avatar
                     },
                     Project = Equals(p.project_id, null)
@@ -704,8 +695,7 @@ namespace PropertyPlus.Controllers
                     UserProfileOwner = new UserProfileModel()
                     {
                         Id = apartment.user_profile.user_profile_id,
-                        FirstName = apartment.user_profile.first_name,
-                        LastName = apartment.user_profile.last_name,
+                        FullName = apartment.user_profile.full_name,
                         Avatar = apartment.user_profile.avatar
                     },
                     Project = Equals(apartment.project_id, null)

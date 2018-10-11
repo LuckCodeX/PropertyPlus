@@ -139,8 +139,7 @@
     <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="status" Type="int" Nullable="false" />
     <Property Name="created_date" Type="int" Nullable="false" />
-    <Property Name="first_name" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="last_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="full_name" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="gender" Type="int" />
     <Property Name="birthday" Type="int" />
     <Property Name="phone" Type="varchar" MaxLength="25" />
@@ -150,6 +149,12 @@
     <Property Name="contact" Type="nvarchar" MaxLength="255" />
     <Property Name="description" Type="ntext" />
     <Property Name="avatar" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="work_phone" Type="varchar" MaxLength="50" />
+    <Property Name="tax_code" Type="varchar" MaxLength="50" />
+    <Property Name="bank_account" Type="varchar" MaxLength="100" />
+    <Property Name="bank_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="bank_number" Type="varchar" MaxLength="50" />
+    <Property Name="bank_branch" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="user_visit">
     <Key>

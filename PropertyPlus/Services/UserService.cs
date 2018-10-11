@@ -69,7 +69,7 @@ namespace PropertyPlus.Services
 
         public List<user_profile> SearchUserProfile(string search)
         {
-            return UserProfileRepository.FindBy(p => p.status == 1 && (Equals(search, null) || (p.first_name + " " + p.last_name).Contains(search) || p.email.Contains(search))).OrderByDescending(p => p.user_profile_id).ToList();
+            return UserProfileRepository.FindBy(p => p.status == 1 && (Equals(search, null) || p.full_name.Contains(search) || p.email.Contains(search))).OrderByDescending(p => p.user_profile_id).ToList();
         }
 
         public void DeleteAccount(int id)
