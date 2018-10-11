@@ -15,6 +15,10 @@ header {
     padding: 13.5px 30px;
 }
 
+.body-content .container {
+    min-height: 52vh
+}
+
 .btn-file {
     position: relative;
     overflow: hidden;

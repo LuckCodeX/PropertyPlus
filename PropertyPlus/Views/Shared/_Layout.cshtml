@@ -37,7 +37,7 @@
         </div>
         <div class="header-navbar-menu float-right">
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="/blog">Blog</a>
+                <a class="text-center" ui-sref="blog">Blog</a>
             </div>
             <div class="header-navbar-menu-nav">
                 <a class="text-center" href="#" ng-click="redirectHost()">Become a host</a>
@@ -46,10 +46,10 @@
                 <a class="text-center" href="#">Help</a>
             </div>
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="#">Your visit list</a>
+                <a class="text-center" ui-sref="userprofile.general">Your visit list</a>
             </div>
             <div class=" header-navbar-menu-nav">
-                <a class="text-center " href="#">Bookmark</a>
+                <a class="text-center " ui-sref="bookmark">Bookmark</a>
             </div>
             <div ng-if="userProfile === undefined" class="header-navbar-menu-nav">
                 <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#">Sign up</a>
@@ -135,8 +135,8 @@
                         <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
                         <input type="password" placeholder="Password" ng-model="user.password" class="mail-submit" required="">
                         <div class="mail-checkbox">
-                            <input type="checkbox">
-                            <span class="text-checkbox">Remember me</span>
+                            @*<input type="checkbox">
+                            <span class="text-checkbox">Remember me</span>*@
                             <a href="#" class="text-checkbox-pass">Forgot password</a>
                         </div>
 

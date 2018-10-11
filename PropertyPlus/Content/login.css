@@ -93,7 +93,7 @@
 
 #myModal-email .modal-sm {
     width: 494px;
-    height: 720px;
+    height: 640px;
     border-radius: 0;
     left: 65px;
     bottom:25px;
@@ -179,11 +179,10 @@
 .text-checkbox-pass {
     font-size: 14px;
     display: inline-block;
-    padding-bottom: 37px;
-    padding-left: 220px;
-    position: absolute;
-    line-height: 2;
     color: #444;
+    width: 100%;
+    text-align: right;
+    padding-right: 60px
 }
 
 .sign-up-email-final-2 {
