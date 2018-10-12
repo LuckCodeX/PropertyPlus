@@ -82,8 +82,19 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content modal-sm">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <button type="button" class="sign-up-fb">Sign up with Facebook</button>
-                    <button type="button" class="sign-up-gg">Sign up with Google</button>
+                    <button type="button"  onclick="login()" class="sign-up-fb">Sign up with Facebook</button>
+
+                    <div id="gSignInWrapper" style="width: 378px;height: 82px;">
+    
+    <div  id="customBtn" class="customGPlusSignIn">
+      <span class="icon"></span>
+      <span class="buttonText">Sign up with Google</span>
+    </div>
+  </div>
+<!--   <div id="name"></div>
+ -->  <script>startApp();</script>
+
+
                     <div class="line-or">
                         <p class="text-or">or</p>
                     </div>
@@ -126,8 +137,23 @@
                 <div class="modal-content modal-sm">
                     <form ng-submit="login()">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <button type="button" class="sign-up-fb">Log in with Facebook</button>
-                        <button type="button" class="sign-up-gg">Log in with Google</button>
+                        <button type="button" onclick="login()" class="sign-up-fb">Log in with Facebook</button>
+
+                        <div>
+<div id="gSignInWrapper" style="width: 378px;height: 82px;">
+    
+    <div  id="customBtn1" class="customGPlusSignIn">
+      <span class="icon"></span>
+      <span class="buttonText">Log in with Google</span>
+    </div>
+  </div>
+  <div id="name"></div>
+  <script>startApp1();</script>
+</div>
+
+
+
+                        
                         <div class="line-or">
                             <p class="text-or">or</p>
                         </div>
@@ -239,6 +265,12 @@
     <script src="/Scripts/home/imageupload.js"></script>
     <script src="/Scripts/ngAutocomplete.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk&libraries=places"></script>
+    <meta name="google-signin-client_id" content="AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk.apps.googleusercontent.com">
+
+<script src="https://apis.google.com/js/api:client.js"></script>
+
+
+
     <!--Owl Carousel-->
     <script src="/ckeditor/ckeditor.js"></script>
     <script src="/Scripts/ng-ckeditor.js"></script>
@@ -262,5 +294,98 @@
     <script src="/Scripts/Chart.bundle.js"></script>
     <script src="/Scripts/chartjs.js"></script>
     <script src="/Scripts/calendar.js"></script>
+    <script type="text/javascript">
+        
+
+
+        window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '2229507523973158',
+            xfbml      : true,
+cookie     : true,
+
+            version    : 'v2.8'
+        });
+        FB.getLoginStatus(function(response){
+            if(response.status === 'connected'){
+                document.getElementById('status').innerHTML = 'we are connected';
+            } else if(response.status === 'not_authorized') {
+                 document.getElementById('status').innerHTML = 'we are not logged in.'
+            } else {
+                document.getElementById('status').innerHTML = 'you are not logged in to Facebook';
+            }
+        });
+   
+    };
+
+    (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    function login(){
+        FB.login(function(response){
+            if(response.status === 'connected'){
+                document.getElementById('status').innerHTML = 'we are connected';
+            } else if(response.status === 'not_authorized') {
+                 document.getElementById('status').innerHTML = 'we are not logged in.'
+            } else {
+                document.getElementById('status').innerHTML = 'you are not logged in to Facebook';
+            }
+
+        });
+    }
+    
+
+    function getInfo() {
+        FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id'}, function(response) {
+            document.getElementById('status').innerHTML = response.id;
+        });
+    };
+ 
+var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('customBtn'));
+    });
+  };
+  var startApp1 = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('customBtn1'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          document.getElementById('name').innerText = "Signed in: " +
+              googleUser.getBasicProfile().getName();
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+   
+    </script>
+
+
+
 </body>
 </html>
