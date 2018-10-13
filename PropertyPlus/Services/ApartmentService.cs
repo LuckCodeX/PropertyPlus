@@ -78,9 +78,16 @@ namespace PropertyPlus.Services
             ApartmentFacilityRepository.Save(apartmentFacility);
         }
 
-        public List<apartment> SearchListApartment()
+        public List<apartment> SearchListApartment(FilterModel filter)
         {
-            return ApartmentRepository.FindBy(p => p.status == 1).OrderByDescending(p => p.apartment_id)
+            return ApartmentRepository
+                .FindBy(p => p.status == 1 &&
+                             (Equals(filter.Search, null) || p.city.Contains(filter.Search) || p.address.Contains(filter.Search) || (!Equals(p.project_id, null) && p.project.project_content.Any(q => q.name.Contains(filter.Search)))) &&
+                             filter.FilterArea.MinValue <= p.area && p.area <= filter.FilterArea.MaxValue &&
+                             filter.FilterPrice.MinValue <= p.price && p.price <= filter.FilterPrice.MaxValue &&
+                             (filter.FilterRoom.NoBathRoom == 0 || filter.FilterRoom.NoBathRoom == p.no_bathroom) && (filter.FilterRoom.NoBedRoom == 0 || filter.FilterRoom.NoBedRoom == p.no_bedroom) &&
+                             (filter.FilterFacility.FacilityIds.Count == 0 || filter.FilterFacility.FacilityIds.All(x => p.apartment_facility.Any(y => x == y.facility_id))))
+                .OrderByDescending(p => p.apartment_id)
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).ToList();
         }

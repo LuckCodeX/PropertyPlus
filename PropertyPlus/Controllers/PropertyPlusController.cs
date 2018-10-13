@@ -487,15 +487,15 @@ namespace PropertyPlus.Controllers
             return null;
         }
 
-        [HttpGet]
-        [Route("GetListApartment/{page}/{limit}")]
-        public PagingResult<ApartmentModel> GetListApartment(int page, int limit)
+        [HttpPost]
+        [Route("GetListApartment")]
+        public PagingResult<ApartmentModel> GetListApartment(FilterModel filter)
         {
             IEnumerable<string> languages;
             if (this.Request.Headers.TryGetValues("Language", out languages))
             {
                 var language = Convert.ToInt32(languages.First());
-                var apartments = _service.SearchListApartment();
+                var apartments = _service.SearchListApartment(filter);
                 var apartmentList = apartments.Select(p => new ApartmentModel()
                 {
                     Id = p.apartment_id,
@@ -527,7 +527,7 @@ namespace PropertyPlus.Controllers
                         Type = q.type,
                         Img = q.img
                     }).ToList()
-                }).Skip((page - 1) * limit).Take(limit).ToList();
+                }).Skip((filter.Page - 1) * filter.Limit).Take(filter.Limit).ToList();
                 return new PagingResult<ApartmentModel>()
                 {
                     total = apartments.Count,
