@@ -91,8 +91,7 @@
       <span class="buttonText">Sign up with Google</span>
     </div>
   </div>
-<!--   <div id="name"></div>
- -->  <script>startApp();</script>
+  <script>startApp();</script>
 
 
                     <div class="line-or">
@@ -147,7 +146,6 @@
       <span class="buttonText">Log in with Google</span>
     </div>
   </div>
-  <div id="name"></div>
   <script>startApp1();</script>
 </div>
 
@@ -265,7 +263,7 @@
     <script src="/Scripts/home/imageupload.js"></script>
     <script src="/Scripts/ngAutocomplete.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk&libraries=places"></script>
-    <meta name="google-signin-client_id" content="AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com">
 
 <script src="https://apis.google.com/js/api:client.js"></script>
 
@@ -351,19 +349,23 @@ var googleUser = {};
     gapi.load('auth2', function(){
       // Retrieve the singleton for the GoogleAuth library and set up the client.
       auth2 = gapi.auth2.init({
-        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        client_id: '439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com',
         cookiepolicy: 'single_host_origin',
         // Request scopes in addition to 'profile' and 'email'
         //scope: 'additional_scope'
+
       });
       attachSignin(document.getElementById('customBtn'));
     });
   };
+
+
+
   var startApp1 = function() {
     gapi.load('auth2', function(){
       // Retrieve the singleton for the GoogleAuth library and set up the client.
       auth2 = gapi.auth2.init({
-        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        client_id: '439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com',
         cookiepolicy: 'single_host_origin',
         // Request scopes in addition to 'profile' and 'email'
         //scope: 'additional_scope'
@@ -376,8 +378,14 @@ var googleUser = {};
     console.log(element.id);
     auth2.attachClickHandler(element, {},
         function(googleUser) {
-          document.getElementById('name').innerText = "Signed in: " +
-              googleUser.getBasicProfile().getName();
+         
+if (auth2.isSignedIn.get()) {
+  var profile = auth2.currentUser.get().getBasicProfile();
+  
+  console.log('Full Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());
+}
         }, function(error) {
           alert(JSON.stringify(error, undefined, 2));
         });
