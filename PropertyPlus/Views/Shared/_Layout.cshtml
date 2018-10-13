@@ -91,8 +91,6 @@
                             <span class="buttonText">Sign up with Google</span>
                         </div>
                     </div>
-                    <!--   <div id="name"></div>
-                     -->
                     <script>startApp();</script>
 
 
@@ -135,44 +133,41 @@
         @* login popup *@
         <div id="myModal-login" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
-                <div class="modal-content modal-sm">
-                    <form ng-submit="login()">
+                <form ng-submit="login()">
+                    <div class="modal-content modal-sm">
+
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <button type="button" onclick="login()" class="sign-up-fb">Log in with Facebook</button>
 
-                        <div>
-                            <div id="gSignInWrapper" style="width: 378px;height: 82px;">
+                        <div id="gSignInWrapper" style="width: 378px;height: 82px;">
 
-                                <div id="customBtn1" class="customGPlusSignIn">
-                                    <span class="icon"></span>
-                                    <span class="buttonText">Log in with Google</span>
-                                </div>
+                            <div id="customBtn1" class="customGPlusSignIn">
+                                <span class="icon"></span>
+                                <span class="buttonText">Log in with Google</span>
                             </div>
-                            <div id="name"></div>
-                            <script>startApp1();</script>
                         </div>
+                        <script>startApp1();</script>
+                    </div>
 
 
 
+                    <div class="line-or">
+                        <p class="text-or">or</p>
+                    </div>
+                    <span class="text-danger-1">{{errorText}}</span>
+                    <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
+                    <input type="password" placeholder="Password" ng-model="user.password" class="mail-submit" required="">
+                    <div class="mail-checkbox">
+                        @*<input type="checkbox">
+                            <span class="text-checkbox">Remember me</span>*@
+                        <a href="#" class="text-checkbox-pass">Forgot password</a>
+                    </div>
 
-                        <div class="line-or">
-                            <p class="text-or">or</p>
-                        </div>
-                        <span class="text-danger-1">{{errorText}}</span>
-                        <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
-                        <input type="password" placeholder="Password" ng-model="user.password" class="mail-submit" required="">
-                        <div class="mail-checkbox">
-                            @*<input type="checkbox">
-                                <span class="text-checkbox">Remember me</span>*@
-                            <a href="#" class="text-checkbox-pass">Forgot password</a>
-                        </div>
+                    <button type="submit" class="sign-up-email-final-2">Login</button>
+                    <span class="text-acc">Don't have an account</span>
+                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
+                </form>
 
-                        <button type="submit" class="sign-up-email-final-2">Login</button>
-                        <span class="text-acc">Don't have an account</span>
-                        <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
-                    </form>
-
-                </div>
             </div>
         </div>
 
@@ -266,7 +261,7 @@
     <script src="/Scripts/home/imageupload.js"></script>
     <script src="/Scripts/ngAutocomplete.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk&libraries=places"></script>
-    <meta name="google-signin-client_id" content="AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com">
 
     <script src="https://apis.google.com/js/api:client.js"></script>
 
@@ -296,9 +291,6 @@
     <script src="/Scripts/chartjs.js"></script>
     <script src="/Scripts/calendar.js"></script>
     <script type="text/javascript">
-
-
-
         window.fbAsyncInit = function () {
             FB.init({
                 appId: '2229507523973158',
@@ -308,7 +300,6 @@
                 version: 'v2.8'
             });
             FB.getLoginStatus(function (response) {
-                console.log(response);
                 if (response.status === 'connected') {
                     document.getElementById('status').innerHTML = 'we are connected';
                 } else if (response.status === 'not_authorized') {
@@ -330,7 +321,6 @@
 
         function login() {
             FB.login(function (response) {
-                console.log(response);
                 if (response.status === 'connected') {
                     document.getElementById('status').innerHTML = 'we are connected';
                 } else if (response.status === 'not_authorized') {
@@ -342,24 +332,35 @@
             });
         }
 
+
+        function getInfo() {
+            FB.api('/me', 'GET', { fields: 'first_name,last_name,name,id' }, function (response) {
+                document.getElementById('status').innerHTML = response.id;
+            });
+        };
+
         var googleUser = {};
         var startApp = function () {
             gapi.load('auth2', function () {
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
                 auth2 = gapi.auth2.init({
-                    client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+                    client_id: '439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com',
                     cookiepolicy: 'single_host_origin',
                     // Request scopes in addition to 'profile' and 'email'
                     //scope: 'additional_scope'
+
                 });
                 attachSignin(document.getElementById('customBtn'));
             });
         };
+
+
+
         var startApp1 = function () {
             gapi.load('auth2', function () {
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
                 auth2 = gapi.auth2.init({
-                    client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+                    client_id: '439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com',
                     cookiepolicy: 'single_host_origin',
                     // Request scopes in addition to 'profile' and 'email'
                     //scope: 'additional_scope'
@@ -372,16 +373,19 @@
             console.log(element.id);
             auth2.attachClickHandler(element, {},
                 function (googleUser) {
-                    document.getElementById('name').innerText = "Signed in: " +
-                        googleUser.getBasicProfile().getName();
+
+                    if (auth2.isSignedIn.get()) {
+                        var profile = auth2.currentUser.get().getBasicProfile();
+
+                        console.log('Full Name: ' + profile.getName());
+                        console.log('Image URL: ' + profile.getImageUrl());
+                        console.log('Email: ' + profile.getEmail());
+                    }
                 }, function (error) {
                     alert(JSON.stringify(error, undefined, 2));
                 });
         }
-
     </script>
-
-
 
 </body>
 </html>
