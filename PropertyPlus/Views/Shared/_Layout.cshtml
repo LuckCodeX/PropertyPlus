@@ -146,26 +146,24 @@
                                 <span class="buttonText">Log in with Google</span>
                             </div>
                         </div>
-                        <script>startApp1();</script>
+                        <script>startApp();</script>
+
+                        <div class="line-or">
+                            <p class="text-or">or</p>
+                        </div>
+                        <span class="text-danger-1">{{errorText}}</span>
+                        <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
+                        <input type="password" placeholder="Password" ng-model="user.password" class="mail-submit" required="">
+                        <div class="mail-checkbox">
+                            @*<input type="checkbox">
+                                <span class="text-checkbox">Remember me</span>*@
+                            <a href="#" class="text-checkbox-pass">Forgot password</a>
+                        </div>
+
+                        <button type="submit" class="sign-up-email-final-2">Login</button>
+                        <span class="text-acc">Don't have an account</span>
+                        <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
                     </div>
-
-
-
-                    <div class="line-or">
-                        <p class="text-or">or</p>
-                    </div>
-                    <span class="text-danger-1">{{errorText}}</span>
-                    <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
-                    <input type="password" placeholder="Password" ng-model="user.password" class="mail-submit" required="">
-                    <div class="mail-checkbox">
-                        @*<input type="checkbox">
-                            <span class="text-checkbox">Remember me</span>*@
-                        <a href="#" class="text-checkbox-pass">Forgot password</a>
-                    </div>
-
-                    <button type="submit" class="sign-up-email-final-2">Login</button>
-                    <span class="text-acc">Don't have an account</span>
-                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
                 </form>
 
             </div>
@@ -340,7 +338,7 @@
         };
 
         var googleUser = {};
-        var startApp = function () {
+        function startApp() {
             gapi.load('auth2', function () {
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
                 auth2 = gapi.auth2.init({
@@ -354,23 +352,7 @@
             });
         };
 
-
-
-        var startApp1 = function () {
-            gapi.load('auth2', function () {
-                // Retrieve the singleton for the GoogleAuth library and set up the client.
-                auth2 = gapi.auth2.init({
-                    client_id: '439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com',
-                    cookiepolicy: 'single_host_origin',
-                    // Request scopes in addition to 'profile' and 'email'
-                    //scope: 'additional_scope'
-                });
-                attachSignin(document.getElementById('customBtn1'));
-            });
-        };
-
         function attachSignin(element) {
-            console.log(element.id);
             auth2.attachClickHandler(element, {},
                 function (googleUser) {
 
