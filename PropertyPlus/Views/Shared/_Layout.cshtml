@@ -82,7 +82,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content modal-sm">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <button type="button" onclick="login()" class="sign-up-fb">Sign up with Facebook</button>
+                    <button type="button" onclick="login()"  class="sign-up-fb">Sign up with Facebook</button>
 
                     <div id="gSignInWrapper" style="width: 378px;height: 82px;">
 
@@ -284,19 +284,21 @@
     <script src="/Scripts/home/projectctrl.js"></script>
     <script src="/Scripts/home/userprofilectrl.js"></script>
     <script src="/Scripts/home/hostctrl.js"></script>
-    <script type="text/javascript" src="/Scripts/home/bookmarkctrl.js"></script>
+    <script type="text/javascript" src="/Scripts/home/bookmarkctrl.js"></script>      
     <script src="/Scripts/Chart.bundle.js"></script>
     <script src="/Scripts/chartjs.js"></script>
     <script src="/Scripts/calendar.js"></script>
     <script type="text/javascript">
         window.fbAsyncInit = function () {
             FB.init({
-                appId: '2229507523973158',
+                appId: '271137390192294',
                 xfbml: true,
                 cookie: true,
 
                 version: 'v2.8'
             });
+
+
             FB.getLoginStatus(function (response) {
                 if (response.status === 'connected') {
                     document.getElementById('status').innerHTML = 'we are connected';
@@ -319,23 +321,24 @@
 
         function login() {
             FB.login(function (response) {
-                if (response.status === 'connected') {
-                    document.getElementById('status').innerHTML = 'we are connected';
-                } else if (response.status === 'not_authorized') {
-                    document.getElementById('status').innerHTML = 'we are not logged in.'
-                } else {
-                    document.getElementById('status').innerHTML = 'you are not logged in to Facebook';
-                }
+//                 FB.api('/me', function(response) {
+//     console.log(response.name);
+//     console.log(response.id);
+// }
+FB.api('/me', { locale: 'en_US', fields: 'name, email' },
+  function(response) {
+    console.log(response.name);
+    console.log(response.email);
+  },
+  {scope: 'public_profile,email'}
 
-            });
-        }
 
-
-        function getInfo() {
-            FB.api('/me', 'GET', { fields: 'first_name,last_name,name,id' }, function (response) {
-                document.getElementById('status').innerHTML = response.id;
+    );
             });
         };
+
+
+        
 
         var googleUser = {};
         function startApp() {
@@ -365,6 +368,9 @@ function startApp1() {
                 attachSignin(document.getElementById('customBtn1'));
             });
         };
+
+
+
 
 
         function attachSignin(element) {
