@@ -33,6 +33,8 @@
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__user___164452B1" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_acco__user___1273C1CD" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_visi__user___440B1D61" />
+        <EntityTypeShape EntityType="PropertyPlusModel.user_social" Width="1.5" PointX="3" PointY="6.75" />
+        <AssociationConnector Association="PropertyPlusModel.FK__user_goog__user___29221CFB" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

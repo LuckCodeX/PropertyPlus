@@ -20,6 +20,7 @@ namespace PropertyPlus.Models
             this.apartments = new HashSet<apartment>();
             this.user_account = new HashSet<user_account>();
             this.user_visit = new HashSet<user_visit>();
+            this.user_social = new HashSet<user_social>();
         }
     
         public int user_profile_id { get; set; }
@@ -49,5 +50,7 @@ namespace PropertyPlus.Models
         public virtual ICollection<user_account> user_account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user_visit> user_visit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user_social> user_social { get; set; }
     }
 }

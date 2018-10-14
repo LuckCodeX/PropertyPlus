@@ -136,6 +136,11 @@
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="user_visit" EntitySet="user_visit" />
     </AssociationSet>
+    <EntitySet Name="user_social" EntityType="PropertyPlusModel.user_social" />
+    <AssociationSet Name="FK__user_goog__user___29221CFB" Association="PropertyPlusModel.FK__user_goog__user___29221CFB">
+      <End Role="user_profile" EntitySet="user_profile" />
+      <End Role="user_social" EntitySet="user_social" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="admin">
     <Key>
@@ -404,6 +409,7 @@
     <NavigationProperty Name="apartments" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="user_profile" ToRole="apartment" />
     <NavigationProperty Name="user_account" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_profile" ToRole="user_account" />
     <NavigationProperty Name="user_visit" Relationship="PropertyPlusModel.FK__user_visi__user___440B1D61" FromRole="user_profile" ToRole="user_visit" />
+    <NavigationProperty Name="user_social" Relationship="PropertyPlusModel.FK__user_goog__user___29221CFB" FromRole="user_profile" ToRole="user_social" />
   </EntityType>
   <Association Name="FK__apartment__user___164452B1">
     <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
@@ -443,6 +449,30 @@
         <PropertyRef Name="user_profile_id" />
       </Principal>
       <Dependent Role="user_visit">
+        <PropertyRef Name="user_profile_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="user_social">
+    <Key>
+      <PropertyRef Name="user_social_id" />
+    </Key>
+    <Property Name="user_social_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="user_profile_id" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_goog__user___29221CFB" FromRole="user_social" ToRole="user_profile" />
+  </EntityType>
+  <Association Name="FK__user_goog__user___29221CFB">
+    <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PropertyPlusModel.user_social" Role="user_social" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_profile">
+        <PropertyRef Name="user_profile_id" />
+      </Principal>
+      <Dependent Role="user_social">
         <PropertyRef Name="user_profile_id" />
       </Dependent>
     </ReferentialConstraint>

@@ -20,7 +20,7 @@
                     <input type="hidden" name="avatar-user" ng-model="data.Avatar_Base64" value="" />
                     <div class="profile-photo-input">
                         <div class="img-profile-photo">
-                            <img ng-if="data.Avatar_Base64 == null" src="/Upload/avatar/{{data.Avatar}}" alt="Alternate Text" />
+                            <img ng-if="data.Avatar_Base64 == null" src="{{data.Avatar}}" alt="Alternate Text" />
                             <img ng-if="data.Avatar_Base64 != null" ng-src="{{data.Avatar_Base64}}" id="Avatar_Base64" alt="Alternate Text"/>
                         </div>
                         <div class="note-profile-photo">

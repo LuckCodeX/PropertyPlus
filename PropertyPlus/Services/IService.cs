@@ -64,5 +64,7 @@ namespace PropertyPlus.Services
         user_visit GetUserVisitById(int id);
         List<apartment> SearchListApartmentByUserProfileId(int status, int userProfileId);
         apartment GetApartmentById(int id);
+        user_social GetUserSocialByEmailAndType(string email, int type);
+        void SaveUserSocial(user_social model);
     }
 }

@@ -190,5 +190,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="user_social">
+      <EntityTypeMapping TypeName="PropertyPlusModel.user_social">
+        <MappingFragment StoreEntitySet="user_social">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="user_social_id" ColumnName="user_social_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

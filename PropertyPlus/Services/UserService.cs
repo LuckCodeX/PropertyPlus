@@ -31,6 +31,17 @@ namespace PropertyPlus.Services
             }
         }
 
+        private GenericRepository<user_social> _userSocialRepository;
+        public GenericRepository<user_social> UserSocialRepository
+        {
+            get
+            {
+                if (this._userSocialRepository == null)
+                    this._userSocialRepository = new GenericRepository<user_social>(_context);
+                return _userSocialRepository;
+            }
+        }
+
         public user_account Login(UserAccountModel model)
         {
             var password = Encrypt.EncodePassword(model.Password);
@@ -75,6 +86,16 @@ namespace PropertyPlus.Services
         public void DeleteAccount(int id)
         {
             UserProfileRepository.Delete(id);
+        }
+
+        public user_social GetUserSocialByEmailAndType(string email, int type)
+        {
+            return UserSocialRepository.FindBy(p => p.email == email && p.type == type).FirstOrDefault();
+        }
+
+        public void SaveUserSocial(user_social model)
+        {
+            UserSocialRepository.Save(model);
         }
     }
 }

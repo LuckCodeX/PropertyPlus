@@ -94,6 +94,100 @@ namespace PropertyPlus.Controllers
             };
         }
 
+        [HttpPost]
+        [Route("LoginGoogle")]
+        public UserProfileModel LoginGoogle(UserSocialModel model)
+        {
+            var userGG = _service.GetUserSocialByEmailAndType(model.Email, 0);
+            var userProfile = _service.GetUserProfileByEmail(model.Email);
+            if (Equals(userGG, null))
+            {
+                if (Equals(userProfile, null))
+                {
+                    userProfile = new user_profile()
+                    {
+                        user_profile_id = 0,
+                        full_name = model.FullName,
+                        avatar = model.Avatar,
+                        email = model.Email,
+                        created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
+                        status = 1
+                    };
+                    _service.SaveUserProfile(userProfile);
+                }
+                userGG = new user_social()
+                {
+                    user_profile_id = userProfile.user_profile_id,
+                    type = 0,
+                    email = model.Email,
+                    user_social_id = 0
+                };
+                _service.SaveUserSocial(userGG);
+            }
+
+            var token = new TokenModel()
+            {
+                Id = userProfile.user_profile_id,
+                Username = userProfile.email,
+                Role = 0
+            };
+            return new UserProfileModel()
+            {
+                UserId
+ = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
+                FullName = userProfile.full_name,
+                Avatar = userProfile.avatar,
+                Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
+            };
+        }
+
+        [HttpPost]
+        [Route("LoginFacebook")]
+        public UserProfileModel LoginFacebook(UserSocialModel model)
+        {
+            var userGG = _service.GetUserSocialByEmailAndType(model.Email, 1);
+            var userProfile = _service.GetUserProfileByEmail(model.Email);
+            if (Equals(userGG, null))
+            {
+                if (Equals(userProfile, null))
+                {
+                    userProfile = new user_profile()
+                    {
+                        user_profile_id = 0,
+                        full_name = model.FullName,
+                        avatar = model.Avatar,
+                        email = model.Email,
+                        created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
+                        status = 1
+                    };
+                    _service.SaveUserProfile(userProfile);
+                }
+                userGG = new user_social()
+                {
+                    user_profile_id = userProfile.user_profile_id,
+                    type = 1,
+                    email = model.Email,
+                    user_social_id = 0
+                };
+                _service.SaveUserSocial(userGG);
+            }
+
+            var token = new TokenModel()
+            {
+                Id = userProfile.user_profile_id,
+                Username = userProfile.email,
+                Role = 0
+            };
+            return new UserProfileModel()
+            {
+                UserId
+                    = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
+                FullName = userProfile.full_name,
+                Avatar = userProfile.avatar,
+                Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))
+            };
+        }
+
         [HttpGet]
         [Route("GetListBlog/{page}/{limit}/{type}/{search?}")]
         public PagingResult<BlogModel> GetListBlog(int page, int limit, int type, string search = null)

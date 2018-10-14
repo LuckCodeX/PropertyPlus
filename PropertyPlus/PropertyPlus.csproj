@@ -265,11 +265,15 @@
     <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Models\UserProfileModel.cs" />
+    <Compile Include="Models\UserSocialModel.cs" />
     <Compile Include="Models\UserVisitModel.cs" />
     <Compile Include="Models\user_account.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user_profile.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_social.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user_visit.cs">
