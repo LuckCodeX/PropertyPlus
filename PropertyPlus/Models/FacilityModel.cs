@@ -12,6 +12,7 @@ namespace PropertyPlus.Models
         public HttpPostedFileBase ImageFile { get; set; }
         public List<FacilityContentModel> ContentList { get; set; }
         public FacilityContentModel Content { get; set; }
+        public int ApartmentFacilityId { get; set; }
     }
 
     public class FacilityContentModel

@@ -563,6 +563,222 @@ namespace PropertyPlus.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("SaveApartment")]
+        public void SaveApartment(ApartmentModel model)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                try
+                {
+                    var token = values.First();
+                    var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                    var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                    if (Equals(userProfile, null))
+                    {
+                        ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
+                    }
+                    IEnumerable<string> languages;
+                    this.Request.Headers.TryGetValues("Language", out languages);
+                    var language = Convert.ToInt32(languages.First());
+                    using (var scope = new TransactionScope())
+                    {
+                        var apartment = _service.GetApartmentById(model.Id);
+                        if (Equals(apartment, null) || apartment.user_profile_owner_id != userProfile.user_profile_id)
+                            ExceptionContent(HttpStatusCode.NotFound, "err_apartment_not_found");
+                        apartment.address = model.Address;
+                        apartment.city = model.City;
+                        apartment.latitude = model.Latitude;
+                        apartment.longitude = model.Longitude;
+                        apartment.area = model.Area;
+                        apartment.management_fee = model.ManagementFee;
+                        apartment.price = model.Price;
+                        apartment.no_bathroom = model.NoBathRoom;
+                        apartment.no_bedroom = model.NoBedRoom;
+                        apartment.project_id = model.ProjectId;
+                        apartment.type = model.Type;
+                        _service.SaveApartment(apartment);
+
+                        var imgIds = new List<int>();
+                        var imgIdx = 0;
+                        var imgList = apartment.aparment_image.ToList();
+                        foreach (var item in model.ImgList)
+                        {
+                            imgIds.Add(item.Id);
+                            var flag = false;
+                            foreach (var img in imgList)
+                            {
+                                if (img.apartment_image_id == item.Id)
+                                {
+                                    img.type = item.Type;
+                                    if (!Equals(item.Img_Base64, null))
+                                    {
+                                        img.img = "http://manager.propertyplus.com.vn/Upload/apartment/" + _service.SaveImage("~/Upload/apartment/",
+                                            "apt_" + ConvertDatetime.GetCurrentUnixTimeStamp() + "_" +
+                                            img.apartment_image_id + ".png",
+                                            item.Img_Base64);
+                                    }
+
+                                    _service.SaveApartmentImage(img);
+                                    flag = true;
+                                    break;
+                                }
+                            }
+
+                            if (!flag)
+                            {
+                                var aptImg = new aparment_image()
+                                {
+                                    apartment_image_id = 0,
+                                    apartment_id = apartment.apartment_id,
+                                    type = item.Type,
+                                };
+                                if (!Equals(item.Img_Base64, null))
+                                {
+                                    aptImg.img = "http://manager.propertyplus.com.vn/Upload/apartment/" + _service.SaveImage("~/Upload/apartment/",
+                                        "apt_" + ConvertDatetime.GetCurrentUnixTimeStamp() + "_" + imgIdx
+                                         + ".png",
+                                        item.Img_Base64);
+                                    _service.SaveApartmentImage(aptImg);
+                                }
+                            }
+
+                            imgIdx++;
+                        }
+
+                        foreach (var item in imgList)
+                        {
+                            if (imgIds.IndexOf(item.apartment_image_id) == -1)
+                            {
+                                _service.DeleteApartmentImage(item);
+                            }
+                        }
+
+                        var facIds = new List<int>();
+                        var facList = apartment.apartment_facility.ToList();
+                        foreach (var item in model.FacilityList)
+                        {
+                            facIds.Add(item.ApartmentFacilityId);
+                            var flag = false;
+                            foreach (var fac in facList)
+                            {
+                                if (item.ApartmentFacilityId == fac.apartment_facility_id)
+                                {
+                                    flag = true;
+                                    break;
+                                }
+                            }
+
+                            if (!flag)
+                            {
+                                var aptFac = new apartment_facility()
+                                {
+                                    apartment_facility_id = 0,
+                                    apartment_id = apartment.apartment_id,
+                                    facility_id = item.Id
+                                };
+                                _service.SaveApartmentFacility(aptFac);
+                            }
+                        }
+
+                        foreach (var item in facList)
+                        {
+                            if (facIds.IndexOf(item.apartment_facility_id) == -1)
+                                _service.DeleteApartmentFacility(item);
+                        }
+
+                        //foreach (var item in model.ContentList)
+                        //{
+                        var content = _service.GetApartmentContentByApartmentIdAndLanguage(apartment.apartment_id, language) ?? new apartment_content()
+                        {
+                            apartment_content_id = 0,
+                            apartment_id = apartment.apartment_id,
+                            language = language
+                        };
+
+                        content.name = model.Name;
+                        content.description = model.Description;
+                        _service.SaveApartmentContent(content);
+                        //}
+
+                        scope.Complete();
+                    }
+                }
+                catch (Exception e)
+                {
+                    ExceptionContent(HttpStatusCode.InternalServerError, e.Message);
+                }
+            }
+        }
+
+        [HttpGet]
+        [Route("GetApartmentInformation/{id}")]
+        public ApartmentModel GetApartmentInformation(int id)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Token", out values))
+            {
+                var token = values.First();
+                var tokenModel = JsonConvert.DeserializeObject<TokenModel>(Encrypt.Base64Decode(token));
+                var userProfile = _service.GetActiveUserProfileById(tokenModel.Id);
+                if (Equals(userProfile, null))
+                {
+                    ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
+                }
+                IEnumerable<string> languages;
+                this.Request.Headers.TryGetValues("Language", out languages);
+                var language = Convert.ToInt32(languages.First());
+                var apartment = _service.GetApartmentById(id);
+                if (Equals(apartment, null) || apartment.user_profile_owner_id != userProfile.user_profile_id)
+                {
+                    ExceptionContent(HttpStatusCode.MethodNotAllowed, "err_apartment_not_found");
+                }
+
+                var content = _service.GetApartmentContentByApartmentIdAndLanguage(apartment.apartment_id, language);
+                return new ApartmentModel()
+                {
+                    Id = apartment.apartment_id,
+                    Name = content.name,
+                    Description = content.description,
+                    Address = apartment.address,
+                    City = apartment.city,
+                    Area = apartment.area,
+                    NoBedRoom = apartment.no_bedroom,
+                    Code = apartment.code,
+                    Latitude = apartment.latitude,
+                    Longitude = apartment.longitude,
+                    ManagementFee = apartment.management_fee,
+                    NoBathRoom = apartment.no_bathroom,
+                    Price = apartment.price,
+                    ProjectId = apartment.project_id,
+                    Type = apartment.type,
+                    UserProfileOwnerId = apartment.user_profile_owner_id,
+                    UserProfileOwner = new UserProfileModel()
+                    {
+                        Id = apartment.user_profile.user_profile_id,
+                        FullName = apartment.user_profile.full_name,
+                        Avatar = apartment.user_profile.avatar
+                    },
+                    FacilityList = apartment.apartment_facility.Select(q => new FacilityModel()
+                    {
+                        Id = q.facility.facility_id,
+                        Img = q.facility.img,
+                        ApartmentFacilityId = q.apartment_facility_id,
+                        Content = _service.ConvertFacilityContentToModel(q.facility.facility_content.FirstOrDefault(p => p.language == 0))
+                    }).ToList(),
+                    ImgList = apartment.aparment_image.Select(p => new ApartmentImageModel()
+                    {
+                        Id = p.apartment_image_id,
+                        Type = p.type,
+                        Img = p.img
+                    }).ToList(),
+                    //ContentList = _service.GetApartmentContentList(apartment.apartment_content).ToList()
+                };
+            }
+            return new ApartmentModel();
+        }
+
         [HttpGet]
         [Route("GetAllProject")]
         public List<ProjectModel> GetAllProject()
@@ -672,7 +888,7 @@ namespace PropertyPlus.Controllers
                         Id = apartment.project.project_id,
                         Name = apartment.project.project_content.FirstOrDefault(q => q.language == language).name
                     },
-                    ImgList = apartment.aparment_image.Where(q => q.type != -1 && q.type != 1).OrderBy(q => q.type).Select(q => new ApartmentImageModel()
+                    ImgList = apartment.aparment_image.Where(q => q.type != -1).OrderBy(q => q.type).Select(q => new ApartmentImageModel()
                     {
                         Id = q.apartment_image_id,
                         Type = q.type,

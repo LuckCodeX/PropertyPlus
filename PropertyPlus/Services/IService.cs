@@ -66,5 +66,9 @@ namespace PropertyPlus.Services
         apartment GetApartmentById(int id);
         user_social GetUserSocialByEmailAndType(string email, int type);
         void SaveUserSocial(user_social model);
+        void DeleteApartmentImage(aparment_image item);
+        void DeleteApartmentFacility(apartment_facility item);
+        apartment_content GetApartmentContentById(int id);
+        apartment_content GetApartmentContentByApartmentIdAndLanguage(int apartmentId, int language);
     }
 }

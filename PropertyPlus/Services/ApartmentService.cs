@@ -112,5 +112,25 @@ namespace PropertyPlus.Services
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).FirstOrDefault();
         }
+
+        public void DeleteApartmentImage(aparment_image item)
+        {
+            ApartmentImageRepository.Delete(item);
+        }
+
+        public void DeleteApartmentFacility(apartment_facility item)
+        {
+            ApartmentFacilityRepository.Delete(item);
+        }
+
+        public apartment_content GetApartmentContentById(int id)
+        {
+            return ApartmentContentRepository.FindBy(p => p.apartment_content_id == id).FirstOrDefault();
+        }
+
+        public apartment_content GetApartmentContentByApartmentIdAndLanguage(int apartmentId, int language)
+        {
+            return ApartmentContentRepository.FindBy(p => p.apartment_id == apartmentId && p.language == language).FirstOrDefault();
+        }
     }
 }
