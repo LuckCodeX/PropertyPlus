@@ -64,5 +64,10 @@ namespace PropertyPlus.Services
         {
             FacilityContentRepository.Save(content);
         }
+
+        public List<facility> GetAllFacilities()
+        {
+            return FacilityRepository.FindBy(p => p.status == 1).Include(p => p.facility_content).ToList();
+        }
     }
 }

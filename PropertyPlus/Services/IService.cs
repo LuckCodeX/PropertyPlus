@@ -70,5 +70,6 @@ namespace PropertyPlus.Services
         void DeleteApartmentFacility(apartment_facility item);
         apartment_content GetApartmentContentById(int id);
         apartment_content GetApartmentContentByApartmentIdAndLanguage(int apartmentId, int language);
+        List<facility> GetAllFacilities();
     }
 }

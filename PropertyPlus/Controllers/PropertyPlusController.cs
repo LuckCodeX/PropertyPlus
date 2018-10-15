@@ -1027,6 +1027,26 @@ namespace PropertyPlus.Controllers
             return new ApartmentModel();
         }
 
+        [HttpGet]
+        [Route("GetAllFacilities")]
+        public List<FacilityModel> GetAllFacilities()
+        {
+            IEnumerable<string> languages;
+            if (this.Request.Headers.TryGetValues("Language", out languages))
+            {
+                var language = Convert.ToInt32(languages.First());
+                return _service.GetAllFacilities().Select(p => new FacilityModel()
+                {
+                    Id = p.facility_id,
+                    Content = new FacilityContentModel()
+                    {
+                        Name = p.facility_content.FirstOrDefault(q => q.language == language).name
+                    }
+                }).ToList();
+            }
+            return new List<FacilityModel>();
+        }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();
