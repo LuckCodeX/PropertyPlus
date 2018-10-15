@@ -16,6 +16,15 @@
         }
     }
 
+    $scope.submitSearch = function(txtSearch){
+        $location.path("/apartment");
+        $scope.searchForm();   
+    }
+
+    $scope.changeSearchTxt = function(txtSearch){
+        $scope.txtSearch = txtSearch;
+    }
+
     $scope.loadData = function () {
         if (localStorage && localStorage.getItem('language')) {
             $translate.use(localStorage.getItem('language'));

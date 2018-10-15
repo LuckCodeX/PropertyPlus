@@ -14,6 +14,7 @@
     <link href="/Content/circle.css" rel="stylesheet" />
     <link href="/Content/ng-img-crop.css" rel="stylesheet" />
     <link href="/Content/ui-select.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Content/rzslider.css">
     <link href="/Content/Custom.css" rel="stylesheet" />
     <link href="/Content/blog.css" rel="stylesheet" />
     <link href="/Content/project.css" rel="stylesheet" />
@@ -31,10 +32,10 @@
         <div class="logo-name-header" ng-if="$state.includes('home')">
             <a href="#">Property Plus</a>
         </div>
-        <div class="search-box box-shadow" ng-if="!$state.includes('home')">
-            <input type="text" class="" placeholder="Type Location or Project or Keyword" name="search" value="" />
-            <button class="btn-search box-shadow">Search</button>
-        </div>
+        <form class="search-box box-shadow" ng-if="!$state.includes('home')" ng-submit="submitSearch()">
+            <input type="text" class="" ng-model="txtSearch" ng-change="changeSearchTxt(txtSearch)" placeholder="Type Location or Project or Keyword"  />
+            <button class="btn-search box-shadow" >Search</button>
+        </form>
         <div class="header-navbar-menu float-right">
             <div class="header-navbar-menu-nav">
                 <a class="text-center" ui-sref="blog">Blog</a>
@@ -172,6 +173,7 @@
     </header>
     <div class="body-content">
         @RenderBody()
+        
     </div>
 
     <footer>
@@ -258,6 +260,7 @@
     <script src="/Scripts/home/ui-select.js"></script>
     <script src="/Scripts/home/imageupload.js"></script>
     <script src="/Scripts/ngAutocomplete.js"></script>
+    <script type="text/javascript" src="/Scripts/rzslider.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk&libraries=places"></script>
     <meta name="google-signin-client_id" content="439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com">
 

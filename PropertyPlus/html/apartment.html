@@ -4,10 +4,88 @@
             <div class="row">
                 <div class="col-xs-12 ">
                     <div class="list-btn-second-header">
-                        <button class="box-shadow btn-facility"><span translate>Price </span><i class="fas fa-chevron-right"></i></button>
-                        <button class="box-shadow btn-facility"><span translate>Room</span> <i class="fas fa-chevron-right"></i></button>
-                        <button class="box-shadow btn-facility"><span translate>Area </span><i class="fas fa-chevron-right"></i></button>
-                        <button class="box-shadow btn-facility "><span translate>Facilities</span> <i class="fas fa-chevron-right"></i></button>
+                        <div class="list-btn-facilities">
+                            <div class="group-btn-facility">
+                                <button class="box-shadow btn-facilities has-filter" target-filter="#price-filter"><span translate>search_bar_price </span><i class="fas fa-chevron-right"></i>
+                                </button>
+                                <div class="card-filter" id="price-filter">
+                                    <span class="inline" style="color: #464878;">Price Range</span>
+                                    <div class="block-rzslider">
+                                        <rzslider
+                                          data-rz-slider-model="priceSlider.minValue"
+                                          data-rz-slider-high="priceSlider.maxValue"
+                                          data-rz-slider-options="priceSlider.options"
+                                        ></rzslider>
+                                        <div class="min-bubble">$ {{priceSlider.minValue}}</div>
+                                        <div class="max-bubble">$ {{priceSlider.maxValue}}</div>
+                                    </div>
+                                    <button ng-click="loadApartment()" class="btn-apply">Apply</button>
+                                </div>
+
+                            </div>
+                            <div class="group-btn-facility">
+                                <button class="box-shadow btn-facilities has-filter" target-filter="#room-filter"><span translate>search_bar_room </span><i class="fas fa-chevron-right"></i>
+                                </button>
+                                <div class="card-filter" id="room-filter">
+                                    <span class="inline" style="color: #464878;">Rooms</span>
+                                    <div class="bedrooms-line">
+                                        <i class="fas fa-bed float-left"></i><span style="margin-left: 20px" class="float-left">Bedrooms</span>
+                                        <div class="float-right group-btn-service">
+                                            <button class="minus" ng-click="bedroom = bedroom - 1" ng-disabled="bedroom == 0">-</button>
+                                            <button class="plus" ng-click="bedroom = bedroom + 1" ng-disabled="bedroom == 6">+</button>
+                                        </div>
+                                        <span class="float-right quantity">{{bedroom}}</span>
+                                    </div>
+                                    <div class="bedrooms-line">
+                                        <i class="fas fa-bath float-left"></i><span style="margin-left: 20px" class="float-left">Bathrooms</span>
+                                        <div class="float-right group-btn-service">
+                                            <button class="minus" ng-click="bathroom = bathroom - 1" ng-disabled="bathroom == 0">-</button>
+                                            <button class="plus" ng-click="bathroom = bathroom + 1" ng-disabled="bathroom == 6">+</button>
+                                        </div>
+                                        <span class="float-right quantity">{{bathroom}}</span>
+                                    </div>
+                                    <button ng-click="loadApartment()" class="btn-apply">Apply</button>
+                                </div>
+                            </div>
+                            <div class="group-btn-facility">
+                                <button class="box-shadow btn-facilities has-filter" target-filter="#area-filter"><span translate>search_bar_area </span><i class="fas fa-chevron-right"></i>
+                                </button>
+                                <div class="card-filter" id="area-filter">
+                                    <span class="inline" style="color: #464878;">Area</span>
+                                    <div class="block-rzslider">
+                                        <rzslider
+                                          data-rz-slider-model="areaSlider.minValue"
+                                          data-rz-slider-high="areaSlider.maxValue"
+                                          data-rz-slider-options="areaSlider.options"
+                                        ></rzslider>
+                                        <div class="min-bubble">{{areaSlider.minValue}} m<sup>2</sup></div>
+                                        <div class="max-bubble">{{areaSlider.maxValue}} m<sup>2</sup></div>
+                                    </div>
+                                    <button ng-click="loadApartment()" class="btn-apply">Apply</button>
+                                </div>
+                            </div>
+                            <div class="group-btn-facility">
+                                <button class="box-shadow btn-facilities has-filter" target-filter="#facility-filter"><span translate>search_bar_facilities </span><i class="fas fa-chevron-right"></i>
+                                </button>
+                                <div class="card-filter" id="facility-filter">
+                                    <span class="inline" style="color: #464878;">Facilities</span>
+                                    <div class="list-facility-filter">
+                                        <div ng-repeat="facility in listFacility track by $index" class="facility-line">
+                                            <label class="material-checkbox">
+                                                <input type="checkbox" ng-model="facility.Status">
+                                                <span></span>
+                                            </label>
+                                            <span>{{facility.Content.Name}}</span>
+                                        </div>
+                                    </div>
+                                    <button ng-click="clearFacility()" class="btn-clear">Clear</button>
+                                    <button ng-click="loadApartment()" class="btn-apply">Apply</button>
+                                </div>
+
+                            </div>
+                            
+                            
+                        </div>
                     </div>
                     <div class="switch-show-map">
                         <label class="title-switch-show-map">Show map</label>

@@ -318,6 +318,7 @@ footer {
 
 .list-btn-facilities {
     margin-top: 25.6px;
+    position: relative;
 }
 
 .btn-facilities {
@@ -3200,6 +3201,149 @@ input::-webkit-inner-spin-button {
 .apartment-in-listing .apartment-name,.apartment-in-listing .apartment-code{
     display: block;
     color: black;
+}
+.block-rzslider .rzslider .rz-bubble {
+  display: none;
+}
+.block-rzslider{
+    position: relative;
+    height: 58px;
+    overflow: hidden;
+}
+.block-rzslider .rzslider{
+    margin: 15px 0 15px 0;
+    padding: 0 10px;
+}
+.block-rzslider .min-bubble{
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    color: #464878;
+}
+.block-rzslider .max-bubble{
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    color: #464878;
+}
+.card-filter{
+    top: 50px;
+    background: white;
+    padding: 10px 30px 15px 30px;
+    position: absolute;
+    width: 366px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+    border-radius: 5px;
+   border: 0.5px solid #484848;
+   left: 0;
+   opacity: 0;
+    pointer-events: none;
+    transition:top .5s,opacity .5s;
+    z-index: 9;
+}
+.group-btn-facility{
+    position: relative;
+    display: inline-block;
+}
+
+.card-filter.active{
+    top: 70px;
+    opacity: 1;
+    pointer-events: auto;
+
+}
+.btn-facilities.active{
+    background: #464878;
+    color: white;
+}
+.btn-facilities.active span{
+    color: white;
+}
+.btn-facilities.active .fa-chevron-right{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    color: white;
+}
+.btn-facilities .fa-chevron-right{
+    transition:transform .5s;
+}
+.btn-apply{
+    margin-top: 16px;
+    background: #464878;
+    color: white;
+    border-radius: 7px;
+    float: right;
+    width: 65px;
+    height: 28px;
+    border:none;
+    font-size: 12px;
+}
+.btn-clear{
+    margin-top: 16px;
+    background: white;
+    color: #464878;
+    font-size: 12px;
+    border-radius: 7px;
+    float: left;
+    height: 28px;
+    border:none;
+}
+.bedrooms-line i.fas{
+    width: 27px;
+    font-size: 21px;
+    color: #464878;
+}
+.bedrooms-line span{
+    color: #464878;
+}
+.bedrooms-line button{
+    border-color: #464878;
+}
+.bedrooms-line .quantity{
+    margin-right: 20px;
+}
+.bedrooms-line{
+    display: block;
+    overflow: hidden;
+    margin: 14px 0;
+}
+.facility-line .material-checkbox > input:active + span::before{
+    border-color: #464878;
+}
+.facility-line .material-checkbox > input:checked + span::before{
+    border-color: #464878;
+    background-color: #464878;
+}
+.facility-line .material-checkbox > span::before{
+    border-color: #464878;
+}
+.facility-line .material-checkbox > input:checked {
+    background-color: #464878;
+}
+.facility-line{
+    margin: 7px 0;
+}
+.list-facility-filter{
+    margin-top: 26px;
+}
+#facility-filter{
+    
+}
+.list-btn-second-header .list-btn-facilities{
+    margin-top: 0;
+}
+.list-btn-second-header .list-btn-facilities .btn-facilities{
+    width: auto;
+    height: auto;
+    padding: 8px 35px 9px 13px;
+    font-size: 13px;
+}
+.list-btn-second-header .list-btn-facilities .btn-facilities .fas.fa-chevron-right{
+    right: 10.1px;
+    top: 11px;
 }
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {

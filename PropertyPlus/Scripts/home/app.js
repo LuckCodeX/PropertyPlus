@@ -14,7 +14,8 @@
     'imageupload',
     'ngAutocomplete',
     'ngImgCrop',            //ngImgCrop
-    'ngCkeditor'
+    'ngCkeditor',
+    'rzModule'
 ]);
 
 //var API = "http://propertyplus.com.vn/api/propertyplus/";

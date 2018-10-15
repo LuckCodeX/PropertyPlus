@@ -5,6 +5,70 @@
     $timeout,
     xhrService,
     $anchorScroll) {
+    $scope.searchWithFilter = {};
+    var scope = angular.element('body[ng-controller="MainCtrl"]').scope();
+    $timeout(function () {
+        scope.$apply();
+    }, 0);
+
+
+    
+    if (scope.searchData) {
+        $scope.searchWithFilter = scope.searchData;
+        $scope.bedroom = $scope.searchWithFilter.FilterRoom.NoBedRoom;
+        $scope.bathroom = $scope.searchWithFilter.FilterRoom.NoBathRoom;
+        $scope.priceSlider = {
+            minValue: $scope.searchWithFilter.FilterPrice.MinValue,
+            maxValue: $scope.searchWithFilter.FilterPrice.MaxValue,
+            options: {
+              floor: 0,
+              ceil: 5000,
+              step: 1
+            },
+          };
+        $scope.areaSlider = {
+            minValue: $scope.searchWithFilter.FilterArea.MinValue,
+            maxValue: $scope.searchWithFilter.FilterArea.MaxValue,
+            options: {
+              floor: 0,
+              step: 0.01,
+              ceil: 300,
+              precision: 3
+            },
+          };
+        for (var j = 0; j < $scope.searchWithFilter.FilterFacility.FacilityIds.length; j++) {
+            for (var i = 0; i < $scope.listFacility.length; i++) {
+                if ($scope.searchWithFilter.FilterFacility.FacilityIds[j] == $scope.listFacility[i].Id) {
+                    $scope.listFacility[i].Status = true;
+                }
+            };
+        };
+    }else{
+        $scope.bedroom = 1;
+        $scope.bathroom = 1;
+        $scope.priceSlider = {
+            minValue: 5,
+            maxValue: 3000,
+            options: {
+              floor: 0,
+              ceil: 5000,
+              step: 1
+            },
+          };
+        $scope.areaSlider = {
+            minValue: 0,
+            maxValue: 200,
+            options: {
+              floor: 0,
+              step: 0.01,
+              ceil: 300,
+              precision: 3
+            },
+          };
+    }
+    scope.searchForm = function(){
+        $scope.loadApartment();
+    };
     var clean = [0, 40, 65, 90, 115, 135, 150];
     //clean[1] = 40;
     //clean[2] = 65;
@@ -33,11 +97,37 @@
         { name: 'An Vien TV', value: '10' }
     ];
 
-    $scope.loadApartment = function () {
-        $scope.bigCurrentPage = $stateParams.page === undefined ? 1 : $stateParams.page;
-        var limit = 8;
+    function initData(){
+        $timeout(function () {
+            scope.$apply();
+        }, 0);
+        $scope.searchWithFilter.Page = $stateParams.page === undefined ? 1 : $stateParams.page;
+        $scope.searchWithFilter.Limit = 8;
+        $scope.searchWithFilter.FilterPrice={
+            "MinValue":$scope.priceSlider.minValue,
+            "MaxValue":$scope.priceSlider.maxValue
+        }
+        $scope.searchWithFilter.FilterArea={
+            "MinValue":$scope.areaSlider.minValue,
+            "MaxValue":$scope.areaSlider.maxValue
+        }
+        $scope.searchWithFilter.FilterRoom={
+            "NoBedRoom":$scope.bedroom,
+            "NoBathRoom":$scope.bathroom
+        }
+        $scope.searchWithFilter.FilterFacility={
+            "FacilityIds":[]
+        }
+        for (var i = 0; i < $scope.listFacility.length; i++) {
+            if ($scope.listFacility[i].Status) {
+                $scope.searchWithFilter.FilterFacility.FacilityIds.push($scope.listFacility[i].Id)
+            }
+        }
+        $scope.searchWithFilter.Search = scope.txtSearch === undefined ? "" : scope.txtSearch;
+    }
 
-        xhrService.get("GetListApartment/" + $scope.bigCurrentPage + "/" + limit)
+    function getListApartment(){
+        xhrService.post("GetListApartment",$scope.searchWithFilter)
             .then(function (data) {
                 $scope.apartmentList = data.data.data;
                 var myLatLng = { lat: $scope.apartmentList[0].Latitude, lng: $scope.apartmentList[0].Longitude };
@@ -52,9 +142,47 @@
                     title: $scope.apartmentList[0].Address
                 });
             },
-                function (error) {
-                    console.log(error.statusText);
-                });
+            function (error) {
+                console.log(error.statusText);
+            });
+    }
+
+    $scope.loadApartment = function () {
+        $('.list-btn-facilities .group-btn-facility .btn-facilities').click(function(){
+            var atrrb = $(this).attr("target-filter");
+            $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
+                if($(this).attr("id") != atrrb.replace("#","")){
+                    $(this).removeClass("active");
+                    $(this).parent().children('.btn-facilities').removeClass("active");
+                } 
+            });
+            $(this).toggleClass('active');
+            $(atrrb).toggleClass('active');
+        });
+
+        
+        xhrService.get("GetAllFacilities").then(function (data) {
+            $scope.listFacility = data.data;
+            for (var i = 0; i < $scope.listFacility.length; i++) {
+                $scope.listFacility[i].Status = false;
+            };
+            initData();
+            console.log($scope.searchWithFilter);
+            getListApartment();
+
+        },
+        function (error) {
+            $scope.errorText = error.statusText;
+        });
+        
+        
+        
+    }
+
+    $scope.clearFacility = function(){
+        for (var i = 0; i < $scope.listFacility.length; i++) {
+            $scope.listFacility[i].Status = false;
+        };
     }
 
     $scope.saveToBookmark = function(apartment){
