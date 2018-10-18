@@ -133,7 +133,7 @@
                                     {{apartment.Code}}
                                 </a>
                                 <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="apartment-name">
-                                    {{apartment.Name}}
+                                    {{apartment.Name | limitTo : 85}}{{apartment.Name.length > 85 ? '...' : ''}}
                                 </a>
                                 <div class="apartment-address">
                                     {{apartment.Address}}
