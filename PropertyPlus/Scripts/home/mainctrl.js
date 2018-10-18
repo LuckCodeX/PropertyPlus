@@ -9,6 +9,14 @@
 
     $scope.user = {};
 
+    $scope.redirectVisitList = function(){
+        if (localStorage && localStorage.getItem('user_profile')) {
+            $location.path("/user-profile/general");
+        }else{
+            document.getElementById('modalLogin').click();
+        }
+    }
+
     $scope.redirectHost = function(){
         if (localStorage && localStorage.getItem('user_profile')) {
             $location.path("/host/listing");

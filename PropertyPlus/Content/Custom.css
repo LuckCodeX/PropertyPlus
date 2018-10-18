@@ -3345,6 +3345,22 @@ input::-webkit-inner-spin-button {
     right: 10.1px;
     top: 11px;
 }
+.thumbnail-choose-home a{
+    display: block;
+}
+.slide-choose-home a{
+    display: block;
+    height: 167.11px;
+}
+.thumbnail-choose-home-column .slide-choose-home a{
+    height: 302px;
+}
+.btn-next:visited{
+    color: white;
+}
+.btn-next:link{
+    color: white;
+}
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;
