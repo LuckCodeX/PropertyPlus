@@ -1,8 +1,28 @@
 ﻿function HomeCtrl($scope, $rootScope, $stateParams, $location, $timeout, xhrService, $anchorScroll, $translate,$state) {
     $scope.loadData = function () {
-        $scope.bedroom = 1;
-        $scope.bathroom = 1;
+        $scope.bedroom = 0;
+        $scope.bathroom = 0;
         $scope.searchWithFilter = {};
+        $scope.defaultData = {
+            "Page":"1",
+            "Limit":"8",
+            "Search":"",
+            "FilterPrice":{
+                "MinValue":"0",
+                "MaxValue":"5000"
+            },
+            "FilterArea":{
+                "MinValue":"0",
+                "MaxValue":"300"
+            },
+            "FilterRoom":{
+                "NoBedRoom":"0",
+                "NoBathRoom":"0"
+            },
+            "FilterFacility":{
+                "FacilityIds":[]
+            }
+        }
         if (localStorage && localStorage.getItem('language')) {
             $translate.use(localStorage.getItem('language'));
         }
@@ -33,7 +53,7 @@
             function (error) {
                 $scope.errorText = error.statusText;
             });
-        xhrService.get("GetListApartment/1/8")
+        xhrService.post("GetListApartment",$scope.defaultData)
             .then(function (data) {
                     $scope.apartmentList = data.data.data;
                 },
@@ -42,8 +62,8 @@
                 });
 
         $scope.priceSlider = {
-            minValue: 5,
-            maxValue: 3000,
+            minValue: 0,
+            maxValue: 5000,
             options: {
               floor: 0,
               ceil: 5000,
@@ -52,7 +72,7 @@
           };
         $scope.areaSlider = {
             minValue: 0,
-            maxValue: 200,
+            maxValue: 300,
             options: {
               floor: 0,
               step: 0.01,
@@ -60,6 +80,7 @@
               precision: 3
             },
           };
+
         $('.list-btn-facilities .group-btn-facility .btn-facilities').click(function(){
             var atrrb = $(this).attr("target-filter");
             $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
@@ -70,6 +91,10 @@
             });
             $(this).toggleClass('active');
             $(atrrb).toggleClass('active');
+        });
+         $("body").mouseup(function(){ 
+            $('.btn-facilities.active').removeClass("active");
+            $('.card-filter.active').removeClass("active");
         });
     }
 

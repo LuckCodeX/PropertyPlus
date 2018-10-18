@@ -44,11 +44,11 @@
             };
         };
     }else{
-        $scope.bedroom = 1;
-        $scope.bathroom = 1;
+        $scope.bedroom = 0;
+        $scope.bathroom = 0;
         $scope.priceSlider = {
-            minValue: 5,
-            maxValue: 3000,
+            minValue: 0,
+            maxValue: 5000,
             options: {
               floor: 0,
               ceil: 5000,
@@ -57,7 +57,7 @@
           };
         $scope.areaSlider = {
             minValue: 0,
-            maxValue: 200,
+            maxValue: 300,
             options: {
               floor: 0,
               step: 0.01,
@@ -126,7 +126,16 @@
         $scope.searchWithFilter.Search = scope.txtSearch === undefined ? "" : scope.txtSearch;
     }
 
+    $scope.redirectVisitList = function(){
+        if (localStorage && localStorage.getItem('user_profile')) {
+            $location.path("/user-profile/general");
+        }else{
+            document.getElementById('modalLogin').click();
+        }
+    }
+
     function getListApartment(){
+        console.log($scope.searchWithFilter);
         xhrService.post("GetListApartment",$scope.searchWithFilter)
             .then(function (data) {
                 $scope.apartmentList = data.data.data;
@@ -159,7 +168,10 @@
             $(this).toggleClass('active');
             $(atrrb).toggleClass('active');
         });
-
+         $("body").mouseup(function(){ 
+            $('.btn-facilities.active').removeClass("active");
+            $('.card-filter.active').removeClass("active");
+        });
         
         xhrService.get("GetAllFacilities").then(function (data) {
             $scope.listFacility = data.data;
@@ -335,7 +347,8 @@
         $scope.perNightPrice = (($scope.totalPrice / 30) * 1.6).toFixed(2);
     }
     $scope.submitApartment = function(){
-        var dataApartment = {
+         if (localStorage && localStorage.getItem('user_profile')) {
+           var dataApartment = {
             "ApartmentId":$scope.apartment.Id,
             "Bill":Number($scope.electricBill),
             "Cleaning":$scope.cleaning,
@@ -353,6 +366,10 @@
         },function (error) {
                 $scope.errorText = error.statusText;
             });
+        }else{
+            document.getElementById('modalLogin').click();
+        }
+        
     }
 
 }

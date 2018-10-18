@@ -37,6 +37,11 @@
     $scope.userprofile = {
         verification_images: []
     };
+    $scope.loadHeaderHost = function () {
+        if (!(localStorage && localStorage.getItem('user_profile'))) {
+            window.location.href = "/";
+        }
+    }
     $scope.submitEditProfile = function () {
         $scope.data.ImgVerification1 = document.getElementById("name-file1").value;
         $scope.data.ImgVerification2 = document.getElementById("name-file2").value;
