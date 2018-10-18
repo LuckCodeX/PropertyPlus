@@ -1,4 +1,4 @@
-﻿<div class="host-manage">
+﻿<div class="host-manage" ng-controller='HostmanageCtrl' ng-init='loadHostManage()'>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -6,10 +6,11 @@
                     <div class="col-md-12">
                         <div class="choice-apartment-manager">
                             <p class="label-choice-apartment">Choose your apartment</p>
-                            <select>
-                                <option value="1">APARTMENT - P1234560122 - NAME</option>
-                                <option value="2">APARTMENT - P1234560133 - NAME</option>
-                                <option value="3">APARTMENT - P1234560144 - NAME</option>
+                            <select number-to-string ng-change="changeAparment()" ng-model="apartmentId">
+
+                                <option value="">Choose your apartment</option>
+                                <option ng-repeat="item in yourApartmentlist " value="{{item.Id}}">APARTMENT - {{item.Code}} - {{item.Name}}</option>
+                                
                             </select>
                         </div>
                     </div>

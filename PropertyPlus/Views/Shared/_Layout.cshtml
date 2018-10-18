@@ -86,12 +86,11 @@
 
                     <div id="gSignInWrapper" style="width: 378px;height: 82px;">
 
-                        <div id="customBtn" class="customGPlusSignIn">
+                        <div id="customBtn" class="customGPlusSignIn" onclick="startApp()">
                             <span class="icon"></span>
                             <span class="buttonText">Sign up with Google</span>
                         </div>
                     </div>
-                    <script>startApp();</script>
 
 
                     <div class="line-or">
@@ -141,12 +140,11 @@
 
                         <div id="gSignInWrapper" style="width: 378px;height: 82px;">
 
-                            <div id="customBtn1" class="customGPlusSignIn">
+                            <div id="customBtn1" class="customGPlusSignIn" onclick="startApp1()">
                                 <span class="icon"></span>
                                 <span class="buttonText">Log in with Google</span>
                             </div>
                         </div>
-                        <script>startApp1();</script>
 
                         <div class="line-or">
                             <p class="text-or">or</p>
@@ -284,6 +282,7 @@
     <script src="/Scripts/home/projectctrl.js"></script>
     <script src="/Scripts/home/userprofilectrl.js"></script>
     <script src="/Scripts/home/hostctrl.js"></script>
+    <script type="text/javascript" src="/Scripts/home/hostmanagectrl.js"></script>
     <script type="text/javascript" src="/Scripts/home/bookmarkctrl.js"></script>
     <script src="/Scripts/Chart.bundle.js"></script>
     <script src="/Scripts/chartjs.js"></script>
@@ -291,7 +290,7 @@
     <script type="text/javascript">
         window.fbAsyncInit = function () {
             FB.init({
-                appId: '2229507523973158',
+                appId: '271137390192294',
                 xfbml: true,
                 cookie: true,
 
@@ -319,11 +318,18 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
+var profileFacebook = {};
         function login() {
             FB.login(function (response) {
                 FB.api('/me', { locale: 'en_US', fields: 'id,name,email,picture,link' },
                     function (result) {
-                        console.log(result);
+                        profileFacebook = {
+                                "Email":result.email,
+                                "FullName":result.name,
+                                "Avatar":result.picture.data.url,
+                        };
+                        var scope = angular.element('body[ng-controller="MainCtrl"]').scope();
+                        scope.submitFacebook();
                     }
                 );
             }, { scope: 'public_profile, email' });
@@ -333,6 +339,7 @@
 
 
         var googleUser = {};
+        var profileGoogle = {};
         function startApp() {
             gapi.load('auth2', function () {
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
@@ -362,19 +369,22 @@
         };
 
 
-
-
-
         function attachSignin(element) {
             auth2.attachClickHandler(element, {},
                 function (googleUser) {
 
                     if (auth2.isSignedIn.get()) {
                         var profile = auth2.currentUser.get().getBasicProfile();
-
-                        console.log('Full Name: ' + profile.getName());
-                        console.log('Image URL: ' + profile.getImageUrl());
-                        console.log('Email: ' + profile.getEmail());
+                        profileGoogle = {
+                                "Email":profile.getEmail(),
+                                "FullName":profile.getName(),
+                                "Avatar":profile.getImageUrl()
+                        };
+                        // console.log('Full Name: ' + profile.getName());
+                        // console.log('Image URL: ' + profile.getImageUrl());
+                        // console.log('Email: ' + profile.getEmail());
+                        var scope = angular.element('body[ng-controller="MainCtrl"]').scope();
+                        scope.submitGoogle();
                     }
                 }, function (error) {
                     alert(JSON.stringify(error, undefined, 2));
