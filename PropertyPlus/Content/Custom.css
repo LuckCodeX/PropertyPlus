@@ -3355,6 +3355,12 @@ input::-webkit-inner-spin-button {
 .thumbnail-choose-home-column .slide-choose-home a{
     height: 302px;
 }
+.btn-next:visited{
+    color: white;
+}
+.btn-next:link{
+    color: white;
+}
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;

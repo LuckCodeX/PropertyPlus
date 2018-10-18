@@ -95,6 +95,7 @@
         });
     }
     $scope.loadStep4_1 = function () {
+        $scope.disableFinish = false;
         if ($scope.data == undefined) {
             $location.url('/host/listing');
         }
@@ -152,6 +153,7 @@
     };
 
     $scope.submitAll = function (confirm_img) {
+        $scope.disableFinish = true;
         $scope.confirm_img = confirm_img;
         $scope.data.ImgList = [];
         if ($scope.banner_img.url != null) {
