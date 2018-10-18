@@ -81,6 +81,7 @@
             },
           };
 
+        var statusFilter = true;
         $('.list-btn-facilities .group-btn-facility .btn-facilities').click(function(){
             var atrrb = $(this).attr("target-filter");
             $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
@@ -91,10 +92,17 @@
             });
             $(this).toggleClass('active');
             $(atrrb).toggleClass('active');
+
         });
+        $(".list-btn-facilities .group-btn-facility .card-filter").mouseup(function(event){
+               statusFilter=false;
+            });
          $("body").mouseup(function(){ 
-            $('.btn-facilities.active').removeClass("active");
-            $('.card-filter.active').removeClass("active");
+            if(statusFilter){
+                $('.btn-facilities.active').removeClass("active");
+                $('.card-filter.active').removeClass("active");
+            }
+            statusFilter=true; 
         });
     }
 
