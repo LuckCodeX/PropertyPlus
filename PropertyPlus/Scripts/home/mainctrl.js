@@ -4,7 +4,8 @@
     $location,
     $timeout,
     xhrService,
-    $anchorScroll) {
+    $anchorScroll,
+    $window) {
 
     $scope.user = {};
 
@@ -82,7 +83,31 @@
         },function (error) {
                 $scope.errorText = error.statusText;
             });
+    };
+
+    $scope.submitGoogle = function(){
+        $scope.profileGoogle = $window.profileGoogle;
+        xhrService.post("LoginGoogle", $scope.profileGoogle).then(function (data) {
+            localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
+            $scope.userProfile = data.data;
+        },function (error) {
+                $scope.errorText = error.statusText;
+            });
+    };
+
+
+    $scope.submitFacebook = function(){
+        $scope.profileFacebook = $window.profileFacebook;
+         // console.log($scope.profileFacebook);
+        xhrService.post("LoginFacebook", $scope.profileFacebook).then(function (data) {
+            console.log(data);
+            localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
+            $scope.userProfile = data.data;
+        },function (error) {
+                $scope.errorText = error.statusText;
+            });
     }
+
 }
 
 app.controller('MainCtrl', MainCtrl);
