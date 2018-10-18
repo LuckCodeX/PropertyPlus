@@ -42,6 +42,7 @@
     <Property Name="management_fee" Type="decimal" Precision="18" Scale="2" />
     <Property Name="no_apartment" Type="nvarchar" MaxLength="10" />
     <Property Name="building" Type="nvarchar" MaxLength="10" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="apartment_content">
     <Key>

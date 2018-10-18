@@ -136,6 +136,7 @@
     <EntitySetMapping Name="apartments">
       <EntityTypeMapping TypeName="PropertyPlusModel.apartment">
         <MappingFragment StoreEntitySet="apartment">
+          <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="building" ColumnName="building" />
           <ScalarProperty Name="no_apartment" ColumnName="no_apartment" />
           <ScalarProperty Name="management_fee" ColumnName="management_fee" />

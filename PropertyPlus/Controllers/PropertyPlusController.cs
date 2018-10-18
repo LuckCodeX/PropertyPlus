@@ -513,7 +513,8 @@ namespace PropertyPlus.Controllers
                             longitude = model.Longitude,
                             price = model.Price,
                             management_fee = model.ManagementFee,
-                            status = 0
+                            status = 0,
+                            phone = model.Phone
                         };
                         _service.SaveApartment(apartment);
 
@@ -598,6 +599,7 @@ namespace PropertyPlus.Controllers
                         apartment.no_bedroom = model.NoBedRoom;
                         apartment.project_id = model.ProjectId;
                         apartment.type = model.Type;
+                        apartment.phone = model.Phone;
                         _service.SaveApartment(apartment);
 
                         var imgIds = new List<int>();
@@ -848,6 +850,51 @@ namespace PropertyPlus.Controllers
             {
                 total = 0
             };
+        }
+
+        [HttpPost]
+        [Route("GetSimilarApartment")]
+        public List<ApartmentModel> GetSimilarApartment(ApartmentModel model)
+        {
+            IEnumerable<string> languages;
+            if (this.Request.Headers.TryGetValues("Language", out languages))
+            {
+                var language = Convert.ToInt32(languages.First());
+                var apartments = _service.GetSimilarApartment(model);
+                return apartments.Select(p => new ApartmentModel()
+                {
+                    Id = p.apartment_id,
+                    Name = p.apartment_content.FirstOrDefault(q => q.language == language) == null ? "" : p.apartment_content.FirstOrDefault(q => q.language == language).name,
+                    Description = p.apartment_content.FirstOrDefault(q => q.language == language) == null ? "" : p.apartment_content.FirstOrDefault(q => q.language == language).description,
+                    Code = p.code,
+                    Address = p.address,
+                    City = p.city,
+                    Area = p.area,
+                    Latitude = p.latitude,
+                    Longitude = p.longitude,
+                    NoBathRoom = p.no_bathroom,
+                    NoBedRoom = p.no_bedroom,
+                    Price = p.price + p.management_fee,
+                    UserProfileOwner = new UserProfileModel()
+                    {
+                        Id = p.user_profile.user_profile_id,
+                        FullName = p.user_profile.full_name,
+                        Avatar = p.user_profile.avatar
+                    },
+                    Project = Equals(p.project_id, null) ? new ProjectModel() : new ProjectModel()
+                    {
+                        Id = p.project.project_id,
+                        Name = p.project.project_content.FirstOrDefault(q => q.language == language).name
+                    },
+                    ImgList = p.aparment_image.Where(q => q.type == 0).OrderBy(q => q.type).Select(q => new ApartmentImageModel()
+                    {
+                        Id = q.apartment_image_id,
+                        Type = q.type,
+                        Img = q.img
+                    }).ToList()
+                }).ToList();
+            }
+            return new List<ApartmentModel>();
         }
 
         [HttpGet]

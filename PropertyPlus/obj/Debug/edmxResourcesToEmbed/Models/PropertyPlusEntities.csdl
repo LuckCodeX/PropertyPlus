@@ -310,6 +310,7 @@
     <NavigationProperty Name="project" Relationship="PropertyPlusModel.FK__apartment__proje__4AB81AF0" FromRole="apartment" ToRole="project" />
     <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="apartment" ToRole="user_profile" />
     <NavigationProperty Name="user_visit_item" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="apartment" ToRole="user_visit_item" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="user_profile">
     <Key>

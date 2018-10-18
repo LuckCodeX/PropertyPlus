@@ -26,6 +26,7 @@ namespace PropertyPlus.Models
         public int Type { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Phone { get; set; }
         public List<ApartmentImageModel> ImgList { get; set; }
         public List<FacilityModel> FacilityList { get; set; }
         public List<ApartmentContentModel> ContentList { get; set; }

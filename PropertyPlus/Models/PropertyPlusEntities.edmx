@@ -47,6 +47,7 @@
           <Property Name="management_fee" Type="decimal" Precision="18" Scale="2" />
           <Property Name="no_apartment" Type="nvarchar" MaxLength="10" />
           <Property Name="building" Type="nvarchar" MaxLength="10" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="apartment_content">
           <Key>
@@ -799,6 +800,7 @@
           <NavigationProperty Name="project" Relationship="PropertyPlusModel.FK__apartment__proje__4AB81AF0" FromRole="apartment" ToRole="project" />
           <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="apartment" ToRole="user_profile" />
           <NavigationProperty Name="user_visit_item" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="apartment" ToRole="user_visit_item" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="user_profile">
           <Key>
@@ -1140,6 +1142,7 @@
           <EntitySetMapping Name="apartments">
             <EntityTypeMapping TypeName="PropertyPlusModel.apartment">
               <MappingFragment StoreEntitySet="apartment">
+                <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="building" ColumnName="building" />
                 <ScalarProperty Name="no_apartment" ColumnName="no_apartment" />
                 <ScalarProperty Name="management_fee" ColumnName="management_fee" />

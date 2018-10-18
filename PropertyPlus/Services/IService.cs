@@ -71,5 +71,6 @@ namespace PropertyPlus.Services
         apartment_content GetApartmentContentById(int id);
         apartment_content GetApartmentContentByApartmentIdAndLanguage(int apartmentId, int language);
         List<facility> GetAllFacilities();
+        List<apartment> GetSimilarApartment(ApartmentModel model);
     }
 }
