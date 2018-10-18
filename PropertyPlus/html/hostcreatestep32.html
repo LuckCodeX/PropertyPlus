@@ -1,1 +1,23 @@
-﻿<h1>Step 3 - 2</h1>
+﻿<div class="content-listing-step" ng-init="loadStep3_2()">
+    <div class="row" style="margin-bottom: 20px;">
+        <div style="margin-left: 10px; margin-bottom: 20px;" class="col-md-12">
+        	<p>Choose your facilities</p>
+        </div>
+        <div class="col-xs-2 nopad text-center" ng-repeat="facility in facilities">
+		    <label class="image-checkbox" ng-click="facility.Status = !facility.Status">
+		      <img class="img-responsive" ng-src="/Upload/{{facility.Img}}" />
+		      <input type="checkbox" name="image[]" ng-model="facility.Status" />
+		    </label>
+		</div>
+        <div class="col-md-12 footer-step" style="margin-top: 40px;">
+            <a ui-sref="host.create.step31" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
+            <a class="float-right btn-next" ng-click="saveStep32(facilities)" ui-sref="host.create.step4">Next</a>
+            <a ui-sref="host.listing"  class="float-right btn-cancel">Cancel</a>
+        </div>
+    </div>
+
+   
+</div>
+<script type="text/javascript">
+	
+</script>

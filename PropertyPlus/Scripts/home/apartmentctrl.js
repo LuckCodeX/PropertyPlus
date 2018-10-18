@@ -93,7 +93,26 @@
             },
           };
     }
-
+     $scope.defaultData = {
+            "Page":"1",
+            "Limit":"8",
+            "Search":"",
+            "FilterPrice":{
+                "MinValue":"0",
+                "MaxValue":"5000"
+            },
+            "FilterArea":{
+                "MinValue":"0",
+                "MaxValue":"300"
+            },
+            "FilterRoom":{
+                "NoBedRoom":"0",
+                "NoBathRoom":"0"
+            },
+            "FilterFacility":{
+                "FacilityIds":[]
+            }
+        }
     var clean = [0, 40, 65, 90, 115, 135, 150];
     //clean[1] = 40;
     //clean[2] = 65;
@@ -164,7 +183,7 @@
             .then(function (data) {
                 $scope.totalItems = data.data.total;
                 $scope.apartmentList = data.data.data;
-                if($scope.apartmentList > 0){
+                if($scope.apartmentList.length > 0){
                     var myLatLng = { lat: $scope.apartmentList[0].Latitude, lng: $scope.apartmentList[0].Longitude };
                     var map = new google.maps.Map(document.getElementById('map'),
                         {
@@ -185,8 +204,6 @@
     }
 
     $scope.loadApartment = function () {
-        
-        
         xhrService.get("GetAllFacilities").then(function (data) {
             $scope.listFacility = data.data;
             for (var i = 0; i < $scope.listFacility.length; i++) {
@@ -194,8 +211,6 @@
             };
             initData();
             getListApartment();
-
-
         },
         function (error) {
             $scope.errorText = error.statusText;
@@ -270,7 +285,21 @@
                 function (error) {
                     console.log(error.statusText);
                 });
-        xhrService.get("GetListApartment/" + 1 + "/" + 6)
+        xhrService.get("GetAllFacilities")
+            .then(function (data) {
+                $scope.allFacility = data.data;
+                for (var j = 0; j < $scope.allFacility.length; j++) {
+                    for (var i = 0; i < $scope.data.FacilityList.length; i++) {
+                        if ($scope.allFacility[j].Id == $scope.data.FacilityList[i].Id) {
+                            $scope.allFacilities.push($scope.allFacility[j]);
+                        }
+                    }
+                };
+            },
+            function (error) {
+                console.log(error.statusText);
+            });
+        xhrService.post("GetListApartment",$scope.defaultData)
             .then(function (data) {
                 $scope.apartmentList = data.data.data;
             },

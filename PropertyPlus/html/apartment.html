@@ -123,86 +123,99 @@
             </div>
             <div class="col-xs-12 list-apartment-content">
                 <div class="row">
-                    <div class="col-sm-6 col-lg-3 thumbnail-choose-home" ng-repeat="apartment in apartmentList">
-                        <div class="slide-choose-home" >
-                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})"><img ng-src="{{apartment.ImgList[0].Img}}" class="img-full" alt="Alternate Text" /></a>
-                        </div>
-                        <div class="choose-home-summary-column clearfix col-md-7 display-none">
-                            <div class="sumary-detail">
-                                <a  ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="apartment-code">
+                    <div class="grid-content">
+                        <div class="col-sm-6 col-lg-3 thumbnail-choose-home" ng-repeat="apartment in apartmentList">
+                            <div class="slide-choose-home" >
+                                <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})"><img ng-src="{{apartment.ImgList[0].Img}}" class="img-full" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="choose-home-summary">
+                                <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-code">
                                     {{apartment.Code}}
                                 </a>
-                                <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="apartment-name">
-                                    {{apartment.Name | limitTo : 85}}{{apartment.Name.length > 85 ? '...' : ''}}
+                                <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-name">
+                                    {{apartment.Name | limitTo : 28}}{{apartment.Name.length > 28 ? '...' : ''}}
                                 </a>
-                                <div class="apartment-address">
-                                    {{apartment.Address}}
+                                <div class="choose-home-detail float-left">
+                                    <p>Bedrooms: {{apartment.NoBedRoom}}</p>
+                                    <p> {{apartment.City}}</p>
                                 </div>
-                                <div class="apartment-facilities">
-                                    <div class="apartment-facility">
-                                        <img src="/Images/icon/apartment.png" alt="">
-                                        <p>Apartment</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img src="/Images/icon/bedroom.png" alt="">
-                                        <p>{{apartment.NoBedRoom}} Bedrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img src="/Images/icon/bathroom.png" alt="">
-                                        <p>{{apartment.NoBathRoom}} Bathrooms</p>
-                                    </div>
-                                    <div class="apartment-facility">
-                                        <img src="/Images/icon/area.png" alt="">
-                                        <p>{{apartment.Area}} m<sup>2</sup></p>
-                                    </div>
+                                <div class="choose-home-price float-right">
+                                    <span class="text-price-title">Estimate Price:</span>
+                                    <p class="price">$ <span>{{apartment.Price}}</span></p>
                                 </div>
-                                <div class="apartment-description" ng-bind-html="(apartment.Description | limitTo : 170) + '...'">
-                                </div>
-                                <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ {{apartment.Price}} / month <span class="tiny-text">or</span> {{(apartment.Price/30).toFixed(2)}} $/ night</span>
-                                </div>
-                            </div>
-                            <div class="apartment-owner">
-                                <p>Owner</p>
-                                <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;border:1px solid #707070;" ng-src="/Upload/avatar/{{apartment.UserProfileOwner.Avatar}}" alt="">
-                                <p class="owner-name">{{apartment.UserProfileOwner.FullName}}</p>
-                            </div>
-                            <div class="apartment-interacts">
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-share"></i></p>
-                                    <p>Share</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-heart"></i></p>
-                                    <p>Add to list</p>
-                                </div>
-                                <div class="apartment-interact">
-                                    <p><i class="fas fa-bookmark" ng-click="saveToBookmark(apartment)"></i></p>
-                                    <p>Bookmark</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="choose-home-summary">
-                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-code">
-                                {{apartment.Code}}
-                            </a>
-                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-name">
-                                {{apartment.Name | limitTo : 28}}{{apartment.Name.length > 28 ? '...' : ''}}
-                            </a>
-                            <div class="choose-home-detail float-left">
-                                <p>Bedrooms: {{apartment.NoBedRoom}}</p>
-                                <p> {{apartment.City}}</p>
-                            </div>
-                            <div class="choose-home-price float-right">
-                                <span class="text-price-title">Estimate Price:</span>
-                                <p class="price">$ <span>{{apartment.Price}}</span></p>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="column-content display-none">
+                        <div class="thumbnail-choose-home thumbnail-choose-home-column" ng-repeat="apartment in apartmentList">
+                            <div class="slide-choose-home col-sm-5" >
+                                <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})"><img ng-src="{{apartment.ImgList[0].Img}}" class="img-full" alt="Alternate Text" /></a>
+                            </div>
+                            <div class="choose-home-summary-column clearfix col-md-7">
+                                <div class="sumary-detail">
+                                    <a  ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="apartment-code">
+                                        {{apartment.Code}}
+                                    </a>
+                                    <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="apartment-name">
+                                        {{apartment.Name | limitTo : 85}}{{apartment.Name.length > 85 ? '...' : ''}}
+                                    </a>
+                                    <div class="apartment-address">
+                                        {{apartment.Address}}
+                                    </div>
+                                    <div class="apartment-facilities">
+                                        <div class="apartment-facility">
+                                            <img src="/Images/icon/apartment.png" alt="">
+                                            <p>Apartment</p>
+                                        </div>
+                                        <div class="apartment-facility">
+                                            <img src="/Images/icon/bedroom.png" alt="">
+                                            <p>{{apartment.NoBedRoom}} Bedrooms</p>
+                                        </div>
+                                        <div class="apartment-facility">
+                                            <img src="/Images/icon/bathroom.png" alt="">
+                                            <p>{{apartment.NoBathRoom}} Bathrooms</p>
+                                        </div>
+                                        <div class="apartment-facility">
+                                            <img src="/Images/icon/area.png" alt="">
+                                            <p>{{apartment.Area}} m<sup>2</sup></p>
+                                        </div>
+                                    </div>
+                                    <div class="apartment-description" ng-bind-html="(apartment.Description | limitTo : 170) + '...'">
+                                    </div>
+                                    <div class="apartment-price">
+                                        <span class="price-label">Estimate price :</span>
+                                        <span>$ {{apartment.Price}} / month <span class="tiny-text">or</span> {{(apartment.Price/30).toFixed(2)}} $/ night</span>
+                                    </div>
+                                </div>
+                                <div class="apartment-owner">
+                                    <p>Owner</p>
+                                    <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;border:1px solid #707070;" ng-src="/Upload/avatar/{{apartment.UserProfileOwner.Avatar}}" alt="">
+                                    <p class="owner-name">{{apartment.UserProfileOwner.FullName}}</p>
+                                </div>
+                                <div class="apartment-interacts">
+                                    <div class="apartment-interact">
+                                        <p><i class="fas fa-share"></i></p>
+                                        <p>Share</p>
+                                    </div>
+                                    <div class="apartment-interact">
+                                        <p><i class="fas fa-heart"></i></p>
+                                        <p>Add to list</p>
+                                    </div>
+                                    <div class="apartment-interact">
+                                        <p><i class="fas fa-bookmark" ng-click="saveToBookmark(apartment)"></i></p>
+                                        <p>Bookmark</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
                     <div class="col-xs-12">
                         <div class="pagination-apartment">
-                            <ul uib-pagination total-items="totalItems" rotate="false" ng-model="bigCurrentPage" items-per-page="8" max-size="4" class="pagination-sm" ng-change="loadApartment()"></ul>
+                            <ul id="pagination" uib-pagination total-items="totalItems" rotate="false" ng-model="bigCurrentPage" items-per-page="8" max-size="4" class="pagination-sm" ng-change="loadApartment()"></ul>
                         </div>
                     </div>
                     <div class="col-xs-6 col-xs-offset-3 slide-paragraph">
@@ -245,37 +258,23 @@
             $('.slide-paragraph').toggleClass('col-xs-offset-3');
 
         });
+
         $('#radio-grid').on('click', '.btn-radio-grid', function () {
 
             if ($(this).hasClass('grid')) {
-                $('.owl-carousel')
                 if (!$(this).hasClass('active')){
                     $(this).addClass('active');
-                    $('.thumbnail-choose-home').toggleClass('col-lg-3');
-                    $('.thumbnail-choose-home').toggleClass('col-sm-6');
-                    $('.thumbnail-choose-home').toggleClass('thumbnail-choose-home-column');
-                    $('.slide-choose-home').removeClass('col-md-5');
-                    $('.choose-home-summary').removeClass('display-none');
-                    $('.choose-home-summary-column').addClass('display-none');
-                    $('.item .choose-home-item').removeClass('height-grid');
-                    $('.owl-carousel').trigger('refresh.owl.carousel');
-                   
+                    $('.column-content').addClass('display-none');
+                    $('.grid-content').removeClass('display-none');
                 }
                 $(this).next().removeClass('active');
 
             } else if ($(this).hasClass('column')) {
-                CreateCarousel();
                 $(this).prev().removeClass('active');
                 if (!$(this).hasClass('active')){
-                    $('.thumbnail-choose-home').toggleClass('col-lg-3');
-                    $('.thumbnail-choose-home').toggleClass('col-sm-6');
-                    $('.thumbnail-choose-home').toggleClass('thumbnail-choose-home-column');
-                    $('.slide-choose-home').addClass('col-md-5');
-                    $('.choose-home-summary-column').removeClass('display-none');
-                    $('.choose-home-summary').addClass('display-none');
-                    $('.item .choose-home-item').addClass('height-grid');
                     $(this).addClass('active');
-                    $('.owl-carousel').trigger('refresh.owl.carousel');
+                    $('.grid-content').addClass('display-none');
+                    $('.column-content').removeClass('display-none');
                 }
             }
         });

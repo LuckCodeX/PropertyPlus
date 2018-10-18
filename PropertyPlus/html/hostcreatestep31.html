@@ -18,7 +18,7 @@
             </div>
             <div class="footer-step col-md-12" style="padding: 0">
                 <a ui-sref="host.create.step2" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-                <a ui-sref="host.create.step4" class="float-right btn-next" ng-class="(data.Price != null && data.ManagementFee != null) ? '':'service-basic'">Next</a>
+                <a ui-sref="host.create.step32" class="float-right btn-next" ng-class="(data.Price != null && data.ManagementFee != null) ? '':'service-basic'">Next</a>
                 <a ui-sref="host.listing" class="float-right btn-cancel">Cancel</a>
             </div>
         </div>
@@ -27,51 +27,22 @@
                 <div class="col-md-8 float-right">
                     <p>Similiar listing</p>
                     <div class="all-list-apartment scrollbar">
-                        <div class="list-apartment-step">
-                            <img class="img-apartment" src="/Images/img-demo.png" alt="Alternate Text" />
+                        <div class="list-apartment-step" ng-repeat="apt in listSimilar">
+                            <img class="img-apartment" ng-src="{{apt.ImgList[0].Img}}" alt="Alternate Text" />
                             <div class="summary-apartment">
-                                <p class="apartment-code">HOUSE P123456</p>
-                                <p class="apartment-name">Royal City R2 Apartment Fully Furnished & Marble Floor</p>
+                                <p class="apartment-code">{{apt.Code}}</p>
+                                <p class="apartment-name">{{apt.Name | limitTo : 28}}{{apt.Name.length > 28 ? '...' : ''}}</p>
                                 <div class="description-apartment">
-                                    <p class="apartment-facility">Bedrooms: 2</p>
-                                    <p class="apartment-address">Dong Da, Hanoi</p>
+                                    <p class="apartment-facility">Bedrooms: {{apt.NoBedRoom}}</p>
+                                    <p class="apartment-address">{{apt.City}}</p>
                                 </div>
                                 <div class="aparment-price">
                                     <p style="font-size: 8px;margin-bottom: 0">Estimate price :</p>
-                                    <p class="price-text">$ 2400</p>
+                                    <p class="price-text">$ {{apt.Price}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="list-apartment-step">
-                            <img class="img-apartment" src="/Images/img-demo.png" alt="Alternate Text" />
-                            <div class="summary-apartment">
-                                <p class="apartment-code">HOUSE P123456</p>
-                                <p class="apartment-name">Royal City R2 Apartment Fully Furnished & Marble Floor</p>
-                                <div class="description-apartment">
-                                    <p class="apartment-facility">Bedrooms: 2</p>
-                                    <p class="apartment-address">Dong Da, Hanoi</p>
-                                </div>
-                                <div class="aparment-price">
-                                    <p style="font-size: 8px;margin-bottom: 0">Estimate price :</p>
-                                    <p class="price-text">$ 2400</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="list-apartment-step">
-                            <img class="img-apartment" src="/Images/img-demo.png" alt="Alternate Text" />
-                            <div class="summary-apartment">
-                                <p class="apartment-code">HOUSE P123456</p>
-                                <p class="apartment-name">Royal City R2 Apartment Fully Furnished & Marble Floor</p>
-                                <div class="description-apartment">
-                                    <p class="apartment-facility">Bedrooms: 2</p>
-                                    <p class="apartment-address">Dong Da, Hanoi</p>
-                                </div>
-                                <div class="aparment-price">
-                                    <p style="font-size: 8px;margin-bottom: 0">Estimate price :</p>
-                                    <p class="price-text">$ 2400</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                     
                 </div>
