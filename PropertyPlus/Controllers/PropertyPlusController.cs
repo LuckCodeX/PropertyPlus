@@ -395,20 +395,20 @@ namespace PropertyPlus.Controllers
                 IEnumerable<string> languages;
                 this.Request.Headers.TryGetValues("Language", out languages);
                 var language = Convert.ToInt32(languages.First());
-                var visits = _service.GetListUserVisitByUserProfileId(userProfile.user_profile_id);
-                return visits.Select(p => new UserVisitModel()
-                {
-                    TotalPrice = p.total_price,
-                    Id = p.user_visit_id,
-                    Apartment = new ApartmentModel()
-                    {
-                        Id = p.apartment_id,
-                        Code = p.apartment.code,
-                        Name = p.apartment.apartment_content.FirstOrDefault(q => q.language == language).name,
-                        NoBedRoom = p.apartment.no_bedroom,
-                        City = p.apartment.city
-                    }
-                }).ToList();
+                //var visits = _service.GetListUserVisitByUserProfileId(userProfile.user_profile_id);
+                //return visits.Select(p => new UserVisitModel()
+                //{
+                //    TotalPrice = p.total_price,
+                //    Id = p.user_visit_id,
+                //    Apartment = new ApartmentModel()
+                //    {
+                //        Id = p.apartment_id,
+                //        Code = p.apartment.code,
+                //        Name = p.apartment.apartment_content.FirstOrDefault(q => q.language == language).name,
+                //        NoBedRoom = p.apartment.no_bedroom,
+                //        City = p.apartment.city
+                //    }
+                //}).ToList();
             }
             return new List<UserVisitModel>();
         }
@@ -428,27 +428,27 @@ namespace PropertyPlus.Controllers
                     ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
 
-                var userVisit =
-                    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, model.ApartmentId);
-                if (!Equals(userVisit, null))
-                    return;
-                userVisit = new user_visit()
-                {
-                    user_profile_id = userProfile.user_profile_id,
-                    apartment_id = model.ApartmentId,
-                    user_visit_id = 0,
-                    bill = model.Bill,
-                    cleaning = model.Cleaning,
-                    is_detergent = model.IsDetergent,
-                    is_include_tax = model.IsIncludeTax,
-                    is_internet_wifi = model.IsInternetWifi,
-                    is_management_fee = model.IsApartmentFee,
-                    service_price = model.ServicePrice,
-                    total_price = model.TotalPrice,
-                    tv_type = model.TvType,
-                    water = model.Water
-                };
-                _service.SaveUserVisit(userVisit);
+                //var userVisit =
+                //    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, model.ApartmentId);
+                //if (!Equals(userVisit, null))
+                //    return;
+                //userVisit = new user_visit()
+                //{
+                //    user_profile_id = userProfile.user_profile_id,
+                //    apartment_id = model.ApartmentId,
+                //    user_visit_id = 0,
+                //    bill = model.Bill,
+                //    cleaning = model.Cleaning,
+                //    is_detergent = model.IsDetergent,
+                //    is_include_tax = model.IsIncludeTax,
+                //    is_internet_wifi = model.IsInternetWifi,
+                //    is_management_fee = model.IsApartmentFee,
+                //    service_price = model.ServicePrice,
+                //    total_price = model.TotalPrice,
+                //    tv_type = model.TvType,
+                //    water = model.Water
+                //};
+                //_service.SaveUserVisit(userVisit);
             }
         }
 
@@ -466,10 +466,10 @@ namespace PropertyPlus.Controllers
                 {
                     ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
-                var userVisit =
-                    _service.GetUserVisitById(userVisitId);
-                if (!Equals(userVisit, null) && userVisit.user_profile_id == userProfile.user_profile_id)
-                    _service.DeleteUserVisit(userVisit);
+                //var userVisit =
+                //    _service.GetUserVisitById(userVisitId);
+                //if (!Equals(userVisit, null) && userVisit.user_profile_id == userProfile.user_profile_id)
+                //    _service.DeleteUserVisit(userVisit);
             }
         }
 
@@ -1038,6 +1038,7 @@ namespace PropertyPlus.Controllers
                 return _service.GetAllFacilities().Select(p => new FacilityModel()
                 {
                     Id = p.facility_id,
+                    Img = p.img,
                     Content = new FacilityContentModel()
                     {
                         Name = p.facility_content.FirstOrDefault(q => q.language == language).name

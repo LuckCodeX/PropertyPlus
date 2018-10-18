@@ -117,15 +117,15 @@ namespace PropertyPlus
 
             routes.MapRoute(
                 name: "HostCreateStep31",
-                url: "host/create/step-3",
+                url: "host/create/step-3-1",
                 defaults: new { controller = "Home", action = "HostCreateStep31" }
             );
 
-            //routes.MapRoute(
-            //    name: "HostCreateStep32",
-            //    url: "host/create/step-3-2",
-            //    defaults: new { controller = "Home", action = "HostCreateStep32" }
-            //);
+            routes.MapRoute(
+                name: "HostCreateStep32",
+                url: "host/create/step-3-2",
+                defaults: new { controller = "Home", action = "HostCreateStep32" }
+            );
 
             routes.MapRoute(
                 name: "HostCreateStep4",

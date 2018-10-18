@@ -34,10 +34,10 @@ namespace PropertyPlus.Services
         user_profile GetActiveUserProfileById(int id);
         string SaveImage(string path, string imageName, string image);
         user_account GetUserAccountByUserProfileId(int userProfileId);
-        user_visit GetUserVisitByUserProfileIdAndApartmentId(int userProfileId, int apartmentId);
-        void SaveUserVisit(user_visit userVisit);
-        void DeleteUserVisit(user_visit userVisit);
-        List<apartment> GetListVisitApartmentByUserProfileId(int userProfileId);
+        //user_visit GetUserVisitByUserProfileIdAndApartmentId(int userProfileId, int apartmentId);
+        //void SaveUserVisit(user_visit userVisit);
+        //void DeleteUserVisit(user_visit userVisit);
+        //List<apartment> GetListVisitApartmentByUserProfileId(int userProfileId);
         List<user_profile> SearchUserProfile(string search);
         void DeleteAccount(int id);
         List<project> SearchProjectList(string search);
@@ -60,8 +60,8 @@ namespace PropertyPlus.Services
         void SaveFacilityContent(facility_content content);
         List<apartment> SearchListApartment(FilterModel filter);
         apartment GetActiveApartmentById(int id);
-        List<user_visit> GetListUserVisitByUserProfileId(int userProfileId);
-        user_visit GetUserVisitById(int id);
+        //List<user_visit> GetListUserVisitByUserProfileId(int userProfileId);
+        //user_visit GetUserVisitById(int id);
         List<apartment> SearchListApartmentByUserProfileId(int status, int userProfileId);
         apartment GetApartmentById(int id);
         user_social GetUserSocialByEmailAndType(string email, int type);

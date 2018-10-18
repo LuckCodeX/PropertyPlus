@@ -22,7 +22,6 @@
         <EntityTypeShape EntityType="PropertyPlusModel.aparment_image" Width="1.5" PointX="14.875" PointY="8.375" />
         <EntityTypeShape EntityType="PropertyPlusModel.apartment_content" Width="1.5" PointX="14.875" PointY="11.25" />
         <AssociationConnector Association="PropertyPlusModel.FK__admin__parent_id__02084FDA" />
-        <EntityTypeShape EntityType="PropertyPlusModel.user_visit" Width="1.5" PointX="14.875" PointY="3.25" />
         <EntityTypeShape EntityType="PropertyPlusModel.user_social" Width="1.5" PointX="3" PointY="6.75" />
         <EntityTypeShape EntityType="PropertyPlusModel.apartment" Width="1.5" PointX="3" PointY="0.75" />
         <EntityTypeShape EntityType="PropertyPlusModel.user_profile" Width="1.5" PointX="0.75" PointY="5.875" />
@@ -31,10 +30,13 @@
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__276EDEB3" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__proje__4AB81AF0" />
         <AssociationConnector Association="PropertyPlusModel.FK__apartment__user___164452B1" />
-        <AssociationConnector Association="PropertyPlusModel.FK__user_visi__apart__44FF419A" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_acco__user___1273C1CD" />
         <AssociationConnector Association="PropertyPlusModel.FK__user_goog__user___29221CFB" />
-        <AssociationConnector Association="PropertyPlusModel.FK__user_visi__user___440B1D61" />
+        <EntityTypeShape EntityType="PropertyPlusModel.user_visit" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="PropertyPlusModel.user_visit_item" Width="1.5" PointX="5.25" PointY="5.75" />
+        <AssociationConnector Association="PropertyPlusModel.FK__user_visi__apart__44FF419A" />
+        <AssociationConnector Association="PropertyPlusModel.FK__user_visi__user___3D2915A8" />
+        <AssociationConnector Association="PropertyPlusModel.FK__user_visi__user___40058253" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

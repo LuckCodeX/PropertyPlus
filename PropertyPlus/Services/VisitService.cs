@@ -21,10 +21,10 @@ namespace PropertyPlus.Services
         }
 
 
-        public user_visit GetUserVisitByUserProfileIdAndApartmentId(int userProfileId, int apartmentId)
-        {
-            return UserVisitRepository.FindBy(p => p.user_profile_id == userProfileId && p.apartment_id == apartmentId).FirstOrDefault();
-        }
+        //public user_visit GetUserVisitByUserProfileIdAndApartmentId(int userProfileId, int apartmentId)
+        //{
+        //    return UserVisitRepository.FindBy(p => p.user_profile_id == userProfileId && p.apartment_id == apartmentId).FirstOrDefault();
+        //}
 
         public void SaveUserVisit(user_visit userVisit)
         {
@@ -36,16 +36,16 @@ namespace PropertyPlus.Services
             UserVisitRepository.Delete(userVisit);
         }
 
-        public List<apartment> GetListVisitApartmentByUserProfileId(int userProfileId)
-        {
-            return ApartmentRepository.FindBy(p => p.user_visit.Any(q => q.user_profile_id == userProfileId)).ToList();
-        }
+        //public List<apartment> GetListVisitApartmentByUserProfileId(int userProfileId)
+        //{
+        //    return ApartmentRepository.FindBy(p => p.user_visit.Any(q => q.user_profile_id == userProfileId)).ToList();
+        //}
 
-        public List<user_visit> GetListUserVisitByUserProfileId(int userProfileId)
-        {
-            return UserVisitRepository.FindBy(p => p.user_profile_id == userProfileId).Include(p => p.apartment.apartment_content)
-                .ToList();
-        }
+        //public List<user_visit> GetListUserVisitByUserProfileId(int userProfileId)
+        //{
+        //    return UserVisitRepository.FindBy(p => p.user_profile_id == userProfileId).Include(p => p.apartment.apartment_content)
+        //        .ToList();
+        //}
 
         public user_visit GetUserVisitById(int id)
         {

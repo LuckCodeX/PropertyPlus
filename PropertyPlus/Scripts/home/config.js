@@ -149,18 +149,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
         //        templateUrl: "html/hostcreatestep22.html",
         //        data: { pageTitle: 'Host' }
         //    })
-        .state('host.create.step3',
+        .state('host.create.step31',
             {
-                url: "/step-3",
+                url: "/step-3-1",
                 templateUrl: "html/hostcreatestep31.html",
                 data: { pageTitle: 'Host' }
             })
-        //.state('host.create.step32',
-        //    {
-        //        url: "/step-3-2",
-        //        templateUrl: "html/hostcreatestep32.html",
-        //        data: { pageTitle: 'Host' }
-        //    })
+        .state('host.create.step32',
+            {
+                url: "/step-3-2",
+                templateUrl: "html/hostcreatestep32.html",
+                data: { pageTitle: 'Host' }
+            })
         .state('host.create.step4',
             {
                 url: "/step-4",

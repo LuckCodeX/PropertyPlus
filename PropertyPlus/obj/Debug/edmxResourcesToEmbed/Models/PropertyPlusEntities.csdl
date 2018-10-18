@@ -101,7 +101,6 @@
       <End Role="admin" EntitySet="admins" />
       <End Role="admin1" EntitySet="admins" />
     </AssociationSet>
-    <EntitySet Name="user_visit" EntityType="PropertyPlusModel.user_visit" />
     <EntitySet Name="user_social" EntityType="PropertyPlusModel.user_social" />
     <EntitySet Name="apartments" EntityType="PropertyPlusModel.apartment" />
     <EntitySet Name="user_profile" EntityType="PropertyPlusModel.user_profile" />
@@ -125,10 +124,6 @@
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="apartment" EntitySet="apartments" />
     </AssociationSet>
-    <AssociationSet Name="FK__user_visi__apart__44FF419A" Association="PropertyPlusModel.FK__user_visi__apart__44FF419A">
-      <End Role="apartment" EntitySet="apartments" />
-      <End Role="user_visit" EntitySet="user_visit" />
-    </AssociationSet>
     <AssociationSet Name="FK__user_acco__user___1273C1CD" Association="PropertyPlusModel.FK__user_acco__user___1273C1CD">
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="user_account" EntitySet="user_account" />
@@ -137,9 +132,19 @@
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="user_social" EntitySet="user_social" />
     </AssociationSet>
-    <AssociationSet Name="FK__user_visi__user___440B1D61" Association="PropertyPlusModel.FK__user_visi__user___440B1D61">
+    <EntitySet Name="user_visit" EntityType="PropertyPlusModel.user_visit" />
+    <EntitySet Name="user_visit_item" EntityType="PropertyPlusModel.user_visit_item" />
+    <AssociationSet Name="FK__user_visi__apart__44FF419A" Association="PropertyPlusModel.FK__user_visi__apart__44FF419A">
+      <End Role="apartment" EntitySet="apartments" />
+      <End Role="user_visit_item" EntitySet="user_visit_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_visi__user___3D2915A8" Association="PropertyPlusModel.FK__user_visi__user___3D2915A8">
       <End Role="user_profile" EntitySet="user_profile" />
       <End Role="user_visit" EntitySet="user_visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_visi__user___40058253" Association="PropertyPlusModel.FK__user_visi__user___40058253">
+      <End Role="user_visit" EntitySet="user_visit" />
+      <End Role="user_visit_item" EntitySet="user_visit_item" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="admin">
@@ -267,26 +272,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="user_visit">
-    <Key>
-      <PropertyRef Name="user_visit_id" />
-    </Key>
-    <Property Name="user_visit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="user_profile_id" Type="Int32" Nullable="false" />
-    <Property Name="apartment_id" Type="Int32" Nullable="false" />
-    <Property Name="is_management_fee" Type="Boolean" Nullable="false" />
-    <Property Name="is_internet_wifi" Type="Boolean" Nullable="false" />
-    <Property Name="tv_type" Type="Int32" Nullable="false" />
-    <Property Name="cleaning" Type="Int32" Nullable="false" />
-    <Property Name="water" Type="Int32" Nullable="false" />
-    <Property Name="is_detergent" Type="Boolean" Nullable="false" />
-    <Property Name="bill" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="is_include_tax" Type="Boolean" Nullable="false" />
-    <Property Name="total_price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="service_price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-    <NavigationProperty Name="apartment" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="user_visit" ToRole="apartment" />
-    <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_visi__user___440B1D61" FromRole="user_visit" ToRole="user_profile" />
-  </EntityType>
   <EntityType Name="user_social">
     <Key>
       <PropertyRef Name="user_social_id" />
@@ -324,7 +309,7 @@
     <NavigationProperty Name="apartment_facility" Relationship="PropertyPlusModel.FK__apartment__apart__276EDEB3" FromRole="apartment" ToRole="apartment_facility" />
     <NavigationProperty Name="project" Relationship="PropertyPlusModel.FK__apartment__proje__4AB81AF0" FromRole="apartment" ToRole="project" />
     <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="apartment" ToRole="user_profile" />
-    <NavigationProperty Name="user_visit" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="apartment" ToRole="user_visit" />
+    <NavigationProperty Name="user_visit_item" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="apartment" ToRole="user_visit_item" />
   </EntityType>
   <EntityType Name="user_profile">
     <Key>
@@ -354,7 +339,7 @@
     <NavigationProperty Name="apartments" Relationship="PropertyPlusModel.FK__apartment__user___164452B1" FromRole="user_profile" ToRole="apartment" />
     <NavigationProperty Name="user_account" Relationship="PropertyPlusModel.FK__user_acco__user___1273C1CD" FromRole="user_profile" ToRole="user_account" />
     <NavigationProperty Name="user_social" Relationship="PropertyPlusModel.FK__user_goog__user___29221CFB" FromRole="user_profile" ToRole="user_social" />
-    <NavigationProperty Name="user_visit" Relationship="PropertyPlusModel.FK__user_visi__user___440B1D61" FromRole="user_profile" ToRole="user_visit" />
+    <NavigationProperty Name="user_visit" Relationship="PropertyPlusModel.FK__user_visi__user___3D2915A8" FromRole="user_profile" ToRole="user_visit" />
   </EntityType>
   <Association Name="FK__aparment___apart__1ED998B2">
     <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="1">
@@ -426,18 +411,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__user_visi__apart__44FF419A">
-    <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="1" />
-    <End Type="PropertyPlusModel.user_visit" Role="user_visit" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="apartment">
-        <PropertyRef Name="apartment_id" />
-      </Principal>
-      <Dependent Role="user_visit">
-        <PropertyRef Name="apartment_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__user_acco__user___1273C1CD">
     <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -466,7 +439,50 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__user_visi__user___440B1D61">
+  <EntityType Name="user_visit">
+    <Key>
+      <PropertyRef Name="user_visit_id" />
+    </Key>
+    <Property Name="user_visit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_profile_id" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_visi__user___3D2915A8" FromRole="user_visit" ToRole="user_profile" />
+    <NavigationProperty Name="user_visit_item" Relationship="PropertyPlusModel.FK__user_visi__user___40058253" FromRole="user_visit" ToRole="user_visit_item" />
+  </EntityType>
+  <EntityType Name="user_visit_item">
+    <Key>
+      <PropertyRef Name="user_visit_item_id" />
+    </Key>
+    <Property Name="user_visit_item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="apartment_id" Type="Int32" Nullable="false" />
+    <Property Name="is_management_fee" Type="Boolean" Nullable="false" />
+    <Property Name="is_internet_wifi" Type="Boolean" Nullable="false" />
+    <Property Name="tv_type" Type="Int32" Nullable="false" />
+    <Property Name="cleaning" Type="Int32" Nullable="false" />
+    <Property Name="water" Type="Int32" Nullable="false" />
+    <Property Name="is_detergent" Type="Boolean" Nullable="false" />
+    <Property Name="bill" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="is_include_tax" Type="Boolean" Nullable="false" />
+    <Property Name="total_price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="service_price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="user_visit_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="apartment" Relationship="PropertyPlusModel.FK__user_visi__apart__44FF419A" FromRole="user_visit_item" ToRole="apartment" />
+    <NavigationProperty Name="user_visit" Relationship="PropertyPlusModel.FK__user_visi__user___40058253" FromRole="user_visit_item" ToRole="user_visit" />
+  </EntityType>
+  <Association Name="FK__user_visi__apart__44FF419A">
+    <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="1" />
+    <End Type="PropertyPlusModel.user_visit_item" Role="user_visit_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="apartment">
+        <PropertyRef Name="apartment_id" />
+      </Principal>
+      <Dependent Role="user_visit_item">
+        <PropertyRef Name="apartment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_visi__user___3D2915A8">
     <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -477,6 +493,20 @@
       </Principal>
       <Dependent Role="user_visit">
         <PropertyRef Name="user_profile_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_visi__user___40058253">
+    <End Type="PropertyPlusModel.user_visit" Role="user_visit" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="PropertyPlusModel.user_visit_item" Role="user_visit_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_visit">
+        <PropertyRef Name="user_visit_id" />
+      </Principal>
+      <Dependent Role="user_visit_item">
+        <PropertyRef Name="user_visit_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
