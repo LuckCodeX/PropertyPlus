@@ -202,7 +202,7 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="pagination-apartment">
-                            <ul uib-pagination total-items="90" ng-model="bigCurrentPage" max-size="2" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+                            <ul uib-pagination total-items="totalItems" rotate="false" ng-model="bigCurrentPage" items-per-page="8" max-size="4" class="pagination-sm" ng-change="loadApartment()"></ul>
                         </div>
                     </div>
                     <div class="col-xs-6 col-xs-offset-3 slide-paragraph">

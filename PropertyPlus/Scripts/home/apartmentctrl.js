@@ -10,8 +10,35 @@
     $timeout(function () {
         scope.$apply();
     }, 0);
+    scope.searchForm = function(){
+        console.log(1);
+        $scope.loadApartment();
+    };
 
+    var statusFilter = true;
+    $('.list-btn-facilities .group-btn-facility .btn-facilities').click(function(){
+        var atrrb = $(this).attr("target-filter");
+        $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
+            if($(this).attr("id") != atrrb.replace("#","")){
+                $(this).removeClass("active");
+                $(this).parent().children('.btn-facilities').removeClass("active");
+            } 
+        });
+        $(this).toggleClass('active');
+        $(atrrb).toggleClass('active');
 
+    });
+    $(".list-btn-facilities .group-btn-facility .card-filter").mouseup(function(event){
+           statusFilter=false;
+        });
+     $("body").mouseup(function(){ 
+        console.log(statusFilter);
+        if(statusFilter){
+            $('.btn-facilities.active').removeClass("active");
+            $('.card-filter.active').removeClass("active");
+        }
+         statusFilter=true; 
+    });
     
     if (scope.searchData) {
         $scope.searchWithFilter = scope.searchData;
@@ -66,9 +93,7 @@
             },
           };
     }
-    scope.searchForm = function(){
-        $scope.loadApartment();
-    };
+
     var clean = [0, 40, 65, 90, 115, 135, 150];
     //clean[1] = 40;
     //clean[2] = 65;
@@ -101,7 +126,7 @@
         $timeout(function () {
             scope.$apply();
         }, 0);
-        $scope.searchWithFilter.Page = $stateParams.page === undefined ? 1 : $stateParams.page;
+        $scope.searchWithFilter.Page = $scope.bigCurrentPage === undefined ? 1 : $scope.bigCurrentPage;
         $scope.searchWithFilter.Limit = 8;
         $scope.searchWithFilter.FilterPrice={
             "MinValue":$scope.priceSlider.minValue,
@@ -135,21 +160,24 @@
     }
 
     function getListApartment(){
-        console.log($scope.searchWithFilter);
         xhrService.post("GetListApartment",$scope.searchWithFilter)
             .then(function (data) {
+                $scope.totalItems = data.data.total;
                 $scope.apartmentList = data.data.data;
-                var myLatLng = { lat: $scope.apartmentList[0].Latitude, lng: $scope.apartmentList[0].Longitude };
-                var map = new google.maps.Map(document.getElementById('map'),
-                    {
-                        zoom: 17,
-                        center: myLatLng
+                if($scope.apartmentList > 0){
+                    var myLatLng = { lat: $scope.apartmentList[0].Latitude, lng: $scope.apartmentList[0].Longitude };
+                    var map = new google.maps.Map(document.getElementById('map'),
+                        {
+                            zoom: 17,
+                            center: myLatLng
+                        });
+                    var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        title: $scope.apartmentList[0].Address
                     });
-                var marker = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    title: $scope.apartmentList[0].Address
-                });
+                }
+                
             },
             function (error) {
                 console.log(error.statusText);
@@ -157,29 +185,7 @@
     }
 
     $scope.loadApartment = function () {
-        var statusFilter = true;
-        $('.list-btn-facilities .group-btn-facility .btn-facilities').click(function(){
-            var atrrb = $(this).attr("target-filter");
-            $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
-                if($(this).attr("id") != atrrb.replace("#","")){
-                    $(this).removeClass("active");
-                    $(this).parent().children('.btn-facilities').removeClass("active");
-                } 
-            });
-            $(this).toggleClass('active');
-            $(atrrb).toggleClass('active');
-
-        });
-        $(".list-btn-facilities .group-btn-facility .card-filter").mouseup(function(event){
-               statusFilter=false;
-            });
-         $("body").mouseup(function(){ 
-            if(statusFilter){
-                $('.btn-facilities.active').removeClass("active");
-                $('.card-filter.active').removeClass("active");
-            }
-            statusFilter=true; 
-        });
+        
         
         xhrService.get("GetAllFacilities").then(function (data) {
             $scope.listFacility = data.data;
@@ -187,8 +193,8 @@
                 $scope.listFacility[i].Status = false;
             };
             initData();
-            console.log($scope.searchWithFilter);
             getListApartment();
+
 
         },
         function (error) {
