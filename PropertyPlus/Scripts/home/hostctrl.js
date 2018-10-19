@@ -115,8 +115,8 @@
             $location.url('/host/listing');
         }
         var dataSimilar = {
-            "project_id":$scope.data.ProjectId,
-            "city":$scope.data.City,
+            "ProjectId ":$scope.data.ProjectId,
+            "City":$scope.data.City,
             "NoBedRoom":$scope.data.NoBedRoom
         }
         xhrService.post("GetSimilarApartment",dataSimilar)
