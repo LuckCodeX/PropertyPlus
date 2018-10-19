@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-6">
                 <p class="manage-info-text">Type</p>
-                <select number-to-string ng-model="apartmentchoice.Type" class="select-info">
+                <select ng-model="apartmentchoice.Type" class="select-info" number-to-string>
                     <option value="1">Apartment</option>
                 </select>
             </div>
@@ -11,16 +11,16 @@
         <div class="row manage-info">
             <!-- <div class="col-md-6">
                 <p class="manage-info-text">City</p>
-                <select class="select-info">
-                    <option value="1">Ha Noi</option>
-                    <option value="2">Nha Trang</option>
-                    <option value="3">Da Nang</option>
-                </select>
+                
+                           <input type="text" name="name" class="select-info" ng-model="apartmentchoice.City" />
+ 
+                
             </div> -->
             <div class="col-md-6">
                 <p class="manage-info-text">Project</p>
-                <select number-to-string  class="select-info">
-                    <option ng-repeat="item in apartmentchoice " value="{{item.Id}}">{{item.Name}}</option>
+                <select number-to-string  class="select-info"  ng-model="apartmentchoice.ProjectId">
+                    <option ng-repeat="item in projectList " value="{{item.Id}}">{{item.Name}}</option>
+                    <option value="1">Time City</option>
                 </select>
             </div>
         </div>
@@ -55,6 +55,6 @@
             </div>
         </div>
 
-        <button type="button" class="manager-describe-btn" style="margin-top: 60px;">Save</button>
+        <button type="button" ng-click="saveHostManage()" class="manager-describe-btn" style="margin-top: 60px;">Save</button>
     </div>
     </div>
