@@ -90,6 +90,8 @@
         xhrService.post("LoginGoogle", $scope.profileGoogle).then(function (data) {
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             $scope.userProfile = data.data;
+            $('#myModal-signup').modal('hide');
+            $('#myModal-login').modal('hide');
         },function (error) {
                 $scope.errorText = error.statusText;
             });
@@ -103,6 +105,8 @@
             console.log(data);
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             $scope.userProfile = data.data;
+            $('#myModal-signup').modal('hide');
+            $('#myModal-login').modal('hide');
         },function (error) {
                 $scope.errorText = error.statusText;
             });

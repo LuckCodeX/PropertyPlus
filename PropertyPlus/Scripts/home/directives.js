@@ -554,6 +554,36 @@ function openHour() {
 
 }
 
+function stringToNumber() {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+            ngModel.$parsers.push(function (value) {
+                return '' + value;
+            });
+            ngModel.$formatters.push(function (value) {
+                return parseFloat(value);
+            });
+        }
+    };
+}
+
+function numberToString() {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+            ngModel.$parsers.push(function (value) {
+                return '' + value;
+            });
+            ngModel.$formatters.push(function (value) {
+                if (value === undefined)
+                    return '';
+                return value.toString();
+            });
+        }
+    };
+}
+
 function uploadImg() {
     return {
         restrict: 'A',
@@ -627,6 +657,8 @@ app.directive('pageTitle', pageTitle)
     .directive('fileread', fileRead)
     .directive('filereaded', fileReaded)
     .directive('openHour', openHour)
+    .directive('stringToNumber', stringToNumber)
+    .directive('numberToString', numberToString)
     .directive('googleplace', googleplace)
     .directive('uploadImg', uploadImg);
 

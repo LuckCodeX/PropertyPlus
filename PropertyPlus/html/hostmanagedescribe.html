@@ -1,14 +1,15 @@
 ﻿
 <div class="col-md-10 body-manager">
-    <div class="text-manager-describe manager-describe">
+    <div style="margin-bottom: 25px;" class="text-manager-describe manager-describe">
         <span>Name</span>
-        <input type="text" name="name" value="" />
+        <input type="text" name="name" ng-model="apartmentchoice.Name" />
     </div>
-
+<span style="margin-bottom: 20px;">Describe</span>
     <div class="text-manager-describe manager-describe">
-        <span>Describe</span>
-        <textarea></textarea>
+        
+        <textarea type="text" ckeditor="editorOptions" id="describe" ng-if="apartmentchoice" ng-model="apartmentchoice.Description"></textarea>
+        <textarea type="text" ckeditor="editorOptions" ng-if="!apartmentchoice" ng-model="description"></textarea>
     </div>
 
-    <button type="button" class="manager-describe-btn">Save</button>
+    <button type="button" ng-click="saveHostManage()" class="manager-describe-btn">Save</button>
     </div>
