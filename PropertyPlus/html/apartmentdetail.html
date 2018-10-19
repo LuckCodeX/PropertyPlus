@@ -89,21 +89,12 @@
     </div>
     <div class="amenities">
         <div class="title-apartment-detail">AMENITIES </div>
-        <img src="/Images/icon/atm.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/bar.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/camera.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/cinema.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/coffe.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/hospital.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/eleve.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/indoor game.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/lounge.svg" class="amenities-img" alt="Alternate Text" />
-        <img src="/Images/icon/mall.svg" class="amenities-img" alt="Alternate Text" />
+        <img ng-repeat="facility in allFacilities" ng-src="/Upload/{{facility.Img}}" class="amenities-img" alt="Alternate Text" />
     </div>
     <div class="apartment-detail-owner" style="    margin-top: 30px;">
         <div class="title-apartment-detail">Owner</div>
             <div class="avatar-owner">
-                <img ng-src="/Upload/avatar/{{apartment.UserProfileOwner.Avatar}}" alt="Alternate Text"/>
+                <img ng-src="{{apartment.UserProfileOwner.Avatar}}" alt="Alternate Text"/>
             </div>
             <div class=" time-join">
                 Join in October 2018
@@ -111,7 +102,6 @@
             <div class=" owner-name">
                 {{apartment.UserProfileOwner.FirstName}} {{apartment.UserProfileOwner.LastName}}
             </div>
-        
     </div>
     <div class="apartment-detail-map">
         <div id="map"></div>

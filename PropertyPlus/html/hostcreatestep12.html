@@ -38,6 +38,15 @@
             <div class="messageError">
                 <span ng-if="!myForm.address.$valid">Address is required</span>
             </div>
+            <p style="">Phone</p>
+            <div class="choose-bedroom-option input-text row">
+                <div class="col-md-9">
+                    <input type="number" min="0" minlength="8" name="phone" ng-model="data.Phone" required="" />
+                </div>
+            </div>
+            <div class="messageError">
+                <span ng-if="!myForm.phone.$valid">Incorrect phone number</span>
+            </div>
         </div>
         <div class="col-md-6">
             <p style="margin-top: 29px">Name your apartment ( Optional )</p>
@@ -55,7 +64,7 @@
         </div>
         <div class="col-md-12 footer-step" ng-click="save()">
             <a ui-sref="host.create.step11" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-            <a class="float-right btn-next" ng-class="(myForm.address.$valid && myForm.area.$valid && statusAddress) ? '':'service-basic'" ui-sref="host.create.step13">Next</a>
+            <a class="float-right btn-next" ng-class="(myForm.address.$valid && myForm.area.$valid && statusAddress && myForm.phone.$valid) ? '':'service-basic'" ui-sref="host.create.step13">Next</a>
             <a ui-sref="host.listing"  class="float-right btn-cancel">Cancel</a>
         </div>
     </form>

@@ -26,7 +26,7 @@
             NoBathRoom: "1",
             Type: "1",
             ProjectId: "",
-            FacilityList: []
+            FacilityList:[]
         };
         $scope.projectList = [];
         xhrService.get("GetAllProject")
@@ -60,6 +60,11 @@
         $scope.oldLat = undefined;
         $scope.oldLong = undefined;
         $scope.statusAddress = true;
+         var scope = angular.element('body[ng-controller="MainCtrl"]').scope();
+        $timeout(function () {
+            scope.$apply();
+        }, 0);
+        $scope.data.Phone = scope.userProfile.Phone;
     };
 
     $scope.loadStep2_1 = function () {
@@ -109,6 +114,17 @@
         if ($scope.data == undefined) {
             $location.url('/host/listing');
         }
+        var dataSimilar = {
+            "project_id":$scope.data.ProjectId,
+            "city":$scope.data.City,
+            "NoBedRoom":$scope.data.NoBedRoom
+        }
+        xhrService.post("GetSimilarApartment",dataSimilar)
+        .then(function (data) {
+            $scope.listSimilar = data.data;
+        },function (error) {
+                console.log(error.statusText);
+            });
     }
 
     $scope.uploadImages = function(img){
@@ -152,8 +168,54 @@
         $scope.images = images;
     };
 
+    function loadRadioImg(){
+        $(".image-checkbox").each(function () {
+            console.log(1);
+          if ($(this).find('input[type="checkbox"]').first().attr("checked")) {
+            $(this).addClass('image-checkbox-checked');
+          }
+          else {
+            $(this).removeClass('image-checkbox-checked');
+          }
+        });
+        $(".image-checkbox").on("click", function (e) {
+          $(this).toggleClass('image-checkbox-checked');
+          var checkbox = $(this).find('input[type="checkbox"]');
+          checkbox.attr('checked', !checkbox.attr('checked'));
+
+          e.preventDefault();
+        });
+    }
+
+    $scope.loadStep3_2 = function(){
+        if ($scope.data == undefined) {
+            $location.url('/host/listing');
+        }
+        xhrService.get("GetAllFacilities")
+        .then(function (data) {
+            $scope.facilities = data.data;
+            for (var j = 0; j < $scope.facilities.length; j++) {
+                $scope.facilities[j].Status = false;
+            };
+            $timeout(function () {
+                loadRadioImg();
+            }, 300);
+        },function (error) {
+                console.log(error.statusText);
+            });
+    }
+
+    $scope.saveStep32 = function(facilities){
+        $scope.facilities = facilities;
+    }
+
     $scope.submitAll = function (confirm_img) {
         $scope.disableFinish = true;
+        for (var j = 0; j < $scope.facilities.length; j++) {
+            if ($scope.facilities[j].Status) {
+                $scope.data.FacilityList.push({Id:$scope.facilities[j].Id});
+            }
+        };
         $scope.confirm_img = confirm_img;
         $scope.data.ImgList = [];
         if ($scope.banner_img.url != null) {
