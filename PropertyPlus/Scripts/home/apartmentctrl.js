@@ -26,7 +26,7 @@
         });
         $(this).toggleClass('active');
         $(atrrb).toggleClass('active');
-
+        statusFilter=false;
     });
     $(".list-btn-facilities .group-btn-facility .card-filter").mouseup(function(event){
            statusFilter=false;
