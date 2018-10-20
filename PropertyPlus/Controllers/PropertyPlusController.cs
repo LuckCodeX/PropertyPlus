@@ -648,7 +648,7 @@ namespace PropertyPlus.Controllers
                                     img.type = item.Type;
                                     if (!Equals(item.Img_Base64, null))
                                     {
-                                        img.img = "http://manager.propertyplus.com.vn/Upload/apartment/" + _service.SaveImage("~/Upload/apartment/",
+                                        img.img = "http://propertyplus.com.vn/Upload/apartment/" + _service.SaveImage("~/Upload/apartment/",
                                             "apt_" + ConvertDatetime.GetCurrentUnixTimeStamp() + "_" +
                                             img.apartment_image_id + ".png",
                                             item.Img_Base64);
