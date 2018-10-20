@@ -8,7 +8,7 @@ function HostmanageCtrl($scope,
     $window) {
 
     $scope.loadHostManage=function(){
-        xhrService.get("GetYourListApartment/1").then(function (data) {
+        xhrService.get("GetYourListApartment/-1").then(function (data) {
             $scope.yourApartmentlist=data.data;
 
         },

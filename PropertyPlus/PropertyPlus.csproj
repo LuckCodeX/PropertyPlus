@@ -756,6 +756,7 @@
     <Content Include="Scripts\home\detailctrl.js" />
     <Content Include="Scripts\home\directives.js" />
     <Content Include="Scripts\home\hostctrl.js" />
+    <Content Include="Scripts\home\hostmanagectrl.js" />
     <Content Include="Scripts\home\mainctrl.js" />
     <Content Include="Scripts\home\projectctrl.js" />
     <Content Include="Scripts\home\services.js" />

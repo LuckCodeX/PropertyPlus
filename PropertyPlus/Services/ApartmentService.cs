@@ -96,7 +96,7 @@ namespace PropertyPlus.Services
         {
             return ApartmentRepository.FindBy(p => p.status == 1 && p.apartment_id == id)
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
-                .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).FirstOrDefault();
+                .Include(p => p.apartment_facility.Select(q => q.facility.facility_content)).Include(p => p.user_profile).Include(p => p.project.project_content).FirstOrDefault();
         }
 
         public List<apartment> SearchListApartmentByUserProfileId(int status, int userProfileId)

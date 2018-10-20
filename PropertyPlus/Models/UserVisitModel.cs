@@ -8,6 +8,13 @@ namespace PropertyPlus.Models
     public class UserVisitModel
     {
         public int Id { get; set; }
+        public int CreatedAt { get; set; }
+        public List<UserVisitItemModel> Items { get; set; }
+    }
+
+    public class UserVisitItemModel
+    {
+        public int Id { get; set; }
         public int ApartmentId { get; set; }
         public bool IsApartmentFee { get; set; }
         public bool IsInternetWifi { get; set; }

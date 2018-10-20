@@ -428,8 +428,8 @@ namespace PropertyPlus.Controllers
                     ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
 
-                //var userVisit =
-                //    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, model.ApartmentId);
+                var userVisit =
+                    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, model.ApartmentId);
                 //if (!Equals(userVisit, null))
                 //    return;
                 //userVisit = new user_visit()
@@ -940,6 +940,14 @@ namespace PropertyPlus.Controllers
                         Id = q.apartment_image_id,
                         Type = q.type,
                         Img = q.img
+                    }).ToList(),
+                    FacilityList = apartment.apartment_facility.Select(q => new FacilityModel()
+                    {
+                        Img = q.facility.img,
+                        Content = new FacilityContentModel()
+                        {
+                            Name = q.facility.facility_content.FirstOrDefault(h => h.language == language).name
+                        }
                     }).ToList()
                 };
             }
