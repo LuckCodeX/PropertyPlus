@@ -380,7 +380,7 @@ namespace PropertyPlus.Controllers
 
         [HttpGet]
         [Route("GetVisitList")]
-        public List<UserVisitModel> GetVisitList()
+        public List<UserVisitItemModel> GetVisitList()
         {
             IEnumerable<string> values;
             if (this.Request.Headers.TryGetValues("Token", out values))
@@ -395,22 +395,22 @@ namespace PropertyPlus.Controllers
                 IEnumerable<string> languages;
                 this.Request.Headers.TryGetValues("Language", out languages);
                 var language = Convert.ToInt32(languages.First());
-                //var visits = _service.GetListUserVisitByUserProfileId(userProfile.user_profile_id);
-                //return visits.Select(p => new UserVisitModel()
-                //{
-                //    TotalPrice = p.total_price,
-                //    Id = p.user_visit_id,
-                //    Apartment = new ApartmentModel()
-                //    {
-                //        Id = p.apartment_id,
-                //        Code = p.apartment.code,
-                //        Name = p.apartment.apartment_content.FirstOrDefault(q => q.language == language).name,
-                //        NoBedRoom = p.apartment.no_bedroom,
-                //        City = p.apartment.city
-                //    }
-                //}).ToList();
+                var visits = _service.GetListUserVisitItemByUserProfileId(userProfile.user_profile_id);
+                return visits.Select(p => new UserVisitItemModel()
+                {
+                    Id = p.user_visit_item_id,
+                    TotalPrice = p.total_price,
+                    Apartment = new ApartmentModel()
+                    {
+                        Id = p.apartment_id,
+                        Code = p.apartment.code,
+                        Name = p.apartment.apartment_content.FirstOrDefault(q => q.language == language).name,
+                        NoBedRoom = p.apartment.no_bedroom,
+                        City = p.apartment.city
+                    }
+                }).ToList();
             }
-            return new List<UserVisitModel>();
+            return new List<UserVisitItemModel>();
         }
 
         [HttpPost]
@@ -428,33 +428,65 @@ namespace PropertyPlus.Controllers
                     ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
 
-                var userVisit =
-                    _service.GetUserVisitByUserProfileIdAndApartmentId(userProfile.user_profile_id, model.ApartmentId);
-                //if (!Equals(userVisit, null))
-                //    return;
-                //userVisit = new user_visit()
-                //{
-                //    user_profile_id = userProfile.user_profile_id,
-                //    apartment_id = model.ApartmentId,
-                //    user_visit_id = 0,
-                //    bill = model.Bill,
-                //    cleaning = model.Cleaning,
-                //    is_detergent = model.IsDetergent,
-                //    is_include_tax = model.IsIncludeTax,
-                //    is_internet_wifi = model.IsInternetWifi,
-                //    is_management_fee = model.IsApartmentFee,
-                //    service_price = model.ServicePrice,
-                //    total_price = model.TotalPrice,
-                //    tv_type = model.TvType,
-                //    water = model.Water
-                //};
-                //_service.SaveUserVisit(userVisit);
+                var lst = new List<UserVisitItemModel>();
+                foreach (var item in model.Items)
+                {
+                    var visitItem =
+                        _service.GetUserVisitItemByUserProfileIdAndApartmentId(userProfile.user_profile_id, item.ApartmentId);
+                    if(Equals(visitItem, null))
+                        lst.Add(item);
+                }
+
+                using (var scope = new TransactionScope())
+                {
+                    try
+                    {
+                        if (lst.Count > 0)
+                        {
+                            var userVisit = new user_visit()
+                            {
+                                user_visit_id = 0,
+                                user_profile_id = userProfile.user_profile_id,
+                                created_at = ConvertDatetime.GetCurrentUnixTimeStamp(),
+                            };
+                            _service.SaveUserVisit(userVisit);
+
+                            foreach (var item in lst)
+                            {
+                                var visitItem = new user_visit_item()
+                                {
+                                    apartment_id = item.ApartmentId,
+                                    bill = item.Bill,
+                                    cleaning = item.Cleaning,
+                                    is_detergent = item.IsDetergent,
+                                    is_include_tax = item.IsIncludeTax,
+                                    is_internet_wifi = item.IsInternetWifi,
+                                    is_management_fee = item.IsApartmentFee,
+                                    service_price = item.ServicePrice,
+                                    status = 0,
+                                    total_price = item.TotalPrice,
+                                    tv_type = item.TvType,
+                                    user_visit_id = userVisit.user_visit_id,
+                                    user_visit_item_id = 0,
+                                    water = item.Water
+                                };
+                                _service.SaveUserVisitItem(visitItem);
+                            }
+
+                            scope.Complete();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        
+                    }
+                }
             }
         }
 
         [HttpDelete]
-        [Route("DeleteVisitList/{userVisitId}")]
-        public void DeleteVisitList(int userVisitId)
+        [Route("DeleteVisitList/{id}")]
+        public void DeleteVisitList(int id)
         {
             IEnumerable<string> values;
             if (this.Request.Headers.TryGetValues("Token", out values))
@@ -466,10 +498,10 @@ namespace PropertyPlus.Controllers
                 {
                     ExceptionContent(HttpStatusCode.NotFound, "err_account_not_found");
                 }
-                //var userVisit =
-                //    _service.GetUserVisitById(userVisitId);
-                //if (!Equals(userVisit, null) && userVisit.user_profile_id == userProfile.user_profile_id)
-                //    _service.DeleteUserVisit(userVisit);
+                var userVisit =
+                    _service.GetUserVisitItemByIdAndUserProfileId(id, userProfile.user_profile_id);
+                if (!Equals(userVisit, null))
+                    _service.DeleteUserVisitItem(userVisit);
             }
         }
 

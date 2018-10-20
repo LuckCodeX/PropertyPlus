@@ -35,8 +35,8 @@ namespace PropertyPlus.Services
         string SaveImage(string path, string imageName, string image);
         user_account GetUserAccountByUserProfileId(int userProfileId);
         //user_visit GetUserVisitByUserProfileIdAndApartmentId(int userProfileId, int apartmentId);
-        //void SaveUserVisit(user_visit userVisit);
-        //void DeleteUserVisit(user_visit userVisit);
+        void SaveUserVisit(user_visit userVisit);
+        void DeleteUserVisit(user_visit userVisit);
         //List<apartment> GetListVisitApartmentByUserProfileId(int userProfileId);
         List<user_profile> SearchUserProfile(string search);
         void DeleteAccount(int id);
@@ -60,8 +60,8 @@ namespace PropertyPlus.Services
         void SaveFacilityContent(facility_content content);
         List<apartment> SearchListApartment(FilterModel filter);
         apartment GetActiveApartmentById(int id);
-        //List<user_visit> GetListUserVisitByUserProfileId(int userProfileId);
-        //user_visit GetUserVisitById(int id);
+        List<user_visit> GetListUserVisitByUserProfileId(int userProfileId);
+        user_visit GetUserVisitById(int id);
         List<apartment> SearchListApartmentByUserProfileId(int status, int userProfileId);
         apartment GetApartmentById(int id);
         user_social GetUserSocialByEmailAndType(string email, int type);
@@ -72,5 +72,10 @@ namespace PropertyPlus.Services
         apartment_content GetApartmentContentByApartmentIdAndLanguage(int apartmentId, int language);
         List<facility> GetAllFacilities();
         List<apartment> GetSimilarApartment(ApartmentModel model);
+        user_visit_item GetUserVisitItemByUserProfileIdAndApartmentId(int userProfileId, int apartmentId);
+        void SaveUserVisitItem(user_visit_item visitItem);
+        List<user_visit_item> GetListUserVisitItemByUserProfileId(int userProfileId);
+        user_visit_item GetUserVisitItemByIdAndUserProfileId(int id, int userProfileId);
+        void DeleteUserVisitItem(user_visit_item userVisit);
     }
 }
