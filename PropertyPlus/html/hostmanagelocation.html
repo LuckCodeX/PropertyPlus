@@ -1,16 +1,20 @@
-﻿<div class="col-md-10 body-manager-location">
+﻿<div class="col-md-10 body-manager-location" ng-init="loadlocation()">
     <div class="row">
         <div class="col-md-12">
             <p class="body-manager-location-text">Drag the pin to adjust its location</p>
-            <p>R22508 Royal City Nguyen Trai Thanh Xuan, Ha Noi</p>
-            <iframe width="100%"
+             <p> {{apartmentchoice.Address}}</p>
+            <!-- <iframe width="100%"
                     height="330"
                     frameborder="0"
                     scrolling="no"
                     marginheight="0"
                     marginwidth="0"
                     ng-src="{{linkMap}}"
-                    allowfullscreen />
+                    allowfullscreen /> -->
+
+
+                    <div id="map" style="height: 400px;
+    margin-top: 20px;"></div>
 
         </div>
         <div class="col-md-12">

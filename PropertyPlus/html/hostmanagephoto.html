@@ -6,7 +6,7 @@
                 <p style="margin-top: 10px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <div class="row">
                         <div class="col-md-12 img-upload-current">
-                            <i ng-click="banner_img[0].url = null" ng-show="banner_img[0].url || banner_img[0].Img" class="remove-img-btn fas fa-times"></i>
+                            <i ng-click="banner_img.splice(0, 1)" ng-show="banner_img[0].url || banner_img[0].Img" class="remove-img-btn fas fa-times"></i>
                             <img ng-show="banner_img[0].url" class="img" ng-src="{{banner_img[0].url}}" alt="Alternate Text" />
                             <img ng-show="banner_img[0].Img" class="img" ng-src="{{banner_img[0].Img}}" alt="Alternate Text" />
                             <div class="btn-upload" ng-class="(banner_img[0].url || banner_img[0].Img) ? 'opacityZero':''">
