@@ -28,16 +28,15 @@ function HostmanageCtrl($scope,
 $scope.changeAparment=function(){
 
         xhrService.get("GetApartmentInformation/"+ $scope.apartmentId).then(function (data) {
-            console.log(data);
+            // console.log(data);
             $scope.apartmentchoice=data.data;
-            // $scope.apartmentchoicepj=data.data.Project;
-                        // console.log(data.data.Project);
+            
             $scope.editorOptions = {
                 language: 'vi'
             };
             $scope.images = [];
             $scope.banner_img=[];
-           //loi di vcl console log 1 kieu hien 1 view 1 kieu :()
+            $scope.uploadImg();
             for (var i = 0; i < $scope.apartmentchoice.ImgList.length; i++) {
                 if ($scope.apartmentchoice.ImgList[i].Type == 0) {
                          $scope.banner_img.push($scope.apartmentchoice.ImgList[i]);
@@ -48,6 +47,20 @@ $scope.changeAparment=function(){
                     $scope.images.push($scope.apartmentchoice.ImgList[i]);
                 }
             };
+            var myLatLng = { lat: $scope.apartmentchoice.Latitude, lng: $scope.apartmentchoice.Longitude };
+            if (document.getElementById('map')) {
+                var map = new google.maps.Map(document.getElementById('map'),
+                {
+                    zoom: 17,
+                    center: myLatLng
+                });
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: $scope.apartmentchoice.Address
+                });
+            }
+        
             
         },
          function (error) {
@@ -64,19 +77,24 @@ $scope.changeAparment=function(){
     }
 
     $scope.changeAddress = function () {
-        if ($scope.data.Latitude == undefined ||
-            $scope.data.Latitude == 0 ||
-            $scope.data.Longitude == undefined ||
-            $scope.data.Longitude == 0 ||
-            $scope.data.Longitude == $scope.oldLong ||
-            $scope.data.Latitude == $scope.oldLat) {
+        if ($scope.apartmentchoice.Latitude == undefined ||
+            $scope.apartmentchoice.Latitude == 0 ||
+            $scope.apartmentchoice.Longitude == undefined ||
+            $scope.apartmentchoice.Longitude == 0 ||
+            $scope.apartmentchoice.Longitude == $scope.oldLong ||
+            $scope.apartmentchoice.Latitude == $scope.oldLat) {
             $scope.statusAddress = false;
 
         } else {
-            $scope.oldLat = $scope.data.Latitude;
-            $scope.oldLong = $scope.data.Longitude;
+            $scope.oldLat = $scope.apartmentchoice.Latitude;
+            $scope.oldLong = $scope.apartmentchoice.Longitude;
             $scope.statusAddress = true;
         }
+    };
+
+    $scope.loadlocation = function () {
+        $scope.changeAparment();
+        
     }
 
     $scope.uploadImg = function (event) {
@@ -90,19 +108,21 @@ $scope.changeAparment=function(){
                 
             }
          });
-        console.log($scope.banner_img);
     };
 
     $scope.saveHostManage = function(){
         $scope.apartmentchoice.ImgList = [];
-        if($scope.banner_img[0].Img != null){
-            $scope.apartmentchoice.ImgList.push($scope.banner_img);
-        }else if ($scope.banner_img[0].url != null) {
-            $scope.apartmentchoice.ImgList.push({
-                "Img_Base64": $scope.banner_img[0].url,
-                "Type": 0
-            });
+        if($scope.banner_img.length > 0){
+            if($scope.banner_img[0].Img != null){
+                $scope.apartmentchoice.ImgList.push($scope.banner_img[0]);
+            }else if ($scope.banner_img[0].url != null) {
+                $scope.apartmentchoice.ImgList.push({
+                    "Img_Base64": $scope.banner_img[0].url,
+                    "Type": 0
+                });
+            }
         }
+        
        
         if ($scope.images.length > 1) {
             if ($scope.images[$scope.images.length - 1].url == null && $scope.images[$scope.images.length - 1].Img == null) {
@@ -121,7 +141,7 @@ $scope.changeAparment=function(){
                 
             }
         };
-        
+        // console.log($scope.apartmentchoice);
         xhrService.post("SaveApartment", $scope.apartmentchoice).then(function (data) {
            
             

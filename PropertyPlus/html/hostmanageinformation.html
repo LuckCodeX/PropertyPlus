@@ -9,18 +9,12 @@
             </div>
         </div>
         <div class="row manage-info">
-            <!-- <div class="col-md-6">
-                <p class="manage-info-text">City</p>
-                
-                           <input type="text" name="name" class="select-info" ng-model="apartmentchoice.City" />
- 
-                
-            </div> -->
             <div class="col-md-6">
                 <p class="manage-info-text">Project</p>
                 <select number-to-string  class="select-info"  ng-model="apartmentchoice.ProjectId">
+                    <option value="">None</option>
                     <option ng-repeat="item in projectList " value="{{item.Id}}">{{item.Name}}</option>
-                    <option value="1">Time City</option>
+                    
                 </select>
             </div>
         </div>
@@ -50,7 +44,7 @@
         <div class="row manage-info">
             <div class="col-md-12">
                 <p class="manage-info-text">Address</p>
-                <input type="text" class="manage-info-address" googleplace ng-change="changeAddress()" details="data" name="address" ng-model="apartmentchoice.Address"/>
+                <input type="text" class="manage-info-address" googleplace ng-model-options="{ debounce: 500 }" details="data" ng-change="changeAddress()" name="address"  ng-model="apartmentchoice.Address"/>
 
             </div>
         </div>
