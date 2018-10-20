@@ -8,7 +8,7 @@
 				<div class="">
                     <div class="col-xs-12 thumbnail-choose-home" ng-repeat="apartment in apartmentList track by $index">
                         <div class="slide-choose-home col-md-5 " >
-                            <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})"><img ng-src="{{apartment.ImgList[0].Img}}" class="img-full" alt="Alternate Text" /></a>
+                            <a style="height: 100%;" ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})"><img ng-src="{{apartment.ImgList[0].Img}}" class="img-full" alt="Alternate Text" /></a>
                         </div>
                         <div class="choose-home-summary-column clearfix col-md-6 ">
                             <div class="sumary-detail">
@@ -56,6 +56,9 @@
                     </div>
                 </div>
 			</div>
+            <div class="btn-send-visiting box-shadow">
+                <button ng-click="sendVisitList()">SEND VISITING REQUEST</button>
+            </div>
 		</div>
 	</div>
 </div>
