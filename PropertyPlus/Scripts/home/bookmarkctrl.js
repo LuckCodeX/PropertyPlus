@@ -15,5 +15,10 @@ function BookmarkCtrl($scope,
 		$scope.apartmentList.splice(index,1);
 		localStorage.setItem('apartmentList', JSON.stringify($scope.apartmentList));
 	}
+	$scope.sendVisitList = function(){
+		localStorage.removeItem('apartmentList');
+		$scope.apartmentList=[];
+		alert("Send success");
+	}
 }
 app.controller('BookmarkCtrl', BookmarkCtrl);

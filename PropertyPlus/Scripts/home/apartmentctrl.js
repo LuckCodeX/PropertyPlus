@@ -404,8 +404,10 @@
             "TvType":$scope.foreignTvs.indexOf($scope.foreignTv.selected),
             "Water":$scope.bottle
         };
-        xhrService.post("AddVisitList", dataApartment).then(function (data) {
-            alert("Success!");
+        var dataService = {"Items":[dataApartment]};
+        // console.log(dataService);
+        xhrService.post("AddVisitList", dataService).then(function (data) {
+            $location.url('/user-profile/general');
         },function (error) {
                 $scope.errorText = error.statusText;
             });

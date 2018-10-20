@@ -1617,7 +1617,8 @@ footer {
 .btn-send-visiting {
     border-radius: 5px;
     height: 60.51px;
-    margin: 49px 26px 15.5px 26px;
+    width: 600px;
+    margin: 20px auto;
 }
 
     .btn-send-visiting button {
