@@ -11,7 +11,7 @@
         <p>Name your apartment's propject</p>
         <div class="choose-city-option input-option row">
             <div class="col-md-2">
-                <select class="select-apartment" ng-model="data.ProjectId">
+                <select number-to-string class="select-apartment" ng-model="data.ProjectId">
                     <option value="">None</option>
                     <option ng-repeat="option in projectList" value="{{option.Id}}">{{option.Name}}</option>
                 </select>

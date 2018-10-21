@@ -21,13 +21,17 @@
         { name: "5", value: "5" }, { name: "6", value: "6" }
     ];
     $scope.loadStep1_1 = function () {
-        $scope.data = {
-            NoBedRoom: "1",
-            NoBathRoom: "1",
-            Type: "1",
-            ProjectId: "",
-            FacilityList:[]
-        };
+        if ($scope.data == null) {
+            $scope.data = {
+                NoBedRoom: "1",
+                NoBathRoom: "1",
+                Type: "1",
+                ProjectId: "",
+                FacilityList:[],
+                Phone:""
+            };
+        }
+        
         $scope.projectList = [];
         xhrService.get("GetAllProject")
             .then(function (data) {
@@ -64,7 +68,9 @@
         $timeout(function () {
             scope.$apply();
         }, 0);
-        $scope.data.Phone = scope.userProfile.Phone;
+        if ($scope.data.Phone == "") {
+            $scope.data.Phone = scope.userProfile.Phone;
+        }
     };
 
     $scope.loadStep2_1 = function () {
@@ -167,6 +173,8 @@
         $scope.banner_img = banner;
         $scope.images = images;
     };
+
+    // $scope.save = function()
 
     function loadRadioImg(){
         $(".image-checkbox").each(function () {

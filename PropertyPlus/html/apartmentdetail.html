@@ -178,16 +178,16 @@
         <div class="line-service" ng-class="basic">
             <p class="inline float-left">Laundry & Cleaning  </p>
             <div class="float-right group-btn-service">
-                <button class="minus" ng-click="cleaning = cleaning - 1" ng-disabled="cleaning == 0">-</button>
-                <button class="plus" ng-click="cleaning = cleaning + 1" ng-disabled="cleaning == 6">+</button>
+                <button type="button" class="minus" ng-click="cleaning = cleaning - 1" ng-disabled="cleaning == 0">-</button>
+                <button type="button" class="plus" ng-click="cleaning = cleaning + 1" ng-disabled="cleaning == 6">+</button>
             </div>
             <span class="float-right quantity-service">{{cleaning}}</span>
         </div>
         <div class="line-service bg-gray"  ng-class="basic">
             <p class="inline float-left">Drinking water</p>
             <div class="float-right group-btn-service">
-                <button class="minus" ng-click="bottle = bottle - 1" ng-disabled="bottle == 0">-</button>
-                <button class="plus" ng-click="bottle = bottle + 1" ng-disabled="bottle == 6">+</button>
+                <button type="button" class="minus" ng-click="bottle = bottle - 1" ng-disabled="bottle == 0">-</button>
+                <button type="button" class="plus" ng-click="bottle = bottle + 1" ng-disabled="bottle == 6">+</button>
             </div>
             <span class="float-right quantity-service">{{bottle}}</span>
         </div>

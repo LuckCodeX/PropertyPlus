@@ -236,11 +236,13 @@
                 }
             }
             if(status){
+                apartment.service = getDataService();
                 apartmentList.push(apartment);
                 localStorage.setItem('apartmentList', JSON.stringify(apartmentList));
             }
         }else{
             var apartmentList = [];
+            apartment.service = getDataService();
             apartmentList.push(apartment);
             localStorage.setItem('apartmentList', JSON.stringify(apartmentList));
         }
@@ -389,9 +391,8 @@
         $scope.totalPrice = (($scope.apartment.Price + $scope.servicePrice) / extra).toFixed(2);
         $scope.perNightPrice = (($scope.totalPrice / 30) * 1.6).toFixed(2);
     }
-    $scope.submitApartment = function(){
-         if (localStorage && localStorage.getItem('user_profile')) {
-           var dataApartment = {
+    function getDataService(){
+        var dataApartment = {
             "ApartmentId":$scope.apartment.Id,
             "Bill":Number($scope.electricBill),
             "Cleaning":$scope.cleaning,
@@ -404,13 +405,18 @@
             "TvType":$scope.foreignTvs.indexOf($scope.foreignTv.selected),
             "Water":$scope.bottle
         };
-        var dataService = {"Items":[dataApartment]};
-        // console.log(dataService);
-        xhrService.post("AddVisitList", dataService).then(function (data) {
-            $location.url('/user-profile/general');
-        },function (error) {
-                $scope.errorText = error.statusText;
-            });
+        return dataApartment;
+    }
+    $scope.submitApartment = function(){
+         if (localStorage && localStorage.getItem('user_profile')) {
+           var dataApartment = getDataService();
+            var dataService = {"Items":[dataApartment]};
+            // console.log(dataService);
+            xhrService.post("AddVisitList", dataService).then(function (data) {
+                $location.url('/user-profile/general');
+            },function (error) {
+                    $scope.errorText = error.statusText;
+                });
         }else{
             document.getElementById('modalLogin').click();
         }
