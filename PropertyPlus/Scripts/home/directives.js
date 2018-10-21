@@ -630,6 +630,22 @@ function googleplace() {
     };
 }
 
+function shareData() {
+ var persistObject = [];
+    function set(objectName, data) {
+        persistObject[objectName] = data;
+    }
+    function get(objectName) {
+        return persistObject[objectName];
+    }
+
+    return {
+        set: set,
+        get: get
+    }
+
+}
+
 /**
  *
  * Pass all functions into module
@@ -661,4 +677,5 @@ app.directive('pageTitle', pageTitle)
     .directive('numberToString', numberToString)
     .directive('googleplace', googleplace)
     .directive('uploadImg', uploadImg);
+app.factory('shareData', shareData);
 

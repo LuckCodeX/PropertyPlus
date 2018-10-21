@@ -11,7 +11,7 @@
                 </div>
                 <div id="tab-1" class="tab-content current">
                     <div class="listing-all-apartment">
-                        <div class="apartment-in-listing row" ng-repeat="apartment in AllListing">
+                        <div class="apartment-in-listing row" ng-repeat="apartment in AllListing"  ng-click="pageChanged(apartment)" >
                             <a class="img-apartment col-md-4"><img ng-src="{{apartment.ImgList[0].Img}}" /></a>
                             <div class="summary-apartment col-md-8">
                                 <div class="description-apartment">
@@ -39,7 +39,7 @@
                 </div>
                 <div id="tab-2" class="tab-content">
                     <div class="listing-all-apartment">
-                        <div class="apartment-in-listing row" ng-repeat="apartment in ListedListing">
+                        <div class="apartment-in-listing row" ng-repeat="apartment in ListedListing" ng-click="pageChanged(apartment)">
                             <a class="img-apartment col-md-4"><img ng-src="{{apartment.ImgList[0].Img}}" /></a>
                             <div class="summary-apartment col-md-8">
                                 <div class="description-apartment">

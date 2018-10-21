@@ -2556,6 +2556,7 @@ footer {
 
     .apartment-in-listing:hover {
         background-color: #E4E4E4;
+        cursor: pointer;
     }
 
 .listing-all-apartment {

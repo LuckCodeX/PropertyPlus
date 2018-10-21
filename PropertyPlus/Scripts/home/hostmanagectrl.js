@@ -5,12 +5,16 @@ function HostmanageCtrl($scope,
     $timeout,
     xhrService,
     $anchorScroll,
-    $window) {
+    $window,
+    $state,
+    shareData) {
 
     $scope.loadHostManage=function(){
+        
         xhrService.get("GetYourListApartment/-1").then(function (data) {
             $scope.yourApartmentlist=data.data;
-
+            $scope.apartmentId = shareData.get('apartmentIdVisit');
+            $scope.changeAparment();
         },
          function (error) {
             console.log(error.statusText);
@@ -24,13 +28,13 @@ function HostmanageCtrl($scope,
             console.log(error.statusText);
         });
     };
-
+$scope.isDisabled = true;
 $scope.changeAparment=function(){
 
         xhrService.get("GetApartmentInformation/"+ $scope.apartmentId).then(function (data) {
             // console.log(data);
             $scope.apartmentchoice=data.data;
-            
+            $scope.isDisabled = false;
             $scope.editorOptions = {
                 language: 'vi'
             };
