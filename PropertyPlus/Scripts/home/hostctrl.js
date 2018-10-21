@@ -5,7 +5,7 @@
     $timeout,
     $sce,
     xhrService,
-    $anchorScroll) {
+    $anchorScroll,$state,shareData) {
     $scope.loadHeaderHost = function () {
         if (!(localStorage && localStorage.getItem('user_profile'))) {
             window.location.href = "/";
@@ -280,6 +280,12 @@
         }, function (error) {
             $scope.errorText = error.statusText;
         });
+    };
+     $scope.pageChanged = function (apartment) {
+        // $location.path("/host/manage/overview");
+        shareData.set('apartmentIdVisit',apartment.Id);
+        $state.go('host.manage.overview');
+
     }
 }
 

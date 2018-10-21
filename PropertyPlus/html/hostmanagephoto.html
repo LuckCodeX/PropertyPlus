@@ -13,7 +13,7 @@
                                 <span class="btn-file">
                                     <p> <i class="fas fa-plus"></i></p>
                                     <p>Add banner image</p>
-                                    <input accept="image/*" image="banner_img[0]" type="file" id="banner_img[0]" />
+                                    <input ng-disabled="isDisabled" accept="image/*" image="banner_img[0]" type="file" id="banner_img[0]" />
                                 </span>
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                                 <span class="btn-file">
                                     <p> <i class="fas fa-plus"></i></p>
                                     <p>add another</p>
-                                    <input type="file" accept="image/*" upload-img="uploadImg" image="images[$index]"
+                                    <input ng-disabled="isDisabled" type="file" accept="image/*" upload-img="uploadImg" image="images[$index]"
                                            resize-max-height="300"
                                            resize-max-width="250"
                                            resize-quality="0.7" />
