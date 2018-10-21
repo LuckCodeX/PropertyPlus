@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="row product" ng-repeat="item in visitList">
                         <a ui-sref="apartmentdetail({id: item.Apartment.Id,name: replaceString(item.Apartment.Name)})" class="product-img col-xs-4">
-                            <img style="width: 100%; height: 100%;" src="Images/img-demo.png" alt="Alternate Text" />
+                            <img style="width: 100%; height: 100%;" ng-src="{{item.Apartment.ImgList[0].Img}}" alt="Alternate Text" />
                         </a>
                         <div class="product-description col-xs-5">
                             <a ui-sref="apartmentdetail({id: item.Apartment.Id,name: replaceString(item.Apartment.Name)})" class="product-code">{{item.Apartment.Code}}</a>

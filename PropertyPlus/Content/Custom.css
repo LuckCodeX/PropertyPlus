@@ -3397,6 +3397,9 @@ input::-webkit-inner-spin-button {
     padding-left: 30px;
     padding-right: 0;
 }
+/*header{
+    border-bottom: 1px solid #E4E4E4; 
+}*/
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;

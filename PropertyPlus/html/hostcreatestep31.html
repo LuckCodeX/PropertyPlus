@@ -28,10 +28,10 @@
                     <p>Similiar listing</p>
                     <div class="all-list-apartment scrollbar">
                         <div class="list-apartment-step" ng-repeat="apt in listSimilar">
-                            <img class="img-apartment" ng-src="{{apt.ImgList[0].Img}}" alt="Alternate Text" />
+                            <a style="display: block" class="img-apartment" target="_blank" ui-sref="apartmentdetail({id: apt.Id})"><img class="img-full" ng-src="{{apt.ImgList[0].Img}}" alt="Alternate Text" /></a>
                             <div class="summary-apartment">
-                                <p class="apartment-code">{{apt.Code}}</p>
-                                <p class="apartment-name">{{apt.Name | limitTo : 28}}{{apt.Name.length > 28 ? '...' : ''}}</p>
+                                <a style="color: #707070" ui-sref="apartmentdetail({id: apt.Id})" target="_blank" class="apartment-code">{{apt.Code}}</a>
+                                <a style="color: #707070" ui-sref="apartmentdetail({id: apt.Id})" target="_blank" class="apartment-name">{{apt.Name | limitTo : 28}}{{apt.Name.length > 28 ? '...' : ''}}</a>
                                 <div class="description-apartment">
                                     <p class="apartment-facility">Bedrooms: {{apt.NoBedRoom}}</p>
                                     <p class="apartment-address">{{apt.City}}</p>
