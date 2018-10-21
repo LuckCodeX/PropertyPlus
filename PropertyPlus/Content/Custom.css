@@ -3400,6 +3400,9 @@ input::-webkit-inner-spin-button {
 /*header{
     border-bottom: 1px solid #E4E4E4; 
 }*/
+.menu-user-header-bar{
+    border-bottom: 1px solid #E4E4E4;
+}
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;

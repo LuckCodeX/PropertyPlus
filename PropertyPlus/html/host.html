@@ -13,12 +13,12 @@
             <a class="user-name-header" href="#">{{userProfile.FullName}}</a>
             <img src="{{userProfile.Avatar}}" alt="Alternate Text" />
             <div class="menu-user-header-bar">
-                <a ui-sref="userprofile.general" class="element-user-header-bar">General</a>
+                <a ui-sref="host.dashboard" class="element-user-header-bar">Dashboard</a>
                 <a ui-sref="userprofile.manage" class="element-user-header-bar">Manage</a>
+                <a ui-sref="host.listing" class="element-user-header-bar">Listing</a>
                 <a ui-sref="userprofile.edit" class="element-user-header-bar">Edit profile</a>
                 <a ui-sref="userprofile.setting" class="element-user-header-bar">Account setting</a>
                 <a ui-sref="userprofile.refer" class="element-user-header-bar">Refer</a>
-                <a ui-sref="host.dashboard" class="element-user-header-bar">Host</a>
                 <a ng-click="logout()" class="element-user-header-bar">Logout</a>
             </div>
         </div>
