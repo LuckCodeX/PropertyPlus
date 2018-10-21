@@ -65,7 +65,7 @@ namespace PropertyPlus.Services
 
         public List<user_visit_item> GetListUserVisitItemByUserProfileId(int userProfileId)
         {
-            return UserVisitItemRepository.FindBy(p => p.user_visit.user_profile_id == userProfileId).ToList();
+            return UserVisitItemRepository.FindBy(p => p.user_visit.user_profile_id == userProfileId).Include(p => p.apartment.aparment_image).Include(p => p.apartment.apartment_content).ToList();
         }
 
         public user_visit_item GetUserVisitItemByIdAndUserProfileId(int id, int userProfileId)

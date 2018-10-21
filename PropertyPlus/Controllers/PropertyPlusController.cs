@@ -406,7 +406,13 @@ namespace PropertyPlus.Controllers
                         Code = p.apartment.code,
                         Name = p.apartment.apartment_content.FirstOrDefault(q => q.language == language).name,
                         NoBedRoom = p.apartment.no_bedroom,
-                        City = p.apartment.city
+                        City = p.apartment.city,
+                        ImgList = p.apartment.aparment_image.Select(q => new ApartmentImageModel()
+                        {
+                            Id = q.apartment_image_id,
+                            Type = q.type,
+                            Img = q.img
+                        }).ToList(),
                     }
                 }).ToList();
             }
