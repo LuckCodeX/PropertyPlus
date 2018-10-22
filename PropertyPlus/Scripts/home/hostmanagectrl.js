@@ -103,7 +103,9 @@ $scope.changeAparment=function(){
 
     $scope.uploadImg = function (event) {
         $scope.$watchCollection('images', function() {
-            if (($scope.images[$scope.images.length-1].url != null && $scope.images[$scope.images.length-1].Img == null )||
+            if($scope.images.length==0){
+                $scope.images.push({ file: null, url: null });
+            }else if (($scope.images[$scope.images.length-1].url != null && $scope.images[$scope.images.length-1].Img == null )||
                 ($scope.images[$scope.images.length-1].url == null && $scope.images[$scope.images.length-1].Img != null )) {
                 if ($scope.images.length <6) {
                     $scope.images.push({ file: null, url: null });
