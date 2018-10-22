@@ -11,34 +11,8 @@
         scope.$apply();
     }, 0);
     scope.searchForm = function(){
-        console.log(1);
         $scope.loadApartment();
     };
-
-    var statusFilter = true;
-    $('.list-btn-facilities .group-btn-facility .btn-facilities').click(function(){
-        var atrrb = $(this).attr("target-filter");
-        $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
-            if($(this).attr("id") != atrrb.replace("#","")){
-                $(this).removeClass("active");
-                $(this).parent().children('.btn-facilities').removeClass("active");
-            } 
-        });
-        $(this).toggleClass('active');
-        $(atrrb).toggleClass('active');
-        statusFilter=false;
-    });
-    $(".list-btn-facilities .group-btn-facility .card-filter").mouseup(function(event){
-           statusFilter=false;
-        });
-     $("body").mouseup(function(){ 
-        console.log(statusFilter);
-        if(statusFilter){
-            $('.btn-facilities.active').removeClass("active");
-            $('.card-filter.active').removeClass("active");
-        }
-         statusFilter=true; 
-    });
     
     if (scope.searchData) {
         $scope.searchWithFilter = scope.searchData;
@@ -58,9 +32,8 @@
             maxValue: $scope.searchWithFilter.FilterArea.MaxValue,
             options: {
               floor: 0,
-              step: 0.01,
-              ceil: 300,
-              precision: 3
+              step: 1,
+              ceil: 300
             },
           };
         for (var j = 0; j < $scope.searchWithFilter.FilterFacility.FacilityIds.length; j++) {
@@ -87,9 +60,8 @@
             maxValue: 300,
             options: {
               floor: 0,
-              step: 0.01,
-              ceil: 300,
-              precision: 3
+              step: 1,
+              ceil: 300
             },
           };
     }
@@ -114,19 +86,7 @@
             }
         }
     var clean = [0, 40, 65, 90, 115, 135, 150];
-    //clean[1] = 40;
-    //clean[2] = 65;
-    //clean[3] = 90;
-    //clean[4] = 115;
-    //clean[5] = 135;
-    //clean[6] = 150;
     var drink = [0, 3, 6, 9, 11, 13, 15];
-    //drink[1] = 3;
-    //drink[2] = 6;
-    //drink[3] = 9;
-    //drink[4] = 11;
-    //drink[5] = 13;
-    //drink[6] = 15;
     $scope.foreignTv = {};
     $scope.foreignTvs = [
         { name: 'None', value: '0' },
@@ -179,8 +139,10 @@
     }
 
     function getListApartment(){
+        console.log($scope.searchWithFilter);
         xhrService.post("GetListApartment",$scope.searchWithFilter)
             .then(function (data) {
+                console.log(data);
                 $scope.totalItems = data.data.total;
                 $scope.apartmentList = data.data.data;
                 if($scope.apartmentList.length > 0){
@@ -204,20 +166,22 @@
     }
 
     $scope.loadApartment = function () {
-        xhrService.get("GetAllFacilities").then(function (data) {
-            $scope.listFacility = data.data;
-            for (var i = 0; i < $scope.listFacility.length; i++) {
-                $scope.listFacility[i].Status = false;
-            };
+        if (!$scope.listFacility) {
+            xhrService.get("GetAllFacilities").then(function (data) {
+                $scope.listFacility = data.data;
+                for (var i = 0; i < $scope.listFacility.length; i++) {
+                    $scope.listFacility[i].Status = false;
+                };
+                initData();
+                getListApartment();
+            },
+            function (error) {
+                $scope.errorText = error.statusText;
+            });
+        }else{
             initData();
             getListApartment();
-        },
-        function (error) {
-            $scope.errorText = error.statusText;
-        });
-        
-        
-        
+        }
     }
 
     $scope.clearFacility = function(){
@@ -303,6 +267,7 @@
             });
         xhrService.post("GetListApartment",$scope.defaultData)
             .then(function (data) {
+                console.log(data);
                 $scope.apartmentList = data.data.data;
             },
                 function (error) {

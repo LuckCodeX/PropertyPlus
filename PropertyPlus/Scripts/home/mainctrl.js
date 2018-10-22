@@ -42,6 +42,30 @@
             $scope.userProfile = JSON.parse(Base64.decode(localStorage.getItem('user_profile')));
         }
 
+        var statusFilter = true;
+        $('body').on('click','.list-btn-facilities .group-btn-facility .btn-facilities',function(){
+            var atrrb = $(this).attr("target-filter");
+            $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
+                if($(this).attr("id") != atrrb.replace("#","")){
+                    $(this).removeClass("active");
+                    $(this).parent().children('.btn-facilities').removeClass("active");
+                } 
+            });
+            $(this).toggleClass('active');
+            $(atrrb).toggleClass('active');
+            statusFilter=false;
+        });
+        $('body').on("mouseup",".list-btn-facilities .group-btn-facility .card-filter",function(event){
+           statusFilter=false;
+        });
+         $("body").mouseup(function(){ 
+            if(statusFilter){
+                $('.btn-facilities.active').removeClass("active");
+                $('.card-filter.active').removeClass("active");
+            }
+             statusFilter=true; 
+        });
+
         //xhrService.get("GetListBlog/1/6/-1/").then(function (data) {
         //    $scope.blogList = data.data.data;
         //}, function (error) { });

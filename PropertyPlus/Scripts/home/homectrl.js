@@ -75,36 +75,12 @@
             maxValue: 300,
             options: {
               floor: 0,
-              step: 0.01,
-              ceil: 300,
-              precision: 3
+              step: 1,
+              ceil: 300
             },
           };
 
-        var statusFilter = true;
-        $('.list-btn-facilities .group-btn-facility .btn-facilities').click(function(){
-            var atrrb = $(this).attr("target-filter");
-            $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
-                if($(this).attr("id") != atrrb.replace("#","")){
-                    $(this).removeClass("active");
-                    $(this).parent().children('.btn-facilities').removeClass("active");
-                } 
-            });
-            $(this).toggleClass('active');
-            $(atrrb).toggleClass('active');
-            statusFilter=false;
 
-        });
-        $(".list-btn-facilities .group-btn-facility .card-filter").mouseup(function(event){
-               statusFilter=false;
-            });
-         $("body").mouseup(function(){ 
-            if(statusFilter){
-                $('.btn-facilities.active').removeClass("active");
-                $('.card-filter.active').removeClass("active");
-            }
-            statusFilter=true; 
-        });
     }
 
     $scope.clearFacility = function(){
