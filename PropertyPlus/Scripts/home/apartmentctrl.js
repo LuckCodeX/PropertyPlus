@@ -139,10 +139,8 @@
     }
 
     function getListApartment(){
-        console.log($scope.searchWithFilter);
         xhrService.post("GetListApartment",$scope.searchWithFilter)
             .then(function (data) {
-                console.log(data);
                 $scope.totalItems = data.data.total;
                 $scope.apartmentList = data.data.data;
                 if($scope.apartmentList.length > 0){
@@ -200,13 +198,13 @@
                 }
             }
             if(status){
-                apartment.service = getDataService();
+                apartment.service = getDataService(apartment);
                 apartmentList.push(apartment);
                 localStorage.setItem('apartmentList', JSON.stringify(apartmentList));
             }
         }else{
             var apartmentList = [];
-            apartment.service = getDataService();
+            apartment.service = getDataService(apartment);
             apartmentList.push(apartment);
             localStorage.setItem('apartmentList', JSON.stringify(apartmentList));
         }
@@ -356,25 +354,43 @@
         $scope.totalPrice = (($scope.apartment.Price + $scope.servicePrice) / extra).toFixed(2);
         $scope.perNightPrice = (($scope.totalPrice / 30) * 1.6).toFixed(2);
     }
-    function getDataService(){
-        var dataApartment = {
-            "ApartmentId":$scope.apartment.Id,
-            "Bill":Number($scope.electricBill),
-            "Cleaning":$scope.cleaning,
-            "IsDetergent":document.getElementById("checkboxToilet").checked,
-            "IsIncludeTax":document.getElementById("checkboxExtra").checked,
-            "IsInternetWifi":document.getElementById("checkboxInternet").checked,
-            "IsApartmentFee":document.getElementById("checkboxFee").checked,
-            "ServicePrice":$scope.servicePrice,
-            "TotalPrice":$scope.totalPrice,
-            "TvType":$scope.foreignTvs.indexOf($scope.foreignTv.selected),
-            "Water":$scope.bottle
-        };
+    function getDataService(apartment){
+        var dataApartment;
+        if($scope.apartment){
+            dataApartment = {
+                "ApartmentId":apartment.Id,
+                "Bill":Number($scope.electricBill),
+                "Cleaning":$scope.cleaning,
+                "IsDetergent":document.getElementById("checkboxToilet").checked,
+                "IsIncludeTax":document.getElementById("checkboxExtra").checked,
+                "IsInternetWifi":document.getElementById("checkboxInternet").checked,
+                "IsApartmentFee":document.getElementById("checkboxFee").checked,
+                "ServicePrice":$scope.servicePrice,
+                "TotalPrice":$scope.totalPrice,
+                "TvType":$scope.foreignTvs.indexOf($scope.foreignTv.selected),
+                "Water":$scope.bottle
+            };
+        }else{
+            var totalPrice = (apartment.Price + 206).toFixed(2);
+            dataApartment = {
+                ApartmentId: apartment.Id,
+                Bill: 0,
+                Cleaning: 3,
+                IsApartmentFee: true,
+                IsDetergent: true,
+                IsIncludeTax: false,
+                IsInternetWifi: true,
+                ServicePrice: 206,
+                TotalPrice: totalPrice,
+                TvType: 1,
+                Water: 4
+            };
+        }
         return dataApartment;
     }
     $scope.submitApartment = function(){
          if (localStorage && localStorage.getItem('user_profile')) {
-           var dataApartment = getDataService();
+           var dataApartment = getDataService($scope.apartment);
             var dataService = {"Items":[dataApartment]};
             // console.log(dataService);
             xhrService.post("AddVisitList", dataService).then(function (data) {
