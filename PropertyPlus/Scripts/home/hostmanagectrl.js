@@ -45,9 +45,7 @@ $scope.changeAparment=function(){
                 if ($scope.apartmentchoice.ImgList[i].Type == 0) {
                          $scope.banner_img.push($scope.apartmentchoice.ImgList[i]);
                     
-                }else if($scope.apartmentchoice.ImgList[i].Type == 2 ||
-                         $scope.apartmentchoice.ImgList[i].Type == 3 ||
-                         $scope.apartmentchoice.ImgList[i].Type == 4){
+                }else{
                     $scope.images.push($scope.apartmentchoice.ImgList[i]);
                 }
             };
