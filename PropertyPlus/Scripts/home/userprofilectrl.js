@@ -81,6 +81,13 @@
         function (error) {
             console.log(error.statusText);
         });
+        xhrService.get("GetYourListApartment/-1").then(function (data) {
+            $scope.yourApartmentList = data.data;
+            console.log($scope.yourApartmentList);
+        },
+        function (error) {
+            console.log(error.statusText);
+        });
     }
 
     $scope.deleteApartmentVisit = function(id){

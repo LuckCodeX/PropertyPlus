@@ -35,25 +35,31 @@
                     Your apartment
                 </div>
                 <div class="card-body">
-                    <div class="row product">
-                        <div class="product-img col-xs-4">
-                            <img style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                        </div>
+                    {{item | json}}
+                    <div class="row product" ng-repeat="item in yourApartmentList">
+                        <a ui-sref="apartmentdetail({id:item.Id})" target="_blank" class="product-img col-xs-4">
+                            <img style="width:100%;height:100%;" ng-src="{{item.ImgList[0].Img}}" alt="Alternate Text" />
+                        </a>
                         <div class="product-description col-xs-5">
-                            <p class="product-code">HOUSE P123456</p>
-                            <p class="product-name">Royal City R2 Apartment Fully Fumished & Marble Floor</p>
-                            <div class="product-left-side">
+                            <a ui-sref="apartmentdetail({id:item.Id})" target="_blank" class="product-code">{{item.Code}}</a>
+                            <a ui-sref="apartmentdetail({id:item.Id})" target="_blank" class="product-name">{{item.Name}}</a>
+                            <!-- <div class="product-left-side">
                                 <p class="expired">Expired:</p>
                             </div>
                             <div class="product-right-side">
                                 <p class="expired-value">25/09/2019</p>
+                            </div> -->
+                            <div class="product-left-side">
+                                <p class="apartment-facility">Bedrooms: 3</p>
+                                <p class="">Hà Nội</p>
                             </div>
                         </div>
-                        <div class="product-action">
+
+                        <!-- <div class="product-action">
                             <a href="#"><i class="fas fa-th-list"></i></a>
                             <a href="#"><i class="fas fa-search"></i></a>
                             <a href="#"><i class="fas fa-bell"></i></a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

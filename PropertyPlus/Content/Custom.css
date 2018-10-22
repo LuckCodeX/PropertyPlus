@@ -3404,6 +3404,13 @@ input::-webkit-inner-spin-button {
 .menu-user-header-bar{
     border-bottom: 1px solid #E4E4E4;
 }
+.apartment-list .product-action a{
+    display: inline-block;
+    margin-left: 15px;
+}
+.apartment-list .product-action a:first-child{
+    margin-left: 0;
+}
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;
