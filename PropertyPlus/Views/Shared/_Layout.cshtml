@@ -64,7 +64,8 @@
                     <a class="text-center" href="#">{{userProfile.FullName}}</a>
                 </div>
                 <div class="user-head-bar">
-                    <img src="{{userProfile.Avatar}}" />
+                    <img ng-if="userProfile.Avatar" ng-src="{{userProfile.Avatar}}" />
+                    <!-- <img ng-if="!userProfile.Avatar" src="Upload/avatar/noavatar.jpg"> -->
                 </div>
                 <div class="menu-user-header-bar">
                     <a ui-sref="userprofile.general" class="element-user-header-bar">General</a>
@@ -258,6 +259,7 @@
     <script src="/Scripts/home/ui-select.js"></script>
     <script src="/Scripts/home/imageupload.js"></script>
     <script src="/Scripts/ngAutocomplete.js"></script>
+    <script type="text/javascript" src="/Scripts/ng-img-crop.js"></script>
     <script type="text/javascript" src="/Scripts/rzslider.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk&libraries=places"></script>
     <meta name="google-signin-client_id" content="439403319740-026ejv974l6jueshfplgdrfgg14slcn0.apps.googleusercontent.com">

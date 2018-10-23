@@ -226,7 +226,7 @@
         };
         $scope.confirm_img = confirm_img;
         $scope.data.ImgList = [];
-        if ($scope.banner_img.url != null) {
+        if ($scope.banner_img != null) {
             $scope.data.ImgList.push({
                 "Img_Base64": $scope.banner_img.url,
                 "Type": 0

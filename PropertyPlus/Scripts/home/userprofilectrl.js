@@ -37,15 +37,15 @@
     $scope.userprofile = {
         verification_images: []
     };
+
     $scope.loadHeaderHost = function () {
         if (!(localStorage && localStorage.getItem('user_profile'))) {
             window.location.href = "/";
         }
     }
     $scope.submitEditProfile = function () {
-        $scope.data.ImgVerification1 = document.getElementById("name-file1").value;
-        $scope.data.ImgVerification2 = document.getElementById("name-file2").value;
-        //$scope.data.Avatar_Base64 = document.getElementById("Avatar_Base64").src;
+        if($scope.data.ImgVerification1_Base64) $scope.data.ImgVerification1_Base64 = $scope.data.ImgVerification1_Base64.url;
+        if($scope.data.ImgVerification2_Base64) $scope.data.ImgVerification2_Base64 = $scope.data.ImgVerification2_Base64.url;
         var cloneObject = $scope.date;
         $scope.data.Gender = cloneObject.gender.value;
         if (cloneObject.year.value == "1900") {
@@ -60,6 +60,7 @@
                         0)).getTime() /
                     1000);
         };
+        console.log($scope.data);
         xhrService.post("EditUserProfile", $scope.data).then(function (data) {
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             var scope = angular.element('body[ng-controller="MainCtrl"]').scope();
@@ -68,6 +69,7 @@
                 scope.$apply();
             }, 0);
             $anchorScroll();
+            $location.url('/user-profile/general');
         },function (error) {
                 $scope.errorText = error.statusText;
             });
@@ -115,12 +117,28 @@
 
     $scope.loadUserEdit = function () {
         xhrService.get("GetUserProfile/").then(function (data) {
+            $scope.myImage = "";
+            $scope.myCroppedImage = "";
+            var handleFileSelect = function(evt) {
+                var file = evt.currentTarget.files[0];
+                var reader = new FileReader();
+                reader.onload = function(evt) {
+                    $scope.$apply(function($scope) {
+                        $scope.myImage = evt.target.result;
+                    });
+                };
+                reader.readAsDataURL(file);
+            };
+           
+            setTimeout(function() {
+                angular.element(document.querySelector("#testFile")).on("change", handleFileSelect);
+                
+            },
+            1000);
             if (data.data.ImgVerification1 != null && data.data.ImgVerification1 != "") {
-                $('#name-file1').val(data.data.ImgVerification1);
                 $('#delete-file1').addClass('active');
             }
             if (data.data.ImgVerification2 != null && data.data.ImgVerification2 != "") {
-                $('#name-file2').val(data.data.ImgVerification2);
                 $('#delete-file2').addClass('active');
             }
             if (data.data.Avatar_Base64 != null) document.getElementById("Avatar_Base64").src = data.data.Avatar_Base64;
