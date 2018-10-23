@@ -21,5 +21,32 @@
             <button type="button" ng-click="saveHostManage()" class="manager-describe-btn" style="margin-top: 25px;float:right;">Save</button>
         </div>-->
 
+
     </div>
 </div>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": true,
+  "progressBar": false,
+  "positionClass": "toast-bottom-full-width",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "3000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+    
+    $('#linkButton').click(function() {
+       toastr.info('Save success');
+    });
+  });
+  </script>
