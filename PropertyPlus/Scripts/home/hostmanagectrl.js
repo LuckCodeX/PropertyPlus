@@ -27,6 +27,18 @@ function HostmanageCtrl($scope,
          function (error) {
             console.log(error.statusText);
         });
+
+        xhrService.get("GetUserProfile/").then(function (data) {
+            $scope.userProfile=data.data;
+
+        },
+         function (error) {
+            console.log(error.statusText);
+        });
+
+
+
+
     };
 $scope.isDisabled = true;
 $scope.changeAparment=function(){
