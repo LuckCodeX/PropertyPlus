@@ -16,6 +16,8 @@ namespace PropertyPlus.Controllers
     public class PropertyPlusController : BaseController
     {
         private IService _service = new Service();
+        private readonly string ImgAvatarPath = "http://propertyplus.com.vn/Upload/avatar/";
+        private readonly string ImgApartmentPath = "http://propertyplus.com.vn/Upload/apartment/";
 
         [HttpPost]
         [Route("Register")]
@@ -310,21 +312,21 @@ namespace PropertyPlus.Controllers
 
                     if (!Equals(model.Avatar_Base64, null))
                     {
-                        userProfile.avatar = _service.SaveImage("~/Upload/avatar/",
-                            "Avatar_" + userProfile.user_profile_id + ".png",
+                        userProfile.avatar = ImgAvatarPath + _service.SaveImage("~/Upload/avatar/",
+                            "Avatar_" + userProfile.user_profile_id + "_" + ConvertDatetime.GetCurrentUnixTimeStamp() +  ".png",
                             model.Avatar_Base64);
                     }
 
                     if (!Equals(model.ImgVerification1_Base64, null))
                     {
-                        userProfile.img_verification_1 = _service.SaveImage("~/Upload/avatar/",
+                        userProfile.img_verification_1 = ImgAvatarPath + _service.SaveImage("~/Upload/avatar/",
                             "verification_" + userProfile.user_profile_id + "_1.png",
                             model.ImgVerification1_Base64);
                     }
 
                     if (!Equals(model.ImgVerification2_Base64, null))
                     {
-                        userProfile.img_verification_2 = _service.SaveImage("~/Upload/avatar/",
+                        userProfile.img_verification_2 = ImgAvatarPath + _service.SaveImage("~/Upload/avatar/",
                             "verification_" + userProfile.user_profile_id + "_2.png",
                             model.ImgVerification2_Base64);
                     }
@@ -454,6 +456,7 @@ namespace PropertyPlus.Controllers
                                 user_visit_id = 0,
                                 user_profile_id = userProfile.user_profile_id,
                                 created_at = ConvertDatetime.GetCurrentUnixTimeStamp(),
+                                status = 0
                             };
                             _service.SaveUserVisit(userVisit);
 
@@ -573,7 +576,7 @@ namespace PropertyPlus.Controllers
                             {
                                 apartment_id = apartment.apartment_id,
                                 type = img.Type,
-                                img = "http://propertyplus.com.vn/Upload/apartment/" + _service.SaveImage("~/Upload/apartment/",
+                                img = ImgApartmentPath + _service.SaveImage("~/Upload/apartment/",
                                     "apt_" + ConvertDatetime.GetCurrentUnixTimeStamp() + "_" + idx + ".png",
                                     img.Img_Base64)
                             };
@@ -654,7 +657,7 @@ namespace PropertyPlus.Controllers
                                     img.type = item.Type;
                                     if (!Equals(item.Img_Base64, null))
                                     {
-                                        img.img = "http://propertyplus.com.vn/Upload/apartment/" + _service.SaveImage("~/Upload/apartment/",
+                                        img.img = ImgApartmentPath + _service.SaveImage("~/Upload/apartment/",
                                             "apt_" + ConvertDatetime.GetCurrentUnixTimeStamp() + "_" +
                                             img.apartment_image_id + ".png",
                                             item.Img_Base64);
@@ -676,7 +679,7 @@ namespace PropertyPlus.Controllers
                                 };
                                 if (!Equals(item.Img_Base64, null))
                                 {
-                                    aptImg.img = "http://manager.propertyplus.com.vn/Upload/apartment/" + _service.SaveImage("~/Upload/apartment/",
+                                    aptImg.img = ImgApartmentPath + _service.SaveImage("~/Upload/apartment/",
                                         "apt_" + ConvertDatetime.GetCurrentUnixTimeStamp() + "_" + imgIdx
                                          + ".png",
                                         item.Img_Base64);

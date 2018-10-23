@@ -279,6 +279,9 @@
     <Compile Include="Models\user_visit.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\user_visit_history.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\user_visit_item.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
