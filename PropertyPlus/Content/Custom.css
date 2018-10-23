@@ -3337,6 +3337,15 @@ input::-webkit-inner-spin-button {
     background-color: #464878;
     outline:none !important;
 }
+.facility-line .material-checkbox > input:not(:checked){
+    outline: none !important;
+}
+.facility-line .material-checkbox > input:not(:checked) + span::before{
+    outline: none !important;
+}
+.facility-line .material-checkbox > input:not(:checked) + span::after{
+    outline: none !important;
+}
 .facility-line .material-checkbox > span::before{
     border-color: #464878;
 }
