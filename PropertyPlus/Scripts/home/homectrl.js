@@ -83,6 +83,21 @@
 
     }
 
+    $scope.clearPrice = function(){
+        $scope.priceSlider.minValue = 0;
+        $scope.priceSlider.maxValue = 5000;
+    }
+
+    $scope.clearArea = function(){
+        $scope.areaSlider.minValue = 0;
+        $scope.areaSlider.maxValue = 300;
+    }
+
+    $scope.clearRoom = function(){
+        $scope.bedroom = 0;
+        $scope.bathroom = 0;
+    }
+
     $scope.clearFacility = function(){
         for (var i = 0; i < $scope.listFacility.length; i++) {
             $scope.listFacility[i].Status = false;

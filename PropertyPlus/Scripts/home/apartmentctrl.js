@@ -130,6 +130,21 @@
         $scope.searchWithFilter.Search = scope.txtSearch === undefined ? "" : scope.txtSearch;
     }
 
+    $scope.clearPrice = function(){
+        $scope.priceSlider.minValue = 0;
+        $scope.priceSlider.maxValue = 5000;
+    }
+
+    $scope.clearArea = function(){
+        $scope.areaSlider.minValue = 0;
+        $scope.areaSlider.maxValue = 300;
+    }
+
+    $scope.clearRoom = function(){
+        $scope.bedroom = 0;
+        $scope.bathroom = 0;
+    }
+
     $scope.redirectVisitList = function(){
         if (localStorage && localStorage.getItem('user_profile')) {
             $location.path("/user-profile/general");
