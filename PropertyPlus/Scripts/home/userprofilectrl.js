@@ -69,7 +69,9 @@
                 scope.$apply();
             }, 0);
             $anchorScroll();
-            $location.url('/user-profile/general');
+            toastr.info('Save success');
+            // $scope.data = {};
+            // $scope.loadUserEdit();
         },function (error) {
                 $scope.errorText = error.statusText;
             });
@@ -116,6 +118,23 @@
     }
 
     $scope.loadUserEdit = function () {
+        toastr.options = {
+          "closeButton": false,
+          "debug": false,
+          "newestOnTop": true,
+          "progressBar": false,
+          "positionClass": "toast-bottom-full-width",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "3000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
         xhrService.get("GetUserProfile/").then(function (data) {
             $scope.myImage = "";
             $scope.myCroppedImage = "";

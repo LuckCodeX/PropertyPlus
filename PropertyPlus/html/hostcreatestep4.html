@@ -9,11 +9,13 @@
                 <div ng-repeat="image in imagesConfirm track by $index" class="col-md-12 img-upload-current drag-drop-img">
                     <i ng-show="imagesConfirm[$index].url" ng-click="imagesConfirm.splice($index, 1)" class="remove-img-btn fas fa-times"></i>
                     <img ng-show="imagesConfirm[$index].url" class="img" ng-src="{{imagesConfirm[$index].url}}" />
-                    <div class="btn-upload" ng-class="imagesConfirm[$index].url ? 'opacityZero':''">
+                </div>
+                <div ng-show="imagesConfirm.length < 5" class="col-md-12 drag-drop-img img-upload-current">
+                    <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-cloud-upload-alt"></i></p>
                             <p>Drag n drop or click to upload </p>
-                            <input accept="image/*" type="file"  upload-img="uploadConfirmImg" image="imagesConfirm[$index]"
+                            <input type="file" accept="image/*" multiple image="imagesConfirm" length-file="5" upload-img="uploadImg"
                                    resize-max-height="300"
                                    resize-max-width="250"
                                    resize-quality="0.7" />

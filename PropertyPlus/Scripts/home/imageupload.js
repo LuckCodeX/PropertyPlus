@@ -54,7 +54,6 @@ angular.module('imageupload', [])
             reader.onloadend = function () {
                 base64Url = reader.result;
                 var imageResult;
-                console.log(scope);
                 if (scope.uploadType == "string") {
                     imageResult = base64Url;
                 }else{
@@ -65,9 +64,7 @@ angular.module('imageupload', [])
                 };
 
                 scope.$apply(function () {
-
                     if (attrs.multiple) return scope.image.push(imageResult);
-
                     scope.image = imageResult;
 
                 });
@@ -85,6 +82,7 @@ angular.module('imageupload', [])
         scope: {
             image: '=',
             uploadType:'=',
+            lengthFile:'=',
             resizeMaxHeight: '@?',
             resizeMaxWidth: '@?',
             resizeQuality: '@?',
@@ -99,17 +97,27 @@ angular.module('imageupload', [])
             var applyScope = setApplyScope(scope, attrs);
 
             element.bind('change', function (evt) {
-
                 var files = evt.target.files;
-
+                var countFile = files.length;
+                if (scope.lengthFile) {
+                    countFile = Number(scope.lengthFile) - scope.image.length;
+                };
                 for(var i = 0, file; file = files[i]; i++) {
+                    if (attrs.multiple) {
+                        if (i < countFile) {
+                            if(scope.resizeMaxHeight || scope.resizeMaxWidth) { //resize image
 
-                    if(scope.resizeMaxHeight || scope.resizeMaxWidth) { //resize image
-
-                        resizeImageFile(file, file.name, scope, applyScope);
-
-                    } else { //no resizing
-                        applyScope(file);
+                                resizeImageFile(file, file.name, scope, applyScope);
+                            } else { //no resizing
+                                applyScope(file);
+                            }
+                        }
+                    }else{
+                        if(scope.resizeMaxHeight || scope.resizeMaxWidth) { //resize image
+                            resizeImageFile(file, file.name, scope, applyScope);
+                        } else { //no resizing
+                            applyScope(file);
+                        }
                     }
                     
                 }
