@@ -10,7 +10,6 @@ function HostmanageCtrl($scope,
     shareData) {
 
     $scope.loadHostManage=function(){
-        
         xhrService.get("GetYourListApartment/-1").then(function (data) {
             $scope.yourApartmentlist=data.data;
             $scope.apartmentId = shareData.get('apartmentIdVisit');
@@ -42,7 +41,9 @@ function HostmanageCtrl($scope,
     };
 $scope.isDisabled = true;
 $scope.changeAparment=function(){
-
+    $scope.images = {};
+    $scope.images[0] = [];
+    var listImg = [];
         xhrService.get("GetApartmentInformation/"+ $scope.apartmentId).then(function (data) {
             // console.log(data);
             $scope.apartmentchoice=data.data;
@@ -50,17 +51,19 @@ $scope.changeAparment=function(){
             $scope.editorOptions = {
                 language: 'vi'
             };
-            $scope.images = [];
+            
             $scope.banner_img=[];
             $scope.uploadImg();
+
             for (var i = 0; i < $scope.apartmentchoice.ImgList.length; i++) {
                 if ($scope.apartmentchoice.ImgList[i].Type == 0) {
                          $scope.banner_img.push($scope.apartmentchoice.ImgList[i]);
                     
                 }else{
-                    $scope.images.push($scope.apartmentchoice.ImgList[i]);
+                    listImg.push($scope.apartmentchoice.ImgList[i]);
                 }
             };
+            $scope.images[0] = listImg;
             var myLatLng = { lat: $scope.apartmentchoice.Latitude, lng: $scope.apartmentchoice.Longitude };
             if (document.getElementById('map')) {
                 var map = new google.maps.Map(document.getElementById('map'),
@@ -84,8 +87,7 @@ $scope.changeAparment=function(){
     
     $scope.loadPhoto = function(){
         if ($scope.images == undefined) {
-            $scope.images = [];
-            $scope.images.push({ file: null, url: null });
+            $scope.images = {};
         }
         $scope.oldLengthImg = 1;
     }
@@ -112,18 +114,18 @@ $scope.changeAparment=function(){
     }
 
     $scope.uploadImg = function (event) {
-        $scope.$watchCollection('images', function() {
-            if($scope.images.length==0){
-                $scope.images.push({ file: null, url: null });
-            }else if (($scope.images[$scope.images.length-1].url != null && $scope.images[$scope.images.length-1].Img == null )||
-                ($scope.images[$scope.images.length-1].url == null && $scope.images[$scope.images.length-1].Img != null )) {
-                if ($scope.images.length <6) {
-                    $scope.images.push({ file: null, url: null });
-                    return;
-                }
+        // $scope.$watchCollection('images', function() {
+        //     if($scope.images.length==0){
+        //         $scope.images.push({ file: null, url: null });
+        //     }else if (($scope.images[$scope.images.length-1].url != null && $scope.images[$scope.images.length-1].Img == null )||
+        //         ($scope.images[$scope.images.length-1].url == null && $scope.images[$scope.images.length-1].Img != null )) {
+        //         if ($scope.images.length <6) {
+        //             $scope.images.push({ file: null, url: null });
+        //             return;
+        //         }
                 
-            }
-         });
+        //     }
+        //  });
     };
 
     $scope.saveHostManage = function(){
@@ -140,16 +142,16 @@ $scope.changeAparment=function(){
         }
         
        
-        if ($scope.images.length > 1) {
-            if ($scope.images[$scope.images.length - 1].url == null && $scope.images[$scope.images.length - 1].Img == null) {
-                $scope.images.splice(-1, 1);
+        if ($scope.images[0].length > 1) {
+            if ($scope.images[0][$scope.images[0].length - 1].url == null && $scope.images[0][$scope.images[0].length - 1].Img == null) {
+                $scope.images[0].splice(-1, 1);
             }
-            for (var i = 0; i < $scope.images.length; i++) {
-                if ($scope.images[i].Img != null) {
-                    $scope.apartmentchoice.ImgList.push($scope.images[i]);
+            for (var i = 0; i < $scope.images[0].length; i++) {
+                if ($scope.images[0][i].Img != null) {
+                    $scope.apartmentchoice.ImgList.push($scope.images[0][i]);
                 }else{
                     var item = {
-                        "Img_Base64": $scope.images[i].url,
+                        "Img_Base64": $scope.images[0][i].url,
                         "Type": -1
                     }
                     $scope.apartmentchoice.ImgList.push(item);

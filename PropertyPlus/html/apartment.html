@@ -19,7 +19,7 @@
                                         <div class="min-bubble">$ {{priceSlider.minValue}}</div>
                                         <div class="max-bubble">$ {{priceSlider.maxValue}}</div>
                                     </div>
-                                    <button ng-click="loadApartment()" class="btn-apply">Apply</button>
+                                    <button ng-click="clearPrice()" type="button" class="float-right btn-apply">Clear</button>
                                 </div>
 
                             </div>
@@ -44,7 +44,7 @@
                                         </div>
                                         <span class="float-right quantity">{{bathroom}}</span>
                                     </div>
-                                    <button ng-click="loadApartment()" class="btn-apply">Apply</button>
+                                    <button ng-click="clearRoom()" type="button" class="float-right btn-apply">Clear</button>
                                 </div>
                             </div>
                             <div class="group-btn-facility">
@@ -61,7 +61,7 @@
                                         <div class="min-bubble">{{areaSlider.minValue}} m<sup>2</sup></div>
                                         <div class="max-bubble">{{areaSlider.maxValue}} m<sup>2</sup></div>
                                     </div>
-                                    <button ng-click="loadApartment()" class="btn-apply">Apply</button>
+                                    <button ng-click="clearArea()" type="button" class="float-right btn-apply">Clear</button>
                                 </div>
                             </div>
                             <div class="group-btn-facility">
@@ -78,8 +78,7 @@
                                             <span>{{facility.Content.Name}}</span>
                                         </div>
                                     </div>
-                                    <button ng-click="clearFacility()" class="btn-clear">Clear</button>
-                                    <button ng-click="loadApartment()" class="btn-apply">Apply</button>
+                                    <button ng-click="clearFacility()" type="button" class="float-right btn-apply">Clear</button>
                                 </div>
 
                             </div>
@@ -190,7 +189,7 @@
                                 </div>
                                 <div class="apartment-owner">
                                     <p>Owner</p>
-                                    <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;border:1px solid #707070;" ng-src="/Upload/avatar/{{apartment.UserProfileOwner.Avatar}}" alt="">
+                                    <img class="box-shadow" style="width: 49.12px;height: 49.12px;border-radius:50%;border:1px solid #707070;" ng-src="{{apartment.UserProfileOwner.Avatar}}" alt="">
                                     <p class="owner-name">{{apartment.UserProfileOwner.FullName}}</p>
                                 </div>
                                 <div class="apartment-interacts">

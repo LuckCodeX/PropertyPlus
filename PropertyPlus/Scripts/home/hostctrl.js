@@ -6,6 +6,8 @@
     $sce,
     xhrService,
     $anchorScroll,$state,shareData) {
+    $scope.imagess = [];
+    $scope.imagesListLength = 0;
     $scope.loadHeaderHost = function () {
         if (!(localStorage && localStorage.getItem('user_profile'))) {
             window.location.href = "/";
@@ -79,7 +81,6 @@
         }
         if ($scope.images == undefined) {
             $scope.images = [];
-            $scope.images.push({ file: null, url: null });
         }
         $scope.oldLengthImg = 1;
     }
@@ -112,7 +113,7 @@
         }
         if ($scope.imagesConfirm == undefined) {
             $scope.imagesConfirm = [];
-            $scope.imagesConfirm.push({ file: null, url: null });
+           
         }
     }
 
@@ -137,22 +138,63 @@
 
     }
 
-    $scope.uploadImg = function (event) {
-        $scope.$watchCollection('images', function() {
-            if ($scope.images[$scope.images.length-1].url != null && $scope.images.length <6) {
-                $scope.images.push({ file: null, url: null });
-                return;
+    $scope.addToListImg = function(images,max,index,total){
+        var count = 0;
+        if ($scope.images.length>0) {
+            if($scope.images[$scope.images.length-1].url != null){
+                count = max - $scope.images.length;
+            }else{
+                count = max - $scope.images.length + 1;
             }
-         });
+        }else{
+            count = max;
+        }
+        // if (oldLength >0) oldLength += 1;
+        if (total == images.length) {
+            if (total >= count)
+                { quantity = count }
+            else if(count >= total)
+                {quantity = total} ;
+            for (var i = 0; i < quantity; i++) {
+                if (i == 0) {
+                    if ($scope.images.length > 0) {
+                        $scope.images[$scope.images.length-1] = images[i];
+                    }else{
+                        $scope.images[0] = images[i];
+                    }
+                }else{
+                    $scope.images.push(images[i]);
+                }
+            }
+            $scope.imagess = [];
+        }
+    }
+
+    // $scope.getImageLength = function(max){
+    //     console.log(1);
+    //     if ($scope.images.length>0) {
+    //         if($scope.images[$scope.images.length-1].url != null){
+    //             console.log(max-$scope.images.length+1);
+    //             return max-$scope.images.length+1;
+    //         }else{
+    //             return max-$scope.images.length;
+    //         }
+    //     }else{
+    //         return max;
+    //     }
+        
+    // }
+
+    $scope.uploadImg = function (event) {
     };
 
     $scope.uploadConfirmImg = function (event) {
-        $scope.$watchCollection('imagesConfirm', function() {
-            if ($scope.imagesConfirm[$scope.imagesConfirm.length-1].url != null && $scope.imagesConfirm.length <5) {
-                $scope.imagesConfirm.push({ file: null, url: null });
-                return;
-            }
-         });
+        // $scope.$watchCollection('imagesConfirm', function() {
+        //     if ($scope.imagesConfirm[$scope.imagesConfirm.length-1].url != null && $scope.imagesConfirm.length <5) {
+        //         $scope.imagesConfirm.push({ file: null, url: null });
+        //         return;
+        //     }
+        //  });
     };
 
     $scope.deleteBanner = function(){

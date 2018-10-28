@@ -17,22 +17,23 @@
                                 </span>
                             </div>
                         </div>
-                        <div ng-repeat="image in images track by $index" class="col-md-4 another-img-upload img-upload-current">
-                            <i ng-click="images.splice($index, 1)" ng-if="images[$index].url || images[$index].Img" class="remove-img-btn fas fa-times"></i>
-                            <img ng-show="images[$index].url" class="img" ng-src="{{images[$index].url}}" />
-                            <img ng-show="images[$index].Img" class="img" ng-src="{{images[$index].Img}}" />
-                            <div class="btn-upload" ng-class="(images[$index].url || images[$index].Img) ? 'opacityZero':''">
+                        <div ng-repeat="image in images[0] track by $index" class="col-md-4 another-img-upload img-upload-current">
+                            <i ng-click="images[0].splice($index, 1)" ng-if="images[0][$index].url || images[0][$index].Img" class="remove-img-btn fas fa-times"></i>
+                            <img ng-show="images[0][$index].url" class="img" ng-src="{{images[0][$index].url}}" />
+                            <img ng-show="images[0][$index].Img" class="img" ng-src="{{images[0][$index].Img}}" />
+                        </div>
+                        <div ng-show="images[0].length < 6" class="col-md-4 another-img-upload img-upload-current">
+                            <div class="btn-upload">
                                 <span class="btn-file">
                                     <p> <i class="fas fa-plus"></i></p>
                                     <p>add another</p>
-                                    <input ng-disabled="isDisabled" type="file" accept="image/*" upload-img="uploadImg" image="images[$index]"
+                                    <input type="file" accept="image/*" multiple image="images[0]" length-file="6" upload-img="uploadImg"
                                            resize-max-height="300"
                                            resize-max-width="250"
                                            resize-quality="0.7" />
                                 </span>
                             </div>
                         </div>
-                        
                     </div>
                     <div class="col-md-12">
                         <button type="button" id="linkButton" ng-disabled="isDisabled"  ng-click="saveHostManage()" class="manager-describe-btn" style="margin-top: 25px;float:right;    margin-bottom: 170px;">Save</button>

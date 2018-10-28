@@ -19,11 +19,13 @@
                 <div ng-repeat="image in images track by $index" class="col-md-4 another-img-upload img-upload-current">
                     <i ng-click="images.splice($index, 1)" ng-if="images[$index].url" class="remove-img-btn fas fa-times"></i>
                     <img ng-show="images[$index].url" class="img" ng-src="{{images[$index].url}}" />
-                    <div class="btn-upload" ng-class="images[$index].url ? 'opacityZero':''">
+                </div>
+                <div ng-show="images.length < 6" class="col-md-4 another-img-upload img-upload-current">
+                    <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-plus"></i></p>
                             <p>add another</p>
-                            <input type="file" accept="image/*" upload-img="uploadImg" image="images[$index]"
+                            <input type="file" accept="image/*" multiple image="images" length-file="6" upload-img="uploadImg"
                                    resize-max-height="300"
                                    resize-max-width="250"
                                    resize-quality="0.7" />
