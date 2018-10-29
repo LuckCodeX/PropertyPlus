@@ -77,5 +77,9 @@ namespace PropertyPlus.Services
         List<user_visit_item> GetListUserVisitItemByUserProfileId(int userProfileId);
         user_visit_item GetUserVisitItemByIdAndUserProfileId(int id, int userProfileId);
         void DeleteUserVisitItem(user_visit_item userVisit);
+        project_overview GetProjectOverviewById(int id);
+        void SaveProjectOverview(project_overview content);
+        void DeleteAllProjectFacilities(List<project_facility> projectFacility);
+        void SaveProjectFacility(project_facility fac);
     }
 }

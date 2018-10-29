@@ -57,41 +57,54 @@
                             <tr>
                                 <th>Tên</th>
                                 <th>Ảnh đại diện</th>
+                                <th>Phân loại</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Content.Name)
+                                </td>
+                                <td>
+                                    <img src="~/Upload/@item.Img" height="50" width="100" />
+                                </td>
+                                @if (item.Type == 0)
+                                {
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Content.Name)
+                                        Loại thường
                                     </td>
+                                }
+                                else if (item.Type == 1)
+                                {
                                     <td>
-                                        <img src="~/Upload/@item.Img" height="50" width="100" />
+                                        Trọng điểm
                                     </td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-white dropdown-toggle"
-                                                    data-toggle="dropdown">
-                                                Thao tác <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li>
-                                                    <a href="@Url.Action("ProjectDetail", new {id = item.Id})">
-                                                        <i class="fas fa-edit"></i> Sửa
-                                                    </a>
-                                                </li>
-                                                <li class="divider"></li>
-                                                <li>
-                                                    <a href="@Url.Action("DeleteProject", new{id = item.Id})" onclick="return confirm('Bạn có chắc muốn xóa bản ghi này?')">
-                                                        <i class="fas fa-minus-circle"></i> Xóa
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+                                }
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-white dropdown-toggle"
+                                                data-toggle="dropdown">
+                                            Thao tác <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li>
+                                                <a href="@Url.Action("ProjectDetail", new {id = item.Id})">
+                                                    <i class="fas fa-edit"></i> Sửa
+                                                </a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <a href="@Url.Action("DeleteProject", new{id = item.Id})" onclick="return confirm('Bạn có chắc muốn xóa bản ghi này?')">
+                                                    <i class="fas fa-minus-circle"></i> Xóa
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

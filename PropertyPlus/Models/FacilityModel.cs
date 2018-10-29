@@ -13,6 +13,7 @@ namespace PropertyPlus.Models
         public List<FacilityContentModel> ContentList { get; set; }
         public FacilityContentModel Content { get; set; }
         public int ApartmentFacilityId { get; set; }
+        public bool Selected { get; set; }
     }
 
     public class FacilityContentModel
