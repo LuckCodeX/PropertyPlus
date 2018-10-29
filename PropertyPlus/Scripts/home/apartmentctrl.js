@@ -171,7 +171,12 @@
                         title: $scope.apartmentList[0].Address
                     });
                 }
-                
+                    if($('input[name="switch"]').prop('checked')){
+                        $(document).ready(function(){
+                            $('.thumbnail-choose-home').toggleClass('col-lg-3');
+                        });
+
+                    }
             },
             function (error) {
                 console.log(error.statusText);

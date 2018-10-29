@@ -43,7 +43,7 @@
         }
 
         var statusFilter = true;
-        $('body').on('click','.list-btn-facilities .group-btn-facility .btn-facilities',function(){
+        $('body').on('mouseup','.list-btn-facilities .group-btn-facility .btn-facilities',function(){
             var atrrb = $(this).attr("target-filter");
             $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
                 if($(this).attr("id") != atrrb.replace("#","")){
@@ -55,15 +55,17 @@
             $(atrrb).toggleClass('active');
             statusFilter=false;
         });
-        $('body').on("mouseup",".list-btn-facilities .group-btn-facility .card-filter",function(event){
+        $('body').on("mouseup",".list-btn-facilities .group-btn-facility",function(event){
            statusFilter=false;
         });
          $("body").mouseup(function(){ 
             if(statusFilter){
                 $('.btn-facilities.active').removeClass("active");
                 $('.card-filter.active').removeClass("active");
+            
             }
-             statusFilter=true; 
+              statusFilter=true; 
+              
         });
 
         //xhrService.get("GetListBlog/1/6/-1/").then(function (data) {
