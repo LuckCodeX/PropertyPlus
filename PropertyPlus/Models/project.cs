@@ -30,6 +30,7 @@ namespace PropertyPlus.Models
         public string slide_1 { get; set; }
         public string slide_2 { get; set; }
         public string slide_3 { get; set; }
+        public string logo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<project_content> project_content { get; set; }

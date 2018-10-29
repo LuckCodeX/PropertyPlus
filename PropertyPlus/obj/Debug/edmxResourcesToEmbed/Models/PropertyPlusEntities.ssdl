@@ -110,6 +110,7 @@
     <Property Name="slide_1" Type="varchar" MaxLength="100" />
     <Property Name="slide_2" Type="varchar" MaxLength="100" />
     <Property Name="slide_3" Type="varchar" MaxLength="100" />
+    <Property Name="logo" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="project_content">
     <Key>

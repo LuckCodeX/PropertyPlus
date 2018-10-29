@@ -835,7 +835,8 @@ namespace PropertyPlus.Controllers
                     Id = p.project_id,
                     Content = _service.ConvertProjectContentToModel(p.project_content.FirstOrDefault(q => q.language == language)),
                     Type = p.type,
-                    Img = p.img
+                    Img = p.img,
+                    Logo = p.logo
                 }).ToList();
             }
 
