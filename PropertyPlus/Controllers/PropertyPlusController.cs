@@ -833,11 +833,65 @@ namespace PropertyPlus.Controllers
                 return _service.GetAllProject().Select(p => new ProjectModel()
                 {
                     Id = p.project_id,
-                    Name = p.project_content.FirstOrDefault(q => q.language == language).name
+                    Content = _service.ConvertProjectContentToModel(p.project_content.FirstOrDefault(q => q.language == language)),
+                    Type = p.type,
+                    Img = p.img
                 }).ToList();
             }
 
-            return null;
+            return new List<ProjectModel>();
+        }
+
+        [HttpGet]
+        [Route("GetListApartmentByProjectId/{id}")]
+        public List<ApartmentModel> GetListApartmentByProjectId(int id)
+        {
+            IEnumerable<string> languages;
+            if (this.Request.Headers.TryGetValues("Language", out languages))
+            {
+                var language = Convert.ToInt32(languages.First());
+                var apartments = _service.GetListApartmentByProjectId(id);
+                return apartments.Select(p => new ApartmentModel()
+                {
+                    Id = p.apartment_id,
+                    Name = p.apartment_content.FirstOrDefault(q => q.language == language) == null
+                        ? ""
+                        : p.apartment_content.FirstOrDefault(q => q.language == language).name,
+                    Description = p.apartment_content.FirstOrDefault(q => q.language == language) == null
+                        ? ""
+                        : p.apartment_content.FirstOrDefault(q => q.language == language).description,
+                    Code = p.code,
+                    Address = p.address,
+                    City = p.city,
+                    Area = p.area,
+                    Latitude = p.latitude,
+                    Longitude = p.longitude,
+                    NoBathRoom = p.no_bathroom,
+                    NoBedRoom = p.no_bedroom,
+                    Price = p.price + p.management_fee,
+                    UserProfileOwner = new UserProfileModel()
+                    {
+                        Id = p.user_profile.user_profile_id,
+                        FullName = p.user_profile.full_name,
+                        Avatar = p.user_profile.avatar
+                    },
+                    Project = Equals(p.project_id, null)
+                        ? new ProjectModel()
+                        : new ProjectModel()
+                        {
+                            Id = p.project.project_id,
+                            Name = p.project.project_content.FirstOrDefault(q => q.language == language).name
+                        },
+                    ImgList = p.aparment_image.Where(q => q.type == 0).OrderBy(q => q.type).Select(q =>
+                        new ApartmentImageModel()
+                        {
+                            Id = q.apartment_image_id,
+                            Type = q.type,
+                            Img = q.img
+                        }).ToList()
+                }).Skip(0).Take(6).ToList();
+            }
+            return new List<ApartmentModel>();
         }
 
         [HttpPost]
