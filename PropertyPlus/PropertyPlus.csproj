@@ -680,6 +680,7 @@
     <Content Include="html\hostmanagephoto.html" />
     <Content Include="html\hostmanageproblem.html" />
     <Content Include="html\project.html" />
+    <Content Include="html\projectdetail.html" />
     <Content Include="html\userprofile.html" />
     <Content Include="html\userprofileedit.html" />
     <Content Include="html\userprofilesetting.html" />
@@ -844,6 +845,7 @@
     <Content Include="Views\Admin\Facility.cshtml" />
     <Content Include="Views\Admin\FacilityDetail.cshtml" />
     <Content Include="Views\Home\BookMark.cshtml" />
+    <Content Include="Views\Home\ProjectDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

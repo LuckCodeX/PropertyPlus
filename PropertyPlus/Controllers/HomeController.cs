@@ -73,6 +73,12 @@ namespace PropertyPlus.Controllers
             return View();
         }
 
+        public ActionResult ProjectDetail()
+        {
+
+            return View();
+        }
+
         public ActionResult HostDashboard()
         {
             return View();

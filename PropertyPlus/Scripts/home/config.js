@@ -50,6 +50,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 templateUrl: "html/project.html",
                 data: { pageTitle: 'Project' }
         })
+        .state('projectdetail',
+            {
+                url: "/project-detail/:id/:name",
+                templateUrl: "html/projectdetail.html",
+                data: { pageTitle: 'Project' }
+            })
         .state('bookmark',
             {
                 url: "/bookmark",
