@@ -1,8 +1,18 @@
-﻿@model PropertyPlus.Models.ProjectModel
+﻿@using PropertyPlus.Models
+@using PropertyPlus.Services
+@model PropertyPlus.Models.ProjectModel
 
 @{
     ViewBag.Title = "Project Detail";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    var lst = new List<SelectListItem>()
+    {
+        new SelectListItem(){Text = "Loại thường",Value = "0"},
+        new SelectListItem(){Text = "Trọng điểm",Value = "1"},
+    };
 }
 
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -40,6 +50,30 @@
                                          height="150" />
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh slide 1</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Slide1File, new { type = "file", accept = "image/*", onchange = "previewSlide(event, 'instrumentSlide1')", @class = "form-control", required = true })
+                                    <img src='~/Upload/@Model.Slide1' alt="" id="instrumentSlide1"
+                                         height="150" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh slide 2</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Slide2File, new { type = "file", accept = "image/*", onchange = "previewSlide(event, 'instrumentSlide2')", @class = "form-control", required = true })
+                                    <img src='~/Upload/@Model.Slide2' alt="" id="instrumentSlide2"
+                                         height="150" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh slide 3</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Slide3File, new { type = "file", accept = "image/*", onchange = "previewSlide(event, 'instrumentSlide3')", @class = "form-control", required = true })
+                                    <img src='~/Upload/@Model.Slide3' alt="" id="instrumentSlide3"
+                                         height="150" />
+                                </div>
+                            </div>
                         }
                         else
                         {
@@ -51,7 +85,53 @@
                                          height="150" />
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh slide 1</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Slide1File, new { type = "file", accept = "image/*", onchange = "previewSlide(event, 'instrumentSlide1')", @class = "form-control" })
+                                    <img src='~/Upload/@Model.Slide1' alt="" id="instrumentSlide1"
+                                         height="150" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh slide 2</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Slide2File, new { type = "file", accept = "image/*", onchange = "previewSlide(event, 'instrumentSlide2')", @class = "form-control" })
+                                    <img src='~/Upload/@Model.Slide2' alt="" id="instrumentSlide2"
+                                         height="150" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Ảnh slide 3</label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Slide3File, new { type = "file", accept = "image/*", onchange = "previewSlide(event, 'instrumentSlide3')", @class = "form-control" })
+                                    <img src='~/Upload/@Model.Slide3' alt="" id="instrumentSlide3"
+                                         height="150" />
+                                </div>
+                            </div>
+
                         }
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Dịch vụ</label>
+                            <div class="col-sm-9">
+                                @for (var i = 0; i < Model.FacilityList.Count; i++)
+                                {
+                                    @Html.HiddenFor(m => m.FacilityList[i].Id)
+                                    <div class="col-md-6">
+                                        @Html.CheckBoxFor(m => m.FacilityList[i].Selected) @Model.FacilityList[i].Content.Name
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Phân loại</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(m => m.Type, lst, new{@class = "form-control" })
+                            </div>
+                        </div>
                         <div class="hr-line-dashed"></div>
                         <div class="tabs-container">
                             <ul class="nav nav-tabs">
@@ -69,6 +149,27 @@
                                                 @Html.TextBoxFor(m => m.ContentList[0].Name, new { @class = "form-control", @required = true })
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Mô tả</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[0].Description, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tổng quan</label>
+                                            <div class="col-sm-9">
+                                                <div class="row">
+                                                    @for (var i = 0; i < Model.OverviewList[0].ContentList.Count; i++)
+                                                    {
+                                                        @Html.HiddenFor(m => m.OverviewList[0].ContentList[i].Id)
+                                                        @Html.HiddenFor(m => m.OverviewList[0].ContentList[i].Language)
+                                                        <div class="col-sm-5" style="margin-bottom: 10px">
+                                                            @Html.TextBoxFor(m => Model.OverviewList[0].ContentList[i].Content, new { @class = "form-control", @required = true })
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div id="tab-2" class="tab-pane">
@@ -80,6 +181,27 @@
                                                 @Html.TextBoxFor(m => m.ContentList[1].Name, new { @class = "form-control", @required = true })
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Mô tả</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[1].Description, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tổng quan</label>
+                                            <div class="col-sm-9">
+                                                <div class="row">
+                                                    @for (var i = 0; i < Model.OverviewList[1].ContentList.Count; i++)
+                                                    {
+                                                        @Html.HiddenFor(m => m.OverviewList[1].ContentList[i].Id)
+                                                        @Html.HiddenFor(m => m.OverviewList[1].ContentList[i].Language)
+                                                        <div class="col-sm-5" style="margin-bottom: 10px">
+                                                            @Html.TextBoxFor(m => Model.OverviewList[1].ContentList[i].Content, new { @class = "form-control", @required = true })
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div id="tab-3" class="tab-pane">
@@ -89,6 +211,27 @@
                                             <label class="col-sm-2 control-label">Tên</label>
                                             <div class="col-sm-9">
                                                 @Html.TextBoxFor(m => m.ContentList[2].Name, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Mô tả</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[2].Description, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tổng quan</label>
+                                            <div class="col-sm-9">
+                                                <div class="row">
+                                                    @for (var i = 0; i < Model.OverviewList[2].ContentList.Count; i++)
+                                                    {
+                                                        @Html.HiddenFor(m => m.OverviewList[2].ContentList[i].Id)
+                                                        @Html.HiddenFor(m => m.OverviewList[2].ContentList[i].Language)
+                                                        <div class="col-sm-5" style="margin-bottom: 10px">
+                                                            @Html.TextBoxFor(m => Model.OverviewList[2].ContentList[i].Content, new { @class = "form-control", @required = true })
+                                                        </div>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -113,6 +256,14 @@
     function previewImage(event) {
         // Get a reference to the image element
         var image = document.querySelector("#instrumentImage");
+        // Set its source to the file in the <input type=file element
+        image.src = URL.createObjectURL(event.target.files[0]);
+        //$("#instrumentImage").css('display', 'block');
+    }
+
+    function previewSlide(event, id) {
+        // Get a reference to the image element
+        var image = document.querySelector("#" + id);
         // Set its source to the file in the <input type=file element
         image.src = URL.createObjectURL(event.target.files[0]);
         //$("#instrumentImage").css('display', 'block');

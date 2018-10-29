@@ -1144,6 +1144,38 @@ namespace PropertyPlus.Controllers
             return new List<FacilityModel>();
         }
 
+        [HttpGet]
+        [Route("GetProjectDetail/{id}")]
+        public ProjectModel GetProjectDetail(int id)
+        {
+            IEnumerable<string> languages;
+            if (this.Request.Headers.TryGetValues("Language", out languages))
+            {
+                var language = Convert.ToInt32(languages.First());
+                var project = _service.GetProjectById(id);
+                return new ProjectModel()
+                {
+                    Id = project.project_id,
+                    Content = _service.ConvertProjectContentToModel(project.project_content.FirstOrDefault(p => p.language == language)),
+                    Type = project.type,
+                    Img = project.img,
+                    Slide1 = project.slide_1,
+                    Slide2 = project.slide_2,
+                    Slide3 = project.slide_3,
+                    FacilityList = project.project_facility.Select(p => new FacilityModel()
+                    {
+                        Img = p.facility.img,
+                        Content = _service.ConvertFacilityContentToModel(p.facility.facility_content.FirstOrDefault(q => q.language == language))
+                    }).ToList(),
+                    OverviewList = project.project_overview.Where(p => p.language == language).Select(p => new ProjectOverviewModel()
+                    {
+                        Content = p.content
+                    }).ToList()
+                };
+            }
+            return new ProjectModel();
+        }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();

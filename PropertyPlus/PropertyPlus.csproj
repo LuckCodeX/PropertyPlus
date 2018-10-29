@@ -243,6 +243,12 @@
     <Compile Include="Models\project_content.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\project_facility.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\project_overview.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PropertyPlusEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

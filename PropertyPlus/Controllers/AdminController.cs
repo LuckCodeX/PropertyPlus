@@ -185,6 +185,7 @@ namespace PropertyPlus.Controllers
             {
                 Id = p.project_id,
                 Img = p.img,
+                Type = p.type,
                 Content = _service.ConvertProjectContentToModel(p.project_content.FirstOrDefault(q => q.language == 0))
             });
             ViewBag.KeySearch = search;
@@ -195,19 +196,103 @@ namespace PropertyPlus.Controllers
         public ActionResult ProjectDetail(int? id)
         {
             ProjectModel model;
+            var facilities = _service.GetAllFacilities();
             if (!Equals(id, null))
             {
                 var project = _service.GetProjectById(id.Value);
                 var projectContent = project.project_content.Select(p => new ProjectContentModel()
                 {
                     Id = p.project_content_id,
-                    Name = p.name
+                    Name = p.name,
+                    Description = p.description
                 }).ToList();
+
+                var projectOverview = new List<ProjectOverviewModel>();
+                if (project.project_overview.Count > 0)
+                {
+                    var overviewContent = project.project_overview.Where(p => p.language == 0).Select(p => new ProjectOverviewContentModel()
+                    {
+                        Id = p.project_overview_id,
+                        Content = p.content
+                    }).ToList();
+                    projectOverview.Add(new ProjectOverviewModel()
+                    {
+                        ContentList = overviewContent
+                    });
+                    overviewContent = project.project_overview.Where(p => p.language == 1).Select(p => new ProjectOverviewContentModel()
+                    {
+                        Id = p.project_overview_id,
+                        Content = p.content
+                    }).ToList();
+                    projectOverview.Add(new ProjectOverviewModel()
+                    {
+                        ContentList = overviewContent
+                    });
+                    overviewContent = project.project_overview.Where(p => p.language == 2).Select(p => new ProjectOverviewContentModel()
+                    {
+                        Id = p.project_overview_id,
+                        Content = p.content
+                    }).ToList();
+                    projectOverview.Add(new ProjectOverviewModel()
+                    {
+                        ContentList = overviewContent
+                    });
+                }
+                else
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        var contentList = new List<ProjectOverviewContentModel>();
+                        for (int j = 0; j < 9; j++)
+                        {
+                            var c = new ProjectOverviewContentModel() { Id = 0, Language = i };
+                            contentList.Add(c);
+                        }
+                        var content = new ProjectOverviewModel()
+                        {
+                            ContentList = contentList
+                        };
+                        projectOverview.Add(content);
+                    }
+                }
+
+                var facilityList = new List<FacilityModel>();
+                foreach (var item in facilities)
+                {
+                    var flag = false;
+                    foreach (var fac in project.project_facility)
+                    {
+                        if (item.facility_id == fac.facility_id)
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+                    var check = new FacilityModel()
+                    {
+                        Id = item.facility_id,
+                        Content = _service.ConvertFacilityContentToModel(item.facility_content.FirstOrDefault(p => p.language == 0)),
+                        Selected = flag
+                    };
+                    facilityList.Add(check);
+                }
+
+                //var facilityList = project.project_facility.Select(p => new FacilityModel()
+                //{
+                //    Id = p.facility_id,
+                //    Content = _service.ConvertFacilityContentToModel(p.facility.facility_content.FirstOrDefault(q => q.language == 0))
+                //}).ToList();
                 model = new ProjectModel()
                 {
                     Id = project.project_id,
                     Img = project.img,
-                    ContentList = projectContent
+                    Type = project.type,
+                    Slide1 = project.slide_1,
+                    Slide2 = project.slide_2,
+                    Slide3 = project.slide_3,
+                    ContentList = projectContent,
+                    OverviewList = projectOverview,
+                    FacilityList = facilityList
                 };
             }
             else
@@ -222,10 +307,35 @@ namespace PropertyPlus.Controllers
                     };
                     projectContent.Add(content);
                 }
+
+                var projectOverview = new List<ProjectOverviewModel>();
+                for (int i = 0; i < 3; i++)
+                {
+                    var contentList = new List<ProjectOverviewContentModel>();
+                    for (int j = 0; j < 9; j++)
+                    {
+                        var c = new ProjectOverviewContentModel() { Id = 0, Language = i };
+                        contentList.Add(c);
+                    }
+                    var content = new ProjectOverviewModel()
+                    {
+                        ContentList = contentList
+                    };
+                    projectOverview.Add(content);
+                }
                 model = new ProjectModel()
                 {
                     Id = 0,
-                    ContentList = projectContent
+                    ContentList = projectContent,
+                    OverviewList = projectOverview,
+                    Type = 0,
+                    FacilityList = facilities.Select(p => new FacilityModel()
+                    {
+                        Id = p.facility_id,
+                        Content = _service.ConvertFacilityContentToModel(p.facility_content.FirstOrDefault(q => q.language == 0)),
+                        Selected = false
+
+                    }).ToList()
                 };
             }
 
@@ -247,12 +357,35 @@ namespace PropertyPlus.Controllers
                         status = 1
                     };
                 }
+
+                project.type = model.Type;
                 if (!Equals(model.ImageFile, null))
                 {
                     string fileName = "Project_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);
                     string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
                     model.ImageFile.SaveAs(path);
                     project.img = fileName;
+                }
+                if (!Equals(model.Slide1File, null))
+                {
+                    string fileName = "Project_Slide1_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.Slide1File.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                    model.Slide1File.SaveAs(path);
+                    project.slide_1 = fileName;
+                }
+                if (!Equals(model.Slide2File, null))
+                {
+                    string fileName = "Project_Slide2_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.Slide2File.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                    model.Slide2File.SaveAs(path);
+                    project.slide_2 = fileName;
+                }
+                if (!Equals(model.Slide3File, null))
+                {
+                    string fileName = "Project_Slide3_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.Slide3File.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                    model.Slide3File.SaveAs(path);
+                    project.slide_3 = fileName;
                 }
                 _service.SaveProject(project);
 
@@ -270,8 +403,44 @@ namespace PropertyPlus.Controllers
                         };
                     }
                     content.name = projectContent.Name;
+                    content.description = projectContent.Description;
                     _service.SaveProjectContent(content);
                     idx++;
+                }
+
+                foreach (var overview in model.OverviewList)
+                {
+                    foreach (var overviewContent in overview.ContentList)
+                    {
+                        var content = _service.GetProjectOverviewById(overviewContent.Id);
+                        if (Equals(content, null))
+                        {
+                            content = new project_overview()
+                            {
+                                project_overview_id = 0,
+                                project_id = project.project_id,
+                                language = overviewContent.Language
+                            };
+                        }
+
+                        content.content = overviewContent.Content;
+                        _service.SaveProjectOverview(content);
+                    }
+                }
+
+                _service.DeleteAllProjectFacilities(project.project_facility.ToList());
+                foreach (var item in model.FacilityList)
+                {
+                    if (item.Selected)
+                    {
+                        var fac = new project_facility()
+                        {
+                            project_facility_id = 0,
+                            project_id = project.project_id,
+                            facility_id = item.Id
+                        };
+                        _service.SaveProjectFacility(fac);
+                    }
                 }
 
                 scope.Complete();
