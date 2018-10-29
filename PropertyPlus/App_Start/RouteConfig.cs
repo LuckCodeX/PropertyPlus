@@ -44,6 +44,12 @@ namespace PropertyPlus
             );
 
             routes.MapRoute(
+                name: "ProjectDetail",
+                url: "project-detail/{id}/{title}",
+                defaults: new { controller = "Home", action = "ProjectDetail", id = UrlParameter.Optional, title = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "UserProfileGeneral",
                 url: "user-profile/general",
                 defaults: new { controller = "Home", action = "UserProfileGeneral" }
