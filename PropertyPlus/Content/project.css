@@ -56,7 +56,6 @@
 
 .project-item{
     border:0px solid;
-    background:#A5A4A4;
     width:100%;
     height:327px;
     border-radius:5px;
@@ -94,17 +93,17 @@
 #nghia2 .owl-nav .owl-next span {
     position: absolute;
     color: #81BDF1;
-    font-size: 100px;
-    top: -825%;
+    font-size: 42px;
+    bottom:50px;
     right: -62px;
 }
 
 #nghia2 .owl-nav .owl-prev span {
     position: absolute;
     color: #81BDF1;
-    font-size: 100px;
-    bottom:33px;
-    right:101%;
+    font-size: 42px;
+    bottom:50px;
+    left: -62px;
 }
 
 .text-project-4 {
@@ -129,20 +128,20 @@
 
 .button-left {
     position: absolute;
-    float: left;
     display: inline-block;
-    margin-left: 78px;
-    margin-top: 250px;
     z-index:98;
+    left: 80px;
+    bottom: 80px;
+    padding-top: 11px;
 }
 
 .button-right {
     position: absolute;
-    float: left;
     display: inline-block;
-    margin-top: 250px;
-    margin-left: 386px;
     z-index: 98;
+    right: 80px;
+    bottom: 80px;
+    padding-top: 11px;
 }
 
 .text-project-left {
@@ -207,22 +206,17 @@ padding-bottom:60px;
 #nghia .owl-nav .owl-next span {
     position: absolute;
     color: #81BDF1;
-    font-size: 100px;
-    top: -825%;
-    right: -58px;
-}
-
-#nghia .owl-nav .owl-next span {
-    top: -600%;
-    right: -60px;
+    font-size: 42px;
+    bottom:50px;
+    right: -62px;
 }
 
 #nghia .owl-nav .owl-prev span {
     position: absolute;
     color: #81BDF1;
-    font-size: 100px;
-    bottom: 0px;
-    right: 101%;
+    font-size: 42px;
+    bottom:50px;
+    left: -62px;
 }
 
 #nghia.owl-theme .owl-dots .owl-dot.active span {

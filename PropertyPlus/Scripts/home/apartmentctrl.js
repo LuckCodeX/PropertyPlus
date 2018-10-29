@@ -291,8 +291,9 @@
                 function (error) {
                     console.log(error.statusText);
                 });
-
-        $timeout(loadApartmentDetail, 4000);
+        $(document).ready(function(){
+            loadApartmentDetail();
+        });
 
         $scope.someGroupFn = function (item) {
 

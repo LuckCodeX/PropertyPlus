@@ -1,1 +1,113 @@
-﻿<h1>Project Detail</h1>
+﻿<div ng-controller="ProjectCtrl" ng-init="loadProjectDetail()">
+    <div style="width: 100%; height: 490px;">
+        <img ng-src="/Upload/{{project.Img}}" class="img-full" alt="">
+    </div>
+    <div class="container description-project-detail">
+        <div class="menu-bar-scroll" id="description-section">
+            <a href="#description-section">Description</a>
+            <a href="#overview-section">Overview</a>
+            <a href="#facilities-section">Facilities</a>
+            <a href="#location-section">Location</a>
+            <a href="#listing-section">Listing</a>
+        </div>
+        <div class="content-description">
+            <div ng-bind-html="project.Content.Description | trust"></div>
+        </div>
+
+    </div>
+    <div class="slide-project-detail">
+        <div id="projectSlide" class="owl-carousel owl-theme">
+            <div ng-if="project.Slide1" class="item">
+                <div class="">
+                    <img ng-src="/Upload/{{project.Slide1}}" alt="Alternate Text" />
+                </div>
+            </div>
+            <div ng-if="project.Slide2" class="item">
+                <div class="">
+                    <img class="img-full" ng-src="/Upload/{{project.Slide2}}" alt="Alternate Text" />
+                </div>
+            </div>
+            <div ng-if="project.Slide3" class="item">
+                <div class="">
+                    <img class="img-full" ng-src="/Upload/{{project.Slide3}}" alt="Alternate Text" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="section-project-detail" id="overview-section">
+            <div class="title-section">
+                <p>OVERVIEW</p>
+            </div>
+            <div class="content-section">
+                <div class="row">
+                    <div class="col-sm-6 overview-section" ng-repeat="overview in OverviewList">
+                        <img ng-src="/Upload/{{overview.Img}}"  alt="">
+                        <div class="describe">
+                            <p>{{overview.Content.Name}}</p>
+                            <div ng-bind-html="overview.Content.Description | trust"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-project-detail" id="facilities-section">
+            <div class="title-section">
+                <p>FACILITIES</p>
+            </div>
+            <div class="content-section">
+                <div class="row">
+                    <div class="col-sm-4 overview-section" ng-repeat="facility in FacilityList">
+                        <img ng-src="/Upload/{{facility.Img}}"  alt="">
+                        <div class="describe">
+                            <p style="margin-top: 15px">{{facility.Name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="section-project-detail" id="location-section">
+            <div class="container title-section">
+                <p>LOCATION</p>
+            </div>
+            <div class="content-section">
+                <div style="height: 435px;" id="map"></div>
+            </div>
+        </div>
+    <div class="container">
+        <div class="section-project-detail" id="listing-section">
+            <div class="title-section">
+                <p>LISTING ON PROJECT</p>
+            </div>
+            <div class="content-section similar-listing">
+                <div ng-if="listApartmentListing.length != 0" id="listing" class="slide-similar owl-carousel owl-theme">
+                    <div class="item" ng-repeat="item in listApartmentListing">
+                        <div class="thumbnail-choose-home">
+                            <a ui-sref="apartmentdetail({id: item.Id,name: replaceString(item.Name)})" class="aparment-banner">
+                                <img ng-src="{{item.ImgList[0].Img}}" alt="Alternate Text" />
+                            </a>
+                            <div class="choose-home-summary">
+                                <a ui-sref="apartmentdetail({id: item.Id,name: replaceString(item.Name)})" class="choose-home-code">
+                                    {{item.Code}}
+                                </a>
+                                <a ui-sref="apartmentdetail({id: item.Id,name: replaceString(item.Name)})" class="choose-home-name">
+                                    {{item.Name}}
+                                </a>
+                                <div class="choose-home-detail float-left">
+                                    <p>Bedrooms: {{item.NoBedRoom}}</p>
+                                    <p>{{item.City}}</p>
+                                </div>
+                                <div class="choose-home-price float-right">
+                                    <span class="text-price-title">Estimate Price:</span>
+                                    <p class="price">$ <span>{{item.Price}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

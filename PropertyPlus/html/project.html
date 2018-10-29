@@ -1,6 +1,5 @@
-﻿<div ng-controller="ProjectCtrl">
+﻿<div ng-controller="ProjectCtrl" ng-init="loadProject()">
     <div class="pj-header" style="background: url('{{slideImg}}') no-repeat;background-size: cover;">
-        <span class="text-project">PLACEHOLDER-SLIDE</span>
 
     </div>
 
@@ -10,25 +9,9 @@
 
     <div class="container padding-top-30 padding-right-37">
         <div class="row safe-fire">
-            <div class="col-md-3">
-                <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-rounded" />                
-                <p class="text-project text-project-3">Project name</p>
-
-            </div>
-            <div class="col-md-3">
-                <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-rounded" />
-                <p class="text-project text-project-3">Project name</p>
-
-            </div>
-            <div class="col-md-3">
-                <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-rounded" />
-                <p class="text-project text-project-3">Project name</p>
-
-            </div>
-            <div class="col-md-3">
-                <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-rounded" />
-                <p class="text-project text-project-3">Project name</p>
-
+            <div class="col-md-3" style="margin-top: 30px" ng-repeat="project in listProjectFeature">
+                <a style="display: inline-block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img ng-src="/Upload/{{project.Img}}" class="img-rounded" /></a>
+                <a style="display: inline-block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})" class="text-project text-project-3">{{project.Name}}</a>
             </div>
         </div>
     </div>
@@ -41,108 +24,19 @@
 
         <div class="row">
             <div id="nghia2" class="owl-carousel owl-theme">
-                <div class="item">
-
+                <div class="item"  ng-repeat="project in listProject">
                     <div class="project-box-above ">
-
-                        <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
+                        <a ng-if="project.Logo" style="display: inline-block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img style="width: 147px;height: 70px;" ng-src="/Upload/{{project.Logo}}" class="img-rounded" /></a>
+                        <a ng-if="!project.Logo" style="display: inline-block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img style="width: 147px;height: 70px;" ng-src="/Images/logo.svg" class="img-rounded" /></a>
                     </div>
                     <div class="project-item">
-                        <img src="https://www.sportolunk.sk/wp-content/uploads/AC_Milan233.jpg" alt="#" class="img-rounded " />
-                        <button class="button-left button-box text-project text-project-5 ">Explore</button>
-                        <button class="button-right button-box text-project text-project-5">See list</button>
-
-                    </div>
-                    <p class="text-project text-project-4 text-project-left">Project Name</p>
-                    <p class="text-project text-project-4 text-project-right">Quantity properties available</p>
-
-                </div>
-
-                <div class="item  ">
-
-                    <div class="project-box-above ">
-                        <img src="http://parkhill-premium.vinhomes.vn/images/logo.png" alt="#" class="img-rounded " />
-                    </div>
-
-                    <div class="project-item">
-                        <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-rounded " />
-                        <button class="button-left button-box text-project text-project-5 ">Explore</button>
+                        <a style="display: inline-block;width: 100%;height: 327px" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img ng-src="/Upload/{{project.Img}}" class="img-rounded" /></a>
+                        <a class="button-left button-box text-project text-project-5 " ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})">Explore</a>
                         <button class="button-right button-box text-project text-project-5">See list</button>
                     </div>
-                    <p class="text-project text-project-4 text-project-left">Park Hill</p>
-                    <p class="text-project text-project-4 text-project-right">25 properties available</p>
-
+                    <p class="text-project text-project-4 text-project-left">{{project.Name}}</p>
+                    <p class="text-project text-project-4 text-project-right">{{listIdProject[project.Id]}} properties available</p>
                 </div>
-                <div class="item">
-
-                    <div class="project-box-above ">
-
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTilBA8Y1VRCtjRoP5QFY-9PHji93ivTyKDSPX11o_XxbOdLB2K" alt="#" class="img-rounded " />
-                    </div>
-                    <div class="project-item">
-                        <img src="https://assets1.sportsnet.ca/wp-content/uploads/2018/08/PSG-stars-1040x572.jpg" alt="#" class="img-rounded " />
-                        <button class="button-left button-box text-project text-project-5 ">Explore</button>
-                        <button class="button-right button-box text-project text-project-5">See list</button>
-
-                    </div>
-                    <p class="text-project text-project-4 text-project-left">Project Name</p>
-                    <p class="text-project text-project-4 text-project-right">Quantity properties available</p>
-
-                </div>
-
-                <div class="item  ">
-
-                    <div class="project-box-above ">
-                        <img src="http://1000logos.net/wp-content/uploads/2016/10/Barcelona-Logo.jpg" alt="#" class="img-rounded " />
-                    </div>
-
-                    <div class="project-item">
-                        <img src="http://e2.365dm.com/18/08/16-9/30/skysports-lionel-messi-barcelona_4397509.jpg?20180822114142" alt="#" class="img-rounded " />
-                        <button class="button-left button-box text-project text-project-5 ">Explore</button>
-                        <button class="button-right button-box text-project text-project-5">See list</button>
-                    </div>
-                    <p class="text-project text-project-4 text-project-left">Park Hill</p>
-                    <p class="text-project text-project-4 text-project-right">25 properties available</p>
-
-                </div>
-                <div class="item">
-
-                    <div class="project-box-above ">
-
-                        <img src="https://www.acmilan.com/fe-web/img/placeholder-normal.jpg" alt="#" class="img-rounded " />
-                    </div>
-                    <div class="project-item">
-                        <img src="https://www.sportolunk.sk/wp-content/uploads/AC_Milan233.jpg" alt="#" class="img-rounded " />
-                        <button class="button-left button-box text-project text-project-5 ">Explore</button>
-                        <button class="button-right button-box text-project text-project-5">See list</button>
-
-                    </div>
-                    <p class="text-project text-project-4 text-project-left">Project Name</p>
-                    <p class="text-project text-project-4 text-project-right">Quantity properties available</p>
-
-                </div>
-
-                <div class="item  ">
-
-                    <div class="project-box-above ">
-                        <img src="http://parkhill-premium.vinhomes.vn/images/logo.png" alt="#" class="img-rounded " />
-                    </div>
-
-                    <div class="project-item">
-                        <img src="http://vinhometimescity.net/wp-content/uploads/2015/03/Vinhomes-Times-City-Park-Hill.jpg" alt="#" class="img-rounded " />
-                        <button class="button-left button-box text-project text-project-5 ">Explore</button>
-                        <button class="button-right button-box text-project text-project-5">See list</button>
-                    </div>
-                    <p class="text-project text-project-4 text-project-left">Park Hill</p>
-                    <p class="text-project text-project-4 text-project-right">25 properties available</p>
-
-                </div>
-
-
-
-
-
-
             </div>
         </div>
     </div>
@@ -171,21 +65,7 @@
 
 
     <script>
-        $('#nghia2').owlCarousel({
-            loop: true,
-            margin:15,
-            nav: true,
-            items: 2
-                
-        });
-        $("#nghia").owlCarousel({
-            loop: true,
-            nav: true,
-            margin:10,
-            items: 1
-              
-            
-        })
+
     </script>
    
     
