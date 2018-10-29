@@ -149,7 +149,6 @@ namespace PropertyPlus.Services
         {
             return ApartmentRepository
                 .FindBy(p => p.status == 1 && p.project_id == id)
-                .OrderByDescending(p => p.apartment_id)
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).OrderByDescending(p => p.apartment_id).ToList();
         }

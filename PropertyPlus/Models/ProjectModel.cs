@@ -12,12 +12,14 @@ namespace PropertyPlus.Models
         public string Slide1 { get; set; }
         public string Slide2 { get; set; }
         public string Slide3 { get; set; }
+        public string Logo { get; set; }
         public int Type { get; set; }
         public string Name { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
         public HttpPostedFileBase Slide1File { get; set; }
         public HttpPostedFileBase Slide2File { get; set; }
         public HttpPostedFileBase Slide3File { get; set; }
+        public HttpPostedFileBase LogoFile { get; set; }
         public List<ProjectContentModel> ContentList { get; set; }
         public List<ProjectOverviewModel> OverviewList { get; set; }
         public ProjectContentModel Content { get; set; }

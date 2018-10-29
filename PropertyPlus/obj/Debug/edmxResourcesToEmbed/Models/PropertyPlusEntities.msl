@@ -86,6 +86,7 @@
     <EntitySetMapping Name="projects">
       <EntityTypeMapping TypeName="PropertyPlusModel.project">
         <MappingFragment StoreEntitySet="project">
+          <ScalarProperty Name="logo" ColumnName="logo" />
           <ScalarProperty Name="slide_3" ColumnName="slide_3" />
           <ScalarProperty Name="slide_2" ColumnName="slide_2" />
           <ScalarProperty Name="slide_1" ColumnName="slide_1" />

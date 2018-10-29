@@ -240,6 +240,7 @@
     <Property Name="slide_3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="project_facility" Relationship="PropertyPlusModel.FK__project_f__proje__634EBE90" FromRole="project" ToRole="project_facility" />
     <NavigationProperty Name="project_overview" Relationship="PropertyPlusModel.FK__project_o__proje__681373AD" FromRole="project" ToRole="project_overview" />
+    <Property Name="logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="project_content">
     <Key>

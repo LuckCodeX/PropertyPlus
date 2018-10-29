@@ -292,7 +292,8 @@ namespace PropertyPlus.Controllers
                     Slide3 = project.slide_3,
                     ContentList = projectContent,
                     OverviewList = projectOverview,
-                    FacilityList = facilityList
+                    FacilityList = facilityList,
+                    Logo = project.logo
                 };
             }
             else
@@ -386,6 +387,13 @@ namespace PropertyPlus.Controllers
                     string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
                     model.Slide3File.SaveAs(path);
                     project.slide_3 = fileName;
+                }
+                if (!Equals(model.LogoFile, null))
+                {
+                    string fileName = "Project_Logo_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.LogoFile.FileName);
+                    string path = Path.Combine(Server.MapPath("~/Upload"), fileName);
+                    model.LogoFile.SaveAs(path);
+                    project.logo = fileName;
                 }
                 _service.SaveProject(project);
 
