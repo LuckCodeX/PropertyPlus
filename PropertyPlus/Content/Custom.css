@@ -3453,6 +3453,81 @@ img-crop canvas{display:block;position:absolute;top:50%;left:50%;outline:0;-webk
 .user-header-listing{
     height: 72px;
 }
+.menu-bar-scroll a{
+    display: inline-block;
+    text-decoration: none;
+    color: #484848;
+    margin-right: 90px;
+}
+.menu-bar-scroll a:last-child{
+    margin-right: 0;
+}
+.menu-bar-scroll{
+    margin-top: 90px;
+    border-bottom: 2px solid #707070;
+    padding: 27px 0 ;
+}
+.content-description{
+    padding: 70px 0;
+}
+.content-description p{
+    margin-bottom: 35px;
+}
+.slide-project-detail{
+    height: 480px;
+}
+
+.slide-project-detail .item img{
+    height: 450px;
+    width: 100%;
+}
+
+.slide-project-detail .owl-carousel .owl-nav button.owl-next{
+    position: absolute;
+    top: 200px;
+    right: 10px;
+
+}
+.slide-project-detail .owl-carousel .owl-nav button i{
+    font-size: 35px;
+    color: white;
+}
+.slide-project-detail .owl-carousel .owl-nav button.owl-prev{
+    position: absolute;
+    top: 200px;
+    left: 10px;
+}
+.slide-project-detail .owl-theme .owl-dots .owl-dot.active span{
+    background: #473D6F;
+}
+.slide-project-detail .owl-theme .owl-nav [class*=owl-]:hover{
+    background: transparent;
+}
+.overview-section img{
+    width: 81px;
+    height: 81px;
+    display: inline-block;
+    float: left;
+}
+.overview-section{
+    margin-bottom: 27px;
+}
+.overview-section .describe{
+    display: inline-block;
+    float: left;
+    margin-left: 16px;
+    margin-top: 7px;
+}
+.section-project-detail{
+    margin-top: 85px;
+}
+.section-project-detail .title-section p{
+    font-size: 20px;
+}
+.section-project-detail .content-section{
+    margin-top: 75px;
+    font-size: 14px;
+}
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;
