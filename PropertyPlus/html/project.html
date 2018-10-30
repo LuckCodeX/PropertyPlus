@@ -8,10 +8,18 @@
     </div>
 
     <div class="container padding-top-30 padding-right-37">
-        <div class="row safe-fire">
-            <div class="col-md-3" style="margin-top: 30px" ng-repeat="project in listProjectFeature">
-                <a style="display: inline-block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img ng-src="/Upload/{{project.Img}}" class="img-rounded" /></a>
-                <a style="display: inline-block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})" class="text-project text-project-3">{{project.Name}}</a>
+        <!--<div class="row safe-fire">-->
+            <!--<div class="col-md-3" style="margin-top: 30px" ng-repeat="project in listProjectFeature">-->
+                <!--<a style="display: inline-block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img ng-src="/Upload/{{project.Img}}" class="img-rounded" /></a>-->
+                <!--<a style="display: inline-block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})" class="text-project text-project-3">{{project.Name}}</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div id="nghia3" class="owl-carousel owl-theme">
+            <div class="item"  ng-repeat="project in listProjectFeature">
+                <div class="project-item ">
+                    <a style="display: block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img ng-src="/Upload/{{project.Img}}" class="img-rounded" /></a>
+                    <a style="display: block;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})" class="text-project text-project-3">{{project.Name}}</a>
+                </div>
             </div>
         </div>
     </div>

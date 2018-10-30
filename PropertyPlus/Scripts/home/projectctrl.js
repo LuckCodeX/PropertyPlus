@@ -42,7 +42,13 @@
                         nav: true,
                         margin:10,
                         items: 1
-                    })
+                    });
+                    $("#nghia3").owlCarousel({
+                        loop: true,
+                        nav: true,
+                        margin:10,
+                        items: 4
+                    });
                 });
             },
             function (error) {
