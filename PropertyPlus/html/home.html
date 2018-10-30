@@ -256,40 +256,40 @@
                         </div>
                     </div>
                     <div class="col-xs-12 homepage-news">
-                        <div class="homepage-title-section">News</div>
+                        <div class="homepage-title-section">Blog</div>
                         <div class="list-news">
                             <div class="row">
                                 <div class="col-md-6 big-news">
-                                    <div class="big-news-thumbnail box-shadow">
-
-                                    </div>
-                                    <div class="big-news-title">
-                                        CEO Property Plus introduce new business model on Shark Tank
-                                    </div>
+                                    <a ui-sref="blogdetail({id:blogList[0].Id, title: replaceString(blogList[0].Content.Title)})" style="display: block" class="big-news-thumbnail box-shadow">
+                                        <img style="border-radius: 7px;" class="img-full" ng-src="/Upload/{{blogList[0].Img}}" alt="">
+                                    </a>
+                                    <a ui-sref="blogdetail({id:blogList[0].Id, title: replaceString(blogList[0].Content.Title)})" style="display: block" class="big-news-title">
+                                        {{blogList[0].Content.Title}}
+                                    </a>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-xs-6 small-news">
-                                            <div class="small-news-thumbnail box-shadow">
-
-                                            </div>
-                                            <div class="small-news-title">
-                                                CEO Property Plus introduce new business model on Shark Tank
-                                            </div>
+                                            <a ui-sref="blogdetail({id:blogList[1].Id, title: replaceString(blogList[1].Content.Title)})" style="display: block" class="small-news-thumbnail box-shadow">
+                                                <img style="border-radius: 7px;" class="img-full" ng-src="/Upload/{{blogList[1].Img}}" alt="">
+                                            </a>
+                                            <a ui-sref="blogdetail({id:blogList[1].Id, title: replaceString(blogList[1].Content.Title)})" style="display: block" class="small-news-title txt-no-warp">
+                                                {{blogList[1].Content.Title }}
+                                            </a>
                                         </div>
                                         <div class="col-xs-6 small-news">
-                                            <div class="small-news-thumbnail box-shadow">
-
-                                            </div>
-                                            <div class="small-news-title">
-                                                CEO Property Plus introduce new business model on Shark Tank
-                                            </div>
+                                            <a ui-sref="blogdetail({id:blogList[2].Id, title: replaceString(blogList[2].Content.Title)})" style="display: block" class="small-news-thumbnail box-shadow">
+                                                <img style="border-radius: 7px;" class="img-full" ng-src="/Upload/{{blogList[2].Img}}" alt="">
+                                            </a>
+                                            <a ui-sref="blogdetail({id:blogList[2].Id, title: replaceString(blogList[2].Content.Title)})" style="display: block" class="small-news-title txt-no-warp">
+                                                {{blogList[2].Content.Title}}
+                                            </a>
                                         </div>
                                         <div class="col-xs-12 list-normal-news">
                                             <ul>
-                                                <li><a href="#">Nulla at nisl euismod, egestas turpis eu.</a> </li>
-                                                <li><a href="#">Nulla at nisl euismod, egestas turpis eu.</a></li>
-                                                <li><a href="#">Nulla at nisl euismod, egestas turpis eu.</a></li>
+                                                <li><a ui-sref="blogdetail({id:blogList[3].Id, title: replaceString(blogList[3].Content.Title)})" class="txt-no-warp">{{blogList[3].Content.Title}}</a> </li>
+                                                <li><a ui-sref="blogdetail({id:blogList[4].Id, title: replaceString(blogList[4].Content.Title)})" class="txt-no-warp">{{blogList[4].Content.Title}}</a></li>
+                                                <li><a ui-sref="blogdetail({id:blogList[5].Id, title: replaceString(blogList[5].Content.Title)})" class="txt-no-warp">{{blogList[5].Content.Title}}</a></li>
                                             </ul>
                                         </div>
                                     </div>

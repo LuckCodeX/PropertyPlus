@@ -5,7 +5,6 @@
     $timeout,
     xhrService,
     $anchorScroll) {
-    var nameMap = 'Royal City Apartments, Nguyễn Trãi, Khu đô thị Royal City, Thượng Đình, Thanh Xuân, Hanoi, Vietnam';
     $scope.loadProject = function(){
         xhrService.get("GetSlide/1").then(function (data) {
                 $scope.slideImg = "Upload/" + data.data.Img;
@@ -67,7 +66,7 @@
     $scope.loadProjectDetail = function () {
         xhrService.get("GetProjectDetail/"+$stateParams.id).then(function (data) {
                 $scope.project = data.data;
-                var myLatLng = { lat: 21.00273049999999, lng: 105.815289 };
+                var myLatLng = { lat: $scope.project.Latitude, lng: $scope.project.Longitude };
                 var map = new google.maps.Map(document.getElementById('map'),
                     {
                         zoom: 17,
@@ -76,7 +75,7 @@
                 var marker = new google.maps.Marker({
                     position: myLatLng,
                     map: map,
-                    title: nameMap
+                    title: $scope.project.Address
                 });
                 xhrService.get("GetListApartmentByProjectId/"+$stateParams.id).then(function (data) {
                     console.log(data);
