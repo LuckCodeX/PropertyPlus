@@ -60,7 +60,9 @@
                 function (error) {
                     console.log(error.statusText);
                 });
-
+        xhrService.get("GetAllProject").then(function(data) {
+            $scope.listProject = data.data;
+        });
         $scope.priceSlider = {
             minValue: 0,
             maxValue: 5000,

@@ -41,10 +41,10 @@
             </div>
             <div class="content-section">
                 <div class="row">
-                    <div class="col-sm-6 overview-section" ng-repeat="overview in OverviewList">
+                    <div class="col-sm-6 overview-section" ng-repeat="overview in project.OverviewList">
                         <img ng-src="/Upload/{{overview.Img}}"  alt="">
                         <div class="describe">
-                            <p>{{overview.Content.Name}}</p>
+                            <p>{{overview.Content}}</p>
                             <div ng-bind-html="overview.Content.Description | trust"></div>
                         </div>
                     </div>
@@ -57,10 +57,10 @@
             </div>
             <div class="content-section">
                 <div class="row">
-                    <div class="col-sm-4 overview-section" ng-repeat="facility in FacilityList">
+                    <div class="col-sm-4 overview-section" ng-repeat="facility in project.FacilityList">
                         <img ng-src="/Upload/{{facility.Img}}"  alt="">
                         <div class="describe">
-                            <p style="margin-top: 15px">{{facility.Name}}</p>
+                            <p style="margin-top: 15px">{{facility.Content.Name}}</p>
                         </div>
                     </div>
                 </div>
