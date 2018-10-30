@@ -132,7 +132,7 @@
                                     {{apartment.Code}}
                                 </a>
                                 <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-name">
-                                    {{apartment.Name | limitTo : 28}}{{apartment.Name.length > 28 ? '...' : ''}}
+                                    {{apartment.Name | limitTo : 25}}{{apartment.Name.length > 25 ? '...' : ''}}
                                 </a>
                                 <div class="choose-home-detail float-left">
                                     <p>Bedrooms: {{apartment.NoBedRoom}}</p>

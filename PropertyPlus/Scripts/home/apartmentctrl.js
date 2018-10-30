@@ -67,7 +67,7 @@
     }
      $scope.defaultData = {
             "Page":"1",
-            "Limit":"8",
+            "Limit":"16",
             "Search":"",
             "FilterPrice":{
                 "MinValue":"0",
@@ -106,7 +106,7 @@
             scope.$apply();
         }, 0);
         $scope.searchWithFilter.Page = $scope.bigCurrentPage === undefined ? 1 : $scope.bigCurrentPage;
-        $scope.searchWithFilter.Limit = 8;
+        $scope.searchWithFilter.Limit = 16;
         $scope.searchWithFilter.FilterPrice={
             "MinValue":$scope.priceSlider.minValue,
             "MaxValue":$scope.priceSlider.maxValue
