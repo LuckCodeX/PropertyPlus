@@ -293,7 +293,10 @@ namespace PropertyPlus.Controllers
                     ContentList = projectContent,
                     OverviewList = projectOverview,
                     FacilityList = facilityList,
-                    Logo = project.logo
+                    Logo = project.logo,
+                    Address = project.address,
+                    Latitude = project.latitude,
+                    Longitude = project.longitude
                 };
             }
             else
@@ -360,6 +363,9 @@ namespace PropertyPlus.Controllers
                 }
 
                 project.type = model.Type;
+                project.address = model.Address;
+                project.latitude = model.Latitude;
+                project.longitude = model.Longitude;
                 if (!Equals(model.ImageFile, null))
                 {
                     string fileName = "Project_" + ConvertDatetime.GetCurrentUnixTimeStamp() + Path.GetExtension(model.ImageFile.FileName);

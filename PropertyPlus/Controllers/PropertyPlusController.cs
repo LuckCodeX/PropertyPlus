@@ -1217,6 +1217,9 @@ namespace PropertyPlus.Controllers
                     Slide1 = project.slide_1,
                     Slide2 = project.slide_2,
                     Slide3 = project.slide_3,
+                    Address = project.address,
+                    Latitude = project.latitude,
+                    Longitude = project.longitude,
                     FacilityList = project.project_facility.Select(p => new FacilityModel()
                     {
                         Img = p.facility.img,

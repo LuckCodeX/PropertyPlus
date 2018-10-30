@@ -9,10 +9,10 @@
 
 @{
     var lst = new List<SelectListItem>()
-    {
-        new SelectListItem(){Text = "Loại thường",Value = "0"},
-        new SelectListItem(){Text = "Trọng điểm",Value = "1"},
-    };
+{
+new SelectListItem(){Text = "Loại thường",Value = "0"},
+new SelectListItem(){Text = "Trọng điểm",Value = "1"},
+};
 }
 
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -152,7 +152,16 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Phân loại</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(m => m.Type, lst, new { @class = "form-control" })
+                                @Html.DropDownListFor(m => m.Type, lst, new { @class = "form-control", required = true })
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Địa chỉ</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", required = true })
+                                @Html.HiddenFor(m => m.Latitude)
+                                @Html.HiddenFor(m => m.Longitude)
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -274,7 +283,6 @@
         </div>
     </div>
 </div>
-
 <script>
     function previewImage(event) {
         // Get a reference to the image element
@@ -305,4 +313,21 @@
             return false;
         });
     });
+
+    function initAutocomplete() {
+        var options = {
+            componentRestrictions: { country: "vn" }
+        };
+
+        var input = document.getElementById('Address');
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            var place = autocomplete.getPlace();
+            $("#Latitude").val(place.geometry.location.lat());
+            $("#Longitude").val(place.geometry.location.lng());
+        });
+    }
+
 </script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWuX4GXgxkGER7KMO5M5NM8npxQ04wxnk&libraries=places&callback=initAutocomplete"></script>

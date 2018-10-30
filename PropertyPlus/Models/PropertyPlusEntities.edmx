@@ -116,6 +116,9 @@
           <Property Name="slide_2" Type="varchar" MaxLength="100" />
           <Property Name="slide_3" Type="varchar" MaxLength="100" />
           <Property Name="logo" Type="varchar" MaxLength="100" />
+          <Property Name="address" Type="nvarchar" MaxLength="255" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="longitude" Type="float" />
         </EntityType>
         <EntityType Name="project_content">
           <Key>
@@ -839,6 +842,9 @@
           <NavigationProperty Name="project_facility" Relationship="PropertyPlusModel.FK__project_f__proje__634EBE90" FromRole="project" ToRole="project_facility" />
           <NavigationProperty Name="project_overview" Relationship="PropertyPlusModel.FK__project_o__proje__681373AD" FromRole="project" ToRole="project_overview" />
           <Property Name="logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="longitude" Type="Double" />
         </EntityType>
         <EntityType Name="project_content">
           <Key>
@@ -1316,6 +1322,9 @@
           <EntitySetMapping Name="projects">
             <EntityTypeMapping TypeName="PropertyPlusModel.project">
               <MappingFragment StoreEntitySet="project">
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="logo" ColumnName="logo" />
                 <ScalarProperty Name="slide_3" ColumnName="slide_3" />
                 <ScalarProperty Name="slide_2" ColumnName="slide_2" />

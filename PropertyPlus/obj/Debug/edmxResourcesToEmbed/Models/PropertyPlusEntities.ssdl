@@ -111,6 +111,9 @@
     <Property Name="slide_2" Type="varchar" MaxLength="100" />
     <Property Name="slide_3" Type="varchar" MaxLength="100" />
     <Property Name="logo" Type="varchar" MaxLength="100" />
+    <Property Name="address" Type="nvarchar" MaxLength="255" />
+    <Property Name="latitude" Type="float" />
+    <Property Name="longitude" Type="float" />
   </EntityType>
   <EntityType Name="project_content">
     <Key>

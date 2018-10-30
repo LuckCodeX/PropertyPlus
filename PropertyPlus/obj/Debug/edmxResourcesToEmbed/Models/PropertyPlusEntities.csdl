@@ -241,6 +241,9 @@
     <NavigationProperty Name="project_facility" Relationship="PropertyPlusModel.FK__project_f__proje__634EBE90" FromRole="project" ToRole="project_facility" />
     <NavigationProperty Name="project_overview" Relationship="PropertyPlusModel.FK__project_o__proje__681373AD" FromRole="project" ToRole="project_overview" />
     <Property Name="logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="latitude" Type="Double" />
+    <Property Name="longitude" Type="Double" />
   </EntityType>
   <EntityType Name="project_content">
     <Key>
