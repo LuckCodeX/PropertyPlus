@@ -123,7 +123,7 @@
             "FacilityIds":[]
         }
         $scope.searchWithFilter.Page=1;
-        $scope.searchWithFilter.Page=8;
+        $scope.searchWithFilter.Limit=16;
         for (var i = 0; i < $scope.listFacility.length; i++) {
             if ($scope.listFacility[i].Status) {
                 $scope.searchWithFilter.FilterFacility.FacilityIds.push($scope.listFacility[i].Id)

@@ -57,3 +57,8 @@ function loadApartmentDetail() {
             animateOut: 'fadeOut'
         });
     }
+$(document).ready(function(){
+    $(".btn-scroll-top").click(function(){
+        $(window).scrollTop(0);
+    });
+});

@@ -3530,6 +3530,20 @@ img-crop canvas{display:block;position:absolute;top:50%;left:50%;outline:0;-webk
     margin-top: 75px;
     font-size: 14px;
 }
+.btn-scroll-top{
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: #1bb394;
+    color: white;
+    padding-left: 10px;
+}
+.btn-scroll-top i {
+    color: white;
+    font-size: 20px;
+}
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;
