@@ -189,8 +189,8 @@
                                         <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-code">
                                             {{apartment.Code}}
                                         </a>
-                                        <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-name">
-                                            {{apartment.Name | limitTo : 28}}{{apartment.Name.length > 28 ? '...' : ''}}
+                                        <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="txt-no-warp choose-home-name">
+                                            {{apartment.Name}}
                                         </a>
                                         <div class="choose-home-detail float-left">
                                             <p>Bedrooms: {{apartment.NoBedRoom}}</p>
