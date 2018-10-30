@@ -32,6 +32,12 @@
             function (error) {
                 $scope.errorText = error.statusText;
             });
+        xhrService.get("GetListBlog/1/6/-1/").then(function (data) {
+                $scope.blogList = data.data.data;
+            },
+            function (error) {
+                $scope.errorText = error.statusText;
+            });
         xhrService.get("GetAllFacilities").then(function (data) {
                 $scope.listFacility = data.data;
                 for (var i = 0; i < $scope.listFacility.length; i++) {

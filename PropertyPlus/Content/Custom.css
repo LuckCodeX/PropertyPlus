@@ -606,6 +606,7 @@ footer {
 .big-news .big-news-title {
     font-size: 16px;
     margin: 22.8px 0;
+    color: #484848;
 }
 
 .small-news .small-news-thumbnail {
@@ -618,6 +619,7 @@ footer {
     font-size: 14px;
     line-height: 24px;
     margin-top: 15.4px;
+    color: #484848;
 }
 
 .list-normal-news {
@@ -3543,6 +3545,11 @@ img-crop canvas{display:block;position:absolute;top:50%;left:50%;outline:0;-webk
 .btn-scroll-top i {
     color: white;
     font-size: 20px;
+}
+.txt-no-warp{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
