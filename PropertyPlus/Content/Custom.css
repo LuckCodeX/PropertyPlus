@@ -3513,10 +3513,12 @@ img-crop canvas{display:block;position:absolute;top:50%;left:50%;outline:0;-webk
     margin-bottom: 27px;
 }
 .overview-section .describe{
+    width: calc(100% - 100px);
     display: inline-block;
     float: left;
     margin-left: 16px;
     margin-top: 7px;
+    line-height: 28px;
 }
 .section-project-detail{
     margin-top: 85px;
