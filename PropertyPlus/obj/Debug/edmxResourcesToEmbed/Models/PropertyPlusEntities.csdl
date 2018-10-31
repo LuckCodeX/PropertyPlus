@@ -244,6 +244,7 @@
     <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="latitude" Type="Double" />
     <Property Name="longitude" Type="Double" />
+    <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="project_content">
     <Key>

@@ -114,6 +114,7 @@
     <Property Name="address" Type="nvarchar" MaxLength="255" />
     <Property Name="latitude" Type="float" />
     <Property Name="longitude" Type="float" />
+    <Property Name="url" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="project_content">
     <Key>

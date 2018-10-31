@@ -34,6 +34,7 @@ namespace PropertyPlus.Models
         public string address { get; set; }
         public Nullable<double> latitude { get; set; }
         public Nullable<double> longitude { get; set; }
+        public string url { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<project_content> project_content { get; set; }

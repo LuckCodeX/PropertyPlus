@@ -193,6 +193,21 @@ namespace PropertyPlus.Controllers
         }
 
         [LoginActionFilter]
+        public ActionResult UpcomingProject(int? page)
+        {
+            int curPage = page ?? 1;
+            var projects = _service.GetUpcomingProjectList();
+            var projectList = projects.Select(p => new ProjectModel()
+            {
+                Id = p.project_id,
+                Img = p.img,
+                Type = p.type,
+                Content = _service.ConvertProjectContentToModel(p.project_content.FirstOrDefault(q => q.language == 0))
+            });
+            return View(projectList.ToPagedList(curPage, 10));
+        }
+
+        [LoginActionFilter]
         public ActionResult ProjectDetail(int? id)
         {
             ProjectModel model;

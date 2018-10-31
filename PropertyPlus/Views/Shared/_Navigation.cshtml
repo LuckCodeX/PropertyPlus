@@ -16,7 +16,7 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         @*<li><a href="@Url.Action("Profile", "AppViews")">Profile</a></li>
-                    <li class="divider"></li>*@
+                            <li class="divider"></li>*@
                         <li><a href="@Url.Action("ChangePassword", "Admin")">Đổi mật khẩu</a></li>
                     </ul>
                 </div>
@@ -38,8 +38,12 @@
                     <li class="@Html.IsSelected(action: "SlideBlog")"><a href="@Url.Action("SlideBlog", "Admin")">Blog</a></li>
                 </ul>
             </li>
-            <li class="@Html.IsSelected(action: "Project") || @Html.IsSelected(action: "ProjectDetail")">
-                <a href="@Url.Action("Project", "Admin")"><i class="fas fa-user"></i> <span class="nav-label">Dự án</span> </a>
+            <li class="@Html.IsSelected(action: "Project") || @Html.IsSelected(action: "ProjectDetail") || @Html.IsSelected(action: "UpcomingProject")">
+                <a href="#"><i class="fas fa-building"></i> <span class="nav-label">Dự án</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class="@Html.IsSelected(action: "Project")"><a href="@Url.Action("Project", "Admin")">Dự án</a></li>
+                    <li class="@Html.IsSelected(action: "UpcomingProject")"><a href="@Url.Action("UpcomingProject", "Admin")">Dự án sắp mở</a></li>
+                </ul>
             </li>
             <li class="@Html.IsSelected(action: "Facility") || @Html.IsSelected(action: "FacilityDetail")">
                 <a href="@Url.Action("Facility", "Admin")"><i class="fas fa-bath"></i> <span class="nav-label">Dịch vụ</span> </a>

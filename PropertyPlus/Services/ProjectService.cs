@@ -55,7 +55,7 @@ namespace PropertyPlus.Services
 
         public List<project> SearchProjectList(string search)
         {
-            return ProjectRepository.FindBy(p => p.status == 1 && (Equals(search, null) || p.project_content.Any(q => q.name.Contains(search)))).Include(p => p.project_content).ToList();
+            return ProjectRepository.FindBy(p => p.status == 1 && p.type != 2 && (Equals(search, null) || p.project_content.Any(q => q.name.Contains(search)))).Include(p => p.project_content).ToList();
         }
 
         public ProjectContentModel ConvertProjectContentToModel(project_content model)
@@ -91,7 +91,7 @@ namespace PropertyPlus.Services
 
         public List<project> GetAllProject()
         {
-            return ProjectRepository.FindBy(p => p.status == 1).ToList();
+            return ProjectRepository.FindBy(p => p.status == 1 && p.type != 2).ToList();
         }
 
         public project_overview GetProjectOverviewById(int id)
@@ -115,6 +115,11 @@ namespace PropertyPlus.Services
         public void SaveProjectFacility(project_facility fac)
         {
             ProjectFacilityRepository.Save(fac);
+        }
+
+        public List<project> GetUpcomingProjectList()
+        {
+            return ProjectRepository.FindBy(p => p.status == 1 && p.type == 2).Include(p => p.project_content).ToList();
         }
     }
 }

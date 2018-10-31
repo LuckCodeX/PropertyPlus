@@ -86,6 +86,7 @@
     <EntitySetMapping Name="projects">
       <EntityTypeMapping TypeName="PropertyPlusModel.project">
         <MappingFragment StoreEntitySet="project">
+          <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="longitude" ColumnName="longitude" />
           <ScalarProperty Name="latitude" ColumnName="latitude" />
           <ScalarProperty Name="address" ColumnName="address" />

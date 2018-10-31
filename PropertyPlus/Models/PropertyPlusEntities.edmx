@@ -119,6 +119,7 @@
           <Property Name="address" Type="nvarchar" MaxLength="255" />
           <Property Name="latitude" Type="float" />
           <Property Name="longitude" Type="float" />
+          <Property Name="url" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="project_content">
           <Key>
@@ -845,6 +846,7 @@
           <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="latitude" Type="Double" />
           <Property Name="longitude" Type="Double" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="project_content">
           <Key>
@@ -1322,6 +1324,7 @@
           <EntitySetMapping Name="projects">
             <EntityTypeMapping TypeName="PropertyPlusModel.project">
               <MappingFragment StoreEntitySet="project">
+                <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
                 <ScalarProperty Name="latitude" ColumnName="latitude" />
                 <ScalarProperty Name="address" ColumnName="address" />

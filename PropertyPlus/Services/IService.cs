@@ -82,5 +82,6 @@ namespace PropertyPlus.Services
         void DeleteAllProjectFacilities(List<project_facility> projectFacility);
         void SaveProjectFacility(project_facility fac);
         List<apartment> GetListApartmentByProjectId(int id);
+        List<project> GetUpcomingProjectList();
     }
 }
