@@ -15,15 +15,15 @@
     <div class="facilities-detail-apartment">
         <div class="facility-detail-apartment">
             <img src="/Images/icon/apartment.png" class="thumbnail-facility" alt="Alternate Text"/>
-            <p class="text-center facility-text">Apartment</p>
+            <p class="text-center facility-text" translate>apartment_uppercase</p>
         </div>
         <div class="facility-detail-apartment">
             <img src="/Images/icon/bedroom.png" class="thumbnail-facility" alt="Alternate Text"/>
-            <p class="text-center facility-text">{{apartment.NoBedRoom}} Bedrooms</p>
+            <p class="text-center facility-text" translate>{{apartment.NoBedRoom}} bedrooms</p>
         </div>
         <div class="facility-detail-apartment">
             <img src="/Images/icon/bathroom.png" class="thumbnail-facility" alt="Alternate Text"/>
-            <p class="text-center facility-text">{{apartment.NoBathRoom}} Bathrooms</p>
+            <p class="text-center facility-text" translate>{{apartment.NoBathRoom}} bathrooms</p>
         </div>
         <div class="facility-detail-apartment">
             <img src="/Images/icon/area.png" class="thumbnail-facility" alt="Alternate Text"/>
@@ -32,12 +32,12 @@
 
     </div>
     <div class="about-this-listing">
-        <div class="title-apartment-detail">ABOUT THIS LISTING</div>
+        <div class="title-apartment-detail" translate>about_this_listing</div>
         <div class="about-this-listing-none-border" ng-bind-html="apartment.Description | trust">
         </div>
     </div>
     <div class="tour-this-home">
-        <div class="title-apartment-detail">TOUR THIS HOME</div>
+        <div class="title-apartment-detail" translate>tour_this_home</div>
         <div class="col-xs-12 tour-this-home-slide" >
             <div class="owl-carousel owl-theme">
                 <div class="item" ng-repeat="livRoom in apartment.ImgList">
@@ -46,8 +46,8 @@
                     </div>
                 </div>
             </div>
-            <div class="title-tour-this-home">
-                Living room
+            <div class="title-tour-this-home" translate>
+                living_room
             </div>
         </div>
         <div class="col-xs-12 tour-this-home-slide">
@@ -58,8 +58,8 @@
                     </div>
                 </div>
             </div>
-            <div class="title-tour-this-home">
-                Bedroom
+            <div class="title-tour-this-home" translate>
+                bedrooms
             </div>
         </div>
         <div class="col-xs-12 tour-this-home-slide">
@@ -70,8 +70,8 @@
                     </div>
                 </div>
             </div>
-            <div class="title-tour-this-home">
-                Bathroom
+            <div class="title-tour-this-home" translate>
+                bathrooms
             </div>
         </div>
         <div class="col-xs-12 tour-this-home-slide">
@@ -82,22 +82,22 @@
                     </div>
                 </div>
             </div>
-            <div class="title-tour-this-home">
-                Other
+            <div class="title-tour-this-home" translate>
+                other_text
             </div>
         </div>
     </div>
     <div class="amenities">
-        <div class="title-apartment-detail">AMENITIES </div>
+        <div class="title-apartment-detail" translate>amenities </div>
         <img ng-repeat="facility in allFacilities" ng-src="/Upload/{{facility.Img}}" class="amenities-img" alt="Alternate Text" />
     </div>
     <div class="apartment-detail-owner" style="    margin-top: 30px;">
-        <div class="title-apartment-detail">Owner</div>
+        <div class="title-apartment-detail" translate>owner</div>
             <div class="avatar-owner">
                 <img ng-src="{{apartment.UserProfileOwner.Avatar}}" alt="Alternate Text"/>
             </div>
             <div class=" time-join">
-                Join in October 2018
+                <span translate="">join_in</span> October 2018
             </div>
             <div class=" owner-name">
                 {{apartment.UserProfileOwner.FullName}}
@@ -109,25 +109,23 @@
 </div>
 <form class="col-md-5 apartment-detail-service" ng-submit="submitApartment()" ng-click="changeService()">
     <div class="header-service">
-        <p class="label-service">
-            Estimate price included service:
-        </p>
-        <span class="price-service-left float-left med-text">{{perNightPrice}} $ / per night</span>
-        <span class="price-service-right float-right med-text">$ {{totalPrice}} / per month</span>
+        <p class="label-service">{{"estimate_price_included_service"| translate}} :</p>
+        <span class="price-service-left float-left med-text" >{{perNightPrice}} $ / {{'per_text'| translate}} {{'night_text' | translate}}</span>
+        <span class="price-service-right float-right med-text">$ {{totalPrice}} / {{'per_text'| translate}} {{'month_text' | translate}}</span>
     </div>
     <div class="body-service">
         <div class="line-service small-line">
-            <span class="net-price-label float-left med-text">Apartment price</span>
-            <span class="net-price-value float-right med-text">$ {{apartment.Price}} / month</span>
+            <span class="net-price-label float-left med-text" translate>apartment_price</span>
+            <span class="net-price-value float-right med-text">$ {{apartment.Price}} / <span translate="">month_text</span></span>
         </div>
         <div class="line-service small-line">
-            <span class="total-price-label float-left med-text">Service total price:</span>
-            <span class="total-price-value float-right med-text">$ {{servicePrice}} / month</span>
+            <span class="total-price-label float-left med-text" ><span translate="">service_total_price</span>:</span>
+            <span class="total-price-value float-right med-text">$ {{servicePrice}} / <span translate="">month_text</span></span>
         </div>
         <div class="line-service small-line">
-            <span class="float-left sm-text">Service package:</span>
-            <span class="float-right" style="margin-right: 81px">Custom</span>
-            <span class="float-right" style="margin-right: 48px">Basic</span>
+            <span class="float-left sm-text"> <span translate="">service_package</span> :</span>
+            <span class="float-right" style="margin-right: 81px" translate>custom</span>
+            <span class="float-right" style="margin-right: 48px" translate>basic</span>
         </div>
         <div class="line-service small-line">
             <div class="float-left" style="width: 117px;display: inline-block;height:20px"></div>
@@ -136,7 +134,7 @@
 
         </div>
         <div class="line-service bg-gray service-basic">
-            <p class="inline float-left">Management fee by PP</p>
+            <p class="inline float-left" translate>management_fee_by</p>
             <span class="checkbox-service float-right">
                 <label class="material-checkbox">
                     <input type="checkbox" id="checkboxFee" checked>
@@ -155,7 +153,7 @@
             </span>
         </div>
         <div class="line-service bg-gray foreign-tv-box"  ng-class="basic">
-            <p style="margin-top: 10px;" class="inline float-left">Foreign TV  </p>
+            <p style="margin-top: 10px;" class="inline float-left" translate>foreign_tv  </p>
             <ui-select ng-model="foreignTv.selected" theme="selectize" search-enabled="false" ng-disabled="disabled" class="select-foreign-tv " title="Choose a foreign TV">
                 <ui-select-match placeholder="Select foreign TV">{{$select.selected.name}}</ui-select-match>
                 <ui-select-choices repeat="foreignTv in foreignTvs">
@@ -176,7 +174,7 @@
             <!-- </select> -->
         </div>
         <div class="line-service" ng-class="basic">
-            <p class="inline float-left">Laundry & Cleaning  </p>
+            <p class="inline float-left" translate>laundry_cleaning  </p>
             <div class="float-right group-btn-service">
                 <button type="button" class="minus" ng-click="cleaning = cleaning - 1" ng-disabled="cleaning == 0">-</button>
                 <button type="button" class="plus" ng-click="cleaning = cleaning + 1" ng-disabled="cleaning == 6">+</button>
@@ -184,7 +182,7 @@
             <span class="float-right quantity-service">{{cleaning}}</span>
         </div>
         <div class="line-service bg-gray"  ng-class="basic">
-            <p class="inline float-left">Drinking water</p>
+            <p class="inline float-left" translate>drinking_water</p>
             <div class="float-right group-btn-service">
                 <button type="button" class="minus" ng-click="bottle = bottle - 1" ng-disabled="bottle == 0">-</button>
                 <button type="button" class="plus" ng-click="bottle = bottle + 1" ng-disabled="bottle == 6">+</button>
@@ -192,7 +190,7 @@
             <span class="float-right quantity-service">{{bottle}}</span>
         </div>
         <div class="line-service" ng-class="basic">
-            <p class="inline float-left">Detergent, toilet paper</p>
+            <p class="inline float-left" ><span translate="">detergent</span> ,<span translate="">toilet_paper</span></p>
             <span class="checkbox-service float-right">
                 <label class="material-checkbox">
                     <input type="checkbox" id="checkboxToilet" checked>
@@ -202,7 +200,7 @@
         </div>
 
         <div class="line-service bg-gray" ng-class="basic" ng-click="changeService()">
-            <p class="float-left sm-text">Electric & water  bill</p>
+            <p class="float-left sm-text" translate>electric_water_bill</p>
             <div class="electric-bill-block float-right">
                 <span>$ </span><input type="text" ng-change="changeBill();changeService()" ng-model="electricBill" class="electric-bill-input" name="electric-bill" />
             </div>
@@ -211,7 +209,7 @@
 
 
         <div class="line-service" ng-class="basic">
-            <p class="inline float-left">Include tax</p>
+            <p class="inline float-left" translate>include_tax</p>
             <span class="checkbox-service float-right">
                 <label class="material-checkbox">
                     <input type="checkbox" id="checkboxExtra">
@@ -224,12 +222,12 @@
                 <i style="margin-right: 10px" class="fas fa-share"></i>
                 <i class="fas fa-bookmark" ng-click="saveToBookmark(apartment)"></i>
             </div>
-            <button type="submit" class="float-right btn-service box-shadow">SEND VISITING REQUEST</button>
+            <button type="submit" class="float-right btn-service box-shadow" translate>send_visiting_request</button>
         </div>
     </div>
 </form>
 <div class="col-xs-12 similar-listing">
-    <div class="title-apartment-detail">SIMILIAR LISTING</div>
+    <div class="title-apartment-detail" translate>similiar_listing</div>
     <div class="slide-similar owl-carousel owl-theme">
         <div class="item" ng-repeat="item in apartmentList">
             <div class="thumbnail-choose-home">
@@ -248,7 +246,7 @@
                         <p>{{item.City}}</p>
                     </div>
                     <div class="choose-home-price float-right">
-                        <span class="text-price-title">Estimate Price:</span>
+                        <span class="text-price-title"><span translate="">estimate_price</span>:</span>
                         <p class="price">$ <span>{{item.Price}}</span></p>
                     </div>
                 </div>

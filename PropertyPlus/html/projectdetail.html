@@ -4,11 +4,11 @@
     </div>
     <div class="container description-project-detail">
         <div class="menu-bar-scroll" id="description-section">
-            <a href="#description-section">Description</a>
-            <a href="#overview-section">Overview</a>
-            <a href="#facilities-section">Facilities</a>
-            <a href="#location-section">Location</a>
-            <a href="#listing-section">Listing</a>
+            <a href="#description-section" translate="">description</a>
+            <a href="#overview-section" translate="">host_overview</a>
+            <a href="#facilities-section" translate="">search_bar_facilities</a>
+            <a href="#location-section" translate="">host_location</a>
+            <a href="#listing-section" translate="">listing</a>
         </div>
         <div class="content-description">
             <div ng-bind-html="project.Content.Description | trust"></div>
@@ -37,7 +37,7 @@
     <div class="container">
         <div class="section-project-detail" id="overview-section">
             <div class="title-section">
-                <p>OVERVIEW</p>
+                <p style="text-transform: uppercase;" translate="">host_overview</p>
             </div>
             <div class="content-section">
                 <div class="row">
@@ -53,7 +53,7 @@
         </div>
         <div class="section-project-detail" id="facilities-section">
             <div class="title-section">
-                <p>FACILITIES</p>
+                <p style="text-transform: uppercase;" translate="">search_bar_facilities</p>
             </div>
             <div class="content-section">
                 <div class="row">
@@ -69,7 +69,7 @@
     </div>
         <div class="section-project-detail" id="location-section">
             <div class="container title-section">
-                <p>LOCATION</p>
+                <p style="text-transform: uppercase;" translate="">host_location</p>
             </div>
             <div class="content-section">
                 <div style="height: 435px;" id="map"></div>
@@ -78,7 +78,7 @@
     <div class="container">
         <div class="section-project-detail" id="listing-section">
             <div class="title-section">
-                <p>LISTING ON PROJECT</p>
+                <p style="text-transform: uppercase;" translate="">listing_on_project</p>
             </div>
             <div class="content-section similar-listing">
                 <div ng-if="listApartmentListing.length != 0" id="listing" class="slide-similar owl-carousel owl-theme">
@@ -95,11 +95,11 @@
                                     {{item.Name}}
                                 </a>
                                 <div class="choose-home-detail float-left">
-                                    <p>Bedrooms: {{item.NoBedRoom}}</p>
+                                    <p>{{"bedrooms" | translate}}: {{item.NoBedRoom}}</p>
                                     <p>{{item.City}}</p>
                                 </div>
                                 <div class="choose-home-price float-right">
-                                    <span class="text-price-title">Estimate Price:</span>
+                                    <span class="text-price-title">{{"estimate_price" | translate}}:</span>
                                     <p class="price">$ <span>{{item.Price}}</span></p>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 ﻿<div class="container bookmark" ng-init="loadBookmark()" ng-controller="BookmarkCtrl">
 	<div class="warp">
 		<div class="header-warp">
-			<div class="title-warp">BOOKMARK</div>
+			<div class="title-warp" translate="">bookmark_uppercase</div>
 		</div>
 		<div class="body-warp">
 			<div class="list-apartment-bookmark">
@@ -24,15 +24,15 @@
                                 <div class="apartment-facilities">
                                     <div class="apartment-facility">
                                         <img src="/Images/icon/apartment.png" alt="">
-                                        <p>Apartment</p>
+                                        <p translate="">apartment_uppercase</p>
                                     </div>
                                     <div class="apartment-facility">
                                         <img src="/Images/icon/bedroom.png" alt="">
-                                        <p>{{apartment.NoBedRoom}} Bedrooms</p>
+                                        <p>{{apartment.NoBedRoom}} <span translate="">bedrooms</span></p>
                                     </div>
                                     <div class="apartment-facility">
                                         <img src="/Images/icon/bathroom.png" alt="">
-                                        <p>{{apartment.NoBathRoom}} Bathrooms</p>
+                                        <p>{{apartment.NoBathRoom}} <span translate="">bathrooms</span></p>
                                     </div>
                                     <div class="apartment-facility">
                                         <img src="/Images/icon/area.png" alt="">
@@ -43,8 +43,8 @@
                                     
                                 </div>
                                 <div class="apartment-price">
-                                    <span class="price-label">Estimate price :</span>
-                                    <span>$ {{apartment.Price}} / month <span class="tiny-text">or</span> {{(apartment.Price/30).toFixed(2)}} $/ night</span>
+                                    <span class="price-label">{{"estimate_price" |translate}} :</span>
+                                    <span>$ {{apartment.Price}} / {{'month_text' | translate}} <span class="tiny-text">or</span> {{(apartment.Price/30).toFixed(2)}} $/ {{'night_text' | translate}}</span>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                 </div>
 			</div>
             <div id="sendVisitList" ng-show="userProfile && (apartmentList.length > 0)" class="btn-send-visiting box-shadow">
-                <button type="button" ng-click="sendVisitList()">SEND VISITING REQUEST</button>
+                <button type="button" ng-click="sendVisitList()" translate="">send_visiting_request</button>
             </div>
 		</div>
 	</div>

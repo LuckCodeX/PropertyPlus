@@ -1,8 +1,8 @@
 ﻿<div class="content-listing-step" ng-init="loadStep1_2()">
-    <p>Let's us know more about your apartment</p>
+    <p translate="">row_1_step_1_2</p>
     <form name="myForm" class="row">
         <div class="col-md-6">
-            <p style="margin-top: 29px">How many total bedroom your property have?</p>
+            <p style="margin-top: 29px" translate="">row_2_step_1_2</p>
             <div class="choose-bedroom-option input-option row">
                 <div class="col-md-3">
                     <select class="select-apartment" ng-model="data.NoBedRoom">
@@ -10,13 +10,13 @@
                     </select>
                 </div>
             </div>
-            <p style="margin-top: 32px">How many total bathrooms your property have?</p>
+            <p style="margin-top: 32px" translate="">row_3_step_1_2</p>
             <div class="choose-bedroom-option input-option row">
                 <div class="col-md-3">
                     <select class="select-apartment" ng-model="data.NoBathRoom" ng-options="option.value as option.name for option in bathrooms"></select>
                 </div>
             </div>
-            <p style="margin-top: 32px">How much area of your house</p>
+            <p style="margin-top: 32px" translate="">row_4_step_1_2</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-3">
                     <input type="number" name="area" ng-model="data.Area" value="" required="" min="0" />
@@ -27,35 +27,35 @@
 
             </div>
             <div class="messageError">
-                <span ng-if="!myForm.area.$valid">Area is required</span>
+                <span ng-if="!myForm.area.$valid" translate="">area_required</span>
             </div>
-            <p style="">Address</p>
+            <p style="" translate="">host_address</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-9">
                     <input type="text" googleplace ng-model-options="{ debounce: 500 }" details="data" ng-change="changeAddress()" name="address" ng-model="data.Address" required="" />
                 </div>
             </div>
             <div class="messageError">
-                <span ng-if="!myForm.address.$valid">Address is required</span>
+                <span ng-if="!myForm.address.$valid" translate="">address_required</span>
             </div>
-            <p style="">Phone</p>
+            <p style="" translate="">phone</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-9">
                     <input type="text" minlength="8" name="phone" ng-model="data.Phone" required="" />
                 </div>
             </div>
             <div class="messageError">
-                <span ng-if="!myForm.phone.$valid">Phone is required</span>
+                <span ng-if="!myForm.phone.$valid" translate="">phone_required</span>
             </div>
         </div>
         <div class="col-md-6">
-            <p style="margin-top: 29px">Name your apartment ( Optional )</p>
+            <p style="margin-top: 29px" translate="">row_5_step_1_2</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-12">
                     <input type="text" name="nameApartment" ng-model="data.Name" value="" />
                 </div>
             </div>
-            <p style="margin-top: 32px">Describe about your apartment ( Optional )</p>
+            <p style="margin-top: 32px" translate="">row_6_step_1_2</p>
             <div class="choose-bedroom-option input-text row">
                 <div class="col-md-12">
                     <textarea type="text" ckeditor="editorOptions" id="describe" name="describe" ng-model="data.Description" value="" />
@@ -63,9 +63,9 @@
             </div>
         </div>
         <div class="col-md-12 footer-step" ng-click="save()">
-            <a ui-sref="host.create.step11" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-            <a class="float-right btn-next" ng-class="(myForm.address.$valid && myForm.area.$valid && statusAddress && myForm.phone.$valid) ? '':'service-basic'" ui-sref="host.create.step13">Next</a>
-            <a ui-sref="host.listing"  class="float-right btn-cancel">Cancel</a>
+            <a ui-sref="host.create.step11" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span translate="">back</span></a>
+            <a class="float-right btn-next" ng-class="(myForm.address.$valid && myForm.area.$valid && statusAddress && myForm.phone.$valid) ? '':'service-basic'" ui-sref="host.create.step13" translate="">next</a>
+            <a ui-sref="host.listing"  class="float-right btn-cancel" translate="">cancel</a>
         </div>
     </form>
 </div>

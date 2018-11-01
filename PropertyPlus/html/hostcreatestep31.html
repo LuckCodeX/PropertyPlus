@@ -1,15 +1,15 @@
 ﻿<div class="content-listing-step" ng-init="loadStep3_1()">
     <form class="row">
         <div class="col-md-6">
-            <p>Set up  price for your apartment</p>
-            <p>Price <i class="fas fa-question-circle"></i></p>
+            <p translate="">row_1_step_3_1</p>
+            <p translate="">search_bar_price <i class="fas fa-question-circle"></i></p>
             <div class="choose-bedroom-option input-text text-price-input row">
                 <div class="col-md-12">
                     <input type="number" ng-model="data.Price" min="0" value="" />
                     <span>$</span>
                 </div>
             </div>
-            <p style="margin-top: 33px;">Apartment management free <i class="fas fa-question-circle"></i></p>
+            <p style="margin-top: 33px;" translate="">row_2_step_3_1 <i class="fas fa-question-circle"></i></p>
             <div class="choose-bedroom-option text-price-input input-text row">
                 <div class="col-md-12">
                     <input type="number" value="" min="0" ng-model="data.ManagementFee" />
@@ -17,15 +17,15 @@
                 </div>
             </div>
             <div class="footer-step col-md-12" style="padding: 0">
-                <a ui-sref="host.create.step2" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-                <a ui-sref="host.create.step32" class="float-right btn-next" ng-class="(data.Price != null && data.ManagementFee != null) ? '':'service-basic'">Next</a>
-                <a ui-sref="host.listing" class="float-right btn-cancel">Cancel</a>
+                <a ui-sref="host.create.step2" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span translate="">back</span></a>
+                <a ui-sref="host.create.step32" class="float-right btn-next" ng-class="(data.Price != null && data.ManagementFee != null) ? '':'service-basic'" translate="">next</a>
+                <a ui-sref="host.listing" class="float-right btn-cancel" translate="">cancel</a>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-8 float-right">
-                    <p>Similiar listing</p>
+                    <p translate="">row_3_step_3_1</p>
                     <div class="all-list-apartment scrollbar">
                         <div class="list-apartment-step" ng-repeat="apt in listSimilar">
                             <a style="display: block" class="img-apartment" target="_blank" ui-sref="apartmentdetail({id: apt.Id})"><img class="img-full" ng-src="{{apt.ImgList[0].Img}}" alt="Alternate Text" /></a>
@@ -33,11 +33,11 @@
                                 <a style="color: #707070" ui-sref="apartmentdetail({id: apt.Id})" target="_blank" class="apartment-code">{{apt.Code}}</a>
                                 <a style="color: #707070" ui-sref="apartmentdetail({id: apt.Id})" target="_blank" class="apartment-name">{{apt.Name | limitTo : 28}}{{apt.Name.length > 28 ? '...' : ''}}</a>
                                 <div class="description-apartment">
-                                    <p class="apartment-facility">Bedrooms: {{apt.NoBedRoom}}</p>
+                                    <p class="apartment-facility">{{"bedrooms"|translate}}: {{apt.NoBedRoom}}</p>
                                     <p class="apartment-address">{{apt.City}}</p>
                                 </div>
                                 <div class="aparment-price">
-                                    <p style="font-size: 8px;margin-bottom: 0">Estimate price :</p>
+                                    <p style="font-size: 8px;margin-bottom: 0">{{"estimate_price"|translate}} :</p>
                                     <p class="price-text">$ {{apt.Price}}</p>
                                 </div>
                             </div>

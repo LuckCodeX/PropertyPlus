@@ -1,9 +1,9 @@
 ﻿<div class="content-listing-step" ng-init="loadStep2_1()">
     <div class="row step-2-1">
         <div class="col-md-10 col-md-offset-1">
-            <p>Great progress, John ! </p>
-            <p style="margin-top: 10px;">Now let's get some details about your apartment then you can ready to publish your listing.</p>
-            <p style="margin-bottom: 19px">Tips : Apartment have reality image help rentel make decision faster. </p>
+            <p>{{"great_progress"|translate}}, John ! </p>
+            <p style="margin-top: 10px;" translate="">row_1_step_2_1</p>
+            <p style="margin-bottom: 19px" translate="">row_2_step_2_1 </p>
             <div class="row">
                 <div class="col-md-12 img-upload-current">
                     <i ng-click="banner_img.url = null" ng-show="banner_img.url" class="remove-img-btn fas fa-times"></i>
@@ -11,7 +11,7 @@
                     <div class="btn-upload" ng-class="banner_img.url ? 'opacityZero':''">
                         <span class="btn-file">
                             <p> <i class="fas fa-plus"></i></p>
-                            <p>Add banner image</p>
+                            <p translate="">add_banner_image</p>
                             <input accept="image/*" image="banner_img" type="file" type="{{banner_img.file.type}}" />
                         </span>
                     </div>
@@ -24,7 +24,7 @@
                     <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-plus"></i></p>
-                            <p>add another</p>
+                            <p translate="">add_another</p>
                             <input type="file" accept="image/*" multiple image="images" length-file="6" upload-img="uploadImg"
                                    resize-max-height="300"
                                    resize-max-width="250"
@@ -33,9 +33,9 @@
                     </div>
                 </div>
                 <div class="footer-step col-md-12">
-                    <a ui-sref="host.create.step13" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-                    <a ui-sref="host.create.step31" ng-click="saveStep2(images,banner_img)" class="float-right btn-next">Next</a>
-                    <a ui-sref="host.listing" class="float-right btn-cancel">Cancel</a>
+                    <a ui-sref="host.create.step13" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span translate="">back</span></a>
+                    <a ui-sref="host.create.step31" ng-click="saveStep2(images,banner_img)" class="float-right btn-next" translate="">next</a>
+                    <a ui-sref="host.listing" class="float-right btn-cancel" translate="">cancel</a>
                 </div>
             </div>
         </div>

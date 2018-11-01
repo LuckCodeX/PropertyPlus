@@ -40,25 +40,25 @@
 
             <form class="contact-info-2" ng-submit="submitChangePwd()">
                 <div class="contact-info-box-2">
-                    <span class="contact-text">Change your password</span>
+                    <span class="contact-text" translate="">change_your_password</span>
                 </div>
                 <div class="change-pass">
-                    <p>Old password :</p>
+                    <p>{{"old_password"|translate}} :</p>
                     <input type="password" ng-model="data.Password" class="contact-submit">
                 </div>
                 <div class="change-pass-1">
-                    <p>New password :</p>
+                    <p>{{"new_password"|translate}} :</p>
                     <input type="password" ng-model="data.NewPassword" class="contact-submit">
                 </div>
 
                 <div class="change-pass-2">
-                    <p>Confirm new password :</p>
+                    <p>{{"confirm_new_password"|translate}} :</p>
                     <input type="password" ng-model="confirmPassword" class="contact-submit">
                 </div>
                 <div class="messageError" style="margin-left: 240px;">
-                    <span ng-show="data.NewPassword != confirmPassword && data.NewPassword && confirmPassword">Passwords does not match</span>
+                    <span ng-show="data.NewPassword != confirmPassword && data.NewPassword && confirmPassword" translate="">passwords_not_match</span>
                 </div>
-                <button type="submit" ng-disabled="data.NewPassword != confirmPassword || data.NewPassword == null || confirmPassword == null"><span class="contact-text-button">Update Password</span></button>
+                <button type="submit" ng-disabled="data.NewPassword != confirmPassword || data.NewPassword == null || confirmPassword == null"><span class="contact-text-button" translate="">update_password</span></button>
             </form>
 
 
