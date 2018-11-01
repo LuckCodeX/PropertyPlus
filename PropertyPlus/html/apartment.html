@@ -9,7 +9,7 @@
                                 <button class="box-shadow btn-facilities has-filter" target-filter="#price-filter"><span translate>search_bar_price </span><i class="fas fa-chevron-right"></i>
                                 </button>
                                 <div class="card-filter" id="price-filter">
-                                    <span class="inline" style="color: #464878;">Price Range</span>
+                                    <span class="inline" style="color: #464878;" translate>price_range</span>
                                     <div class="block-rzslider">
                                         <rzslider
                                           data-rz-slider-model="priceSlider.minValue"
@@ -19,7 +19,7 @@
                                         <div class="min-bubble">$ {{priceSlider.minValue}}</div>
                                         <div class="max-bubble">$ {{priceSlider.maxValue}}</div>
                                     </div>
-                                    <button ng-click="clearPrice()" type="button" class="float-right btn-apply">Clear</button>
+                                    <button ng-click="clearPrice()" type="button" class="float-right btn-apply" translate>clear</button>
                                 </div>
 
                             </div>
@@ -27,9 +27,9 @@
                                 <button class="box-shadow btn-facilities has-filter" target-filter="#room-filter"><span translate>search_bar_room </span><i class="fas fa-chevron-right"></i>
                                 </button>
                                 <div class="card-filter" id="room-filter">
-                                    <span class="inline" style="color: #464878;">Rooms</span>
+                                    <span class="inline" style="color: #464878;" translate>rooms</span>
                                     <div class="bedrooms-line">
-                                        <i class="fas fa-bed float-left"></i><span style="margin-left: 20px" class="float-left">Bedrooms</span>
+                                        <i class="fas fa-bed float-left"></i><span style="margin-left: 20px" class="float-left" translate>bedrooms</span>
                                         <div class="float-right group-btn-service">
                                             <button class="minus" ng-click="bedroom = bedroom - 1" ng-disabled="bedroom == 0">-</button>
                                             <button class="plus" ng-click="bedroom = bedroom + 1" ng-disabled="bedroom == 6">+</button>
@@ -37,21 +37,21 @@
                                         <span class="float-right quantity">{{bedroom}}</span>
                                     </div>
                                     <div class="bedrooms-line">
-                                        <i class="fas fa-bath float-left"></i><span style="margin-left: 20px" class="float-left">Bathrooms</span>
+                                        <i class="fas fa-bath float-left"></i><span style="margin-left: 20px" class="float-left" translate>bathrooms</span>
                                         <div class="float-right group-btn-service">
                                             <button class="minus" ng-click="bathroom = bathroom - 1" ng-disabled="bathroom == 0">-</button>
                                             <button class="plus" ng-click="bathroom = bathroom + 1" ng-disabled="bathroom == 6">+</button>
                                         </div>
                                         <span class="float-right quantity">{{bathroom}}</span>
                                     </div>
-                                    <button ng-click="clearRoom()" type="button" class="float-right btn-apply">Clear</button>
+                                    <button ng-click="clearRoom()" type="button" class="float-right btn-apply" translate>clear</button>
                                 </div>
                             </div>
                             <div class="group-btn-facility">
                                 <button class="box-shadow btn-facilities has-filter" target-filter="#area-filter"><span translate>search_bar_area </span><i class="fas fa-chevron-right"></i>
                                 </button>
                                 <div class="card-filter" id="area-filter">
-                                    <span class="inline" style="color: #464878;">Area</span>
+                                    <span class="inline" style="color: #464878;" translate>area</span>
                                     <div class="block-rzslider">
                                         <rzslider
                                           data-rz-slider-model="areaSlider.minValue"
@@ -61,14 +61,14 @@
                                         <div class="min-bubble">{{areaSlider.minValue}} m<sup>2</sup></div>
                                         <div class="max-bubble">{{areaSlider.maxValue}} m<sup>2</sup></div>
                                     </div>
-                                    <button ng-click="clearArea()" type="button" class="float-right btn-apply">Clear</button>
+                                    <button ng-click="clearArea()" type="button" class="float-right btn-apply" translate>clear</button>
                                 </div>
                             </div>
                             <div class="group-btn-facility">
                                 <button class="box-shadow btn-facilities has-filter" target-filter="#facility-filter"><span translate>search_bar_facilities </span><i class="fas fa-chevron-right"></i>
                                 </button>
                                 <div class="card-filter" id="facility-filter">
-                                    <span class="inline" style="color: #464878;">Facilities</span>
+                                    <span class="inline" style="color: #464878;" translate>facilities</span>
                                     <div class="list-facility-filter">
                                         <div ng-repeat="facility in listFacility track by $index" class="facility-line">
                                             <label class="material-checkbox">
@@ -78,7 +78,7 @@
                                             <span>{{facility.Content.Name}}</span>
                                         </div>
                                     </div>
-                                    <button ng-click="clearFacility()" type="button" class="float-right btn-apply">Clear</button>
+                                    <button ng-click="clearFacility()" type="button" class="float-right btn-apply" translate>clear</button>
                                 </div>
 
                             </div>
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="switch-show-map">
-                        <label class="title-switch-show-map">Show map</label>
+                        <label class="title-switch-show-map" translate>show_map</label>
                         <label class="switch">
                             <input name="switch" type="checkbox">
                             <span class="slider round box-shadow" checked></span>
@@ -113,7 +113,7 @@
                     </div>
                 </div>-->
                 <div class="label">
-                    VIEW:
+                    <span translate>view_category</span> :
                 </div>
                 <div id="radio-grid">
                     <button class="btn-radio-grid active grid"><i style="color: #8D8D8D" class="fas fa-th-large"></i></button>
@@ -165,15 +165,15 @@
                                     <div class="apartment-facilities">
                                         <div class="apartment-facility">
                                             <img src="/Images/icon/apartment.png" alt="">
-                                            <p>Apartment</p>
+                                            <p translate>apartment_uppercase</p>
                                         </div>
                                         <div class="apartment-facility">
                                             <img src="/Images/icon/bedroom.png" alt="">
-                                            <p>{{apartment.NoBedRoom}} Bedrooms</p>
+                                            <p translate>{{apartment.NoBedRoom}} bedrooms</p>
                                         </div>
                                         <div class="apartment-facility">
                                             <img src="/Images/icon/bathroom.png" alt="">
-                                            <p>{{apartment.NoBathRoom}} Bathrooms</p>
+                                            <p translate>{{apartment.NoBathRoom}} bathrooms</p>
                                         </div>
                                         <div class="apartment-facility">
                                             <img src="/Images/icon/area.png" alt="">
@@ -183,8 +183,8 @@
                                     <div class="apartment-description" ng-bind-html="(apartment.Description | limitTo : 170) + '...'">
                                     </div>
                                     <div class="apartment-price">
-                                        <span class="price-label">Estimate price :</span>
-                                        <span>$ {{apartment.Price}} / month <span class="tiny-text">or</span> {{(apartment.Price/30).toFixed(2)}} $/ night</span>
+                                        <span class="price-label" translate>estimate_price :</span>
+                                        <span>$ {{apartment.Price}} / month <span class="tiny-text">or</span translate> {{(apartment.Price/30).toFixed(2)}} $/ night_text</span>
                                     </div>
                                 </div>
                                 <div class="apartment-owner">
@@ -195,11 +195,11 @@
                                 <div class="apartment-interacts">
                                     <div class="apartment-interact">
                                         <p><i class="fas fa-share"></i></p>
-                                        <p>Share</p>
+                                        <p translate>share_text</p>
                                     </div>
                                     <div class="apartment-interact">
                                         <p><i class="fas fa-bookmark" ng-click="saveToBookmark(apartment)"></i></p>
-                                        <p>Bookmark</p>
+                                        <p translate>bookmark_text</p>
                                     </div>
                                 </div>
                             </div>

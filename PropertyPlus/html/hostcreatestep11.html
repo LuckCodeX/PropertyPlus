@@ -1,14 +1,14 @@
 ﻿<div class="content-listing-step" ng-init="loadStep1_1()">
     <div class="row">
         
-        <p>Let's get start listing your apartment</p>
-        <p style="margin-top: 38.5px">What kind of place do you have?</p>
+        <p translate="">row_1_step_1_1</p>
+        <p style="margin-top: 38.5px" translate="">row_2_step_1_1</p>
         <div class="choose-apartment-option input-option row" style="">
             <div class="col-md-4">
                 <select class="select-apartment" ng-model="data.Type" ng-options="option.value as option.name for option in apartments"></select>
             </div>
         </div>
-        <p>Name your apartment's propject</p>
+        <p translate="">row_3_step_1_1</p>
         <div class="choose-city-option input-option row">
             <div class="col-md-2">
                 <select number-to-string class="select-apartment" ng-model="data.ProjectId">
@@ -20,7 +20,7 @@
         </div>
         
         <div class="footer-step">
-            <a ui-sref="host.create.step12" class="float-left btn-next">Continue</a>
+            <a ui-sref="host.create.step12" class="float-left btn-next" translate="">continue</a>
         </div>
     </div>
 

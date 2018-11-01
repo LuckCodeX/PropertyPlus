@@ -292,7 +292,10 @@
                     console.log(error.statusText);
                 });
         $(document).ready(function(){
-            loadApartmentDetail();
+            $timeout(function () {
+                loadApartmentDetail();
+            }, 1500);
+            
         });
 
         $scope.someGroupFn = function (item) {

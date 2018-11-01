@@ -20,7 +20,7 @@
                                         <button class="box-shadow btn-facilities has-filter" target-filter="#price-filter"><span translate>search_bar_price </span><i class="fas fa-chevron-right"></i>
                                         </button>
                                         <div class="card-filter" id="price-filter">
-                                            <span class="inline" style="color: #464878;">Price Range</span>
+                                            <span class="inline" style="color: #464878;" translate>price_range</span>
                                             <div class="block-rzslider">
                                                 <rzslider
                                                   data-rz-slider-model="priceSlider.minValue"
@@ -30,7 +30,7 @@
                                                 <div class="min-bubble">$ {{priceSlider.minValue}}</div>
                                                 <div class="max-bubble">$ {{priceSlider.maxValue}}</div>
                                             </div>
-                                            <button ng-click="clearPrice()" type="button" class="float-right btn-apply">Clear</button>
+                                            <button ng-click="clearPrice()" type="button" class="float-right btn-apply" translate>clear</button>
                                         </div>
 
                                     </div>
@@ -38,9 +38,9 @@
                                         <button class="box-shadow btn-facilities has-filter" target-filter="#room-filter"><span translate>search_bar_room </span><i class="fas fa-chevron-right"></i>
                                         </button>
                                         <div class="card-filter" id="room-filter">
-                                            <span class="inline" style="color: #464878;">Rooms</span>
+                                            <span class="inline" style="color: #464878;" translate>rooms</span>
                                             <div class="bedrooms-line">
-                                                <i class="fas fa-bed float-left"></i><span style="margin-left: 20px" class="float-left">Bedrooms</span>
+                                                <i class="fas fa-bed float-left"></i><span style="margin-left: 20px" class="float-left" translate>bedrooms</span>
                                                 <div class="float-right group-btn-service">
                                                     <button class="minus" ng-click="bedroom = bedroom - 1" ng-disabled="bedroom == 0">-</button>
                                                     <button class="plus" ng-click="bedroom = bedroom + 1" ng-disabled="bedroom == 6">+</button>
@@ -48,21 +48,21 @@
                                                 <span class="float-right quantity">{{bedroom}}</span>
                                             </div>
                                             <div class="bedrooms-line">
-                                                <i class="fas fa-bath float-left"></i><span style="margin-left: 20px" class="float-left">Bathrooms</span>
+                                                <i class="fas fa-bath float-left"></i><span style="margin-left: 20px" class="float-left" translate>bathrooms</span>
                                                 <div class="float-right group-btn-service">
                                                     <button class="minus" ng-click="bathroom = bathroom - 1" ng-disabled="bathroom == 0">-</button>
                                                     <button class="plus" ng-click="bathroom = bathroom + 1" ng-disabled="bathroom == 6">+</button>
                                                 </div>
                                                 <span class="float-right quantity">{{bathroom}}</span>
                                             </div>
-                                            <button ng-click="clearRoom()" type="button" class="float-right btn-apply">Clear</button>
+                                            <button ng-click="clearRoom()" type="button" class="float-right btn-apply" translate>clear</button>
                                         </div>
                                     </div>
                                     <div class="group-btn-facility">
                                         <button class="box-shadow btn-facilities has-filter" target-filter="#area-filter"><span translate>search_bar_area </span><i class="fas fa-chevron-right"></i>
                                         </button>
                                         <div class="card-filter" id="area-filter">
-                                            <span class="inline" style="color: #464878;">Area</span>
+                                            <span class="inline" style="color: #464878;" translate>area</span>
                                             <div class="block-rzslider">
                                                 <rzslider
                                                   data-rz-slider-model="areaSlider.minValue"
@@ -72,14 +72,14 @@
                                                 <div class="min-bubble">{{areaSlider.minValue}} m<sup>2</sup></div>
                                                 <div class="max-bubble">{{areaSlider.maxValue}} m<sup>2</sup></div>
                                             </div>
-                                            <button ng-click="clearArea()" type="button" class="float-right btn-apply">Clear</button>
+                                            <button ng-click="clearArea()" type="button" class="float-right btn-apply" translate>clear</button>
                                         </div>
                                     </div>
                                     <div class="group-btn-facility">
                                         <button class="box-shadow btn-facilities has-filter" target-filter="#facility-filter"><span translate>search_bar_facilities </span><i class="fas fa-chevron-right"></i>
                                         </button>
                                         <div class="card-filter" id="facility-filter">
-                                            <span class="inline" style="color: #464878;">Facilities</span>
+                                            <span class="inline" style="color: #464878;" translate>facilities</span>
                                             <div class="list-facility-filter">
                                                 <div ng-repeat="facility in listFacility track by $index" class="facility-line">
                                                     <label class="material-checkbox">
@@ -89,7 +89,7 @@
                                                     <span>{{facility.Content.Name}}</span>
                                                 </div>
                                             </div>
-                                            <button ng-click="clearFacility()" type="button" class="btn-apply">Clear</button>
+                                            <button ng-click="clearFacility()" type="button" class="btn-apply" translate>clear</button>
                                         </div>
 
                                     </div>
@@ -105,18 +105,18 @@
             <div class="main-homepage container">
                 <div class="row">
                     <div class="col-xs-12 introducing">
-                        <div class="homepage-title-section">
-                            Introducing Propert Plus
+                        <div class="homepage-title-section" translate>
+                            introducing_property_plus
                         </div>
                         <div class="box-shadow introducing-banner ">
                             <img src="{{slideIntroduct}}" class="background-img" alt="Alternate Text" />
-                            <button class="box-shadow btn-introducing">Explore our story</button>
+                            <button class="box-shadow btn-introducing" translate>explore_our_story</button>
                         </div>
                     </div>
                     <div class="col-xs-12 sevice-rating">
-                        <div class="homepage-title-section">
-                            See how our service is best
-                            <p class="small-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p>
+                        <div class="homepage-title-section" translate>
+                            see_how_our_service_is_best
+                           <!--  <p class="small-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p> -->
                         </div>
                         <div class="content-service-rating">
                             <div class="list-service-rating col-xs-12">
@@ -128,8 +128,24 @@
                                                     <div class="icon-service-rating ">
                                                         <img class="img-responsive" src="/Images/24.svg" />
                                                     </div>
-                                                    <div class="title-service-rating">
-                                                        Standard Quality
+                                                    <div class="title-service-rating" translate>
+                                                        standard_quality
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating" translate>
+                                                        fast_service
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating" translate>
+                                                        call_center
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-xs-3 service">
@@ -137,24 +153,8 @@
                                                         <img class="img-responsive" src="/Images/24.svg" />
                                                     </div>
                                                     <div class="title-service-rating">
-                                                        Fast service
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-xs-3 service">
-                                                    <div class="icon-service-rating ">
-                                                        <img class="img-responsive" src="/Images/24.svg" />
-                                                    </div>
-                                                    <div class="title-service-rating">
-                                                        24/7 call center
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-xs-3 service">
-                                                    <div class="icon-service-rating ">
-                                                        <img class="img-responsive" src="/Images/24.svg" />
-                                                    </div>
-                                                    <div class="title-service-rating">
-                                                        <div class="row">
-                                                            Multi-language support
+                                                        <div class="row" translate>
+                                                            multi_language_support
                                                         </div>
 
                                                     </div>
@@ -169,15 +169,15 @@
                             <div class="sevice-rating-content">
                                 <div class="box-shadow section1">
                                     <img src="{{slideService}}" class="background-img" alt="Alternate Text" />
-                                    <button class="box-shadow btn-service-rating">Explore all service</button>
+                                    <button class="box-shadow btn-service-rating" translate>explore_all_service</button>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                     <div class="col-xs-12 choose-home">
-                        <div class="homepage-title-section">
-                            Choose your new home
+                        <div class="homepage-title-section" translate>
+                            choose_your_new_home
                         </div>
                         <div class="list-choose-home">
                             <div class="row">
@@ -193,11 +193,11 @@
                                             {{apartment.Name}}
                                         </a>
                                         <div class="choose-home-detail float-left">
-                                            <p>Bedrooms: {{apartment.NoBedRoom}}</p>
+                                            <p translate>bedrooms: {{apartment.NoBedRoom}}</p>
                                             <p>{{apartment.City}}</p>
                                         </div>
                                         <div class="choose-home-price float-right">
-                                            <span class="text-price-title">Estimate Price:</span>
+                                            <span class="text-price-title" translate>estimate_price :</span>
                                             <p class="price">$ <span>{{apartment.Price}}</span></p>
                                         </div>
                                     </div>
@@ -207,14 +207,14 @@
                         <div class="btn-see-more">
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
-                                    <a ui-sref="apartment" class="box-shadow">See more (+2000)</a>
+                                    <a ui-sref="apartment" class="box-shadow" translate>see_more (+2000)</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12 project-have-service">
-                        <div class="homepage-title-section">
-                            Project have our service
+                        <div class="homepage-title-section" translate>
+                            project_have_our_service
                         </div>
                         <div class="list-project">
                             <div class="row">
@@ -250,13 +250,13 @@
                         <div class="btn-explore-all">
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
-                                    <a ui-sref="project" class="box-shadow">Explore all</a>
+                                    <a ui-sref="project" class="box-shadow" translate>explore_all</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12 homepage-news">
-                        <div class="homepage-title-section">Blog</div>
+                        <div class="homepage-title-section" translate>menu_blog</div>
                         <div class="list-news">
                             <div class="row">
                                 <div class="col-md-6 big-news">

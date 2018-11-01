@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-md-10 col-offset-md-1 body-listing-dashboard">
                 <ul class="tabs">
-                    <li class="tab-link current" data-tab="tab-1">All</li>
-                    <li class="tab-link" data-tab="tab-2">Listed</li>
+                    <li class="tab-link current" data-tab="tab-1" translate="">all</li>
+                    <li class="tab-link" data-tab="tab-2" translate="">listed</li>
                 </ul>
                 <div class="btn-create-listing">
-                    <a ui-sref="host.create.step11">Create new</a>
+                    <a ui-sref="host.create.step11" translate="">create_new</a>
                 </div>
                 <div id="tab-1" class="tab-content current">
                     <div class="listing-all-apartment">
@@ -19,7 +19,7 @@
                                     <a class="apartment-name">{{apartment.Name}}</a>
                                 </div>
                                 <div class="facilities-apartment">
-                                    <p class="apartment-facility">Bedrooms: {{apartment.NoBedRoom}}</p>
+                                    <p class="apartment-facility">{{"bedrooms" | translate}}: {{apartment.NoBedRoom}}</p>
                                     <p>{{apartment.City}}</p>
                                 </div>
                                 <div class="process-aparment">
@@ -47,7 +47,7 @@
                                     <a class="apartment-name">{{apartment.Name}}</a>
                                 </div>
                                 <div class="facilities-apartment">
-                                    <p class="apartment-facility">Bedrooms: {{apartment.NoBedRoom}}</p>
+                                    <p class="apartment-facility">{{"bedrooms" | translate}}: {{apartment.NoBedRoom}}</p>
                                     <p>{{apartment.City}}</p>
                                 </div>
                                 <div class="process-aparment">

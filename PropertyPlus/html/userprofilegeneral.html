@@ -2,7 +2,7 @@
         <div class="col-md-7 body-user">
             <div class="card visiting-list">
                 <div class="card-header">
-                    Your visiting list
+                    {{"your_visiting_list"|translate}}
                 </div>
                 <div class="card-body">
                     <div class="row product" ng-repeat="item in visitList">
@@ -13,11 +13,11 @@
                             <a ui-sref="apartmentdetail({id: item.Apartment.Id,name: replaceString(item.Apartment.Name)})" class="product-code">{{item.Apartment.Code}}</a>
                             <a ui-sref="apartmentdetail({id: item.Apartment.Id,name: replaceString(item.Apartment.Name)})" class="product-name">{{item.Apartment.Name}}</a>
                             <div class="product-left-side">
-                                <p class="product-facility">Bedrooms: {{item.Apartment.NoBedRoom}}</p>
+                                <p class="product-facility">{{"bedrooms"|translate}}: {{item.Apartment.NoBedRoom}}</p>
                                 <p>{{item.Apartment.City}}</p>
                             </div>
                             <div class="product-right-side">
-                                <p>Estimate price:</p>
+                                <p>{{"estimate_price"|translate}}:</p>
                                 <p class="product-price">$ <span>{{item.TotalPrice}}</span></p>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
             </div>
             <div class="card apartment-list">
                 <div class="card-header">
-                    Your apartment
+                    {{"your_apartment"|translate}}
                 </div>
                 <div class="card-body">
                     {{item | json}}
@@ -50,8 +50,8 @@
                                 <p class="expired-value">25/09/2019</p>
                             </div> -->
                             <div class="product-left-side">
-                                <p class="apartment-facility">Bedrooms: 3</p>
-                                <p class="">Hà Nội</p>
+                                <p class="apartment-facility">{{"bedrooms"|translate}}: 3</p>
+                                <p class="">{{item.City}}</p>
                             </div>
                         </div>
 
@@ -67,19 +67,19 @@
         <div class="col-md-3 right-side-bar">
             <div class="card visiting-schedule">
                 <div class="card-header">
-                    Visting schedule
+                    {{"visting_schedule"|translate}}
                 </div>
                 <div class="card-body">
                     <div class="card-menu">
                         <div class="schedule">
-                            <div class="visiting-schedule-title float-left">1 visiting schedlue</div>
+                            <div class="visiting-schedule-title float-left">1 {{"visting_schedule"|translate}}</div>
                             <div class="visiting-schedule-icon float-right">
                                 <a href=""><i class="fas fa-eye"></i></a>
                                 <a href=""><i class="fas fa-sign-in-alt"></i></a>
                             </div>
                         </div>
                         <div class="schedule">
-                            <div class="visiting-schedule-title float-left">1 visiting schedlue</div>
+                            <div class="visiting-schedule-title float-left">1 {{"visting_schedule"|translate}}</div>
                             <div class="visiting-schedule-icon float-right">
                                 <a href=""><i class="fas fa-eye"></i></a>
                                 <a href=""><i class="far fa-clock"></i></a>
@@ -90,14 +90,14 @@
             </div>
             <div class="card visiting-history">
                 <div class="card-header">
-                    Visting history
+                    {{"visting_history"|translate}}
                 </div>
                 <div class="card-body">
                     <div class="card-menu">
                         <div class="history">
                             <div class="visiting-history-title float-left">
                                 <div class="time">Thurday Aug 16 th 2018</div>
-                                <div class="count-visited">You visited 4 apartment</div>
+                                <div class="count-visited">{{"you_visited"|translate}} 4 {{"apartment"|translate}}</div>
                             </div>
                             <div class="visiting-history-icon float-right">
                                 <a href=""><i class="fas fa-eye"></i></a>
@@ -106,16 +106,16 @@
                         <div class="history">
                             <div class="visiting-history-title float-left">
                                 <div class="time">Thurday Aug 16 th 2018</div>
-                                <div class="count-visited">You visited 4 apartment</div>
+                                <div class="count-visited">{{"you_visited"|translate}} 4 {{"apartment"|translate}}</div>
                             </div>
                             <div class="visiting-history-icon float-right">
                                 <a href=""><i class="fas fa-eye"></i></a>
                             </div>
                         </div>
-                        <div class="history">
+                         <div class="history">
                             <div class="visiting-history-title float-left">
                                 <div class="time">Thurday Aug 16 th 2018</div>
-                                <div class="count-visited">You visited 4 apartment</div>
+                                <div class="count-visited">{{"you_visited"|translate}} 4 {{"apartment"|translate}}</div>
                             </div>
                             <div class="visiting-history-icon float-right">
                                 <a href=""><i class="fas fa-eye"></i></a>

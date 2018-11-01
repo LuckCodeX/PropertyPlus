@@ -1,9 +1,9 @@
 ﻿<div class="content-listing-step" ng-init="loadStep1_3()">
     <div class="row">
         <div class="col-md-6">
-            <p>Is the pin in  the right place?</p>
-            <p>If needed, you can drag the pin to adjust its location.</p>
-            <p>Address: {{data.Address}}</p>
+            <p translate="">row_1_step_1_3</p>
+            <p translate="">row_2_step_1_3</p>
+            <p>{{"host_address" | translate}}: {{data.Address}}</p>
             <!--<iframe 
                     width="100%" 
                     height="300" 
@@ -16,9 +16,9 @@
                 />-->
             <div id="map"></div>
             <div class="footer-step" style="padding: 0">
-                <a ui-sref="host.create.step12" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-                <a ui-sref="host.create.step2" class="float-right btn-next">Next</a>
-                <a ui-sref="host.listing" class="float-right btn-cancel">Cancel</a>
+                <a ui-sref="host.create.step12" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span translate="">back</span></a>
+                <a ui-sref="host.create.step2" class="float-right btn-next" translate="">next</a>
+                <a ui-sref="host.listing" class="float-right btn-cancel" translate="">cancel</a>
             </div>
         </div>
        

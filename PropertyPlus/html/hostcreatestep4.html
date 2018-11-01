@@ -1,10 +1,10 @@
 ﻿<div class="content-listing-step" ng-init="loadStep4_1()">
     <div class="row step-2-1">
         <div class="col-md-10 col-md-offset-1">
-            <p style="margin-top: 0px;">Để có đủ cơ sở pháp lý cho phép hoạt động kinh doanh trên PROPERTYPLUS, vui lòng đăng tải ảnh hoặc bản scan những giấy tờ xác thực quyền sở hữu đất đai hoặc giấy ủy quyền sử dụng căn hộ.</p>
+            <p style="margin-top: 0px;" translate="">row_1_step_4_1</p>
 
-            <p>- Dung lượng mỗi ảnh tải lên không vượt quá 5MB.</p>
-            <p style="margin-bottom: 0px">- Số lượng ảnh cho một lần tải không vượt quá 5. </p>
+            <p translate="">row_2_step_4_1</p>
+            <p style="margin-bottom: 0px" translate="">row_3_step_4_1</p>
             <div class="row">
                 <div ng-repeat="image in imagesConfirm track by $index" class="col-md-12 img-upload-current drag-drop-img">
                     <i ng-show="imagesConfirm[$index].url" ng-click="imagesConfirm.splice($index, 1)" class="remove-img-btn fas fa-times"></i>
@@ -14,7 +14,7 @@
                     <div class="btn-upload">
                         <span class="btn-file">
                             <p> <i class="fas fa-cloud-upload-alt"></i></p>
-                            <p>Drag n drop or click to upload </p>
+                            <p translate="">row_4_step_4_1</p>
                             <input type="file" accept="image/*" multiple image="imagesConfirm" length-file="5" upload-img="uploadImg"
                                    resize-max-height="300"
                                    resize-max-width="250"
@@ -23,9 +23,9 @@
                     </div>
                 </div>
                 <div class="footer-step col-md-12">
-                    <a ui-sref="host.create.step32" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span>Back</span></a>
-                    <a href="#" ng-click="submitAll(imagesConfirm)" ng-class="disableFinish ? 'service-basic':''" class="float-right btn-next">Finish</a>
-                    <a ui-sref="host.listing" class="float-right btn-cancel">Cancel</a>
+                    <a ui-sref="host.create.step32" class="float-left btn-back"><i class="fas fa-chevron-left"></i><span translate="">back</span></a>
+                    <a href="#" ng-click="submitAll(imagesConfirm)" ng-class="disableFinish ? 'service-basic':''" class="float-right btn-next" translate="">finish</a>
+                    <a ui-sref="host.listing" class="float-right btn-cancel" translate="">cancel</a>
                 </div>
             </div>
         </div>
