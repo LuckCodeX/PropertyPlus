@@ -6,18 +6,18 @@
 
 
         <div>
-            <button class="news text" ng-click="type = 0; pageChanged()">News</button>
+            <button class="news text" ng-click="type = 0; pageChanged()"><span translate>blog_news</span></button>
         </div>
         <div>
-            <button class="experience text" ng-click="type = 1; pageChanged()">Experience</button>
+            <button class="experience text" ng-click="type = 1; pageChanged()"><span translate>blog_experience</span></button>
         </div>
         <div>
-            <button class="tips text" ng-click="type = 2; pageChanged()">Tips</button>
+            <button class="tips text" ng-click="type = 2; pageChanged()"><span translate>blog_tips</span></button>
         </div>
         <form ng-submit="pageChanged()">
             <div class="blogsearch-box ">
                 <input type="text" placeholder="Keyword" ng-model="search">
-                <button type="submit" class=" text" >Search</button>
+                <button translate type="submit" class=" text" >blog_search</button>
             </div>
         </form>
 
@@ -36,7 +36,7 @@
                     <p class="text padding-top-20" data-toggle="modal" data-target="#myModal" ng-click="loadDetail(item.Id)">{{item.Content.Title | limitTo : 50}}{{item.Content.Title.length > 50 ? '...' : ''}}</p>
                     <p class="text1">{{item.CreatedString}}</p>
                     <p class="text2">{{item.Content.Description | limitTo : 100}}{{item.Content.Description.length > 100 ? '...' : ''}}</p>
-                    <div class="read-more-button"><a ui-sref="blogdetail({id:item.Id, title: replaceString(item.Content.Title)})">READ MORE</a></div>
+                    <div class="read-more-button"><a translate ui-sref="blogdetail({id:item.Id, title: replaceString(item.Content.Title)})">blog_readmore</a></div>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
     <div class=" container padding-top-60 padding-bottom-60">
         <div class="row">
             <div class="col-md-offset-4 col-md-4 final  text-center">
-                <button ng-click="loadMore()" ng-hide="loadMoreBtn">Load more</button>
+                <button translate ng-click="loadMore()" ng-hide="loadMoreBtn">blog_loadmore</button>
             </div>
         </div>
     </div>

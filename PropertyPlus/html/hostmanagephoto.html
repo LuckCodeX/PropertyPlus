@@ -12,7 +12,7 @@
                             <div class="btn-upload" ng-class="(banner_img[0].url || banner_img[0].Img) ? 'opacityZero':''">
                                 <span class="btn-file">
                                     <p> <i class="fas fa-plus"></i></p>
-                                    <p>Add banner image</p>
+                                    <p translate>host_addbannerimage</p>
                                     <input ng-disabled="isDisabled" accept="image/*" image="banner_img[0]" type="file" id="banner_img[0]" />
                                 </span>
                             </div>
@@ -26,7 +26,7 @@
                             <div class="btn-upload">
                                 <span class="btn-file">
                                     <p> <i class="fas fa-plus"></i></p>
-                                    <p>add another</p>
+                                    <p translate>host_addanother</p>
                                     <input type="file" accept="image/*" multiple image="images[0]" length-file="6" upload-img="uploadImg"
                                            resize-max-height="300"
                                            resize-max-width="250"
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <button type="button" id="linkButton" ng-disabled="isDisabled"  ng-click="saveHostManage()" class="manager-describe-btn" style="margin-top: 25px;float:right;    margin-bottom: 170px;">Save</button>
+                        <button translate type="button" id="linkButton" ng-disabled="isDisabled"  ng-click="saveHostManage()" class="manager-describe-btn" style="margin-top: 25px;float:right;    margin-bottom: 170px;">host_save</button>
                     </div>
                 </div>
             </div>

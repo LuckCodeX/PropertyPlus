@@ -2,7 +2,7 @@
     <div class="row manage-info-main">
         <div class="row">
             <div class="col-md-6">
-                <p class="manage-info-text">Type</p>
+                <p translate class="manage-info-text">host_type</p>
                 <select ng-disabled="isDisabled" ng-model="apartmentchoice.Type" class="select-info" number-to-string>
                     <option value="1">Apartment</option>
                 </select>
@@ -10,7 +10,7 @@
         </div>
         <div class="row manage-info">
             <div class="col-md-6">
-                <p class="manage-info-text">Project</p>
+                <p translate class="manage-info-text">host_project</p>
                 <select ng-disabled="isDisabled" number-to-string  class="select-info"  ng-model="apartmentchoice.ProjectId">
                     <option value="">None</option>
                     <option ng-repeat="item in projectList " value="{{item.Id}}">{{item.Name}}</option>
@@ -20,21 +20,21 @@
         </div>
         <div class="row manage-info">
             <div class="col-md-6">
-                <p class="manage-info-text">No.bedroom</p>
+                <p translate class="manage-info-text">host_nobedroom</p>
                 <input ng-disabled="isDisabled" type="number" min="0" class="select-info-1" name="nobedroom" ng-model="apartmentchoice.NoBedRoom">
 
             </div>
         </div>
         <div class="row manage-info">
             <div class="col-md-6">
-                <p class="manage-info-text">No.bathroom</p>
+                <p translate class="manage-info-text">host_nobathroom</p>
               <input ng-disabled="isDisabled" type="number" min="0" class="select-info-1" style="margin-left:12px;" name="nobathroom" ng-model="apartmentchoice.NoBathRoom">
 
             </div>
         </div>
         <div class="row manage-info">
             <div class="col-md-6">
-                <p class="manage-info-text">Area</p>
+                <p translate class="manage-info-text">host_area</p>
                 <input ng-disabled="isDisabled" type="number" min="0" name="area" ng-model="apartmentchoice.Area"  class="manage-info-area" />
                 <div class="span">
                     <span>m<sup> 2</sup></span>
@@ -43,13 +43,13 @@
         </div>
         <div class="row manage-info">
             <div class="col-md-12">
-                <p class="manage-info-text">Address</p>
+                <p translate class="manage-info-text">host_address</p>
                 <input ng-disabled="isDisabled" type="text" class="manage-info-address" googleplace ng-model-options="{ debounce: 500 }" details="apartmentchoice" ng-change="changeAddress()" name="address"  ng-model="apartmentchoice.Address"/>
 
             </div>
         </div>
 
-        <button type="button" id="linkButton" ng-disabled="isDisabled" ng-click="saveHostManage()" class="manager-describe-btn" style="margin-top: 60px;">Save</button>
+        <button translate type="button" id="linkButton" ng-disabled="isDisabled" ng-click="saveHostManage()" class="manager-describe-btn" style="margin-top: 60px;">host_save</button>
     </div>
     </div>
       <script type="text/javascript">

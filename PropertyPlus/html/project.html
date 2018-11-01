@@ -4,7 +4,7 @@
     </div>
 
     <div>
-        <p class="text-project text-project-1">FEATURE PROJECT</p>
+        <p translate class="text-project text-project-1">project_featureproject</p>
     </div>
 
     <div class="container padding-top-30 padding-right-37">
@@ -25,7 +25,7 @@
     </div>
 
     <div>
-        <p class="text-project text-project-1">ON-AIR PROJECT</p>
+        <p translate class="text-project text-project-1">project_onairproject</p>
     </div>
 
     <div class="container padding-top-60 ">
@@ -39,8 +39,8 @@
                     </div>
                     <div class="project-item">
                         <a style="display: inline-block;width: 100%;height: 327px" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img ng-src="/Upload/{{project.Img}}" class="img-rounded" /></a>
-                        <a class="button-left button-box text-project text-project-5 " ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})">Explore</a>
-                        <button class="button-right button-box text-project text-project-5">See list</button>
+                        <a translate class="button-left button-box text-project text-project-5 " ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})">project_explore</a>
+                        <button translate class="button-right button-box text-project text-project-5">project_seelist</button>
                     </div>
                     <p class="text-project text-project-4 text-project-left">{{project.Content.Name}}</p>
                     <p class="text-project text-project-4 text-project-right">{{listIdProject[project.Id]}} properties available</p>
@@ -50,7 +50,7 @@
     </div>
 
     <div>
-        <p class="text-project text-project-1">UP-COMING PROJECT</p>
+        <p translate class="text-project text-project-1">project_upcomingproject</p>
     </div>
 
     <div class="container padding-top-60 safe-fire1 ">

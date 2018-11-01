@@ -5,10 +5,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="choice-apartment-manager">
-                            <p class="label-choice-apartment">Choose your apartment</p>
+                            <p translate class="label-choice-apartment">host_chooseyourapartment</p>
                             <select number-to-string ng-change="changeAparment()" ng-model="apartmentId">
 
-                                <option value="">Choose your apartment</option>
+                                <option translate value="">host_chooseyourapartment</option>
                                 <option ng-repeat="item in yourApartmentlist " value="{{item.Id}}">APARTMENT - {{item.Code}} - {{item.Name}}</option>
                                 
                             </select>
@@ -17,23 +17,23 @@
                     <div class="col-md-2 left-bar">
                         <div class="row">
 
-                            <a ui-sref="host.manage.overview" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.overview')}">
-                                Overview
+                            <a translate ui-sref="host.manage.overview" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.overview')}">
+                               host_overview
                             </a>
-                            <a ui-sref="host.manage.problem" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.problem')}">
-                                Problem
+                            <a translate ui-sref="host.manage.problem" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.problem')}">
+                                host_problem
                             </a>
-                            <a ui-sref="host.manage.describe" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.describe')}">
-                                Describe
+                            <a translate ui-sref="host.manage.describe" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.describe')}">
+                                host_describe
                             </a>
-                            <a ui-sref="host.manage.information" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.information')}">
-                                Information
+                            <a translate ui-sref="host.manage.information" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.information')}">
+                                host_information
                             </a>
-                            <a ui-sref="host.manage.photo" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.photo')}">
-                                Photos
+                            <a translate ui-sref="host.manage.photo" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.photo')}">
+                                host_photos
                             </a>
-                            <a ui-sref="host.manage.location" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.location')}">
-                                Location
+                            <a translate ui-sref="host.manage.location" class="col-xs-12 menu-nav" ng-class="{active: $state.includes('host.manage.location')}">
+                                host_location
                             </a>
 
                         </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-3" style="width:279px; height:605px;background:#fff;margin-top: 20px;">
 
-                <p style="margin-top: 8px;">Calendar</p>
+                <p translate style="margin-top: 8px;">host_calendar</p>
                 <div id="mainCalendar">
                     <button id="prev-year"><i class="fas fa-chevron-up"></i></button>
                     <div id="table-calendar">
@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-3" style="margin-top:20px;">
                 <div class="download-contract-user">
-                    <span>Download contract</span>
+                    <span translate>host_downloadcontract</span>
                     <a href="#"><span class="icon glyphicon glyphicon-download-alt"></span></a>
                 </div>
             </div>
