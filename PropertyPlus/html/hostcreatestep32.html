@@ -3,9 +3,10 @@
         <div style="margin-left: 10px; margin-bottom: 20px;" class="col-md-12">
         	<p translate="">row_1_step_3_2</p>
         </div>
-        <div class="col-xs-2 nopad text-center" ng-repeat="facility in facilities">
+        <div class="col-xs-2 m-t-10 nopad text-center" ng-repeat="facility in facilities">
 		    <label class="image-checkbox" ng-click="facility.Status = !facility.Status">
 		      <img class="img-responsive" ng-src="/Upload/{{facility.Img}}" />
+              <span class="text-facilities m-t-5">{{facility.Content.Name}}</span>
 		      <input type="checkbox" name="image[]" ng-model="facility.Status" />
 		    </label>
 		</div>

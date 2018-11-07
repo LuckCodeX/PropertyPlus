@@ -64,6 +64,7 @@ angular.module('imageupload', [])
                 };
 
                 scope.$apply(function () {
+
                     if (attrs.multiple) return scope.image.push(imageResult);
                     scope.image = imageResult;
 
@@ -92,10 +93,10 @@ angular.module('imageupload', [])
         link: function postLink (scope, element, attrs, ctrl) {
 
             //when multiple always return an array of images
-            if(attrs.multiple) scope.image = [];
-
+            if (scope.image == undefined) {
+                if(attrs.multiple) scope.image = [];
+            }
             var applyScope = setApplyScope(scope, attrs);
-
             element.bind('change', function (evt) {
                 var files = evt.target.files;
                 var countFile = files.length;

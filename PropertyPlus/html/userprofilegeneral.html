@@ -35,8 +35,7 @@
                     {{"your_apartment"|translate}}
                 </div>
                 <div class="card-body">
-                    {{item | json}}
-                    <div class="row product" ng-repeat="item in yourApartmentList">
+                    <div class="row product your-apartment-list" ng-repeat="item in yourApartmentList">
                         <a ui-sref="apartmentdetail({id:item.Id})" target="_blank" class="product-img col-xs-4">
                             <img style="width:100%;height:100%;" ng-src="{{item.ImgList[0].Img}}" alt="Alternate Text" />
                         </a>
@@ -54,6 +53,11 @@
                                 <p class="">{{item.City}}</p>
                             </div>
                         </div>
+                        <a href="#" class="product-delete col-xs-1" ng-click="">
+                            <div class="icon-delete">
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </a>
 
                         <!-- <div class="product-action">
                             <a href="#"><i class="fas fa-th-list"></i></a>
@@ -64,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 right-side-bar">
+        <!-- <div class="col-md-3 right-side-bar">
             <div class="card visiting-schedule">
                 <div class="card-header">
                     {{"visting_schedule"|translate}}
@@ -124,6 +128,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
   

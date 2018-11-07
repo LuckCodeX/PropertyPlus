@@ -139,7 +139,7 @@
                                     <p> {{apartment.City}}</p>
                                 </div>
                                 <div class="choose-home-price float-right">
-                                    <span class="text-price-title">{{"estimate_Price"|translate}}:</span>
+                                    <span class="text-price-title">{{"estimate_price" | translate}}:</span>
                                     <p class="price">$ <span>{{apartment.Price}}</span></p>
                                 </div>
                             </div>
@@ -169,11 +169,11 @@
                                         </div>
                                         <div class="apartment-facility">
                                             <img src="/Images/icon/bedroom.png" alt="">
-                                            <p>{{apartment.NoBedRoom}} {{"bedrooms"|translate}}</p>
+                                            <p>{{apartment.NoBedRoom}} {{"bedrooms" | translate}}</p>
                                         </div>
                                         <div class="apartment-facility">
                                             <img src="/Images/icon/bathroom.png" alt="">
-                                            <p translate>{{apartment.NoBathRoom}} {{"bathrooms"|translate}}</p>
+                                            <p>{{apartment.NoBathRoom}} {{"bathrooms" | translate}}</p>
                                         </div>
                                         <div class="apartment-facility">
                                             <img src="/Images/icon/area.png" alt="">
@@ -183,7 +183,7 @@
                                     <div class="apartment-description" ng-bind-html="(apartment.Description | limitTo : 170) + '...'">
                                     </div>
                                     <div class="apartment-price">
-                                        <span class="price-label">{{"estimate_price"|translate}} :</span>
+                                        <span class="price-label"><span translate="">estimate_price</span> :</span>
                                         <span>$ {{apartment.Price}} / {{"month_text"|translate}} <span class="tiny-text">or</span translate> {{(apartment.Price/30).toFixed(2)}} $/ {{"night_text"|translate}}</span>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                         <p translate>share_text</p>
                                     </div>
                                     <div class="apartment-interact">
-                                        <p><i class="fas fa-bookmark" ng-click="saveToBookmark(apartment)"></i></p>
+                                        <p><i class="fas fa-heart" ng-click="saveToBookmark(apartment)"></i></p>
                                         <p translate>bookmark_text</p>
                                     </div>
                                 </div>

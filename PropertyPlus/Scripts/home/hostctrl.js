@@ -43,20 +43,39 @@
             });
     };
 
-    $scope.changeAddress = function () {
-        if ($scope.data.Latitude == undefined ||
-            $scope.data.Latitude == 0 ||
-            $scope.data.Longitude == undefined ||
-            $scope.data.Longitude == 0 ||
-            $scope.data.Longitude == $scope.oldLong ||
-            $scope.data.Latitude == $scope.oldLat) {
-            $scope.statusAddress = false;
 
-        } else {
-            $scope.oldLat = $scope.data.Latitude;
-            $scope.oldLong = $scope.data.Longitude;
-            $scope.statusAddress = true;
-        }
+
+    $scope.changeAddress = function () {
+        $scope.statusAddress = false;
+        $scope.$watchCollection('data', function() {
+            if ($scope.data.Latitude) {
+                if ($scope.data.Latitude != $scope.oldLat) {
+                    $scope.statusAddress = true;
+                    $scope.oldLat = $scope.data.Latitude;
+                }
+            }
+            return;
+        });
+        // if ($scope.data.Latitude != undefined ||
+        //     $scope.data.Latitude != 0 ||
+        //     $scope.data.Longitude != undefined ||
+        //     $scope.data.Longitude != 0 ) {
+        //     if ($scope.data.Latitude == $scope.oldLat ||
+        //     $scope.data.Longitude == $scope.oldLong) {
+
+        //     }else {
+        //         $scope.$watchCollection('data.Latitude', function() {
+        //         $scope.oldLat = $scope.data.Latitude;
+        //         $scope.oldLong = $scope.data.Longitude;
+        //         $scope.statusAddress = true;
+        //         return;
+        //      });
+            
+        // }
+        //     $scope.statusAddress = false;
+        
+        // } 
+        
     }
 
     $scope.loadStep1_2 = function () {
@@ -65,12 +84,13 @@
         }
         $scope.oldLat = undefined;
         $scope.oldLong = undefined;
-        $scope.statusAddress = true;
+        $scope.statusAddress = false;
          var scope = angular.element('body[ng-controller="MainCtrl"]').scope();
         $timeout(function () {
             scope.$apply();
         }, 0);
-        if ($scope.data.Phone == "") {
+        console.log($scope.data);
+        if ($scope.data.Phone == "" && scope.userProfile.Phone) {
             $scope.data.Phone = scope.userProfile.Phone;
         }
     };
@@ -138,37 +158,37 @@
 
     }
 
-    $scope.addToListImg = function(images,max,index,total){
-        var count = 0;
-        if ($scope.images.length>0) {
-            if($scope.images[$scope.images.length-1].url != null){
-                count = max - $scope.images.length;
-            }else{
-                count = max - $scope.images.length + 1;
-            }
-        }else{
-            count = max;
-        }
-        // if (oldLength >0) oldLength += 1;
-        if (total == images.length) {
-            if (total >= count)
-                { quantity = count }
-            else if(count >= total)
-                {quantity = total} ;
-            for (var i = 0; i < quantity; i++) {
-                if (i == 0) {
-                    if ($scope.images.length > 0) {
-                        $scope.images[$scope.images.length-1] = images[i];
-                    }else{
-                        $scope.images[0] = images[i];
-                    }
-                }else{
-                    $scope.images.push(images[i]);
-                }
-            }
-            $scope.imagess = [];
-        }
-    }
+    // $scope.addToListImg = function(images,max,index,total){
+    //     var count = 0;
+    //     if ($scope.images.length>0) {
+    //         if($scope.images[$scope.images.length-1].url != null){
+    //             count = max - $scope.images.length;
+    //         }else{
+    //             count = max - $scope.images.length + 1;
+    //         }
+    //     }else{
+    //         count = max;
+    //     }
+    //     // if (oldLength >0) oldLength += 1;
+    //     if (total == images.length) {
+    //         if (total >= count)
+    //             { quantity = count }
+    //         else if(count >= total)
+    //             {quantity = total} ;
+    //         for (var i = 0; i < quantity; i++) {
+    //             if (i == 0) {
+    //                 if ($scope.images.length > 0) {
+    //                     $scope.images[$scope.images.length-1] = images[i];
+    //                 }else{
+    //                     $scope.images[0] = images[i];
+    //                 }
+    //             }else{
+    //                 $scope.images.push(images[i]);
+    //             }
+    //         }
+    //         $scope.imagess = [];
+    //     }
+    // }
 
     // $scope.getImageLength = function(max){
     //     console.log(1);
@@ -238,9 +258,9 @@
     }
 
     $scope.loadStep3_2 = function(){
-        if ($scope.data == undefined) {
-            $location.url('/host/listing');
-        }
+        // if ($scope.data == undefined) {
+        //     $location.url('/host/listing');
+        // }
         xhrService.get("GetAllFacilities")
         .then(function (data) {
             $scope.facilities = data.data;

@@ -1,7 +1,7 @@
 ﻿<div class="content-listing-step" ng-init="loadStep2_1()">
     <div class="row step-2-1">
         <div class="col-md-10 col-md-offset-1">
-            <p>{{"great_progress"|translate}}, John ! </p>
+            <p>{{"great_progress"|translate}}, {{userProfile.FullName}} ! </p>
             <p style="margin-top: 10px;" translate="">row_1_step_2_1</p>
             <p style="margin-bottom: 19px" translate="">row_2_step_2_1 </p>
             <div class="row">
@@ -16,6 +16,7 @@
                         </span>
                     </div>
                 </div>
+
                 <div ng-repeat="image in images track by $index" class="col-md-4 another-img-upload img-upload-current">
                     <i ng-click="images.splice($index, 1)" ng-if="images[$index].url" class="remove-img-btn fas fa-times"></i>
                     <img ng-show="images[$index].url" class="img" ng-src="{{images[$index].url}}" />

@@ -163,6 +163,27 @@ header .btn-search {
         border-radius: 50%;
     }
 
+    .ensign-header{
+        display: inline-block;
+        float: left;
+        height: 47.55px;
+        margin-right: 15px;
+    }
+    .ensign-header img{
+        width: 25px;
+        height: 25px;
+        border-radius: 500px;
+        border: 1px solid #707070;
+    }
+    .ensign-header a{
+        margin-right: 5px;
+       /* display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 1px solid #707070;*/
+    }
+
 .box-user-header-bar {
     cursor: pointer;
 }
@@ -496,6 +517,7 @@ footer {
     display: block;
     color: #707070;
     height: 44px;
+    overflow: hidden;
 }
 
 .choose-home-price, .choose-home-detail {
@@ -951,12 +973,21 @@ footer {
 
     .choose-home-summary-column .apartment-address {
         font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .choose-home-summary-column .apartment-description {
         font-size: 12px;
-        margin-top: 17px;
+        margin-top: 9px;
         width: 392.19px;
+        height: 68px;
+        overflow: hidden;
+    }
+
+    .choose-home-summary-column .apartment-description p{
+        margin: 0;
     }
 
     .choose-home-summary-column .apartment-facilities .apartment-facility {
@@ -1033,11 +1064,19 @@ footer {
     font-size: 8px;
 }
 
+.apartment-interact i.fas{
+    cursor: pointer;
+}
+
 .apartment-interact i.fa-bookmark:hover {
     color: #7698E7;
 }
 
 .apartment-interact i.fa-heart:hover {
+    color: #FF7487;
+}
+
+.apartment-interact i.fa-heart.active {
     color: #FF7487;
 }
 
@@ -1111,6 +1150,13 @@ footer {
 
 .sm-text {
     font-size: 14px
+}
+
+.body-content{
+    min-height: calc(100vh - 378px);
+}
+.main-body-listing{
+    min-height: calc(100vh - 378px);
 }
 
 .apartment-detail-body {
@@ -1229,9 +1275,8 @@ footer {
 }
 
 .amenities img {
-    margin-bottom: 21.6px;
-    margin-right: 4%;
-    width: calc(22% - 3px);
+    
+    width: 100%;
     height: 100px;
 }
 
@@ -1615,6 +1660,38 @@ footer {
 
     .visiting-list .product-delete i {
         font-size: 16px;
+    }
+
+    .apartment-in-listing .product-delete {
+    background-color: #D2D2D2;
+    float: right;
+    height: 166.16px;
+    line-height: 166.16px;
+    padding: 0 24px;
+    visibility: hidden;
+}
+
+    .apartment-in-listing .product-delete i {
+        font-size: 16px;
+    }
+    .apartment-in-listing:hover .product-delete{
+        visibility: visible;
+    }
+
+    .your-apartment-list .product-delete {
+        background-color: #D2D2D2;
+        float: right;
+        height: 145.01px;
+        line-height: 140px;
+        padding: 0 19px;
+        visibility: hidden; 
+}
+
+    .your-apartment-list .product-delete i {
+        font-size: 16px;
+    }
+    .your-apartment-list:hover .product-delete{
+        visibility: visible;
     }
 
 .btn-send-visiting {
@@ -3551,6 +3628,30 @@ img-crop canvas{display:block;position:absolute;top:50%;left:50%;outline:0;-webk
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+.text-facilities{
+    font-size: 13px;
+    font-weight: 500;
+
+}
+.m-t-5{
+    margin-top: 5px !important;
+}
+.m-t-10{
+    margin-top: 10px !important;
+}
+.amenities .amenities-content{
+    display: inline-block;
+    margin-bottom: 21.6px;
+    margin-right: 4%;
+    width: calc(22% - 3px);
+
+}
+
+.amenities .amenities-content .text-facilities{
+    display: block;
+    
+
 }
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {

@@ -209,7 +209,10 @@
     confirm_new_password:"Xác nhận mật khẩu mới",
     passwords_not_match:"Mật khẩu chưa khớp",
     update_password:"Thay đổi mật khẩu",
-
+    menu_about_us:"Về chúng tôi",
+    refer:"Tham khảo",
+    pending:"Chờ duyệt",
+    approved:"Đã duyệt",
 }
 
 var translationsEN = {
@@ -220,6 +223,7 @@ var translationsEN = {
     search_bar_facilities: "Facilities",
     menu_support:"Support",
     menu_blog: "Blog",
+    menu_about_us: "About us",
     menu_customer: "Support",
     menu_signup: "Sign up",
     menu_help: "Help",
@@ -288,14 +292,14 @@ var translationsEN = {
     choose_your_new_home:"Choose your new home",
     estimate_price:"Estimate Price",
     see_more:"See more",
-    project_have_our_service:"Project have our service",
+    project_have_our_service:"Our projects",
     explore_all:"Explore all",
     show_map:"Show map",
     view_category:"VIEW",
     apartment_uppercase:"Apartment",
     night_text:"night",
     share_text:"Share",
-    bookmark_text:"Bookmark",
+    bookmark_text:"Favourite",
     about_this_listing:"ABOUT THIS LISTING",
     tour_this_home:"TOUR THIS HOME",
     living_room:"Living room",
@@ -321,7 +325,7 @@ var translationsEN = {
     include_tax:"Include tax",
     send_visiting_request:"SEND VISITING REQUEST",
     similiar_listing:"SIMILAR LISTING",
-    bookmark_uppercase:"BOOKMARK",
+    bookmark_uppercase:"Favourite",
     dashboard:"Dashboard",
     manage:"Manage",
     listing:"Listing",
@@ -433,9 +437,14 @@ var translationsEN = {
     confirm_new_password:"Confirm new password",
     passwords_not_match:"Passwords does not match",
     update_password:"Update Password",
+    refer:"Refer",
+    pending:"Pending",
+    approved:"Approved",
 }
 
 var translationsJP = {
+    menu_about_us:"私たちについて",
+    refer:"参照する",
     menu_customer: "サポート",
     menu_signup: "サインアップ",
 
@@ -646,6 +655,8 @@ var translationsJP = {
     confirm_new_password:"新しいパスワードを確認",
     passwords_not_match:"パスワードが一致しません",
     update_password:"パスワードの更新",
+    pending:"保留中の承認",
+    approved:"レビュー済み",
 
 }
 
