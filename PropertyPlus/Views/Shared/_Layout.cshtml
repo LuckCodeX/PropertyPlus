@@ -41,13 +41,13 @@
         <div class="header-navbar-menu float-right">
             <div class="ensign-header">
                 <a href="#">
-                    <img src="/Upload/vi.png">
+                    <img src="/Upload/vi.png" ng-click="changeLanguage('vi')">
                 </a>
                 <a href="#">
-                    <img src="/Upload/uk.png">
+                    <img src="/Upload/uk.png" ng-click="changeLanguage('en')">
                 </a>
                 <a href="#">
-                    <img src="/Upload/jp.png">
+                    <img src="/Upload/jp.png" ng-click="changeLanguage('jp')">
                 </a>
             </div>
             <div class="header-navbar-menu-nav">
@@ -69,7 +69,7 @@
                 <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#" translate="">menu_signup</a>
             </div>
             <div ng-if="userProfile === undefined" class="header-navbar-menu-nav">
-                |&nbsp;&nbsp;
+                &nbsp;&nbsp; |&nbsp;&nbsp;
                 <a class="text-center" href="#" data-dismiss="modal" id="modalLogin" data-toggle="modal" data-target="#myModal-login" translate="">menu_login</a>
             </div>
             <div ng-if="userProfile !== undefined" class="header-navbar-menu-nav box-user-header-bar">

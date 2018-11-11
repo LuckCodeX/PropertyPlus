@@ -13,7 +13,7 @@
             <div class="col-md-2">
                 <select number-to-string class="select-apartment" ng-model="data.ProjectId">
                     <option value="">None</option>
-                    <option ng-repeat="option in projectList" value="{{option.Id}}">{{option.Name}}</option>
+                    <option ng-repeat="option in projectList" value="{{option.Id}}">{{option.Content.Name}}</option>
                 </select>
             </div>
 

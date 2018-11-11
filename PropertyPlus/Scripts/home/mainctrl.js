@@ -5,32 +5,33 @@
     $timeout,
     xhrService,
     $anchorScroll,
+    $translate,
     $window) {
 
     $scope.user = {};
 
-    $scope.redirectVisitList = function(){
+    $scope.redirectVisitList = function () {
         if (localStorage && localStorage.getItem('user_profile')) {
             $location.path("/user-profile/general");
-        }else{
+        } else {
             document.getElementById('modalLogin').click();
         }
     }
 
-    $scope.redirectHost = function(){
+    $scope.redirectHost = function () {
         if (localStorage && localStorage.getItem('user_profile')) {
             $location.path("/host/listing");
-        }else{
+        } else {
             document.getElementById('modalLogin').click();
         }
     }
 
-    $scope.submitSearch = function(txtSearch){
+    $scope.submitSearch = function (txtSearch) {
         $location.path("/apartment");
-        $scope.searchForm();   
+        $scope.searchForm();
     }
 
-    $scope.changeSearchTxt = function(txtSearch){
+    $scope.changeSearchTxt = function (txtSearch) {
         $scope.txtSearch = txtSearch;
     }
 
@@ -43,29 +44,29 @@
         }
 
         var statusFilter = true;
-        $('body').on('mouseup','.list-btn-facilities .group-btn-facility .btn-facilities',function(){
+        $('body').on('mouseup', '.list-btn-facilities .group-btn-facility .btn-facilities', function () {
             var atrrb = $(this).attr("target-filter");
-            $('.list-btn-facilities .group-btn-facility .card-filter').each(function(){
-                if($(this).attr("id") != atrrb.replace("#","")){
+            $('.list-btn-facilities .group-btn-facility .card-filter').each(function () {
+                if ($(this).attr("id") != atrrb.replace("#", "")) {
                     $(this).removeClass("active");
                     $(this).parent().children('.btn-facilities').removeClass("active");
-                } 
+                }
             });
             $(this).toggleClass('active');
             $(atrrb).toggleClass('active');
-            statusFilter=false;
+            statusFilter = false;
         });
-        $('body').on("mouseup",".list-btn-facilities .group-btn-facility",function(event){
-           statusFilter=false;
+        $('body').on("mouseup", ".list-btn-facilities .group-btn-facility", function (event) {
+            statusFilter = false;
         });
-         $("body").mouseup(function(){ 
-            if(statusFilter){
+        $("body").mouseup(function () {
+            if (statusFilter) {
                 $('.btn-facilities.active').removeClass("active");
                 $('.card-filter.active').removeClass("active");
-            
+
             }
-              statusFilter=true; 
-              
+            statusFilter = true;
+
         });
 
         //xhrService.get("GetListBlog/1/6/-1/").then(function (data) {
@@ -104,9 +105,9 @@
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             $scope.userProfile = data.data;
             $('#myModal-email').modal('hide');
-        },function (error) {
-                $scope.errorText = error.statusText;
-            });
+        }, function (error) {
+            $scope.errorText = error.statusText;
+        });
     };
 
     $scope.login = function () {
@@ -114,38 +115,43 @@
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             $scope.userProfile = data.data;
             $('#myModal-login').modal('hide');
-        },function (error) {
-                $scope.errorText = error.statusText;
-            });
+        }, function (error) {
+            $scope.errorText = error.statusText;
+        });
     };
 
-    $scope.submitGoogle = function(){
+    $scope.submitGoogle = function () {
         $scope.profileGoogle = $window.profileGoogle;
         xhrService.post("LoginGoogle", $scope.profileGoogle).then(function (data) {
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             $scope.userProfile = data.data;
             $('#myModal-signup').modal('hide');
             $('#myModal-login').modal('hide');
-        },function (error) {
-                $scope.errorText = error.statusText;
-            });
+        }, function (error) {
+            $scope.errorText = error.statusText;
+        });
     };
 
 
-    $scope.submitFacebook = function(){
+    $scope.submitFacebook = function () {
         $scope.profileFacebook = $window.profileFacebook;
-         // console.log($scope.profileFacebook);
+        // console.log($scope.profileFacebook);
         xhrService.post("LoginFacebook", $scope.profileFacebook).then(function (data) {
             console.log(data);
             localStorage.setItem('user_profile', Base64.encode(JSON.stringify(data.data)));
             $scope.userProfile = data.data;
             $('#myModal-signup').modal('hide');
             $('#myModal-login').modal('hide');
-        },function (error) {
-                $scope.errorText = error.statusText;
-            });
+        }, function (error) {
+            $scope.errorText = error.statusText;
+        });
     }
 
+    $scope.changeLanguage = function (langKey) {
+        $translate.use(langKey);
+        localStorage.setItem('language', langKey);
+        $window.location.reload();
+    }
 }
 
 app.controller('MainCtrl', MainCtrl);
