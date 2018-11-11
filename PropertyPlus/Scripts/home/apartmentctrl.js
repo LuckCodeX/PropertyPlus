@@ -235,6 +235,8 @@
         $scope.disabled = undefined;
         $scope.searchEnabled = undefined;
 
+        
+
         $scope.setInputFocus = function () {
             $scope.$broadcast('UiSelectDemo1');
         };
@@ -242,6 +244,12 @@
         xhrService.get("GetApartmentDetail/" + $scope.apartmentId)
             .then(function (data) {
                 $scope.apartment = data.data;
+                var apartmentList = JSON.parse(localStorage.getItem('apartmentList'));
+                for (var i = 0; i < apartmentList.length; i++) {
+                    if (apartmentList[i].Id == $scope.apartment.Id) {
+                        $(".apartment-interact .fa-heart").addClass("active");
+                    }
+                }
                 for (var i = 0; i < $scope.apartment.ImgList.length; i++) {
                     if ($scope.apartment.ImgList[i].Type == 0) {
                         $scope.apartment.banner = $scope.apartment.ImgList[i].Img;

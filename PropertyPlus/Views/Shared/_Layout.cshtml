@@ -39,27 +39,38 @@
             <button class="btn-search box-shadow" >Search</button>
         </form>
         <div class="header-navbar-menu float-right">
-            <div class="header-navbar-menu-nav">
-                <a class="text-center" ui-sref="blog">Blog</a>
+            <div class="ensign-header">
+                <a href="#">
+                    <img src="/Upload/vi.png">
+                </a>
+                <a href="#">
+                    <img src="/Upload/uk.png">
+                </a>
+                <a href="#">
+                    <img src="/Upload/jp.png">
+                </a>
             </div>
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="#" ng-click="redirectHost()">Become a host</a>
+                <a class="text-center" ui-sref="blog" translate="">menu_blog</a>
             </div>
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="#">Help</a>
+                <a class="text-center" href="#" ng-click="redirectHost()" translate="">menu_host</a>
             </div>
             <div class="header-navbar-menu-nav">
-                <a class="text-center" href="#" ng-click="redirectVisitList()">Your visit list</a>
+                <a class="text-center" href="#" translate="">menu_about_us</a>
             </div>
             <div class=" header-navbar-menu-nav">
-                <a class="text-center " ui-sref="bookmark">Bookmark</a>
+                <a class="text-center " ui-sref="bookmark" translate>bookmark_text</a>
+            </div>
+            <div class="header-navbar-menu-nav">
+                <a class="text-center" href="#" translate="">menu_help</a>
             </div>
             <div ng-if="userProfile === undefined" class="header-navbar-menu-nav">
-                <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#">Sign up</a>
+                <a data-toggle="modal" data-target="#myModal-signup" class="text-center" href="#" translate="">menu_signup</a>
             </div>
             <div ng-if="userProfile === undefined" class="header-navbar-menu-nav">
                 |&nbsp;&nbsp;
-                <a class="text-center" href="#" data-dismiss="modal" id="modalLogin" data-toggle="modal" data-target="#myModal-login">Login</a>
+                <a class="text-center" href="#" data-dismiss="modal" id="modalLogin" data-toggle="modal" data-target="#myModal-login" translate="">menu_login</a>
             </div>
             <div ng-if="userProfile !== undefined" class="header-navbar-menu-nav box-user-header-bar">
                 <div class=" user-name-head-bar user-head-bar">
@@ -70,13 +81,13 @@
                     <!-- <img ng-if="!userProfile.Avatar" src="Upload/avatar/noavatar.jpg"> -->
                 </div>
                 <div class="menu-user-header-bar">
-                    <a ui-sref="userprofile.general" class="element-user-header-bar">General</a>
-                    <a ui-sref="userprofile.manage" class="element-user-header-bar">Manage</a>
-                    <a ui-sref="userprofile.edit" class="element-user-header-bar">Edit profile</a>
-                    <a ui-sref="userprofile.setting" class="element-user-header-bar">Account setting</a>
-                    <a ui-sref="userprofile.refer" class="element-user-header-bar">Refer</a>
-                    <a ui-sref="host.dashboard" class="element-user-header-bar">Host</a>
-                    <a ng-click="logout()" class="element-user-header-bar">Logout</a>
+                    <a ui-sref="userprofile.general" class="element-user-header-bar" translate="">general</a>
+                    <a ui-sref="userprofile.manage" class="element-user-header-bar" translate="">manage</a>
+                    <a ui-sref="userprofile.edit" class="element-user-header-bar" translate="">edit_profile</a>
+                    <a ui-sref="userprofile.setting" class="element-user-header-bar" translate="">account_setting</a>
+                    <a ui-sref="userprofile.refer" class="element-user-header-bar" translate="">refer</a>
+                    <a ui-sref="host.dashboard" class="element-user-header-bar" translate="">host_text</a>
+                    <a ng-click="logout()" class="element-user-header-bar" translate="">logout</a>
                 </div>
             </div>
 
@@ -238,7 +249,7 @@
                     <div class="bocongthuong float-left">
                         <img src="Images/dadangky.png" alt="Alternate Text" />
                     </div>
-                    <div class="float-right copyright">Language: ENG</div>
+                    <!-- <div class="float-right copyright">Language: ENG</div> -->
                 </div>
             </div>
         </div>
