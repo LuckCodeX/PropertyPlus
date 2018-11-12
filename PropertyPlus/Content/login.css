@@ -42,8 +42,8 @@
     font-size: 14px;
     text-align: center;
     bottom: 14px;
-    left: 150px;
-    width: 30px;
+    left: 130px;
+    width: 60px;
 }
 
 .sign-up-email {
@@ -93,7 +93,7 @@
     font-weight: 100;
     padding-right: 0px;
     line-height: 0.75;
-    margin-top: -45px;
+   
 }
 
 .text-mail {
@@ -132,11 +132,9 @@
 
 .text-checkbox {
     font-size: 14px;
-    display: inline-block;
-    padding-bottom: 37px;
-    padding-left: 16px;
-    position: absolute;
+    padding-left: 85px;
     line-height: 2;
+    top: 65%;
 }
 
 .sign-up-email-final {
@@ -514,13 +512,12 @@ body{
 
     
     span.buttonText {
-      display: inline-block;
+      display: block;
       vertical-align: middle;
       padding-left: 42px;
       padding-right: 42px;
       font-size: 14px;
-
-margin-left: 75px;
+    text-align: center;
     margin-top: 30px;
 
     }
