@@ -1,7 +1,13 @@
 ﻿var translationsVI = {
     menu_customer: "Hỗ trợ",
     menu_signup: "Đăng ký",
-
+    menu_support:"Hỗ trợ",
+    menu_blog: "Blog",
+    menu_about_us: "Về chúng tôi",
+    menu_help: "Trợ giúp",
+    menu_login: "Đăng nhập",
+    menu_visit: "Danh sách nhà thăm",
+    menu_host: "Chủ nhà",
     btn_register: "Đăng ký",
     blog_news:"Tin Tức",
     blog_experience:"Kinh Nghiệm",
@@ -50,7 +56,7 @@
     clear:"Làm mới",
     rooms:"Các phòng",
     bedrooms:"Phòng ngủ",
-    bathrooms:"Phòng tăms",
+    bathrooms:"Phòng tắm",
     area:"Diện tích",
     facilities:"Cơ sở vật chất",
     introducing_property_plus:"Giới thiệu Property Plus",
@@ -98,7 +104,7 @@
     send_visiting_request:"GỬI YÊU CẦU LỊCH HẸN",
     similiar_listing:"DANH SÁCH TƯƠNG TỰ",
     bookmark_uppercase:"ĐÃ LƯU",
-    dashboard:"Trang quản trị",
+    dashboard:"Quản trị",
     manage:"Quản lý",
     listing:"Danh sách",
     help:"Hỗ trợ",
@@ -113,7 +119,7 @@
     home:"Trang chủ",
     create_new:"Tạo mới",
     row_1_step_1_1:"Hãy bắt đầu liệt kê căn hộ của bạn",
-    row_2_step_1_1:"Bạn có loại nhà đất nào?",    
+    row_2_step_1_1:"Bạn có loại bất động sản nào?",    
     row_3_step_1_1:"Tên dự án của bạn",
     continue:"Tiếp tục",
     row_1_step_1_2:"Hãy cho chúng tôi biết thêm về căn hộ của bạn",
@@ -135,7 +141,7 @@
     great_progress:"Tiến độ tuyệt vời!",
     row_1_step_2_1:"Bây giờ chúng ta hãy lấy một số chi tiết về căn hộ của bạn sau đó bạn có thể sẵn sàng để xuất bản danh sách của bạn.",
     row_2_step_2_1:"Lời khuyên: Căn hộ có hình ảnh thực tế giúp cho thuê quyết định nhanh hơn.",   
-    add_another:"Add cái khác", 
+    add_another:"Tải ảnh khác", 
     row_1_step_3_1:"Thiết lập giá cho căn hộ của bạn",
     row_2_step_3_1:"Phí quản lý căn hộ",
     row_3_step_3_1:"Căn hộ tương tự",
@@ -213,6 +219,21 @@
     refer:"Tham khảo",
     pending:"Chờ duyệt",
     approved:"Đã duyệt",
+
+    career:"Công việc",
+    policy:"Chính sách",
+    why_host:"Tại sao chủ nhà",
+    hosting:"Hosting",
+    community:"Trung tâm cộng đồng",
+    terms:"Điều khoản",
+    privacy:"Riêng tư",
+    site_map:"Sơ đồ web",
+
+    search_bar_livingHaNoi: "Sống ở Hà Nội thật dễ dàng",
+    search_bar_price: "Giá nhà",
+    search_bar_room: "Phòng",
+    search_bar_area: "Diện tích",
+    search_bar_facilities: "Hạ tầng",
 }
 
 var translationsEN = {
@@ -440,6 +461,18 @@ var translationsEN = {
     refer:"Refer",
     pending:"Pending",
     approved:"Approved",
+    signupFB:"Sign up with Facebook",
+    signupGG:"Sign up with Google",
+    signupEmail:"Sign up with Email",
+
+    career:"Career",
+    policy:"Policy",
+    why_host:"Why host",
+    hosting:"Hosting",
+    community:"Community center",
+    terms:"Terms",
+    privacy:"Privacy",
+    site_map:"Site Map",
 }
 
 var translationsJP = {
@@ -447,6 +480,13 @@ var translationsJP = {
     refer:"参照する",
     menu_customer: "サポート",
     menu_signup: "サインアップ",
+    menu_support:"サポート",
+    menu_blog: "Blog",
+    menu_about_us: "私たちに関しては",
+    menu_help: "助けて",
+    menu_login: "ログイン",
+    menu_visit: "あなたの訪問リスト",
+    menu_host: "ホストになる",
 
     btn_register: "サインアップ",
     blog_news:"ニュース",
@@ -544,7 +584,7 @@ var translationsJP = {
     send_visiting_request:"訪問要請を送信する",
     similiar_listing:"同様のリスト",
     bookmark_uppercase:"ブックマーク",
-    dashboard:"ダッシュボード",
+    dashboard:"ガバナンス",
     manage:"管理",
     listing:"リスト",
     help:"助けて",
@@ -657,6 +697,21 @@ var translationsJP = {
     update_password:"パスワードの更新",
     pending:"保留中の承認",
     approved:"レビュー済み",
+
+    career:"キャリア",
+    policy:"ポリシー",
+    why_host:"なぜ宿主ですか？",
+    hosting:"ホスティング",
+    community:"コミュニティセンター",
+    terms:"条項",
+    privacy:"プライバシー",
+    site_map:"サイトマップ",
+
+    search_bar_livingHaNoi: "HaNoi での簡単な生活",
+    search_bar_price: "価格",
+    search_bar_room: "ルーム",
+    search_bar_area: "エリア",
+    search_bar_facilities: "施設",
 
 }
 

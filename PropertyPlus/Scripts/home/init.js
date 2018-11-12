@@ -11,18 +11,18 @@ function loadApartmentDetail() {
             animateOut: 'fadeOut'
         });
 
-        $('.header-apartment-detail .owl-carousel').owlCarousel({
-            margin: 0,
-            autoplay: true,
-            autoplayTimeout: 2500,
-            autoplayHoverPause: true,
-            loop: true,
-            items: 1,
-            nav: true,
-            animateOut: 'fadeOut'
-        });
+        // $('.header-apartment-detail .owl-carousel').owlCarousel({
+        //     margin: 0,
+        //     autoplay: true,
+        //     autoplayTimeout: 2500,
+        //     autoplayHoverPause: true,
+        //     loop: true,
+        //     items: 1,
+        //     nav: true,
+        //     animateOut: 'fadeOut'
+        // });
 
-        $('.similar-listing .slide-similar').owlCarousel({
+        $('.similar-listing .owl-carousel').owlCarousel({
             margin: 0,
             autoplay: true,
             autoplayTimeout: 2500,
