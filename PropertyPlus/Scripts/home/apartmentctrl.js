@@ -273,6 +273,7 @@
                 $scope.basic = "service-basic";
                 $scope.electricBill = 0;
                 $scope.changeService();
+                getSlideApartment();
             },
                 function (error) {
                     console.log(error.statusText);
@@ -291,20 +292,8 @@
             function (error) {
                 console.log(error.statusText);
             });
-        xhrService.post("GetListApartment",$scope.defaultData)
-            .then(function (data) {
-                console.log(data);
-                $scope.apartmentList = data.data.data;
-            },
-                function (error) {
-                    console.log(error.statusText);
-                });
-        $(document).ready(function(){
-            $timeout(function () {
-                loadApartmentDetail();
-            }, 1500);
-            
-        });
+        
+        
 
         $scope.someGroupFn = function (item) {
 
@@ -324,6 +313,21 @@
             return groups.reverse();
         };
     }
+
+    function getSlideApartment(){
+        xhrService.post("GetListApartment",$scope.defaultData)
+            .then(function (data) {
+                console.log(data);
+                $scope.apartmentList = data.data.data;
+                $(document).ready(function(){
+                    loadApartmentDetail();
+                });
+            },
+                function (error) {
+                    console.log(error.statusText);
+                });
+    }
+
     $scope.changeBill = function () {
 
         if ($scope.electricBill > 999 || isNaN($scope.electricBill.substr($scope.electricBill.length - 1))) {

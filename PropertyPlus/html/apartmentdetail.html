@@ -19,11 +19,11 @@
         </div>
         <div class="facility-detail-apartment">
             <img src="/Images/icon/bedroom.png" class="thumbnail-facility" alt="Alternate Text"/>
-            <p class="text-center facility-text" translate>{{apartment.NoBedRoom}} bedrooms</p>
+            <p class="text-center facility-text">{{apartment.NoBedRoom}} {{"bedrooms" | translate}}</p>
         </div>
         <div class="facility-detail-apartment">
             <img src="/Images/icon/bathroom.png" class="thumbnail-facility" alt="Alternate Text"/>
-            <p class="text-center facility-text" translate>{{apartment.NoBathRoom}} bathrooms</p>
+            <p class="text-center facility-text">{{apartment.NoBathRoom}} {{"bathrooms" | translate}}</p>
         </div>
         <div class="facility-detail-apartment">
             <img src="/Images/icon/area.png" class="thumbnail-facility" alt="Alternate Text"/>
@@ -32,12 +32,12 @@
 
     </div>
     <div class="about-this-listing">
-        <div class="title-apartment-detail" translate>about_this_listing</div>
+        <div class="title-apartment-detail" >{{"about_this_listing" | translate}}</div>
         <div class="about-this-listing-none-border" ng-bind-html="apartment.Description | trust">
         </div>
     </div>
     <div class="tour-this-home">
-        <div class="title-apartment-detail" translate>tour_this_home</div>
+        <div class="title-apartment-detail">{{"tour_this_home" | translate}}</div>
         <div class="col-xs-12 tour-this-home-slide" >
             <div class="owl-carousel owl-theme">
                 <div class="item" ng-repeat="livRoom in apartment.ImgList">
@@ -46,8 +46,8 @@
                     </div>
                 </div>
             </div>
-            <div class="title-tour-this-home" translate>
-                living_room
+            <div class="title-tour-this-home" >
+                {{"living_room" | translate}}
             </div>
         </div>
         <div class="col-xs-12 tour-this-home-slide">
@@ -58,8 +58,8 @@
                     </div>
                 </div>
             </div>
-            <div class="title-tour-this-home" translate>
-                bedrooms
+            <div class="title-tour-this-home">
+                {{"bedrooms" | translate}}
             </div>
         </div>
         <div class="col-xs-12 tour-this-home-slide">
@@ -70,8 +70,8 @@
                     </div>
                 </div>
             </div>
-            <div class="title-tour-this-home" translate>
-                bathrooms
+            <div class="title-tour-this-home">
+                {{"bathrooms" | translate}}
             </div>
         </div>
         <div class="col-xs-12 tour-this-home-slide">
@@ -246,7 +246,7 @@
                         {{item.Name | limitTo : 41}}{{item.Name.length > 41 ? '...' : ''}}
                     </a>
                     <div class="choose-home-detail float-left">
-                        <p>Bedrooms: {{item.NoBedRoom}}</p>
+                        <p>{{"bedrooms" | translate}}: {{item.NoBedRoom}}</p>
                         <p>{{item.City}}</p>
                     </div>
                     <div class="choose-home-price float-right">
