@@ -115,7 +115,6 @@
         width:171px;
         height:34px;  
         display:inline-block;
-        float:right;
         padding-left:7px;
     }
 
@@ -126,7 +125,6 @@
     height: 34px;
     display: inline-block;
     padding-left: 10px;
-    margin-left:17px;
 }
 
 .manage-info{
@@ -140,7 +138,6 @@
     width: 87px;
     display: inline-block;
     padding-left: 12px;
-    margin-left: 72px;
 }
 
 .manage-info-address {
@@ -150,7 +147,6 @@
     width: 433px;
     display: inline-block;
     padding-left: 12px;
-    margin-left: 47px;
 }
 
 .manage-info-main {

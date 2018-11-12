@@ -109,11 +109,11 @@
 
 
                     <div class="line-or">
-                        <p class="text-or">or</p>
+                        <p translate class="text-or">or</p>
                     </div>
-                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-email" class="sign-up-email">Sign up with Email</button>
-                    <span class="text-acc">Already have an account</span>
-                    <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">Login</button>
+                    <button translate type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-email" class="sign-up-email">signEmail</button>
+                    <span translate class="text-acc">haveAccount</span>
+                    <button translate type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">login</button>
                 </div>
             </div>
         </div>
@@ -124,22 +124,39 @@
                 <div class="modal-content modal-sm">
                     <form ng-submit="register()">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <span class="text-mail">Sign up with <a class="text-mail-fb-gg" href="#">Facebook</a> or <a class="text-mail-fb-gg" href="#">Google</a></span>
+                        <div style="display: block;text-align: center;    margin-left: 20px;">
+                        <span style="display: inline-block;" translate class="text-mail">signupwith</span>
+                        <a data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" style="display: inline-block; cursor: pointer;" class="text-mail-fb-gg">Facebook</a>
+                        <p style="display: inline-block;" translate>or</p>
+                        <a data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" style="display: inline-block; cursor: pointer;" class="text-mail-fb-gg" >Google</a>
+                    </div>
                         <div class="line-or">
-                            <p class="text-or">or</p>
+                            <p translate class="text-or">or</p>
                         </div>
-                        <span class="text-danger">{{errorText}}</span>
                         <input type="text" placeholder="Full name" ng-model="user.FullName" class="mail-submit" required="">
                         <input type="email" pattern="^[a-zA-Z0-9._+-]+@("@")[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
                         <input type="password" placeholder="Create a Password" minlength="6" ng-model="user.password" class="mail-submit" required="">
                         <input type="password" placeholder="Re-type Password" ng-model="user.confirm_password" class="mail-submit" required="">
                         <div class="mail-checkbox">
-                            <input type="checkbox" required="">
-                            <span class="text-checkbox">By sign up, I agree to PropertyPlus's <a class="text-mail-fb-gg" href="#">Term of service, Privacy policy,</a> and <a class="text-mail-fb-gg" href="#">Copyright policy</a></span>
+                            <input style="    position: absolute;" type="checkbox" required="">
+                            
+                            <div style="    margin-left: 10px;">
+                            <span style="display: inline-block;" translate class="text-checkbox">bysignin</span> 
+                            <a style="display: inline-block; position: absolute;
+    top: 419.5px;
+    margin-left: 3px;" translate  class="text-mail-fb-gg" href="#">termofservice</a>
+                        </div><br>
+                        <div style="margin-left: 95px;
+    position: absolute;top: 445px;">
+                           <!--  <a style="display: inline-block;" translate  class="text-mail-fb-gg" href="#">privacy</a> -->
+                           <a style="display: inline-block;" translate  class="text-mail-fb-gg" href="#">privacys</a>
+                             <p style="display: inline-block;" translate>and</p> 
+                             <a style="display: inline-block;" translate class="text-mail-fb-gg" href="#">copyright</a>
                         </div>
+                         </div>
                         <button type="submit" class="sign-up-email-final" translate="">signupEmail</button>
-                        <span class="text-acc">Already have an account</span>
-                        <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">Login</button>
+                        <span translate class="text-acc">haveAccount</span>
+                        <button translate type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-login" class="sign-up-login">login</button>
                     </form>
                 </div>
             </div>
@@ -151,18 +168,18 @@
                     <div class="modal-content modal-sm">
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <button type="button" onclick="login()" class="sign-up-fb">Log in with Facebook</button>
+                        <button translate type="button" onclick="login()" class="sign-up-fb">loginFB</button>
 
                         <div id="gSignInWrapper" style="width: 378px;height: 82px;">
 
                             <div id="customBtn1" class="customGPlusSignIn" onclick="startApp1()">
                                 <span class="icon"></span>
-                                <span class="buttonText">Log in with Google</span>
+                                <span translate class="buttonText">loginGG</span>
                             </div>
                         </div>
 
                         <div class="line-or">
-                            <p class="text-or">or</p>
+                            <p translate class="text-or">or</p>
                         </div>
                         <span class="text-danger-1">{{errorText}}</span>
                         <input type="email" placeholder="Email Adress" ng-model="user.email" class="mail-submit" required="">
@@ -170,12 +187,12 @@
                         <div class="mail-checkbox">
                             @*<input type="checkbox">
                                 <span class="text-checkbox">Remember me</span>*@
-                            <a href="#" class="text-checkbox-pass">Forgot password</a>
+                            <a translate href="#" class="text-checkbox-pass">forgotPW</a>
                         </div>
 
-                        <button type="submit" class="sign-up-email-final-2">Login</button>
-                        <span class="text-acc">Don't have an account</span>
-                        <button type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">Sign up</button>
+                        <button translate type="submit" class="sign-up-email-final-2">login</button>
+                        <span translate class="text-acc">dhaveAccount</span>
+                        <button translate type="button" data-dismiss="modal" data-toggle="modal" data-target="#myModal-signup" class="sign-up-login">signup</button>
                     </div>
                 </form>
 
