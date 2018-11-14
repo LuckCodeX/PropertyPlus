@@ -167,5 +167,20 @@ namespace PropertyPlus.Controllers
         {
             return View();
         }
+
+        public ActionResult OurService()
+        {
+            return View();
+        }
+
+        public ActionResult OurTechnology()
+        {
+            return View();
+        }
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
     }
 }

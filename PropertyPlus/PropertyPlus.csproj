@@ -658,6 +658,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="html\aboutus.html" />
     <Content Include="html\apartment.html" />
     <Content Include="html\apartmentdetail.html" />
     <Content Include="html\blog.html" />
@@ -685,6 +686,8 @@
     <Content Include="html\hostmanageoverview.html" />
     <Content Include="html\hostmanagephoto.html" />
     <Content Include="html\hostmanageproblem.html" />
+    <Content Include="html\ourservice.html" />
+    <Content Include="html\ourtechnology.html" />
     <Content Include="html\project.html" />
     <Content Include="html\projectdetail.html" />
     <Content Include="html\userprofile.html" />
@@ -853,6 +856,9 @@
     <Content Include="Views\Home\BookMark.cshtml" />
     <Content Include="Views\Home\ProjectDetail.cshtml" />
     <Content Include="Views\Admin\UpcomingProject.cshtml" />
+    <Content Include="Views\Home\OurService.cshtml" />
+    <Content Include="Views\Home\OurTechnology.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

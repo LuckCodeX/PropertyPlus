@@ -49,7 +49,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/project",
                 templateUrl: "html/project.html",
                 data: { pageTitle: 'Project' }
-        })
+            })
         .state('projectdetail',
             {
                 url: "/project-detail/:id/:name",
@@ -61,6 +61,24 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/bookmark",
                 templateUrl: "html/bookmark.html",
                 data: { pageTitle: 'Bookmark' }
+            })
+        .state('ourservice',
+            {
+                url: "/our-service",
+                templateUrl: "html/ourservice.html",
+                data: { pageTitle: 'Our Service' }
+            })
+        .state('ourtechnology',
+            {
+                url: "/our-technology",
+                templateUrl: "html/ourtechnology.html",
+                data: { pageTitle: 'Our Technology' }
+            })
+        .state('aboutus',
+            {
+                url: "/about-us",
+                templateUrl: "html/aboutus.html",
+                data: { pageTitle: 'About Us' }
             })
         .state('userprofile',
             {
@@ -172,50 +190,50 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/step-4",
                 templateUrl: "html/hostcreatestep4.html",
                 data: { pageTitle: 'Host' }
-        })
+            })
         .state('host.createfinish',
             {
                 url: "/create/finish",
                 templateUrl: "html/hostcreatefinish.html",
                 data: { pageTitle: 'Host' }
-        })
+            })
         .state('host.manage',
             {
                 url: "/manage",
                 abstract: true,
                 templateUrl: "html/hostmanage.html",
                 data: { pageTitle: 'Host' }
-        })
+            })
         .state('host.manage.overview',
             {
                 url: "/overview",
                 templateUrl: "html/hostmanageoverview.html",
                 data: { pageTitle: 'Host' }
-        })
+            })
         .state('host.manage.problem',
             {
                 url: "/problem",
                 templateUrl: "html/hostmanageproblem.html",
                 data: { pageTitle: 'Host' }
-        })
+            })
         .state('host.manage.describe',
             {
                 url: "/describe",
                 templateUrl: "html/hostmanagedescribe.html",
                 data: { pageTitle: 'Host' }
-        })
+            })
         .state('host.manage.information',
             {
                 url: "/information",
                 templateUrl: "html/hostmanageinformation.html",
                 data: { pageTitle: 'Host' }
-        })
+            })
         .state('host.manage.photo',
             {
                 url: "/photo",
                 templateUrl: "html/hostmanagephoto.html",
                 data: { pageTitle: 'Host' }
-        })
+            })
         .state('host.manage.location',
             {
                 url: "/location",
