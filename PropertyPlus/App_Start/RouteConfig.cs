@@ -188,12 +188,6 @@ namespace PropertyPlus
             );
 
             routes.MapRoute(
-                name: "BookMark",
-                url: "bookmark",
-                defaults: new { controller = "Home", action = "BookMark" }
-            );
-
-            routes.MapRoute(
                 name: "OurService",
                 url: "our-service",
                 defaults: new { controller = "Home", action = "OurService" }
