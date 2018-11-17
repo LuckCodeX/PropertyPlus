@@ -406,8 +406,17 @@
     ab_ceo:"Giám đốc điều hành và người sáng lập",
     ab_staff:"NHÂN VIÊN XUẤT SẮC",
 
+    our_technology:"Công nghệ của chúng tôi",
+    apartment_searching_platform:"Nền tảng tìm kiếm căn hộ",
+    mutil_party_communication_system:"Hệ thống truyền thông đa đảng",
+    service_and_management_system:"Dịch vụ và hệ thống quản lý",
+    customer_realationship_management_system:"Hệ thống quản lý quan hệ khách hàng",
+    explore_our_tech:"Khám phá thêm",  
 
-     
+    content_about_us2:"Tham gia vào Property Plus, bạn có thể đắm mình trong một cuộc sống sinh động sang trọng và linh hoạt. Từ lúc bạn bước vào cửa, bạn cảm thấy như được chào đón. Chỉ cần tận hưởng trải nghiệm cuộc sống tùy chỉnh với một loạt các dịch vụ cao cấp và một bầu không khí chính thức. Bằng cách tận hưởng cuộc sống cân bằng hoàn hảo giữa doanh nghiệp và niềm vui."
+    +"Sử dụng Property Plus, dù bạn ở đâu, bạn ở khắp mọi nơi.",
+    content_about_us1:"Property Plus tin tưởng sâu sắc rằng nó không phải là một kinh nghiệm khó khăn để di cư đến một quốc gia nước ngoài, nhưng một kinh nghiệm đó là một kỷ niệm tuyệt vời. Property Plus, là một giải pháp sống động và thông minh, chúng tôi đang nỗ lực hết mình để luôn mang đến trải nghiệm tốt nhất cho bạn bè quốc tế.",
+
 }
 
 var translationsEN = {
@@ -814,7 +823,17 @@ var translationsEN = {
     ab_team:"OUR TEAM",
     ab_ceo:"CEO & Founder",
     ab_staff:"EXCELLENT STAFF",
-       
+
+    our_technology:"Our technology",
+    apartment_searching_platform:"Apartment searching platform",
+    mutil_party_communication_system:"Multi-party communication system",
+    service_and_management_system:"Service and management system",
+    customer_realationship_management_system:"Customer relationship management system",
+    explore_our_tech:"Explore our tech",  
+
+    content_about_us2:"Joining with Property Plus, you will be immersed in the feeling of luxurious and flexible living style; and the feeling of being welcomed, right from the moment you step through the doors. You will relish a customized living experience with wide range of high standard service and an authentic atmosphere. You will enjoy a perfectly-balanced life between business and pleasure."
+    +"With Property Plus, you will be at home anywhere.",
+    content_about_us1:"In Property Plus, we deeply believe that relocating to a foreign country should not be a daunting experience but great and memorable experiences. Property Plus, as the smart solution of living, we always do our best to bring greatest experiences for international friends. ",
 }
 
 var translationsJP = {
@@ -1224,6 +1243,17 @@ var translationsJP = {
     ab_team:"私たちのチーム",
     ab_ceo:"CEO＆創業者",
     ab_staff:"優れたスタッフ",
+
+    our_technology:"当社の技術",
+    apartment_searching_platform:"アパート検索プラットフォーム",
+    mutil_party_communication_system:"多者通話システム",
+    service_and_management_system:"サービスと管理システム",
+    customer_realationship_management_system:"顧客関係管理システム",
+    explore_our_tech:"私たちの技術を探る",  
+
+    content_about_us2:"Property Plusに参加すると、贅沢でフレキシブルなリビングスタイルに没頭できます。 あなたがドアを踏み出した瞬間から、歓迎されているような気分になります。 幅広い高水準のサービスと本格的な雰囲気で、カスタマイズされた生活体験をお楽しみいただけます。 あなたはビジネスと喜びの間で完璧なバランスのとれた生活を楽しむでしょう。"
+    +"Property Plusを使用すると、どこにいてもあなたはどこにでもいます。",
+    content_about_us1:"Property Plusでは、外国に移住することは困難な経験ではなく、素晴らしい思い出に過ぎない経験であると深く信じています。 プロパティプラス、生き生きとしたスマートなソリューションとして、私たちは常に国際的な友人にとって最高の体験をもたらすために最善を尽くしています。",
 
 }
 
