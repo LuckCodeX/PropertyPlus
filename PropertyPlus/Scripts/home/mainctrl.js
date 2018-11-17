@@ -42,6 +42,7 @@
         if (localStorage && localStorage.getItem('user_profile')) {
             $scope.userProfile = JSON.parse(Base64.decode(localStorage.getItem('user_profile')));
         }
+        $scope.currentLanguage = localStorage.getItem('language');
 
         var statusFilter = true;
         $('body').on('mouseup', '.list-btn-facilities .group-btn-facility .btn-facilities', function () {

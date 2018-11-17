@@ -21,12 +21,13 @@
     <link href="/Content/login.css" rel="stylesheet" />
     <link href="~/Content/manage.css" rel="stylesheet" />
     <link href="/Content/toastr.css" rel="stylesheet" />
+    <link href="/Content/homepage.css" rel="stylesheet" />
     <script src="/Scripts/jquery-3.3.1.min.js"></script>
     <script src="/Scripts/owlcarousel/owl.carousel.js"></script>
 
 </head>
 <body class="scrollbar" ng-controller="MainCtrl" ng-init="loadData()">
-    <button class="btn btn-scroll-top"><i class="fas fa-chevron-up"></i></button>
+    <button style="z-index: 998;" class="btn btn-scroll-top"><i class="fas fa-chevron-up"></i></button>
     <header class="clearfix" ng-if="!$state.includes('host')">
         <a class="logo-header" ui-sref="home">
             <img src="/Images/logo.svg" alt="Alternate Text" />
