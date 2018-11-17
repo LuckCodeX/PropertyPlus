@@ -105,14 +105,64 @@
             <div class="main-homepage container">
                 <div class="row">
                     <div class="col-xs-12 introducing">
-                        <div class="homepage-title-section" translate>
-                            introducing_property_plus
+                        <div class="homepage-title-section" >
+                            {{"menu_about_us" | translate}}
                         </div>
-                        <div class="box-shadow introducing-banner ">
-                            <img src="{{slideIntroduct}}" class="background-img" alt="Alternate Text" />
-                            <button class="box-shadow btn-introducing" translate>explore_our_story</button>
+                        <div style="margin-top: 30px;font-size: 19px">
+                            <p>
+                                In Property Plus, we deeply believe that relocating to a foreign country should not be a daunting experience but great and memorable experiences. Property Plus, as the smart solution of living, we always do our best to bring greatest experiences for international friends. 
+                            </p>
+                            <p>
+                                Joining with Property Plus, you will be immersed in the feeling of luxurious and flexible living style; and the feeling of being welcomed, right from the moment you step through the doors. You will relish a customized living experience with wide range of high standard service and an authentic atmosphere. You will enjoy a perfectly-balanced life between business and pleasure.
+                                With Property Plus, you will be at home anywhere.
+                            </p>
                         </div>
                     </div>
+
+                    <div class="col-xs-12 project-have-service">
+                        <div class="homepage-title-section">
+                            <span translate="">project_have_our_service</span>
+                        </div>
+                        <div class="list-project">
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4 project" ng-repeat="project in listProject">
+                                    <div class="project-thumbnail">
+                                        <a style="display: block;height: 100%;width: 100%;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img class="box-shadow" style="width:100%;height:100%;" src="/Upload/{{project.Img}}" alt="Alternate Text" /></a>
+                                    </div>
+                                    <div class="text-center project-name">
+                                        {{project.Content.Name}}
+                                    </div>
+                                </div>
+                                <!--<div class="col-sm-4 col-md-4 project">
+                                    <div class="project-thumbnail box-shadow">
+                                        <img class=" box-shadow" style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
+                                    </div>
+                                    <div class="text-center project-name">
+                                        Project Name
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 col-md-4 project">
+                                    <div class="project-thumbnail box-shadow">
+                                        <img class=" box-shadow" style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
+                                    </div>
+                                    <div class="text-center project-name">
+                                        Project Name
+                                    </div>
+                                </div>-->
+
+                            </div>
+
+                        </div>
+                        <div class="btn-explore-all">
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+                                    <a ui-sref="project" class="box-shadow" translate>explore_all</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-xs-12 sevice-rating">
                         <div class="homepage-title-section">
                             {{"see_how_our_service_is_best"|translate}}
@@ -169,7 +219,70 @@
                             <div class="sevice-rating-content">
                                 <div class="box-shadow section1">
                                     <img src="{{slideService}}" class="background-img" alt="Alternate Text" />
-                                    <button class="box-shadow btn-service-rating" translate>explore_all_service</button>
+                                    <a ui-sref="ourservice" class="btn box-shadow btn-service-rating" translate>explore_all_service</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 sevice-rating">
+                        <div class="homepage-title-section">
+                            Our technology
+                           <!--  <p class="small-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p> -->
+                        </div>
+                        <div class="content-service-rating">
+                            <div class="list-service-rating col-xs-12">
+                                <div class="list-service-rating-main box-shadow col-md-10 col-md-offset-1">
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <div class="row">
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating" >
+                                                        <span translate="">Apartment searching platform</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating" >
+                                                        <span translate="">Mutil-party communication system</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating" >
+                                                        <span translate="">service and management system</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3 col-xs-3 service">
+                                                    <div class="icon-service-rating ">
+                                                        <img class="img-responsive" src="/Images/24.svg" />
+                                                    </div>
+                                                    <div class="title-service-rating">
+                                                        <div class="row" >
+                                                            <span translate="">customer realationship management system</span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="sevice-rating-content">
+                                <div class="box-shadow section1">
+                                    <img src="{{slideService}}" class="background-img" alt="Alternate Text" />
+                                    <a ui-sref="ourtechnology" class="btn box-shadow btn-service-rating" >Explore our tech</a>
                                 </div>
                             </div>
                         </div>
@@ -212,49 +325,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 project-have-service">
-                        <div class="homepage-title-section">
-                            <span translate="">project_have_our_service</span>
-                        </div>
-                        <div class="list-project">
-                            <div class="row">
-                                <div class="col-sm-4 col-md-4 project" ng-repeat="project in listProject">
-                                    <div class="project-thumbnail">
-                                        <a style="display: block;height: 100%;width: 100%;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img class="box-shadow" style="width:100%;height:100%;" src="/Upload/{{project.Img}}" alt="Alternate Text" /></a>
-                                    </div>
-                                    <div class="text-center project-name">
-                                        {{project.Content.Name}}
-                                    </div>
-                                </div>
-                                <!--<div class="col-sm-4 col-md-4 project">
-                                    <div class="project-thumbnail box-shadow">
-                                        <img class=" box-shadow" style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                    <div class="text-center project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-4 col-md-4 project">
-                                    <div class="project-thumbnail box-shadow">
-                                        <img class=" box-shadow" style="width:100%;height:100%;" src="Images/img-demo.png" alt="Alternate Text" />
-                                    </div>
-                                    <div class="text-center project-name">
-                                        Project Name
-                                    </div>
-                                </div>-->
-
-                            </div>
-
-                        </div>
-                        <div class="btn-explore-all">
-                            <div class="row">
-                                <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
-                                    <a ui-sref="project" class="box-shadow" translate>explore_all</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="col-xs-12 homepage-news">
                         <div class="homepage-title-section"><span translate="">menu_blog</span></div>
                         <div class="list-news">

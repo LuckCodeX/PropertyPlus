@@ -285,6 +285,7 @@ footer {
         color: #484848;
         font-size: 22px;
         line-height: 47px;
+        font-weight: 600;
     }
 
 .search-bar-section {
@@ -394,6 +395,7 @@ footer {
 .homepage-title-section {
     font-size: 24px;
     margin-bottom: 10px;
+    font-weight: 550;
 }
 
 .introducing-banner {
@@ -429,6 +431,7 @@ footer {
     position: absolute;
     right: 0;
     width: 214px;
+    padding-top: 10px;
 }
 
 .sevice-rating {
@@ -441,7 +444,7 @@ footer {
 }
 
 .sevice-rating-content {
-    padding-top: 105px;
+    /*padding-top: 105px;*/
 }
 
 .content-service-rating {
@@ -464,23 +467,23 @@ footer {
 .list-service-rating {
     left: 0;
     position: absolute;
-    top: 0;
+    top: 16px;
     z-index: 50;
 }
 
 .list-service-rating-main {
-    background-color: white;
+    background-color: #dededecf;
 }
 
 .icon-service-rating {
     height: auto;
-    margin: 42.6px auto 20.7px auto;
+    margin: 27.6px auto 20.7px auto;
     width: 50%;
 }
 
 .title-service-rating {
     font-size: 14px;
-    margin-bottom: 55.5px;
+    margin-bottom: 23.5px;
     text-align: center;
 }
 
@@ -586,7 +589,7 @@ footer {
 }
 
 .choose-home .btn-see-more a {
-    background-color: #473D6F;
+    background-image: linear-gradient(to right, #473D6F , #436990);
     color: white;
     height: 50px;
     width: 100%;
@@ -664,7 +667,8 @@ footer {
             }
 
 .project-have-service .btn-explore-all a {
-    background-color: #473D6F;
+     background-image: linear-gradient(to right, #473D6F , #436990);
+    
     color: white;
     height: 50px;
     width: 100%;
