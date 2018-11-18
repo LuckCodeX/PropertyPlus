@@ -431,7 +431,7 @@ footer {
     position: absolute;
     right: 0;
     width: 214px;
-    padding-top: 10px;
+    line-height: 34px;
 }
 
 .sevice-rating {
