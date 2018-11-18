@@ -59,6 +59,12 @@
             function (error) {
                 $scope.errorText = error.statusText;
             });
+        xhrService.get("GetSlide/3").then(function (data) {
+                $scope.slideTech = "Upload/" + data.data.Img;
+            },
+            function (error) {
+                $scope.errorText = error.statusText;
+            });
         xhrService.post("GetListApartment",$scope.defaultData)
             .then(function (data) {
                     $scope.apartmentList = data.data.data;
