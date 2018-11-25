@@ -182,5 +182,10 @@ namespace PropertyPlus.Controllers
         {
             return View();
         }
+
+        public ActionResult Policy()
+        {
+            return View();
+        }
     }
 }

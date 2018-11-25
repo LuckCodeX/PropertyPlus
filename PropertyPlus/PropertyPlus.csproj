@@ -688,6 +688,7 @@
     <Content Include="html\hostmanageproblem.html" />
     <Content Include="html\ourservice.html" />
     <Content Include="html\ourtechnology.html" />
+    <Content Include="html\policy.html" />
     <Content Include="html\project.html" />
     <Content Include="html\projectdetail.html" />
     <Content Include="html\userprofile.html" />
@@ -859,6 +860,7 @@
     <Content Include="Views\Home\OurService.cshtml" />
     <Content Include="Views\Home\OurTechnology.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Policy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
