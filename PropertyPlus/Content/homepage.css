@@ -171,10 +171,8 @@ color: #444 !important;
 
 
 .black-box{
-	border: 1px solid #707070;
-	background: #989696;
 	width: 100%;
-	height: 466px;
+	height: 100%;
 	margin-bottom: 35px;
 }
 
