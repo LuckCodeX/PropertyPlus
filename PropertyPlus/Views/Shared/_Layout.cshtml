@@ -36,7 +36,7 @@
             <a href="#">Property Plus</a>
         </div>
         <form class="search-box box-shadow" ng-if="!$state.includes('home')" ng-submit="submitSearch()">
-            <input type="text" class="" ng-model="txtSearch" ng-change="changeSearchTxt(txtSearch)" placeholder="Type Location or Project or Keyword"  />
+            <input type="text" class="" ng-model="txtSearch" ng-change="changeSearchTxt(txtSearch)" placeholder="{{'placeholder_search_home'|translate}}"  />
             <button class="btn-search box-shadow" translate="">blog_search</button>
         </form>
         <div class="header-navbar-menu float-right">
