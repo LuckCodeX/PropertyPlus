@@ -12,6 +12,7 @@
 .sml-text{
 	font-size: 28px;
 	line-height:1.5;
+	text-align: justify;
 }
 
 .service-box{
@@ -138,11 +139,20 @@ color: #444 !important;
     white-space: nowrap;
 }
 
+.ab-text-21{
+	font-size: 20px;
+    color: #444 !important;
+    line-height: 2.5;
+    white-space: nowrap;
+}
+
 .ab-text-20-1{
 	font-size: 16px;
     color: #444 !important;
-    line-height: 1.5;
-    white-space: nowrap;
+    line-height: 2.5;
+    white-space: normal;
+    display: block;
+    text-align: justify;
 }
 
 .line-aboutus-1{
