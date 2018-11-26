@@ -3,7 +3,7 @@
     menu_signup: "Đăng ký",
     menu_support:"Hỗ trợ",
     menu_blog: "Blog",
-    menu_about_us: "Về chúng tôi",
+    menu_about_us: "Câu chuyện của Property Plus",
     menu_help: "Trợ giúp",
     menu_login: "Đăng nhập",
     menu_visit: "Danh sách nhà thăm",
@@ -218,7 +218,6 @@
     confirm_new_password:"Xác nhận mật khẩu mới",
     passwords_not_match:"Mật khẩu chưa khớp",
     update_password:"Thay đổi mật khẩu",
-    menu_about_us:"Về chúng tôi",
     refer:"Tham khảo",
     pending:"Chờ duyệt",
     approved:"Đã duyệt",
@@ -375,9 +374,14 @@
     customer_realationship_management_system:"Hệ thống quản lý quan hệ khách hàng",
     explore_our_tech:"Khám phá thêm",  
 
-    content_about_us2:"Tham gia vào Property Plus, bạn có thể đắm mình trong một cuộc sống sinh động sang trọng và linh hoạt. Từ lúc bạn bước vào cửa, bạn cảm thấy như được chào đón. Chỉ cần tận hưởng trải nghiệm cuộc sống tùy chỉnh với một loạt các dịch vụ cao cấp và một bầu không khí chính thức. Bằng cách tận hưởng cuộc sống cân bằng hoàn hảo giữa doanh nghiệp và niềm vui."
-    +"Sử dụng Property Plus, dù bạn ở đâu, bạn ở khắp mọi nơi.",
-    content_about_us1:"Property Plus tin tưởng sâu sắc rằng nó không phải là một kinh nghiệm khó khăn để di cư đến một quốc gia nước ngoài, nhưng một kinh nghiệm đó là một kỷ niệm tuyệt vời. Property Plus, là một giải pháp sống động và thông minh, chúng tôi đang nỗ lực hết mình để luôn mang đến trải nghiệm tốt nhất cho bạn bè quốc tế.",
+    
+    content_about_us:"<p>Từ sâu trong trái tim, chúng tôi tin rằng, an cư lập nghiệp tại một đất nước mới nên là trải nghiệm tuyệt vời, đáng nhớ, và Property Plus luôn cố gắng đem đến cho những người bạn Quốc tế không gian sống đầy tiện nghi, sang trọng, thoải mái và cảm giác được đón chào ngay từ khoảnh khắc bước chân qua cánh cửa.</p> "+
+                    "<p>Tại Property Plus, bạn có thể:</p>"+
+                    "<p>Tận hưởng cuộc sống trong cơ sở hạ tầng sang trọng và tiện ích đẳng cấp với chi phí hợp lý.</p>"+
+                    "<p>Đội ngũ nhân viên - kỹ thuật viên nhiều kinh nghiệm, nhiệt tình và được đào tạo chuyên nghiệp theo tiêu chuẩn 5 sao.</p>"+
+                    "<p>Trải nghiệm cá nhân với không gian và dịch vụ phù hợp nhất với bạn. </p>"+
+                    "<p>Dịch vụ với đội ngũ nhân viên - kỹ thuật viên nhiều kinh nghiệm, nhiệt tình và được đào tạo chuyên nghiệp theo tiêu chuẩn 5 sao.</p>"+
+                    "<p>Cân bằng cuộc sống giữa công việc và hưởng thụ.</p>",
 
     po_policy:"CHÍNH SÁCH QUYỀN RIÊNG TƯ",
     po_propertyplus:"Công ty Trách nhiệm Hữu hạn Thương Mại và Tư vấn Bất Động Sản Đại Lợi sở hữu thương hiệu Property Plus và điều hành trang web propertyplus.com.vn. Chính Sách Quyền Riêng Tư này mô tả cách thức chúng tôi thu thập, sử dụng, tiết lộ, xử lý và bảo vệ thông tin nhận dạng cá nhân (“Dữ Liệu Cá Nhân”) mà Quý vị (“Người dùng”) có thể cung cấp liên quan đến các dịch vụ của Property Plus được cung cấp thông qua trang web: www.propertyplus.com (“Trang Web”). Dữ Liệu Cá Nhân có nghĩa là dữ liệu, cho dù là đúng hoặc không đúng, về một cá nhân có thể được nhận dạng từ dữ liệu đó, hoặc từ dữ liệu và các thông tin khác mà Property Plus có được hoặc có quyền truy cập. Các đề cập Trang Web được coi là bao gồm cả các trang phái sinh, bao gồm nhưng không giới hạn ở các trang web và ứng dụng di động của Trang Web. Bằng cách truy cập hoặc sử dụng Trang Web, Quý vị đồng ý và chấp thuận việc thu thập, sử dụng, tiết lộ và xử lý Dữ Liệu Cá Nhân của Quý vị theo Chính Sách Quyền Riêng Tư này và/hoặc Điều Khoản Trang Web. ",
@@ -448,7 +452,7 @@ var translationsEN = {
     search_bar_facilities: "Facilities",
     menu_support:"Support",
     menu_blog: "Blog",
-    menu_about_us: "About us",
+    menu_about_us: "Our story",
     menu_customer: "Support",
     menu_signup: "Sign up",
     menu_help: "Help",
@@ -813,9 +817,8 @@ var translationsEN = {
     customer_realationship_management_system:"Customer relationship management system",
     explore_our_tech:"Explore our tech",  
 
-    content_about_us2:"Joining with Property Plus, you will be immersed in the feeling of luxurious and flexible living style; and the feeling of being welcomed, right from the moment you step through the doors. You will relish a customized living experience with wide range of high standard service and an authentic atmosphere. You will enjoy a perfectly-balanced life between business and pleasure."
-    +"With Property Plus, you will be at home anywhere.",
-    content_about_us1:"In Property Plus, we deeply believe that relocating to a foreign country should not be a daunting experience but great and memorable experiences. Property Plus, as the smart solution of living, we always do our best to bring greatest experiences for international friends. ",
+    content_about_us:"<p>In Property Plus, we deeply believe that relocating to a foreign country should not be a daunting experience but great and memorable experiences. Property Plus, as the smart solution of living, we always do our best to bring greatest experiences for international friends. </p>"+
+                    "<p>Joining with Property Plus, you will be immersed in the feeling of luxurious and flexible living style; and the feeling of being welcomed, right from the moment you step through the doors. You will relish a customized living experience with wide range of high standard service and an authentic atmosphere. You will enjoy a perfectly-balanced life between business and pleasure.With Property Plus, you will be at home anywhere.</p>",
 
     po_policy:"PRIVACY POLICY",
     po_propertyplus:"Propertyplus.com.vn is owned and operated by Dai Loi Trade and Consultancy of Real Estate Co. Ltd (“Property Plus”, “Us”, “We”, or “Our”). This Privacy Policy describes how we collect, use, disclose, process and protect personally identifiable information (“Personal Data”) that you (the “User”) may provide in connection with Property Plus’s services available through the website located at www.propertyplus.com.vn. Personal Data means data, whether true or not, about an individual.References to the Site are deemed to include derivatives thereof, including but not necessarily limited to mobile websites and applications. By visiting or using the Site, you agree and consent to the collection, use, disclosure and processing of your Personal Data in accordance with this Privacy Policy and/or the Website Terms. If you do not agree to the Privacy Policy below, please leave the Site immediately.",
@@ -878,13 +881,12 @@ var translationsEN = {
 }
 
 var translationsJP = {
-    menu_about_us:"私たちについて",
+    menu_about_us:"私たちの物語",
     refer:"参照する",
     menu_customer: "サポート",
     menu_signup: "サインアップ",
     menu_support:"サポート",
     menu_blog: "ブログ",
-    menu_about_us: "私たちに関しては",
     menu_help: "助けて",
     menu_login: "ログイン",
     menu_visit: "あなたの訪問リスト",
@@ -1254,10 +1256,14 @@ var translationsJP = {
     customer_realationship_management_system:"顧客関係管理システム",
     explore_our_tech:"私たちの技術を探る",  
 
-    content_about_us2:"Property Plusに参加すると、贅沢でフレキシブルなリビングスタイルに没頭できます。 あなたがドアを踏み出した瞬間から、歓迎されているような気分になります。 幅広い高水準のサービスと本格的な雰囲気で、カスタマイズされた生活体験をお楽しみいただけます。 あなたはビジネスと喜びの間で完璧なバランスのとれた生活を楽しむでしょう。"
-    +"Property Plusを使用すると、どこにいてもあなたはどこにでもいます。",
-    content_about_us1:"Property Plusでは、外国に移住することは困難な経験ではなく、素晴らしい思い出に過ぎない経験であると深く信じています。 プロパティプラス、生き生きとしたスマートなソリューションとして、私たちは常に国際的な友人にとって最高の体験をもたらすために最善を尽くしています。",
-
+    content_about_us:"<p>心の深みから、新しい国に定着することはすばらしく思い出深いものでなければならず。プロパティプラスは国際的な友人に快適な生活空間を提供するよう努めています。 、豪華さ、快適さと歓迎の感覚はお客様が踏み込んだ瞬間からです。</p>"+
+                    "<p>プロパティプラスでは次のことが可能です。</p>"+
+                    "<p>手頃な価格で豪華なインフラストラクチャーと世界一のアメニティでの生活をお楽しみください。</p>"+
+                    "<p>経験豊富で熱心な技術者で、専門的に5つ星の訓練を受けています。</p>"+
+                    "<p>お客様に最適なスペースとサービスを持つ人を体験してください。</p>"+
+                    "<p>スタッフによるサービス - 技術者は経験豊かで熱心で、専門的に5つ星の訓練を受けています。</p>"+
+                    "<p>仕事と楽しみの間の人生のバランスをとる。</p>"+
+                    "<p>プロパティプラスでは、どこに家がありますか。</p>",
     po_policy:"個人情報保護方針",
     po_propertyplus:"Propertyplus.com.vnは、Dai Loi Trade and Consultancy of Real Estate Co. Ltd（「Property Plus」、「Us」、「We」、または「Our」）が所有し、運営しています。 このプライバシーポリシーは、www.propertyplusに掲載されているウェブサイトから提供されているProperty Plusのサービスに関連してお客様が提供する個人識別可能な情報（「個人データ」）の収集、使用、開示、処理および保護について説明しています。 com.vn. 個人情報とは、個人の個人情報を意味します。本サイトへの参照は、モバイルウェブサイトやアプリケーションを含むがこれに限定されない、その派生物を含むものとみなされます。 本サイトを訪問または使用することにより、本プライバシーポリシーおよび/またはウェブサイト規約に従って、お客様の個人データの収集、使用、開示および処理に同意し、同意するものとします。 以下のプライバシーポリシーに同意しない場合は、すぐにサイトを離れてください。",
     po_fromtime:"Property Plusは、法律、個人データの収集および使用の実践、当社サイトの機能、または技術の進歩の変化を反映するために、このプライバシーポリシーを随時変更する可能性があります。 当社がお客様の個人データを収集または使用する方法を変更する改正を行った場合、その変更は本プライバシーポリシーに掲載され、適用日はこのプライバシーポリシーの冒頭に記載されます。 したがって、このプライバシーポリシーを定期的に見直し、最新の方針と実践について最新のものにする必要があります。 Property Plusは、変更を実施する前に、重要な変更を顕著に掲載する予定です。 プライバシーポリシーの変更または変更に同意しない場合は、サイトの使用を継続しないでください。 あなたは、変更の有効日後にサイトを使用する際に、プライバシーポリシーの変更に同意したものとみなされます。",
