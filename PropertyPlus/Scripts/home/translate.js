@@ -442,9 +442,13 @@
     po_questions:"Nếu Quý vị có bất kỳ câu hỏi hoặc yêu cầu liên quan đến Chính Sách Quyền Riêng Tư, xin vui lòng liên hệ Nhân viên Bảo vệ Dữ liệu của chúng tôi theo chi tiết sau đây: support@propertyplus.com.vn, hoặc nhân viên được Property Plus chỉ định bằng cách thông báo cho Quý vị thông qua các hình thức thư từ, hóa đơn, email hoặc Trang Web.Các quy định về Chính Sách Quyền Riêng Tư này được dịch từ phiên bản gốc tiếng Anh, và được cung cấp nhằm tạo sự thuận tiện cho việc xem xét của bạn. Có thể có một số khác biệt giữa bản dịch và bản gốc tiếng Anh, và trong trường hợp có bất kỳ sự khác biệt nào như vậy, thì sự khác biệt đó được coi là lỗi dịch thuật và bản tiếng Anh sẽ được ưu tiên áp dụng. Nếu nghi ngờ về tính chính xác của thông tin chứa trong bản dịch, xin vui lòng tham khảo phiên bản tiếng Anh.",
     po_date:"Ngày hiệu lực: Tháng 01 năm 2019.",
 
+    placeholder_search_home:"Nhập vị trí hoặc từ khóa dự án",
+
 }
 
 var translationsEN = {
+    placeholder_search_home:"Type Location or Project Keyword",
+
     search_bar_livingHaNoi: "Easy living in HaNoi",
     search_bar_price: "Price",
     search_bar_room: "Room",
@@ -881,6 +885,8 @@ var translationsEN = {
 }
 
 var translationsJP = {
+    placeholder_search_home:"プロジェクトの場所またはキーワードを入力してください",
+
     menu_about_us:"私たちの物語",
     refer:"参照する",
     menu_customer: "サポート",
