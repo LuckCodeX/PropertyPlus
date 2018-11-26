@@ -91,7 +91,11 @@
 			<p id="business" class="ab-text-20" translate>abu_business</p>
 			<p class="ab-text-20-1" translate>abu_property</p>
 			<p class="ab-text-20-1" style="margin-bottom: 30px;" translate>abu_friendly</p>
-			<div class="black-box"></div>
+			<div>
+			<img class="black-box" ng-if="currentLanguage == 'en'" src="Images/company_model_en.jpg">
+        	<img class="black-box" ng-if="currentLanguage == 'jp'" src="Images/company_model_jp.jpg">
+        	<img class="black-box" ng-if="currentLanguage == 'vi'" src="Images/company_model_vi.jpg">
+			</div>
 			<div class="line-aboutus-1"></div>
 			<p id="tenants" class="ab-text-28" translate>abu_butle</p>
 			<p class="ab-text-20-1" translate>abu_large</p>
