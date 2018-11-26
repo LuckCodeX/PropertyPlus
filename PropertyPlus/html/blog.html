@@ -16,7 +16,7 @@
         </div>
         <form ng-submit="pageChanged()">
             <div class="blogsearch-box ">
-                <input type="text" placeholder="Keyword" ng-model="search">
+                <input type="text" placeholder="{{ 'blog_keyword' | translate }}" ng-model="search">
                 <button translate type="submit" class=" text" >blog_search</button>
             </div>
         </form>
