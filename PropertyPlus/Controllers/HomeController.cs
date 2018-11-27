@@ -187,5 +187,20 @@ namespace PropertyPlus.Controllers
         {
             return View();
         }
+
+        public ActionResult Help()
+        {
+            return View();
+        }
+
+        public ActionResult HelpTenant()
+        {
+            return View();
+        }
+
+        public ActionResult HelpHost()
+        {
+            return View();
+        }
     }
 }

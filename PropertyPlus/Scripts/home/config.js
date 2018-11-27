@@ -79,12 +79,30 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/about-us",
                 templateUrl: "html/aboutus.html",
                 data: { pageTitle: 'About Us' }
-        })
+            })
         .state('policy',
             {
                 url: "/policy",
                 templateUrl: "html/policy.html",
                 data: { pageTitle: 'Policy' }
+            })
+        .state('help',
+            {
+                url: "/helps",
+                templateUrl: "html/help.html",
+                data: { pageTitle: 'Help' }
+            })
+        .state('helphost',
+            {
+                url: "/helps/host",
+                templateUrl: "html/helphost.html",
+                data: { pageTitle: 'Help Host' }
+            })
+        .state('helptenant',
+            {
+                url: "/helps/tenant",
+                templateUrl: "html/helptenant.html",
+                data: { pageTitle: 'Help Tenant' }
             })
         .state('userprofile',
             {

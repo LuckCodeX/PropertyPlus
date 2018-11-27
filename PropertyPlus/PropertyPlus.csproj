@@ -665,6 +665,9 @@
     <Content Include="html\blogdetail.html" />
     <Content Include="html\bookmark.html" />
     <Content Include="html\detail.html" />
+    <Content Include="html\help.html" />
+    <Content Include="html\helphost.html" />
+    <Content Include="html\helptenant.html" />
     <Content Include="html\home.html" />
     <Content Include="html\host.html" />
     <Content Include="html\hostcreate.html" />
@@ -861,6 +864,9 @@
     <Content Include="Views\Home\OurTechnology.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\Policy.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Home\HelpTenant.cshtml" />
+    <Content Include="Views\Home\HelpHost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

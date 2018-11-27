@@ -212,6 +212,24 @@ namespace PropertyPlus
             );
 
             routes.MapRoute(
+                name: "Help",
+                url: "helps",
+                defaults: new { controller = "Home", action = "Help" }
+            );
+
+            routes.MapRoute(
+                name: "HelpTenant",
+                url: "helps/tenant",
+                defaults: new { controller = "Home", action = "HelpTenant" }
+            );
+
+            routes.MapRoute(
+                name: "HelpHost",
+                url: "helps/host",
+                defaults: new { controller = "Home", action = "HelpHost" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
