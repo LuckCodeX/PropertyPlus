@@ -12,8 +12,8 @@ function xhrService($q, $http) {
         var language = 1;
         if (localStorage && localStorage.getItem('language')) {
             if (localStorage.getItem('language') == 'vi')
-                language = 1;
-            else
+                language = 0;
+            else if(localStorage.getItem('language') == 'jp')
                 language = 2;
         };
         return {

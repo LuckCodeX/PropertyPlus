@@ -38,7 +38,7 @@ namespace PropertyPlus.Controllers
                     user_profile_id = 0,
                     status = 1,
                     created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
-                    avatar = "noavatar.jpg"
+                    avatar = ImgAvatarPath + "noavatar.jpg"
                 };
                 _service.SaveUserProfile(userProfile);
 
