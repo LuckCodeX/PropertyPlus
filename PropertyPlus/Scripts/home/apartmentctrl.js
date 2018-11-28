@@ -244,10 +244,12 @@
         xhrService.get("GetApartmentDetail/" + $scope.apartmentId)
             .then(function (data) {
                 $scope.apartment = data.data;
-                var apartmentList = JSON.parse(localStorage.getItem('apartmentList'));
-                for (var i = 0; i < apartmentList.length; i++) {
-                    if (apartmentList[i].Id == $scope.apartment.Id) {
-                        $(".apartment-interact .fa-heart").addClass("active");
+                if (localStorage.getItem('apartmentList')) {
+                    var apartmentList = JSON.parse(localStorage.getItem('apartmentList'));
+                    for (var i = 0; i < apartmentList.length; i++) {
+                        if (apartmentList[i].Id == $scope.apartment.Id) {
+                            $(".apartment-interact .fa-heart").addClass("active");
+                        }
                     }
                 }
                 for (var i = 0; i < $scope.apartment.ImgList.length; i++) {
