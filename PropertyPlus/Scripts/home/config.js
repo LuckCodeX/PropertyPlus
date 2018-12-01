@@ -103,6 +103,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 url: "/helps/tenant",
                 templateUrl: "html/helptenant.html",
                 data: { pageTitle: 'Help Tenant' }
+        })
+        .state('career',
+            {
+                url: "/career",
+                templateUrl: "html/career.html",
+                data: { pageTitle: 'Career' }
+            })
+        .state('careerdetail',
+            {
+                url: "/career-detail/:id/:title",
+                templateUrl: "html/careerdetail.html",
+                data: { pageTitle: 'Career Detail' }
             })
         .state('userprofile',
             {

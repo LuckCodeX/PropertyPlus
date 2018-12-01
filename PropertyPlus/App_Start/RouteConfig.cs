@@ -230,6 +230,18 @@ namespace PropertyPlus
             );
 
             routes.MapRoute(
+                name: "Career",
+                url: "career",
+                defaults: new { controller = "Home", action = "Career" }
+            );
+
+            routes.MapRoute(
+                name: "CareerDetail",
+                url: "career-detail/{id}/{title}",
+                defaults: new { controller = "Home", action = "CareerDetail" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

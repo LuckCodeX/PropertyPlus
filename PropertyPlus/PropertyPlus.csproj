@@ -664,6 +664,8 @@
     <Content Include="html\blog.html" />
     <Content Include="html\blogdetail.html" />
     <Content Include="html\bookmark.html" />
+    <Content Include="html\career.html" />
+    <Content Include="html\careerdetail.html" />
     <Content Include="html\detail.html" />
     <Content Include="html\help.html" />
     <Content Include="html\helphost.html" />
@@ -867,6 +869,8 @@
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Home\HelpTenant.cshtml" />
     <Content Include="Views\Home\HelpHost.cshtml" />
+    <Content Include="Views\Home\Career.cshtml" />
+    <Content Include="Views\Home\CareerDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

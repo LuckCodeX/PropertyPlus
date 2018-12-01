@@ -584,7 +584,7 @@
       <PropertyRef Name="project_overview_id" />
     </Key>
     <Property Name="project_overview_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="content" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="language" Type="Int32" Nullable="false" />
     <Property Name="project_id" Type="Int32" Nullable="false" />
     <NavigationProperty Name="project" Relationship="PropertyPlusModel.FK__project_o__proje__681373AD" FromRole="project_overview" ToRole="project" />

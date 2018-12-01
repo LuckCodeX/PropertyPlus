@@ -139,7 +139,7 @@
       <PropertyRef Name="project_overview_id" />
     </Key>
     <Property Name="project_overview_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="content" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="content" Type="ntext" Nullable="false" />
     <Property Name="language" Type="int" Nullable="false" />
     <Property Name="project_id" Type="int" Nullable="false" />
   </EntityType>

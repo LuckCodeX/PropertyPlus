@@ -202,5 +202,15 @@ namespace PropertyPlus.Controllers
         {
             return View();
         }
+
+        public ActionResult Career()
+        {
+            return View();
+        }
+
+        public ActionResult CareerDetail()
+        {
+            return View();
+        }
     }
 }
