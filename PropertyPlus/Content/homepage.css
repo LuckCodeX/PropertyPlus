@@ -260,3 +260,81 @@ color: #444 !important;
 .help-text-1{
 	font-size: 30px;
 }
+
+.he-text-26{
+	font-size: 24px;
+	font-weight: 400;
+	margin-left: 30px;
+}
+
+.ab-text-28-1{
+	font-size: 28px;
+    color: #444 !important;
+    line-height: 2.5;
+}
+
+.box-img{
+	border: 0px solid transparent;
+	background: #A5A4A4;
+	width: 100%;
+	height: 600px;
+}
+
+.box-img-1{
+width: 100%;
+	height: 600px;
+}
+
+.mini-img{
+border: 0px solid transparent;
+	background: #A5A4A4;
+	width: 300px;
+	height: 150px;
+	margin-left: 40px;
+}
+
+.medium-img{
+	border: 0px solid transparent;
+	background: #A5A4A4;
+	width: 700px;
+	height: 350px;
+	margin-left: 40px;
+	margin-bottom: 100px;
+}
+
+.large-img{
+	border: 0px solid transparent;
+	background: #A5A4A4;
+	width: 100%;
+	height: 450px;
+	margin-left: 40px;
+}
+
+.box-img-5{
+	width: 100%;
+	height: 450px;
+}
+
+.box-img-2{
+	width: 300px;
+	height: 150px;
+}
+
+.box-img-3{
+	width: 700px;
+	height: 350px;
+}
+
+.box-img-4{
+border: 0px solid transparent;
+    background: #A5A4A4;
+    width: 100%;
+    height: 600px;
+    margin-left: 40px;
+}
+
+.box-img-small{
+	margin-left: 335px;
+	width: 450px;
+    height: 600px;
+}
