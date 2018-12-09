@@ -322,7 +322,16 @@
                 console.log(data);
                 $scope.apartmentList = data.data.data;
                 $(document).ready(function(){
-                    loadApartmentDetail();
+                    $('.similar-listing .owl-carousel').owlCarousel({
+                        margin: 0,
+                        autoplay: true,
+                        autoplayTimeout: 2500,
+                        autoplayHoverPause: true,
+                        loop: true,
+                        items: 4,
+                        nav: true,
+                        animateOut: 'fadeOut'
+                    });
                 });
             },
                 function (error) {

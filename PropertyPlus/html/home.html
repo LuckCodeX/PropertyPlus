@@ -117,9 +117,9 @@
                         <div class="homepage-title-section">
                             <span translate="">project_have_our_service</span>
                         </div>
-                        <div class="list-project">
-                            <div class="row">
-                                <div class="col-sm-4 col-md-4 project" ng-repeat="project in listProject">
+                        <div class="list-project similar-listing">
+                            <div class="row owl-carousel owl-theme">
+                                <div class="col-sm-12 item project" ng-repeat="project in listProject">
                                     <div class="project-thumbnail">
                                         <a style="display: block;height: 100%;width: 100%;" ui-sref="projectdetail({id: project.Id,name: replaceString(project.Content.Name)})"><img class="box-shadow" style="width:100%;height:100%;" src="/Upload/{{project.Img}}" alt="Alternate Text" /></a>
                                     </div>
@@ -371,20 +371,5 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-       
-            var owl = $('.owl-carousel');
-            owl.owlCarousel({
-                margin: 10,
-                autoplay: true,
-                autoplayTimeout: 2500,
-                autoplayHoverPause: true,
-                loop: true,
-                items: 1,
-                nav: true,
-                animateOut: 'fadeOut'
-            });
-        
-
-    })
+   
 </script>

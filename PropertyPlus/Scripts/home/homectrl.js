@@ -74,6 +74,18 @@
                 });
         xhrService.get("GetAllProject").then(function(data) {
             $scope.listProject = data.data;
+             $(document).ready(function () {
+                $('.list-project .owl-carousel').owlCarousel({
+                    margin: 30,
+                    autoplay: true,
+                    autoplayTimeout: 2500,
+                    autoplayHoverPause: true,
+                    loop: true,
+                    items: 3,
+                    nav: true,
+                    animateOut: 'fadeOut'
+                });
+            })
         });
         $scope.priceSlider = {
             minValue: 0,
