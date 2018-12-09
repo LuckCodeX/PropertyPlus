@@ -11,6 +11,17 @@ function loadApartmentDetail() {
             animateOut: 'fadeOut'
         });
 
+        $('.list-project .owl-carousel').owlCarousel({
+            margin: 30,
+            autoplay: true,
+            autoplayTimeout: 2500,
+            autoplayHoverPause: true,
+            loop: true,
+            items: 3,
+            nav: true,
+            animateOut: 'fadeOut'
+        });
+
         // $('.header-apartment-detail .owl-carousel').owlCarousel({
         //     margin: 0,
         //     autoplay: true,

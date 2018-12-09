@@ -3658,6 +3658,10 @@ img-crop canvas{display:block;position:absolute;top:50%;left:50%;outline:0;-webk
     
 
 }
+
+.list-project .owl-theme .owl-dots{
+    display: none;
+}
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {
         margin-left: 70px;
