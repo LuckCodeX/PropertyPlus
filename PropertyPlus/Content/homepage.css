@@ -638,3 +638,9 @@ width: 81px;
     right: 24px;
 }
 
+.ab-text-20sm{
+    font-size: 15px;
+    color: #444 !important;
+    line-height: 2.5;
+    text-transform: uppercase;
+}
