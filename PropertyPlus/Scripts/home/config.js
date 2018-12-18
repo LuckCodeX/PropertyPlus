@@ -86,6 +86,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $locati
                 templateUrl: "html/policy.html",
                 data: { pageTitle: 'Policy' }
             })
+        .state('privacy',
+            {
+                url: "/privacy",
+                templateUrl: "html/privacy.html",
+                data: { pageTitle: 'Privacy' }
+            })
         .state('help',
             {
                 url: "/helps",

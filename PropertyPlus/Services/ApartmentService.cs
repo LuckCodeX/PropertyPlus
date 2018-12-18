@@ -55,7 +55,7 @@ namespace PropertyPlus.Services
 
         public List<apartment> GetListApartmentByUserProfileId(int userProfileId)
         {
-            return ApartmentRepository.FindBy(p => p.user_profile_owner_id == userProfileId).ToList();
+            return ApartmentRepository.FindBy(p => p.user_profile_owner_id == userProfileId && !p.is_import).ToList();
         }
 
         public void SaveApartment(apartment apartment)
@@ -81,7 +81,7 @@ namespace PropertyPlus.Services
         public List<apartment> SearchListApartment(FilterModel filter)
         {
             return ApartmentRepository
-                .FindBy(p => p.status == 1 &&
+                .FindBy(p => p.status == 1 && !p.is_import &&
                              (Equals(filter.Search, null) || p.city.Contains(filter.Search) || p.address.Contains(filter.Search) || (!Equals(p.project_id, null) && p.project.project_content.Any(q => q.name.Contains(filter.Search)))) &&
                              filter.FilterArea.MinValue <= p.area && p.area <= filter.FilterArea.MaxValue &&
                              filter.FilterPrice.MinValue <= p.price && p.price <= filter.FilterPrice.MaxValue &&
@@ -94,21 +94,21 @@ namespace PropertyPlus.Services
 
         public apartment GetActiveApartmentById(int id)
         {
-            return ApartmentRepository.FindBy(p => p.status == 1 && p.apartment_id == id)
+            return ApartmentRepository.FindBy(p => p.status == 1 && p.apartment_id == id && !p.is_import)
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility.Select(q => q.facility.facility_content)).Include(p => p.user_profile).Include(p => p.project.project_content).FirstOrDefault();
         }
 
         public List<apartment> SearchListApartmentByUserProfileId(int status, int userProfileId)
         {
-            return ApartmentRepository.FindBy(p => p.user_profile_owner_id == userProfileId && (status == -1 || p.status == status)).OrderByDescending(p => p.apartment_id)
+            return ApartmentRepository.FindBy(p => p.user_profile_owner_id == userProfileId && !p.is_import && (status == -1 || p.status == status)).OrderByDescending(p => p.apartment_id)
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).ToList();
         }
 
         public apartment GetApartmentById(int id)
         {
-            return ApartmentRepository.FindBy(p => p.apartment_id == id && p.status != 2).OrderByDescending(p => p.apartment_id)
+            return ApartmentRepository.FindBy(p => p.apartment_id == id && p.status != 2 && !p.is_import).OrderByDescending(p => p.apartment_id)
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).FirstOrDefault();
         }
@@ -136,7 +136,7 @@ namespace PropertyPlus.Services
         public List<apartment> GetSimilarApartment(ApartmentModel model)
         {
             return ApartmentRepository.FindBy(p =>
-                    p.project_id == model.ProjectId && p.no_bedroom == model.NoBedRoom && p.city.Contains(model.City))
+                    p.project_id == model.ProjectId && p.no_bedroom == model.NoBedRoom && p.city.Contains(model.City) && p.status == 1 && !p.is_import)
                 .OrderByDescending(p => p.price)
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content)
@@ -148,7 +148,7 @@ namespace PropertyPlus.Services
         public List<apartment> GetListApartmentByProjectId(int id)
         {
             return ApartmentRepository
-                .FindBy(p => p.status == 1 && p.project_id == id)
+                .FindBy(p => p.status == 1 && p.project_id == id && !p.is_import)
                 .Include(p => p.aparment_image).Include(p => p.apartment_content)
                 .Include(p => p.apartment_facility).Include(p => p.user_profile).Include(p => p.project.project_content).OrderByDescending(p => p.apartment_id).ToList();
         }

@@ -135,8 +135,7 @@ namespace PropertyPlus.Controllers
             };
             return new UserProfileModel()
             {
-                UserId
- = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
+                UserId = "UID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0'),
                 FullName = userProfile.full_name,
                 Avatar = userProfile.avatar,
                 Token = Encrypt.Base64Encode(JsonConvert.SerializeObject(token))

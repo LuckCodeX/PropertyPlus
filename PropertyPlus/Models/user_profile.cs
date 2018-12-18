@@ -21,6 +21,8 @@ namespace PropertyPlus.Models
             this.user_account = new HashSet<user_account>();
             this.user_social = new HashSet<user_social>();
             this.user_visit = new HashSet<user_visit>();
+            this.contracts = new HashSet<contract>();
+            this.contracts1 = new HashSet<contract>();
         }
     
         public int user_profile_id { get; set; }
@@ -44,6 +46,7 @@ namespace PropertyPlus.Models
         public string bank_number { get; set; }
         public string bank_branch { get; set; }
         public string address { get; set; }
+        public string identification { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<apartment> apartments { get; set; }
@@ -53,5 +56,9 @@ namespace PropertyPlus.Models
         public virtual ICollection<user_social> user_social { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user_visit> user_visit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<contract> contracts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<contract> contracts1 { get; set; }
     }
 }

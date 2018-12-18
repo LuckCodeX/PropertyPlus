@@ -227,6 +227,21 @@
     <Compile Include="Models\blog_content.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\company.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\contract.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\contract_employee.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\contract_note.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\employee.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\facility.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
@@ -235,6 +250,9 @@
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FilterModel.cs" />
+    <Compile Include="Models\issue.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PagingResult.cs" />
     <Compile Include="Models\project.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
@@ -694,6 +712,7 @@
     <Content Include="html\ourservice.html" />
     <Content Include="html\ourtechnology.html" />
     <Content Include="html\policy.html" />
+    <Content Include="html\privacy.html" />
     <Content Include="html\project.html" />
     <Content Include="html\projectdetail.html" />
     <Content Include="html\userprofile.html" />
@@ -866,11 +885,12 @@
     <Content Include="Views\Home\OurTechnology.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\Policy.cshtml" />
-    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Home\Helper.cshtml" />
     <Content Include="Views\Home\HelpTenant.cshtml" />
     <Content Include="Views\Home\HelpHost.cshtml" />
     <Content Include="Views\Home\Career.cshtml" />
     <Content Include="Views\Home\CareerDetail.cshtml" />
+    <Content Include="Views\Home\Privacy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

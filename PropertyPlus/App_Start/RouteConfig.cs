@@ -212,9 +212,15 @@ namespace PropertyPlus
             );
 
             routes.MapRoute(
-                name: "Help",
+                name: "Privacy",
+                url: "privacy",
+                defaults: new { controller = "Home", action = "Privacy" }
+            );
+
+            routes.MapRoute(
+                name: "Helper",
                 url: "helps",
-                defaults: new { controller = "Home", action = "Help" }
+                defaults: new { controller = "Home", action = "Helper" }
             );
 
             routes.MapRoute(

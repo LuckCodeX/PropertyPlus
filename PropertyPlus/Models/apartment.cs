@@ -21,6 +21,7 @@ namespace PropertyPlus.Models
             this.apartment_content = new HashSet<apartment_content>();
             this.apartment_facility = new HashSet<apartment_facility>();
             this.user_visit_item = new HashSet<user_visit_item>();
+            this.contracts = new HashSet<contract>();
         }
     
         public int apartment_id { get; set; }
@@ -42,6 +43,7 @@ namespace PropertyPlus.Models
         public string no_apartment { get; set; }
         public string building { get; set; }
         public string phone { get; set; }
+        public bool is_import { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aparment_image> aparment_image { get; set; }
@@ -53,5 +55,7 @@ namespace PropertyPlus.Models
         public virtual user_profile user_profile { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user_visit_item> user_visit_item { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<contract> contracts { get; set; }
     }
 }

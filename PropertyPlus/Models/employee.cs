@@ -12,36 +12,30 @@ namespace PropertyPlus.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class admin
+    public partial class employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public admin()
+        public employee()
         {
-            this.admin1 = new HashSet<admin>();
-            this.companies = new HashSet<company>();
-            this.contracts = new HashSet<contract>();
+            this.contract_employee = new HashSet<contract_employee>();
+            this.contract_note = new HashSet<contract_note>();
         }
     
-        public int admin_id { get; set; }
+        public int employee_id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public int role { get; set; }
-        public Nullable<int> parent_id { get; set; }
         public int status { get; set; }
-        public string full_name { get; set; }
         public string phone { get; set; }
-        public string email { get; set; }
-        public string bank_account { get; set; }
-        public string bank_name { get; set; }
-        public string bank_number { get; set; }
-        public string bank_branch { get; set; }
+        public string birthday { get; set; }
+        public string first_name { get; set; }
+        public string type { get; set; }
+        public string code { get; set; }
+        public string last_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<admin> admin1 { get; set; }
-        public virtual admin admin2 { get; set; }
+        public virtual ICollection<contract_employee> contract_employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<company> companies { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<contract> contracts { get; set; }
+        public virtual ICollection<contract_note> contract_note { get; set; }
     }
 }

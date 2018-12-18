@@ -188,7 +188,12 @@ namespace PropertyPlus.Controllers
             return View();
         }
 
-        public ActionResult Help()
+        public ActionResult Privacy()
+        {
+            return View();
+        }
+
+        public ActionResult Helper()
         {
             return View();
         }

@@ -91,7 +91,7 @@ namespace PropertyPlus.Services
 
         public List<project> GetAllProject()
         {
-            return ProjectRepository.FindBy(p => p.status == 1 && p.type != 2).ToList();
+            return ProjectRepository.FindBy(p => p.status == 1 && p.type != 2).Include(p => p.project_content).ToList();
         }
 
         public project_overview GetProjectOverviewById(int id)
