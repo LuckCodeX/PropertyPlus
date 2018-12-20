@@ -40,7 +40,7 @@
         <div class="title-apartment-detail">{{"tour_this_home" | translate}}</div>
         <div class="col-xs-12 tour-this-home-slide" >
             <div class="owl-carousel owl-theme">
-                <div class="item" ng-repeat="livRoom in apartment.ImgList">
+                <div class="item" ng-repeat="livRoom in apartment.ImgList" ng-if="livRoom.Type == 2">
                     <div class="">
                         <img ng-src="{{livRoom.Img}}" alt="Alternate Text" />
                     </div>
@@ -76,7 +76,7 @@
         </div>
         <div class="col-xs-12 tour-this-home-slide">
             <div class="owl-carousel owl-theme">
-                <div class="item" ng-repeat="bedRoom in apartment.ImgList" ng-if="bedRoom.Type == 3">
+                <div class="item" ng-repeat="bedRoom in apartment.ImgList" ng-if="bedRoom.Type == 5">
                     <div class="">
                         <img ng-src="{{bedRoom.Img}}" alt="Alternate Text" />
                     </div>
