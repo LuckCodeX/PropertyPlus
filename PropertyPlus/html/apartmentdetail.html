@@ -89,7 +89,7 @@
     </div>
     <div class="amenities">
         <div class="title-apartment-detail" translate>amenities </div>
-        <div ng-repeat="facility in allFacilities" class="amenities-content text-center">
+        <div ng-repeat="facility in apartment.FacilityList" class="amenities-content text-center">
             <img ng-src="/Upload/{{facility.Img}}" class="amenities-img" alt="Alternate Text" />
             <span class="text-facilities m-t-5">{{facility.Content.Name}}</span>
         </div>

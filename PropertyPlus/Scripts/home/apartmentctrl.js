@@ -244,7 +244,6 @@
         xhrService.get("GetApartmentDetail/" + $scope.apartmentId)
             .then(function (data) {
                 $scope.apartment = data.data;
-                getFacilities();
                 if (localStorage.getItem('apartmentList')) {
                     var apartmentList = JSON.parse(localStorage.getItem('apartmentList'));
                     for (var i = 0; i < apartmentList.length; i++) {
@@ -282,23 +281,23 @@
                     console.log(error.statusText);
                 });
 
-        function getFacilities(){
-            $scope.allFacilities = [];
-            xhrService.get("GetAllFacilities")
-            .then(function (data) {
-                $scope.allFacility = data.data;
-                for (var j = 0; j < $scope.allFacility.length; j++) {
-                    for (var i = 0; i < $scope.apartment.FacilityList.length; i++) {
-                        if ($scope.allFacility[j].Id == $scope.apartment.FacilityList[i].Id) {
-                            $scope.allFacilities.push($scope.allFacility[j]);
-                        }
-                    }
-                };
-            },
-            function (error) {
-                console.log(error.statusText);
-            });
-        }   
+        // function getFacilities(){
+        //     $scope.allFacilities = [];
+        //     xhrService.get("GetAllFacilities")
+        //     .then(function (data) {
+        //         $scope.allFacility = data.data;
+        //         for (var j = 0; j < $scope.allFacility.length; j++) {
+        //             for (var i = 0; i < $scope.apartment.FacilityList.length; i++) {
+        //                 if ($scope.allFacility[j].Id == $scope.apartment.FacilityList[i].Id) {
+        //                     $scope.allFacilities.push($scope.allFacility[j]);
+        //                 }
+        //             }
+        //         };
+        //     },
+        //     function (error) {
+        //         console.log(error.statusText);
+        //     });
+        // }   
         
         
         
