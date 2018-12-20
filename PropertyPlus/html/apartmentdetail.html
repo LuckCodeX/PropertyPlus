@@ -40,7 +40,7 @@
         <div class="title-apartment-detail">{{"tour_this_home" | translate}}</div>
         <div class="col-xs-12 tour-this-home-slide" >
             <div class="owl-carousel owl-theme">
-                <div class="item" ng-repeat="livRoom in apartment.ImgList">
+                <div class="item" ng-repeat="livRoom in apartment.ImgList" ng-if="livRoom.Type == 2">
                     <div class="">
                         <img ng-src="{{livRoom.Img}}" alt="Alternate Text" />
                     </div>
