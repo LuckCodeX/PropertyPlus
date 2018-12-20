@@ -283,6 +283,7 @@
                 });
 
         function getFacilities(){
+            $scope.allFacilities = [];
             xhrService.get("GetAllFacilities")
             .then(function (data) {
                 $scope.allFacility = data.data;
