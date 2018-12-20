@@ -338,6 +338,16 @@
                             nav: true,
                             animateOut: 'fadeOut'
                         });
+                         $('.tour-this-home-slide .owl-carousel').owlCarousel({
+                             margin: 30,
+                            autoplay: true,
+                            autoplayTimeout: 2500,
+                            autoplayHoverPause: true,
+                            loop: true,
+                            items: 2,
+                            nav: true,
+                            animateOut: 'fadeOut'
+                        });
                      }, 1000);
 
                     
