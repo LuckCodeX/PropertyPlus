@@ -1,1 +1,119 @@
-﻿<h1>Career Detail</h1>
+﻿<div ng-controller="CareerCtrl" ng-init="loadDetailData()">
+<div class="container" style="margin-top: 100px;">
+	<div class="row">	
+		<div class="col-md-offset-1 col-md-8">
+			
+			<a style="font-size: 14px;" ui-sref="career"><i style="width: 14.79px;height: 10.96px" class="fas fa-arrow-left"></i><span translate>cr_back</span></a><br>
+			<span class="crdetail-text">{{career.Content.Title}}</span></br>
+			<div class="crdetail-text1">
+			<p>Lương : <span>{{career.SalaryMin}}</span></p>
+			<p>Địa điểm : <span>{{career.Location}}</span></p>
+			<p>Phòng ban : <span></span></p>
+			<p>Hạn chót : <span>{{career.ExpiredDate}}</span></p>
+</div>
+		</div>
+
+
+
+
+		<div class="col-md-offset-1 col-md-10">
+		<div class="grey-line" style="margin-top: 10px;margin-bottom: 30px;"></div>
+	</div>
+	<div class="col-md-offset-1 col-md-10">
+		<span class="crdetail-text1" ng-bind-html="career.Content.Content | trust"></span>
+		<p class="crdetail-text" translate="" style="margin-top: 20px;margin-bottom: 40px;">Hồ sơ vui lòng gửi về địa chỉ hòm thư hr@propertyplus.com.vn</p>
+	</div>
+
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+		<div class="box-career">
+			<div class="row">
+				<div class="col-md-5 col-md-offset-1">
+					<p class="cr-text-16" style="margin-top: 70px;margin-bottom:70px;" translate>cr_inter</p>
+				</div>
+				<div class="col-md-10 col-md-offset-1">
+					<p class="cr-text-14" translate>full_name</p>
+					<input type="text"  class="input-career" />
+				</div>
+				<div class="col-md-10 col-md-offset-1">
+					<p class="cr-text-14" translate>email</p>
+					<input type="text"  class="input-career" />
+				</div>
+				<div class="col-md-10 col-md-offset-1">
+					<p class="cr-text-14" translate>phone_number</p>
+					<input type="text"  class="input-career" />
+				</div>
+				<div class="col-md-10 col-md-offset-1">
+					
+					
+					<label class="file-career">
+	<p class="cr-text-14" style="color: #444444 !important;
+    text-align: center;
+    padding-top: 80px;
+    font-weight: normal;" translate>cr_cv</p>
+     <input type="file" name="myfile" upload-files/>
+</label>
+				</div>
+<div class="col-md-10 col-md-offset-1">
+	<a href="#" class="apply-btn-1" translate>cr_apply</a>
+				
+					
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div> -->

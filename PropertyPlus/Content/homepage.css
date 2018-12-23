@@ -644,3 +644,15 @@ width: 81px;
     line-height: 2.5;
     text-transform: uppercase;
 }
+
+.crdetail-text{
+font-size: 18px;
+color: #43425D !important;
+line-height: 3;
+}
+
+.crdetail-text1{
+font-size: 14px;
+color: #43425D !important;
+line-height: 2;
+}

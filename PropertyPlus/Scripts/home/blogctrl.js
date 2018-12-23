@@ -16,6 +16,7 @@
         $scope.search = $stateParams.search === undefined ? '' : $stateParams.search;
         xhrService.get("GetListBlog/" + $scope.bigCurrentPage + "/" + $scope.limit + "/" + $scope.type + "/" + $scope.search)
             .then(function (data) {
+                console.log(data.data.data);
                 $scope.blogList = data.data.data;
                 if ($scope.limit > $scope.blogList.length) {
                     $scope.loadMoreBtn = true;
