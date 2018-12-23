@@ -12,23 +12,24 @@ namespace PropertyPlus.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class issue
+    public partial class career
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public issue()
+        public career()
         {
-            this.apartment_employee_issue = new HashSet<apartment_employee_issue>();
-            this.problems = new HashSet<problem>();
+            this.career_content = new HashSet<career_content>();
         }
     
-        public int issue_id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public int status { get; set; }
+        public int career_id { get; set; }
+        public int created_date { get; set; }
+        public int category_id { get; set; }
+        public string city { get; set; }
+        public int type { get; set; }
+        public decimal salary_min { get; set; }
+        public string experied_date { get; set; }
+        public string location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<apartment_employee_issue> apartment_employee_issue { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<problem> problems { get; set; }
+        public virtual ICollection<career_content> career_content { get; set; }
     }
 }

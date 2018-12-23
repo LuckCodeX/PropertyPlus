@@ -1,0 +1,192 @@
+﻿@model PropertyPlus.Models.CareerModel
+
+@{
+    ViewBag.Title = "Career Detail";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Blog</h2>
+        <ol class="breadcrumb">
+            @*<li>
+                    <a href="@Url.Action("Index", "Admin")">Trang chủ</a>
+                </li>*@
+            <li>
+                <a href="@Url.Action("Career", "Admin")">Career</a>
+            </li>
+            <li class="active">
+                <strong>Chi tiết</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    @using (Html.BeginForm("CareerDetail", "Admin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        @Html.HiddenFor(m => m.Id)
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Danh mục</label>
+                            <div class="col-sm-2">
+                                @Html.RadioButtonFor(m => m.CategoryId, 0) Marketing
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.RadioButtonFor(m => m.CategoryId, 1) Thiết kế
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.RadioButtonFor(m => m.CategoryId, 2) Nghiên cứu
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.RadioButtonFor(m => m.CategoryId, 3) Lập trình viên
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Loại</label>
+                            <div class="col-sm-2">
+                                @Html.RadioButtonFor(m => m.Type, 0) Toàn thời gian
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.RadioButtonFor(m => m.Type, 1) Bán thời gian
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Địa chỉ</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.Location, new { @class = "form-control", @required = true })
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Thành phố</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.City, new { @class = "form-control", @required = true })
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Lương tối thiểu</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.SalaryMin, new { @class = "form-control", @required = true, @type="number" })
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Hạn chót</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(m => m.ExpiredDate, new { @class = "form-control", @required = true })
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="tabs-container">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tab-1"> Tiếng Việt</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-2">Tiếng Anh</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-3">Tiếng Nhật</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane active">
+                                    @Html.HiddenFor(m => m.ContentList[0].Id)
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tiêu đề</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[0].Title, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Nội dung</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextAreaFor(m => m.ContentList[0].Content, new { @required = true })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-2" class="tab-pane">
+                                    @Html.HiddenFor(m => m.ContentList[1].Id)
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tiêu đề</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[1].Title, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Nội dung</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextAreaFor(m => m.ContentList[1].Content, new { @required = true })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-3" class="tab-pane">
+                                    @Html.HiddenFor(m => m.ContentList[2].Id)
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Tiêu đề</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextBoxFor(m => m.ContentList[2].Title, new { @class = "form-control", @required = true })
+                                            </div>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Nội dung</label>
+                                            <div class="col-sm-9">
+                                                @Html.TextAreaFor(m => m.ContentList[2].Content, new { @required = true })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" id="submitButton" type="submit">Lưu</button>
+                                <a class="btn btn-white marleft-30" href="@Url.Action("Career", "Admin")">Thoát</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        createEditor("ContentList_0__Content");
+        createEditor("ContentList_1__Content");
+        createEditor("ContentList_2__Content");
+    });
+
+    function createEditor(id) {
+        CKEDITOR.replace(id,
+            {
+                filebrowserImageUploadUrl: '/Admin/UploadImage',
+            });
+    }
+
+    $('#submitButton').click(function () {
+        $('input:invalid').each(function () {
+            // Find the tab-pane that this element is inside, and get the id
+            var $closest = $(this).closest('.tab-pane');
+            var id = $closest.attr('id');
+
+            // Find the link that corresponds to the pane and have it show
+            $('.nav a[href="#' + id + '"]').tab('show');
+
+            // Only want to do it once
+            return false;
+        });
+    });
+
+</script>

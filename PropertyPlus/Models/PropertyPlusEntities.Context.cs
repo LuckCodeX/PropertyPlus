@@ -51,5 +51,13 @@ namespace PropertyPlus.Models
         public virtual DbSet<contract_note> contract_note { get; set; }
         public virtual DbSet<employee> employees { get; set; }
         public virtual DbSet<issue> issues { get; set; }
+        public virtual DbSet<apartment_employee> apartment_employee { get; set; }
+        public virtual DbSet<apartment_employee_issue> apartment_employee_issue { get; set; }
+        public virtual DbSet<career> careers { get; set; }
+        public virtual DbSet<career_content> career_content { get; set; }
+        public virtual DbSet<problem> problems { get; set; }
+        public virtual DbSet<problem_image> problem_image { get; set; }
+        public virtual DbSet<problem_tracking> problem_tracking { get; set; }
+        public virtual DbSet<user_profile_note> user_profile_note { get; set; }
     }
 }
