@@ -76,12 +76,18 @@
             <li class="tab-link" data-tab="tab-3" translate="">cr_research</li>
             <li class="tab-link" data-tab="tab-4" translate="">cr_developer</li>
  </ul>
+ 
  <div id="tab-1" class="tab-content current" ng-init="loadData()">
 <div class="row" class="tab-content current">
 	<div ng-repeat="item in careerList">
 	<div class="col-md-6">
 		<p class="cr-text-14" style="display: inline-block;" translate>{{item.Content.Title}}</p><br>
-		<p class="cr-text-14" translate>{{item.City}}</p>
+		<p class="cr-text-14" style="display: inline-block;" translate>{{item.City}}</p>
+		<div style="display: inline-block;">
+			<span ng-if="item.Type == 0">/ Full-time</span>
+			<span ng-if="item.Type == 1">/ Part-time</span>
+		</div>
+		<p class="cr-text-14" style="display: inline-block;" translate> / ${{item.SalaryMin}}</p>
 	</div>
 	<div class="col-md-6">
 		<a ui-sref="careerdetail({id:item.Id, title: replaceString(item.Content.Title)})" class="apply-btn" translate>cr_apply</a>
@@ -98,7 +104,12 @@
 	<div ng-repeat="item in careerList1">
 	<div class="col-md-6">
 		<p class="cr-text-14" style="display: inline-block;" translate>{{item.Content.Title}}</p><br>
-		<p class="cr-text-14" translate>{{item.City}}</p>
+		<p class="cr-text-14" style="display: inline-block;" translate>{{item.City}}</p>
+		<div style="display: inline-block;">
+			<span ng-if="item.Type == 0">/ Full-time</span>
+			<span ng-if="item.Type == 1">/ Part-time</span>
+		</div>
+		<p class="cr-text-14" style="display: inline-block;" translate> / ${{item.SalaryMin}}</p>
 	</div>
 	<div class="col-md-6">
 		<a ui-sref="careerdetail({id:item.Id, title: replaceString(item.Content.Title)})" class="apply-btn" translate>cr_apply</a>
@@ -115,7 +126,12 @@
 	<div ng-repeat="item in careerList2">
 	<div class="col-md-6">
 		<p class="cr-text-14" style="display: inline-block;" translate>{{item.Content.Title}}</p><br>
-		<p class="cr-text-14" translate>{{item.City}}</p>
+		<p class="cr-text-14" style="display: inline-block;" translate>{{item.City}}</p>
+		<div style="display: inline-block;">
+			<span ng-if="item.Type == 0">/ Full-time</span>
+			<span ng-if="item.Type == 1">/ Part-time</span>
+		</div>
+		<p class="cr-text-14" style="display: inline-block;" translate> / ${{item.SalaryMin}}</p>
 	</div>
 	<div class="col-md-6">
 		<a ui-sref="careerdetail({id:item.Id, title: replaceString(item.Content.Title)})" class="apply-btn" translate>cr_apply</a>
@@ -131,8 +147,14 @@
  	<div class="row" class="tab-content current">
 	<div ng-repeat="item in careerList3">
 	<div class="col-md-6">
-		<p class="cr-text-14" style="display: inline-block;" translate >{{item.Content.Title}}</p><br>
-		<p class="cr-text-14" translate>{{item.City}}</p>
+		<p class="cr-text-14" style="display: inline-block;" translate>{{item.Content.Title}}</p><br>
+		<p class="cr-text-14" style="display: inline-block;" translate>{{item.City}}</p>
+		<div style="display: inline-block;">
+			<span ng-if="item.Type == 0">/ Full-time</span>
+			<span ng-if="item.Type == 1">/ Part-time</span>
+		</div>
+		<p class="cr-text-14" style="display: inline-block;" translate> / ${{item.SalaryMin}}</p>
+
 	</div>
 	<div class="col-md-6">
 		<a ui-sref="careerdetail({id:item.Id, title: replaceString(item.Content.Title)})" class="apply-btn" translate>cr_apply</a>

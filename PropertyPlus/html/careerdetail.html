@@ -6,9 +6,15 @@
 			<a style="font-size: 14px;" ui-sref="career"><i style="width: 14.79px;height: 10.96px" class="fas fa-arrow-left"></i><span translate>cr_back</span></a><br>
 			<span class="crdetail-text">{{career.Content.Title}}</span></br>
 			<div class="crdetail-text1">
-			<p>Lương : <span>{{career.SalaryMin}}</span></p>
+			<p>Lương : <span>{{career.SalaryMin}}</span> USD</p>
 			<p>Địa điểm : <span>{{career.Location}}</span></p>
-			<p>Phòng ban : <span></span></p>
+			<p>Phòng ban : 
+				<span translate ng-if="career.CategoryId == 0">cr_marketing</span>
+				<span translate ng-if="career.CategoryId == 1">cr_design</span>
+				<span translate ng-if="career.CategoryId == 2">cr_research</span>
+				<span translate ng-if="career.CategoryId == 3">cr_developer</span>
+
+			</p>
 			<p>Hạn chót : <span>{{career.ExpiredDate}}</span></p>
 </div>
 		</div>
