@@ -18,7 +18,7 @@ $scope.loadData3 = function () {
 
         xhrService.get("GetListCareer/" + $scope.bigCurrentPage + "/" + $scope.limit + "/" + $scope.type  + "/" + $scope.search)
             .then(function (data) {
-            	console.log(data);
+            	// console.log(data);
             	$scope.careerList3 = data.data.data;                
                 
             },
@@ -56,7 +56,7 @@ $scope.loadData3 = function () {
 
         xhrService.get("GetListCareer/" + $scope.bigCurrentPage + "/" + $scope.limit + "/" + $scope.type  + "/" + $scope.search)
             .then(function (data) {
-            	console.log(data);
+            	// console.log(data);
             	$scope.careerList1 = data.data.data;                
                 
             },
@@ -75,7 +75,7 @@ $scope.loadData3 = function () {
 
         xhrService.get("GetListCareer/" + $scope.bigCurrentPage + "/" + $scope.limit + "/" + $scope.type  + "/" + $scope.search)
             .then(function (data) {
-            	console.log(data);
+            	// console.log(data);
             	$scope.careerList2 = data.data.data;                
                 
             },
@@ -93,7 +93,7 @@ $scope.limit = 4;
 $scope.loadDetailData = function () {
         var id = $stateParams.id;
         xhrService.get("GetCareerDetail/" + id).then(function (data) {
-        	console.log(data);
+        	// console.log(data);
             $scope.career = data.data;
             
         },
