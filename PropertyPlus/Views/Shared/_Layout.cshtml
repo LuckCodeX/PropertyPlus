@@ -35,9 +35,9 @@
         <div class="logo-name-header" ng-if="$state.includes('home')">
             <a href="#">Property Plus</a>
         </div>
-        <form class="search-box box-shadow" ng-if="!$state.includes('home')" ng-submit="submitSearch()">
+        <form class="search-box box-shadow" ng-if="!$state.includes('home')" style="position: relative;" ng-submit="submitSearch()">
             <input type="text" class="" ng-model="txtSearch" ng-change="changeSearchTxt(txtSearch)" placeholder="{{'placeholder_search_home'|translate}}"  />
-            <button class="btn-search box-shadow" translate="">blog_search</button>
+            <button style="position: absolute; right: 3px;" class="btn-search box-shadow" translate="">blog_search</button>
         </form>
         <div class="header-navbar-menu float-right">
             <div class="ensign-header">
