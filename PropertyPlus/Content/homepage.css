@@ -401,11 +401,12 @@ width: 81px;
         .content-career ul.tabs li {
 		    color: #707070;
 		    display: inline-block;
-		    padding: 22px 0;
+		    padding: 22px 25px;
 		    cursor: pointer;
-		    width: 15.33%;
+		    width: 100%;
 		    margin: 0;
 		    font-size: 14px;
+            white-space: nowrap;
         }
 
         .content-career ul.tabs li:hover {

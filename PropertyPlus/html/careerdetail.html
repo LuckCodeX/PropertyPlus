@@ -10,9 +10,11 @@
 			<p>Địa điểm : <span>{{career.Location}}</span></p>
 			<p>Phòng ban : 
 				<span translate ng-if="career.CategoryId == 0">cr_marketing</span>
-				<span translate ng-if="career.CategoryId == 1">cr_design</span>
-				<span translate ng-if="career.CategoryId == 2">cr_research</span>
-				<span translate ng-if="career.CategoryId == 3">cr_developer</span>
+				<span translate ng-if="career.CategoryId == 1">cr_sale</span>
+				<span translate ng-if="career.CategoryId == 2">cr_accounting</span>
+				<span translate ng-if="career.CategoryId == 3">cr_development</span>
+				<span translate ng-if="career.CategoryId == 4">cr_management</span>
+				<span translate ng-if="career.CategoryId == 5">cr_developer</span>
 
 			</p>
 			<p>Hạn chót : <span>{{career.ExpiredDate}}</span></p>
