@@ -487,6 +487,121 @@ namespace PropertyPlus.Controllers
         }
 
         [LoginActionFilter]
+        public ActionResult Career(int? page, string search)
+        {
+            int curPage = page ?? 1;
+            var careers = _service.SearchCareerList(search);
+            var careerList = careers.Select(p => new CareerModel()
+            {
+                Id = p.career_id,
+                Type = p.type,
+                CategoryId = p.category_id,
+                Content = _service.ConvertCareerContentToModel(p.career_content.FirstOrDefault(q => q.language == 0))
+            });
+            ViewBag.KeySearch = search;
+            return View(careerList.ToPagedList(curPage, 10));
+        }
+
+        [LoginActionFilter]
+        public ActionResult CareerDetail(int? id)
+        {
+            CareerModel model;
+            if (!Equals(id, null))
+            {
+                var career = _service.GetCareerById(id.Value);
+                var careerContent = career.career_content.Select(p => new CareerContentModel()
+                {
+                    Id = p.career_content_id,
+                    Content = p.content,
+                    Title = p.title,
+                }).ToList();
+                model = new CareerModel()
+                {
+                    Id = career.career_id,
+                    ContentList = careerContent,
+                    City = career.city,
+                    CategoryId = career.category_id,
+                    Type = career.type,
+                    SalaryMin = career.salary_min,
+                    ExpiredDate = career.experied_date,
+                    Location = career.location
+                };
+            }
+            else
+            {
+                var careerContent = new List<CareerContentModel>();
+                for (int i = 0; i < 3; i++)
+                {
+                    var content = new CareerContentModel()
+                    {
+                        Id = 0,
+                        Language = i
+                    };
+                    careerContent.Add(content);
+                }
+                model = new CareerModel()
+                {
+                    Id = 0,
+                    ContentList = careerContent
+                };
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CareerDetail(CareerModel model)
+        {
+            using (var scope = new TransactionScope())
+            {
+                var career = _service.GetCareerById(model.Id);
+                if (Equals(career, null))
+                {
+                    career = new career()
+                    {
+                        career_id = 0,
+                        created_date = ConvertDatetime.GetCurrentUnixTimeStamp()
+                    };
+                }
+                career.type = model.Type;
+                career.city = model.City;
+                career.category_id = model.CategoryId;
+                career.salary_min = model.SalaryMin;
+                career.location = model.Location;
+                career.experied_date = model.ExpiredDate;
+                _service.SaveCareer(career);
+
+                int idx = 0;
+                foreach (var careerContent in model.ContentList)
+                {
+                    var content = _service.GetCareerContentById(careerContent.Id);
+                    if (Equals(content, null))
+                    {
+                        content = new career_content()
+                        {
+                            career_content_id = 0,
+                            career_id = career.career_id,
+                            language = idx
+                        };
+                    }
+                    content.title = careerContent.Title;
+                    content.content = careerContent.Content;
+                    _service.SaveCareerContent(content);
+                    idx++;
+                }
+
+                scope.Complete();
+            }
+            return RedirectToAction("Career");
+        }
+
+        public ActionResult DeleteCareer(int id)
+        {
+            _service.DeleteCareer(id);
+            return RedirectToAction("Career");
+        }
+
+        [LoginActionFilter]
         public ActionResult Facility()
         {
             var facilities = _service.GetAllFacility().Select(p => new FacilityModel()

@@ -16,7 +16,7 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         @*<li><a href="@Url.Action("Profile", "AppViews")">Profile</a></li>
-                            <li class="divider"></li>*@
+                    <li class="divider"></li>*@
                         <li><a href="@Url.Action("ChangePassword", "Admin")">Đổi mật khẩu</a></li>
                     </ul>
                 </div>
@@ -26,6 +26,9 @@
             </li>
             <li class="@Html.IsSelected(action: "Blog") || @Html.IsSelected(action: "BlogDetail")">
                 <a href="@Url.Action("Blog", "Admin")"><i class="far fa-newspaper"></i> <span class="nav-label">Blog</span> </a>
+            </li>
+            <li class="@Html.IsSelected(action: "Career") || @Html.IsSelected(action: "CareerDetail")">
+                <a href="@Url.Action("Career", "Admin")"><i class="fas fa-address-card"></i> <span class="nav-label">Career</span> </a>
             </li>
             <li class="@Html.IsSelected(action: "Account") || @Html.IsSelected(action: "AccountDetail")">
                 <a href="@Url.Action("Account", "Admin")"><i class="fas fa-user"></i> <span class="nav-label">Tài khoản</span> </a>

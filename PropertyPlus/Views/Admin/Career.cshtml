@@ -1,17 +1,17 @@
 ﻿@using PagedList.Mvc
-@model PagedList.IPagedList<PropertyPlus.Models.BlogModel>
+@model PagedList.IPagedList<PropertyPlus.Models.CareerModel>
 
 @{
-    ViewBag.Title = "Blog";
+    ViewBag.Title = "Career";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
-    List<SelectListItem> listItem = new List<SelectListItem>()
-    {
-        new SelectListItem(){Text = "== Tất cả ==", Value = "-1"},
-        new SelectListItem(){Text = "Tin tức", Value = "0"},
-        new SelectListItem(){Text = "Kinh nghiệm", Value = "1"},
-        new SelectListItem(){Text = "Lời khuyên", Value = "2"}
-    };
+    //List<SelectListItem> listItem = new List<SelectListItem>()
+    //{
+    //    new SelectListItem(){Text = "== Tất cả ==", Value = "-1"},
+    //    new SelectListItem(){Text = "Marketing", Value = "0"},
+    //    new SelectListItem(){Text = "Kinh nghiệm", Value = "1"},
+    //    new SelectListItem(){Text = "Lời khuyên", Value = "2"}
+    //};
 }
 
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -37,13 +37,8 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content m-b-sm border-bottom">
         <div class="row">
-            @using (Html.BeginForm("Blog", "Admin", FormMethod.Get, new { @class = "col-md-10" }))
+            @using (Html.BeginForm("Career", "Admin", FormMethod.Get, new { @class = "col-md-10" }))
             {
-                <div class="col-md-4">
-                    <div class="form_control">
-                        @Html.DropDownList("type", new SelectList(listItem, "Value", "Text", (int?)ViewBag.TypeSearch ?? -1), new { @class = "form-control" })
-                    </div>
-                </div>
                 <div class="col-md-4">
                     <div class="form_control">
                         @Html.TextBox("search", (string)ViewBag.KeySearch, new { @class = "form-control", @placeholder = "Tìm theo tiêu đề" })
@@ -57,7 +52,7 @@
             }
             <div class="col-sm-2">
                 <div class="form_control">
-                    <a href="@Url.Action("BlogDetail")" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>
+                    <a href="@Url.Action("CareerDetail")" class="btn btn-success"><i class="fas fa-plus"></i> Tạo mới</a>
                 </div>
             </div>
         </div>
@@ -70,8 +65,8 @@
                         <thead>
                             <tr>
                                 <th>Tiêu đề</th>
-                                <th>Ảnh đại diện</th>
-                                <th>Ngày tạo</th>
+                                <th>Danh mục</th>
+                                <th>Loại</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -83,11 +78,41 @@
                                         @Html.DisplayFor(modelItem => item.Content.Title)
                                     </td>
                                     <td>
-                                        <img src="~/Upload/@item.Img" height="50" width="100"/>
+                                        @if (item.CategoryId == 0)
+                                        {
+                                            @Html.Raw("Marketing")
+                                        }
+                                        else if (item.CategoryId == 1)
+                                        {
+                                            @Html.Raw("Sales")
+                                        }
+                                        else if (item.CategoryId == 2)
+                                        {
+                                            @Html.Raw("Accounting")
+                                        }
+                                        else if (item.CategoryId == 3)
+                                        {
+                                            @Html.Raw("Investment and Development")
+                                        }
+                                        else if (item.CategoryId == 4)
+                                        {
+                                            @Html.Raw("Management")
+                                        }
+                                        else
+                                        {
+                                            @Html.Raw("Developer")
+                                        }
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CreatedString)
-                                    </td>
+                                    <th>
+                                        @if (item.Type == 0)
+                                        {
+                                            @Html.Raw("Toàn thời gian")
+                                        }
+                                        else
+                                        {
+                                            @Html.Raw("Bán thời gian")
+                                        }
+                                    </th>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-white dropdown-toggle"
@@ -96,13 +121,13 @@
                                             </button>
                                             <ul class="dropdown-menu pull-right">
                                                 <li>
-                                                    <a href="@Url.Action("BlogDetail", new {id = item.Id})">
+                                                    <a href="@Url.Action("CareerDetail", new {id = item.Id})">
                                                         <i class="fas fa-edit"></i> Sửa
                                                     </a>
                                                 </li>
                                                 <li class="divider"></li>
                                                 <li>
-                                                    <a href="@Url.Action("DeleteBlog", new{id = item.Id})" onclick="return confirm('Bạn có chắc muốn xóa bản ghi này?')">
+                                                    <a href="@Url.Action("DeleteCareer", new{id = item.Id})" onclick="return confirm('Bạn có chắc muốn xóa bản ghi này?')">
                                                         <i class="fas fa-minus-circle"></i> Xóa
                                                     </a>
                                                 </li>
@@ -115,7 +140,7 @@
                     </table>
                     <div>
                         Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-                        @Html.PagedListPager(Model, page => Url.Action("Blog", new { page }), new PagedListRenderOptions()
+                        @Html.PagedListPager(Model, page => Url.Action("Career", new { page }), new PagedListRenderOptions()
                    {
                        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
                        DisplayLinkToLastPage = PagedListDisplayMode.Always,
@@ -127,4 +152,3 @@
         </div>
     </div>
 </div>
-

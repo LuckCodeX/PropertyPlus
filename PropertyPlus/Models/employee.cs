@@ -19,6 +19,8 @@ namespace PropertyPlus.Models
         {
             this.contract_employee = new HashSet<contract_employee>();
             this.contract_note = new HashSet<contract_note>();
+            this.apartment_employee = new HashSet<apartment_employee>();
+            this.problem_tracking = new HashSet<problem_tracking>();
         }
     
         public int employee_id { get; set; }
@@ -32,10 +34,15 @@ namespace PropertyPlus.Models
         public string type { get; set; }
         public string code { get; set; }
         public string last_name { get; set; }
+        public int created_date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contract_employee> contract_employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contract_note> contract_note { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<apartment_employee> apartment_employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<problem_tracking> problem_tracking { get; set; }
     }
 }

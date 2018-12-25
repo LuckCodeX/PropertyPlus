@@ -83,5 +83,14 @@ namespace PropertyPlus.Services
         void SaveProjectFacility(project_facility fac);
         List<apartment> GetListApartmentByProjectId(int id);
         List<project> GetUpcomingProjectList();
+        List<apartment> GetAllStatusApartment();
+        List<career> SearchCareerList(string search);
+        CareerContentModel ConvertCareerContentToModel(career_content content);
+        void DeleteCareer(int id);
+        career GetCareerById(int id);
+        void SaveCareer(career career);
+        career_content GetCareerContentById(int id);
+        void SaveCareerContent(career_content content);
+        List<career> SearchCareerList(int categoryId, int language, string search);
     }
 }

@@ -61,6 +61,25 @@
         <AssociationConnector Association="PropertyPlusModel.FK__contract__user_p__251C81ED" />
         <AssociationConnector Association="PropertyPlusModel.FK__contract___emplo__29E1370A" />
         <AssociationConnector Association="PropertyPlusModel.FK__contract___emplo__2DB1C7EE" />
+        <EntityTypeShape EntityType="PropertyPlusModel.apartment_employee" Width="1.5" PointX="17.5" PointY="9.375" />
+        <EntityTypeShape EntityType="PropertyPlusModel.apartment_employee_issue" Width="1.5" PointX="20.75" PointY="6.375" />
+        <EntityTypeShape EntityType="PropertyPlusModel.career" Width="1.5" PointX="17.375" PointY="17.25" />
+        <EntityTypeShape EntityType="PropertyPlusModel.career_content" Width="1.5" PointX="19.625" PointY="16.875" />
+        <EntityTypeShape EntityType="PropertyPlusModel.problem" Width="1.5" PointX="17.625" PointY="2.125" />
+        <EntityTypeShape EntityType="PropertyPlusModel.problem_image" Width="1.5" PointX="19.875" PointY="3.125" />
+        <EntityTypeShape EntityType="PropertyPlusModel.problem_tracking" Width="1.5" PointX="19.875" PointY="11.25" />
+        <EntityTypeShape EntityType="PropertyPlusModel.user_profile_note" Width="1.5" PointX="3" PointY="16.125" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__6CA31EA0" />
+        <AssociationConnector Association="PropertyPlusModel.FK__problem__apartme__79FD19BE" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__apart__6ABAD62E" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__emplo__6D9742D9" />
+        <AssociationConnector Association="PropertyPlusModel.FK__apartment__issue__6BAEFA67" />
+        <AssociationConnector Association="PropertyPlusModel.FK__career_co__caree__25DB9BFC" />
+        <AssociationConnector Association="PropertyPlusModel.FK__problem_t__emplo__7908F585" />
+        <AssociationConnector Association="PropertyPlusModel.FK__problem__issue_i__725BF7F6" />
+        <AssociationConnector Association="PropertyPlusModel.FK__problem_i__probl__753864A1" />
+        <AssociationConnector Association="PropertyPlusModel.FK__problem_t__probl__7814D14C" />
+        <AssociationConnector Association="PropertyPlusModel.FK__user_prof__user___0E04126B" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

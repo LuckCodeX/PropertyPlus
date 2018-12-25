@@ -128,7 +128,8 @@
             $scope.userProfile = data.data;
             $('#myModal-signup').modal('hide');
             $('#myModal-login').modal('hide');
-        }, function (error) {
+        }, 
+        function (error) {
             $scope.errorText = error.statusText;
         });
     };

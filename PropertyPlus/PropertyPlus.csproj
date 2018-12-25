@@ -217,6 +217,12 @@
     <Compile Include="Models\apartment_content.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\apartment_employee.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\apartment_employee_issue.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\apartment_facility.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
@@ -225,6 +231,13 @@
     </Compile>
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\blog_content.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\career.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CareerModel.cs" />
+    <Compile Include="Models\career_content.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\company.cs">
@@ -254,6 +267,15 @@
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PagingResult.cs" />
+    <Compile Include="Models\problem.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\problem_image.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\problem_tracking.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\project.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
@@ -297,6 +319,9 @@
     <Compile Include="Models\user_profile.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\user_profile_note.cs">
+      <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\user_social.cs">
       <DependentUpon>PropertyPlusEntities.tt</DependentUpon>
     </Compile>
@@ -313,6 +338,7 @@
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\ApartmentService.cs" />
     <Compile Include="Services\BlogService.cs" />
+    <Compile Include="Services\CareerService.cs" />
     <Compile Include="Services\FacilityService.cs" />
     <Compile Include="Services\GenericRepository.cs" />
     <Compile Include="Services\IService.cs" />
@@ -891,6 +917,8 @@
     <Content Include="Views\Home\Career.cshtml" />
     <Content Include="Views\Home\CareerDetail.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Admin\Career.cshtml" />
+    <Content Include="Views\Admin\CareerDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

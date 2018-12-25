@@ -198,14 +198,14 @@ namespace PropertyPlus.Controllers
             {
                 var language = Convert.ToInt32(values.First());
                 var blogs = _service.SearchBlogList(type, language, search);
-                var blogList = blogs.Select(p => new BlogModel()
+                var blogList = blogs.Skip((page - 1) * limit).Take(limit).Select(p => new BlogModel()
                 {
                     Id = p.blog_id,
                     CreatedString = ConvertDatetime.ConvertUnixTimeStampToDateTime(p.created_date),
                     Img = p.img,
                     Type = p.type,
                     Content = _service.ConvertBlogContentToModel(p.blog_content.FirstOrDefault(q => q.language == language))
-                }).Skip((page - 1) * limit).Take(limit).ToList(); ;
+                }).ToList(); ;
                 var result = new PagingResult<BlogModel>()
                 {
                     total = blogs.Count,
@@ -235,6 +235,60 @@ namespace PropertyPlus.Controllers
                 };
             }
             return new BlogModel();
+        }
+
+        [HttpGet]
+        [Route("GetListCareer/{page}/{limit}/{categoryId}/{search?}")]
+        public PagingResult<CareerModel> GetListCareer(int page, int limit, int categoryId, string search = null)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Language", out values))
+            {
+                var language = Convert.ToInt32(values.First());
+                var careers = _service.SearchCareerList(categoryId, language, search);
+                var careerList = careers.Skip((page - 1) * limit).Take(limit).Select(p => new CareerModel()
+                {
+                    Id = p.career_id,
+                    CreatedString = ConvertDatetime.ConvertUnixTimeStampToDateTime(p.created_date),
+                    Type = p.type,
+                    CategoryId = p.category_id,
+                    City = p.city,
+                    SalaryMin = p.salary_min,
+                    Content = _service.ConvertCareerContentToModel(p.career_content.FirstOrDefault(q => q.language == language))
+                }).ToList(); ;
+                var result = new PagingResult<CareerModel>()
+                {
+                    total = careers.Count,
+                    data = careerList
+                };
+                return result;
+            }
+            return new PagingResult<CareerModel>();
+        }
+
+        [HttpGet]
+        [Route("GetCareerDetail/{id}")]
+        public CareerModel GetCareerDetail(int id)
+        {
+            IEnumerable<string> values;
+            if (this.Request.Headers.TryGetValues("Language", out values))
+            {
+                var language = Convert.ToInt32(values.First());
+                var career = _service.GetCareerById(id);
+                return new CareerModel()
+                {
+                    Id = career.career_id,
+                    CreatedString = ConvertDatetime.ConvertUnixTimeStampToDateTime(career.created_date),
+                    Type = career.type,
+                    CategoryId = career.category_id,
+                    City = career.city,
+                    SalaryMin = career.salary_min,
+                    ExpiredDate = career.experied_date,
+                    Location = career.location,
+                    Content = _service.ConvertCareerContentToModel(career.career_content.FirstOrDefault(q => q.language == language))
+                };
+            }
+            return new CareerModel();
         }
 
         [HttpGet]
@@ -534,13 +588,12 @@ namespace PropertyPlus.Controllers
                     var language = Convert.ToInt32(languages.First());
                     using (var scope = new TransactionScope())
                     {
-                        var count = _service.GetListApartmentByUserProfileId(userProfile.user_profile_id).Count + 1;
+                        var count = _service.GetAllStatusApartment().Count + 1;
                         var apartment = new apartment()
                         {
                             apartment_id = 0,
                             user_profile_owner_id = userProfile.user_profile_id,
-                            code = "AID_" + userProfile.user_profile_id.ToString().PadLeft(5, '0') + "_" +
-                                   count.ToString().PadLeft(3, '0'),
+                            code = "AID_" + count.ToString().PadLeft(5, '0'),
                             created_date = ConvertDatetime.GetCurrentUnixTimeStamp(),
                             type = model.Type,
                             project_id = model.ProjectId,
