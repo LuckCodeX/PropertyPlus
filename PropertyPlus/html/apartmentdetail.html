@@ -228,6 +228,9 @@
             </div>
             <button type="submit" class="float-right btn-service box-shadow" translate>send_visiting_request</button>
         </div>
+        <div class="note-under-serivce col-xs-12">
+            <p>{{"note_under_service" | translate}}</p>
+        </div>
     </div>
 </form>
 <div class="col-xs-12 similar-listing">
@@ -251,7 +254,7 @@
                     </div>
                     <div class="choose-home-price float-right">
                         <span class="text-price-title"><span translate="">estimate_price</span>:</span>
-                        <p class="price">$ <span>{{item.Price}}</span></p>
+                        <p class="price">$ <span>{{item.Price}}</span>/<span style="font-size: 12px">{{"month_text" | translate}}</p>
                     </div>
                 </div>
             </div>

@@ -294,7 +294,7 @@
                                     </a>
                                     <div class="choose-home-summary">
                                         <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="choose-home-code">
-                                            {{apartment.Code}}
+                                            {{apartment.Project.Name}}
                                         </a>
                                         <a ui-sref="apartmentdetail({id: apartment.Id,name: replaceString(apartment.Name)})" class="txt-no-warp choose-home-name">
                                             {{apartment.Name}}
@@ -305,7 +305,7 @@
                                         </div>
                                         <div class="choose-home-price float-right">
                                             <span class="text-price-title" translate>{{"estimate_price"|translate}} :</span>
-                                            <p class="price">$ <span>{{apartment.Price}}</span></p>
+                                            <p class="price">$ <span>{{apartment.Price}}</span>/<span style="font-size: 12px">{{"month_text" | translate}}</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -314,7 +314,7 @@
                         <div class="btn-see-more">
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
-                                    <a ui-sref="apartment" class="box-shadow">{{"see_more"|translate}} (+2000)</a>
+                                    <a ui-sref="apartment" class="box-shadow">{{"see_more"|translate}} (+{{totalListApartment}})</a>
                                 </div>
                             </div>
                         </div>
