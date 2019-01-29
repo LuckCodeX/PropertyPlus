@@ -68,6 +68,7 @@
         xhrService.post("GetListApartment",$scope.defaultData)
             .then(function (data) {
                     $scope.apartmentList = data.data.data;
+                    $scope.totalListApartment = data.data.total - 8;
                 },
                 function (error) {
                     console.log(error.statusText);

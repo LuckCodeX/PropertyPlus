@@ -1364,7 +1364,7 @@ footer {
 .body-service {
     background: white;
     border: 1px solid #473E70;
-    height: 750px;
+    height: 780px;
     padding: 20.6px 25px;
 }
 
@@ -3661,6 +3661,15 @@ img-crop canvas{display:block;position:absolute;top:50%;left:50%;outline:0;-webk
 
 .list-project .owl-theme .owl-dots{
     display: none;
+}
+.note-under-serivce{
+    margin: 20px 0px;
+    opacity: 0.8;
+
+}
+.note-under-serivce p{
+    font-size: 12px;
+    font-style: italic;
 }
 @media only screen and (max-width: 1400px) {
     .select-foreign-tv {

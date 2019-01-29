@@ -466,13 +466,13 @@
     he_manage:"•  Bạn có thể quản lí căn hộ của mình, theo dõi mức thu nhập, thông báo vấn đề liên quan đến căn hộ.",
     he_editthe:"•  Bạn có thể sửa thông tin về căn hộ sau khi đã đăng lên.",
     he_department:"•  Khi có khách thuê có nhu cầu đến xem căn hộ của bạn, nhân viên chăm sóc khách hàng của Property Plus sẽ liên lạc với bạn qua số điện thoại hoặc email.",
-
+    note_under_service:"Lưu ý: bảng giá sẽ được tính theo tỷ giá của ngân hàng Vietcombank tại thời điểm làm hợp đồng.",
 
 }
 
 var translationsEN = {
     placeholder_search_home:"Type Location or Project Keyword",
-
+    note_under_service:"Note: The exchange rate shall be based on the rate set by Vietcombank in Hanoi at the time of Lease Agreement 's valibility.",
     search_bar_livingHaNoi: "Easy living in HaNoi",
     search_bar_price: "Price",
     search_bar_room: "Room",
@@ -1383,6 +1383,7 @@ var translationsJP = {
     po_contactus:"14.お問い合わせ",
     po_questions:"このプライバシーポリシーに関するご質問やご要望がございましたら、データ保護担当者に以下の詳細、またはプロパティプラスのような担当者に、手紙、請求書、Eメールまたはサイト：support @ propertyplusを通知することによって指定することができます。 com.vn",
     po_date:"発効日：01/01/2019",
+    note_under_service:"Note: The exchange rate shall be based on the rate set by Vietcombank in Hanoi at the time of Lease Agreement 's valibility.",
 
 }
 
