@@ -933,7 +933,7 @@ var translationsEN = {
     he_department:"•  The customer service department of Property Plus will contact you via phone number or email whenever there are possible tenants sending requests to visit your apartment.",
 
     cr_Careers:"Careers",
-    cr_oneof:"One of great challenges ( and to some of us one of the great blessing ) of being a startup is the dynamism. For us, everyday is something new, something different, something  exciting . And we belive the ability to think on your feet is one of the most important skills anyone can have. PROPERTYPLUS is a place where every day is a chance for us to challenge outselves and ultimately everybody around us. There’s no limit for growth, and we want you grow with us. ",
+    cr_oneof:"One of great challenges (and also great blessing) of being a startup is the dynamism. For us, everyday is something new, different, and exciting. Property Plus believes that proactivity is one of the most important skills anyone can have. Property Plus is a place where every day is a chance for us to challenge ourselves and ultimately everybody around us. There’s no limit for growth, and we want you to grow with us.",
     cr_join:"Join us",
     cr_why:"Why us",
     cr_fast:"Fast growing company ",

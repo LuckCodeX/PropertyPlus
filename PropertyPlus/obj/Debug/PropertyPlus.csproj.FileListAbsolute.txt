@@ -514,3 +514,6 @@ H:\Project\Google Drive\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus
 H:\Project\Google Drive\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.dll
 H:\Project\Google Drive\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.pdb
 H:\Project\Google Drive\Project\PropertyPlus\PropertyPlus\obj\Debug\PropertyPlus.csprojAssemblyReference.cache
+H:\Project\Google Drive\Project\PropertyPlus\PropertyPlus\bin\System.Web.Cors.dll
+H:\Project\Google Drive\Project\PropertyPlus\PropertyPlus\bin\System.Web.Http.Cors.dll
+H:\Project\Google Drive\Project\PropertyPlus\PropertyPlus\bin\System.Web.Http.Cors.xml

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Transactions;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Newtonsoft.Json;
 using PropertyPlus.Helper;
 using PropertyPlus.Models;
@@ -13,6 +14,7 @@ using PropertyPlus.Services;
 namespace PropertyPlus.Controllers
 {
     [RoutePrefix("api/propertyplus")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PropertyPlusController : BaseController
     {
         private IService _service = new Service();

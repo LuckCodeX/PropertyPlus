@@ -19,7 +19,7 @@ namespace PropertyPlus.Models
         public int issue_id { get; set; }
         public bool is_complete { get; set; }
     
-        public virtual apartment_employee apartment_employee { get; set; }
         public virtual issue issue { get; set; }
+        public virtual apartment_employee apartment_employee { get; set; }
     }
 }

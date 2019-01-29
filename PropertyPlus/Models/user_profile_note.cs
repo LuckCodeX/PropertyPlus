@@ -18,8 +18,9 @@ namespace PropertyPlus.Models
         public int user_profile_id { get; set; }
         public int created_date { get; set; }
         public string note { get; set; }
-        public Nullable<int> employee_id { get; set; }
+        public Nullable<int> admin_id { get; set; }
     
+        public virtual admin admin { get; set; }
         public virtual user_profile user_profile { get; set; }
     }
 }

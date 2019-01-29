@@ -20,6 +20,8 @@ namespace PropertyPlus.Models
             this.contract_employee = new HashSet<contract_employee>();
             this.contract_note = new HashSet<contract_note>();
             this.contract1 = new HashSet<contract>();
+            this.apartment_employee = new HashSet<apartment_employee>();
+            this.problems = new HashSet<problem>();
         }
     
         public int contract_id { get; set; }
@@ -62,6 +64,7 @@ namespace PropertyPlus.Models
         public string resident_phone { get; set; }
         public string resident_identification { get; set; }
         public string owner_identification { get; set; }
+        public string wifi_name { get; set; }
     
         public virtual admin admin { get; set; }
         public virtual apartment apartment { get; set; }
@@ -75,5 +78,9 @@ namespace PropertyPlus.Models
         public virtual ICollection<contract> contract1 { get; set; }
         public virtual contract contract2 { get; set; }
         public virtual user_profile user_profile1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<apartment_employee> apartment_employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<problem> problems { get; set; }
     }
 }

@@ -72,12 +72,13 @@
             <PropertyRef Name="apartment_employee_id" />
           </Key>
           <Property Name="apartment_employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="apartment_id" Type="int" Nullable="false" />
-          <Property Name="employee_id" Type="int" Nullable="false" />
           <Property Name="check_in_time" Type="int" />
           <Property Name="check_out_time" Type="int" />
           <Property Name="check_in_geo" Type="varchar" MaxLength="255" />
           <Property Name="check_out_geo" Type="varchar" MaxLength="255" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="contract_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="apartment_employee_issue">
           <Key>
@@ -207,6 +208,7 @@
           <Property Name="resident_phone" Type="varchar" MaxLength="20" />
           <Property Name="resident_identification" Type="varchar" MaxLength="50" />
           <Property Name="owner_identification" Type="varchar" MaxLength="50" />
+          <Property Name="wifi_name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="contract_employee">
           <Key>
@@ -248,6 +250,15 @@
           <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="created_date" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="employee_note">
+          <Key>
+            <PropertyRef Name="employee_note_id" />
+          </Key>
+          <Property Name="employee_note_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="note" Type="ntext" Nullable="false" />
+          <Property Name="created_date" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="facility">
           <Key>
             <PropertyRef Name="facility_id" />
@@ -264,6 +275,15 @@
           <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="language" Type="int" Nullable="false" />
           <Property Name="facility_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inbox">
+          <Key>
+            <PropertyRef Name="inbox_id" />
+          </Key>
+          <Property Name="inbox_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_date" Type="int" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="content" Type="ntext" Nullable="false" />
         </EntityType>
         <EntityType Name="issue">
           <Key>
@@ -287,8 +307,9 @@
           <Property Name="priority" Type="int" />
           <Property Name="status" Type="int" Nullable="false" />
           <Property Name="created_date" Type="int" Nullable="false" />
-          <Property Name="apartment_id" Type="int" Nullable="false" />
-          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" />
+          <Property Name="apartment_id" Type="int" />
+          <Property Name="contract_id" Type="int" />
         </EntityType>
         <EntityType Name="problem_image">
           <Key>
@@ -353,6 +374,23 @@
           <Property Name="language" Type="int" Nullable="false" />
           <Property Name="project_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="is_system" Type="bit" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="service_detail">
+          <Key>
+            <PropertyRef Name="service_detail_id" />
+          </Key>
+          <Property Name="service_detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="service_id" Type="int" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
         <EntityType Name="slide">
           <Key>
             <PropertyRef Name="slide_id" />
@@ -406,7 +444,7 @@
           <Property Name="user_profile_id" Type="int" Nullable="false" />
           <Property Name="created_date" Type="int" Nullable="false" />
           <Property Name="note" Type="ntext" Nullable="false" />
-          <Property Name="employee_id" Type="int" />
+          <Property Name="admin_id" Type="int" />
         </EntityType>
         <EntityType Name="user_social">
           <Key>
@@ -522,19 +560,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__apartment__apart__6CA31EA0">
-          <End Role="apartment" Type="Self.apartment" Multiplicity="1" />
+        <Association Name="FK__apartment__contr__5B438874">
+          <End Role="contract" Type="Self.contract" Multiplicity="1" />
           <End Role="apartment_employee" Type="Self.apartment_employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="apartment">
-              <PropertyRef Name="apartment_id" />
+            <Principal Role="contract">
+              <PropertyRef Name="contract_id" />
             </Principal>
             <Dependent Role="apartment_employee">
-              <PropertyRef Name="apartment_id" />
+              <PropertyRef Name="contract_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__apartment__emplo__6D9742D9">
+        <Association Name="FK__apartment__emplo__5C37ACAD">
           <End Role="employee" Type="Self.employee" Multiplicity="1" />
           <End Role="apartment_employee" Type="Self.apartment_employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -764,6 +802,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__employee___emplo__473C8FC7">
+          <End Role="employee" Type="Self.employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employee_note" Type="Self.employee_note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="employee_note">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__facility___facil__24927208">
           <End Role="facility" Type="Self.facility" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -778,8 +830,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__problem__apartme__79FD19BE">
-          <End Role="apartment" Type="Self.apartment" Multiplicity="1" />
+        <Association Name="FK__problem__apartme__7E8CC4B1">
+          <End Role="apartment" Type="Self.apartment" Multiplicity="0..1" />
           <End Role="problem" Type="Self.problem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="apartment">
@@ -787,6 +839,30 @@
             </Principal>
             <Dependent Role="problem">
               <PropertyRef Name="apartment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__problem__contrac__7F80E8EA">
+          <End Role="contract" Type="Self.contract" Multiplicity="0..1" />
+          <End Role="problem" Type="Self.problem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contract">
+              <PropertyRef Name="contract_id" />
+            </Principal>
+            <Dependent Role="problem">
+              <PropertyRef Name="contract_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__problem__employe__6C6E1476">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="problem" Type="Self.problem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="problem">
+              <PropertyRef Name="employee_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -894,6 +970,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__service_d__servi__2D7CBDC4">
+          <End Role="service" Type="Self.service" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="service_detail" Type="Self.service_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="service_detail">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__user_acco__user___1273C1CD">
           <End Role="user_profile" Type="Self.user_profile" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -919,6 +1009,18 @@
             </Principal>
             <Dependent Role="user_social">
               <PropertyRef Name="user_profile_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_prof__admin__3335971A">
+          <End Role="admin" Type="Self.admin" Multiplicity="0..1" />
+          <End Role="user_profile_note" Type="Self.user_profile_note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="user_profile_note">
+              <PropertyRef Name="admin_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1005,8 +1107,10 @@
           <EntitySet Name="contract_employee" EntityType="Self.contract_employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="contract_note" EntityType="Self.contract_note" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee_note" EntityType="Self.employee_note" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="facility" EntityType="Self.facility" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="facility_content" EntityType="Self.facility_content" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inbox" EntityType="Self.inbox" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="issue" EntityType="Self.issue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="problem" EntityType="Self.problem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="problem_image" EntityType="Self.problem_image" Schema="dbo" store:Type="Tables" />
@@ -1015,6 +1119,8 @@
           <EntitySet Name="project_content" EntityType="Self.project_content" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="project_facility" EntityType="Self.project_facility" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="project_overview" EntityType="Self.project_overview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service" EntityType="Self.service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="service_detail" EntityType="Self.service_detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="slide" EntityType="Self.slide" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_account" EntityType="Self.user_account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_profile" EntityType="Self.user_profile" Schema="dbo" store:Type="Tables" />
@@ -1043,11 +1149,11 @@
             <End Role="apartment_employee" EntitySet="apartment_employee" />
             <End Role="apartment_employee_issue" EntitySet="apartment_employee_issue" />
           </AssociationSet>
-          <AssociationSet Name="FK__apartment__apart__6CA31EA0" Association="Self.FK__apartment__apart__6CA31EA0">
-            <End Role="apartment" EntitySet="apartment" />
+          <AssociationSet Name="FK__apartment__contr__5B438874" Association="Self.FK__apartment__contr__5B438874">
+            <End Role="contract" EntitySet="contract" />
             <End Role="apartment_employee" EntitySet="apartment_employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__apartment__emplo__6D9742D9" Association="Self.FK__apartment__emplo__6D9742D9">
+          <AssociationSet Name="FK__apartment__emplo__5C37ACAD" Association="Self.FK__apartment__emplo__5C37ACAD">
             <End Role="employee" EntitySet="employee" />
             <End Role="apartment_employee" EntitySet="apartment_employee" />
           </AssociationSet>
@@ -1119,12 +1225,24 @@
             <End Role="user_profile" EntitySet="user_profile" />
             <End Role="contract" EntitySet="contract" />
           </AssociationSet>
+          <AssociationSet Name="FK__employee___emplo__473C8FC7" Association="Self.FK__employee___emplo__473C8FC7">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="employee_note" EntitySet="employee_note" />
+          </AssociationSet>
           <AssociationSet Name="FK__facility___facil__24927208" Association="Self.FK__facility___facil__24927208">
             <End Role="facility" EntitySet="facility" />
             <End Role="facility_content" EntitySet="facility_content" />
           </AssociationSet>
-          <AssociationSet Name="FK__problem__apartme__79FD19BE" Association="Self.FK__problem__apartme__79FD19BE">
+          <AssociationSet Name="FK__problem__apartme__7E8CC4B1" Association="Self.FK__problem__apartme__7E8CC4B1">
             <End Role="apartment" EntitySet="apartment" />
+            <End Role="problem" EntitySet="problem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__problem__contrac__7F80E8EA" Association="Self.FK__problem__contrac__7F80E8EA">
+            <End Role="contract" EntitySet="contract" />
+            <End Role="problem" EntitySet="problem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__problem__employe__6C6E1476" Association="Self.FK__problem__employe__6C6E1476">
+            <End Role="employee" EntitySet="employee" />
             <End Role="problem" EntitySet="problem" />
           </AssociationSet>
           <AssociationSet Name="FK__problem__issue_i__725BF7F6" Association="Self.FK__problem__issue_i__725BF7F6">
@@ -1159,6 +1277,10 @@
             <End Role="project" EntitySet="project" />
             <End Role="project_overview" EntitySet="project_overview" />
           </AssociationSet>
+          <AssociationSet Name="FK__service_d__servi__2D7CBDC4" Association="Self.FK__service_d__servi__2D7CBDC4">
+            <End Role="service" EntitySet="service" />
+            <End Role="service_detail" EntitySet="service_detail" />
+          </AssociationSet>
           <AssociationSet Name="FK__user_acco__user___1273C1CD" Association="Self.FK__user_acco__user___1273C1CD">
             <End Role="user_profile" EntitySet="user_profile" />
             <End Role="user_account" EntitySet="user_account" />
@@ -1166,6 +1288,10 @@
           <AssociationSet Name="FK__user_goog__user___29221CFB" Association="Self.FK__user_goog__user___29221CFB">
             <End Role="user_profile" EntitySet="user_profile" />
             <End Role="user_social" EntitySet="user_social" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_prof__admin__3335971A" Association="Self.FK__user_prof__admin__3335971A">
+            <End Role="admin" EntitySet="admin" />
+            <End Role="user_profile_note" EntitySet="user_profile_note" />
           </AssociationSet>
           <AssociationSet Name="FK__user_prof__user___0E04126B" Association="Self.FK__user_prof__user___0E04126B">
             <End Role="user_profile" EntitySet="user_profile" />
@@ -1408,30 +1534,11 @@
             <End Role="employee" EntitySet="employees" />
             <End Role="contract_note" EntitySet="contract_note" />
           </AssociationSet>
-          <EntitySet Name="apartment_employee" EntityType="PropertyPlusModel.apartment_employee" />
           <EntitySet Name="apartment_employee_issue" EntityType="PropertyPlusModel.apartment_employee_issue" />
           <EntitySet Name="careers" EntityType="PropertyPlusModel.career" />
           <EntitySet Name="career_content" EntityType="PropertyPlusModel.career_content" />
-          <EntitySet Name="problems" EntityType="PropertyPlusModel.problem" />
           <EntitySet Name="problem_image" EntityType="PropertyPlusModel.problem_image" />
           <EntitySet Name="problem_tracking" EntityType="PropertyPlusModel.problem_tracking" />
-          <EntitySet Name="user_profile_note" EntityType="PropertyPlusModel.user_profile_note" />
-          <AssociationSet Name="FK__apartment__apart__6CA31EA0" Association="PropertyPlusModel.FK__apartment__apart__6CA31EA0">
-            <End Role="apartment" EntitySet="apartments" />
-            <End Role="apartment_employee" EntitySet="apartment_employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK__problem__apartme__79FD19BE" Association="PropertyPlusModel.FK__problem__apartme__79FD19BE">
-            <End Role="apartment" EntitySet="apartments" />
-            <End Role="problem" EntitySet="problems" />
-          </AssociationSet>
-          <AssociationSet Name="FK__apartment__apart__6ABAD62E" Association="PropertyPlusModel.FK__apartment__apart__6ABAD62E">
-            <End Role="apartment_employee" EntitySet="apartment_employee" />
-            <End Role="apartment_employee_issue" EntitySet="apartment_employee_issue" />
-          </AssociationSet>
-          <AssociationSet Name="FK__apartment__emplo__6D9742D9" Association="PropertyPlusModel.FK__apartment__emplo__6D9742D9">
-            <End Role="employee" EntitySet="employees" />
-            <End Role="apartment_employee" EntitySet="apartment_employee" />
-          </AssociationSet>
           <AssociationSet Name="FK__apartment__issue__6BAEFA67" Association="PropertyPlusModel.FK__apartment__issue__6BAEFA67">
             <End Role="issue" EntitySet="issues" />
             <End Role="apartment_employee_issue" EntitySet="apartment_employee_issue" />
@@ -1444,6 +1551,53 @@
             <End Role="employee" EntitySet="employees" />
             <End Role="problem_tracking" EntitySet="problem_tracking" />
           </AssociationSet>
+          <EntitySet Name="employee_note" EntityType="PropertyPlusModel.employee_note" />
+          <EntitySet Name="inboxes" EntityType="PropertyPlusModel.inbox" />
+          <EntitySet Name="services" EntityType="PropertyPlusModel.service" />
+          <EntitySet Name="service_detail" EntityType="PropertyPlusModel.service_detail" />
+          <AssociationSet Name="FK__employee___emplo__473C8FC7" Association="PropertyPlusModel.FK__employee___emplo__473C8FC7">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="employee_note" EntitySet="employee_note" />
+          </AssociationSet>
+          <AssociationSet Name="FK__service_d__servi__2D7CBDC4" Association="PropertyPlusModel.FK__service_d__servi__2D7CBDC4">
+            <End Role="service" EntitySet="services" />
+            <End Role="service_detail" EntitySet="service_detail" />
+          </AssociationSet>
+          <EntitySet Name="apartment_employee" EntityType="PropertyPlusModel.apartment_employee" />
+          <AssociationSet Name="FK__apartment__apart__6ABAD62E" Association="PropertyPlusModel.FK__apartment__apart__6ABAD62E">
+            <End Role="apartment_employee" EntitySet="apartment_employee" />
+            <End Role="apartment_employee_issue" EntitySet="apartment_employee_issue" />
+          </AssociationSet>
+          <AssociationSet Name="FK__apartment__contr__5B438874" Association="PropertyPlusModel.FK__apartment__contr__5B438874">
+            <End Role="contract" EntitySet="contracts" />
+            <End Role="apartment_employee" EntitySet="apartment_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__apartment__emplo__5C37ACAD" Association="PropertyPlusModel.FK__apartment__emplo__5C37ACAD">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="apartment_employee" EntitySet="apartment_employee" />
+          </AssociationSet>
+          <EntitySet Name="user_profile_note" EntityType="PropertyPlusModel.user_profile_note" />
+          <AssociationSet Name="FK__user_prof__admin__3335971A" Association="PropertyPlusModel.FK__user_prof__admin__3335971A">
+            <End Role="admin" EntitySet="admins" />
+            <End Role="user_profile_note" EntitySet="user_profile_note" />
+          </AssociationSet>
+          <AssociationSet Name="FK__user_prof__user___0E04126B" Association="PropertyPlusModel.FK__user_prof__user___0E04126B">
+            <End Role="user_profile" EntitySet="user_profile" />
+            <End Role="user_profile_note" EntitySet="user_profile_note" />
+          </AssociationSet>
+          <EntitySet Name="problems" EntityType="PropertyPlusModel.problem" />
+          <AssociationSet Name="FK__problem__apartme__7E8CC4B1" Association="PropertyPlusModel.FK__problem__apartme__7E8CC4B1">
+            <End Role="apartment" EntitySet="apartments" />
+            <End Role="problem" EntitySet="problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__problem__contrac__7F80E8EA" Association="PropertyPlusModel.FK__problem__contrac__7F80E8EA">
+            <End Role="contract" EntitySet="contracts" />
+            <End Role="problem" EntitySet="problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__problem__employe__6C6E1476" Association="PropertyPlusModel.FK__problem__employe__6C6E1476">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="problem" EntitySet="problems" />
+          </AssociationSet>
           <AssociationSet Name="FK__problem__issue_i__725BF7F6" Association="PropertyPlusModel.FK__problem__issue_i__725BF7F6">
             <End Role="issue" EntitySet="issues" />
             <End Role="problem" EntitySet="problems" />
@@ -1455,10 +1609,6 @@
           <AssociationSet Name="FK__problem_t__probl__7814D14C" Association="PropertyPlusModel.FK__problem_t__probl__7814D14C">
             <End Role="problem" EntitySet="problems" />
             <End Role="problem_tracking" EntitySet="problem_tracking" />
-          </AssociationSet>
-          <AssociationSet Name="FK__user_prof__user___0E04126B" Association="PropertyPlusModel.FK__user_prof__user___0E04126B">
-            <End Role="user_profile" EntitySet="user_profile" />
-            <End Role="user_profile_note" EntitySet="user_profile_note" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="admin">
@@ -1482,6 +1632,7 @@
           <Property Name="bank_branch" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="companies" Relationship="PropertyPlusModel.FK__company__admin_i__1E6F845E" FromRole="admin" ToRole="company" />
           <NavigationProperty Name="contracts" Relationship="PropertyPlusModel.FK__contract__admin___27F8EE98" FromRole="admin" ToRole="contract" />
+          <NavigationProperty Name="user_profile_note" Relationship="PropertyPlusModel.FK__user_prof__admin__3335971A" FromRole="admin" ToRole="user_profile_note" />
         </EntityType>
         <EntityType Name="blog_content">
           <Key>
@@ -1648,8 +1799,7 @@
           <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="is_import" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="contracts" Relationship="PropertyPlusModel.FK__contract__apartm__2704CA5F" FromRole="apartment" ToRole="contract" />
-          <NavigationProperty Name="apartment_employee" Relationship="PropertyPlusModel.FK__apartment__apart__6CA31EA0" FromRole="apartment" ToRole="apartment_employee" />
-          <NavigationProperty Name="problems" Relationship="PropertyPlusModel.FK__problem__apartme__79FD19BE" FromRole="apartment" ToRole="problem" />
+          <NavigationProperty Name="problems" Relationship="PropertyPlusModel.FK__problem__apartme__7E8CC4B1" FromRole="apartment" ToRole="problem" />
         </EntityType>
         <EntityType Name="user_profile">
           <Key>
@@ -2021,6 +2171,9 @@
           <Property Name="resident_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="resident_identification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="owner_identification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="wifi_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="apartment_employee" Relationship="PropertyPlusModel.FK__apartment__contr__5B438874" FromRole="contract" ToRole="apartment_employee" />
+          <NavigationProperty Name="problems" Relationship="PropertyPlusModel.FK__problem__contrac__7F80E8EA" FromRole="contract" ToRole="problem" />
         </EntityType>
         <EntityType Name="contract_employee">
           <Key>
@@ -2067,8 +2220,10 @@
           <NavigationProperty Name="contract_employee" Relationship="PropertyPlusModel.FK__contract___emplo__29E1370A" FromRole="employee" ToRole="contract_employee" />
           <NavigationProperty Name="contract_note" Relationship="PropertyPlusModel.FK__contract___emplo__2DB1C7EE" FromRole="employee" ToRole="contract_note" />
           <Property Name="created_date" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="apartment_employee" Relationship="PropertyPlusModel.FK__apartment__emplo__6D9742D9" FromRole="employee" ToRole="apartment_employee" />
           <NavigationProperty Name="problem_tracking" Relationship="PropertyPlusModel.FK__problem_t__emplo__7908F585" FromRole="employee" ToRole="problem_tracking" />
+          <NavigationProperty Name="employee_note" Relationship="PropertyPlusModel.FK__employee___emplo__473C8FC7" FromRole="employee" ToRole="employee_note" />
+          <NavigationProperty Name="apartment_employee" Relationship="PropertyPlusModel.FK__apartment__emplo__5C37ACAD" FromRole="employee" ToRole="apartment_employee" />
+          <NavigationProperty Name="problems" Relationship="PropertyPlusModel.FK__problem__employe__6C6E1476" FromRole="employee" ToRole="problem" />
         </EntityType>
         <EntityType Name="issue">
           <Key>
@@ -2217,21 +2372,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="apartment_employee">
-          <Key>
-            <PropertyRef Name="apartment_employee_id" />
-          </Key>
-          <Property Name="apartment_employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="apartment_id" Type="Int32" Nullable="false" />
-          <Property Name="employee_id" Type="Int32" Nullable="false" />
-          <Property Name="check_in_time" Type="Int32" />
-          <Property Name="check_out_time" Type="Int32" />
-          <Property Name="check_in_geo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="check_out_geo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="apartment" Relationship="PropertyPlusModel.FK__apartment__apart__6CA31EA0" FromRole="apartment_employee" ToRole="apartment" />
-          <NavigationProperty Name="apartment_employee_issue" Relationship="PropertyPlusModel.FK__apartment__apart__6ABAD62E" FromRole="apartment_employee" ToRole="apartment_employee_issue" />
-          <NavigationProperty Name="employee" Relationship="PropertyPlusModel.FK__apartment__emplo__6D9742D9" FromRole="apartment_employee" ToRole="employee" />
-        </EntityType>
         <EntityType Name="apartment_employee_issue">
           <Key>
             <PropertyRef Name="apartment_employee_issue_id" />
@@ -2240,8 +2380,8 @@
           <Property Name="apartment_employee_id" Type="Int32" Nullable="false" />
           <Property Name="issue_id" Type="Int32" Nullable="false" />
           <Property Name="is_complete" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="apartment_employee" Relationship="PropertyPlusModel.FK__apartment__apart__6ABAD62E" FromRole="apartment_employee_issue" ToRole="apartment_employee" />
           <NavigationProperty Name="issue" Relationship="PropertyPlusModel.FK__apartment__issue__6BAEFA67" FromRole="apartment_employee_issue" ToRole="issue" />
+          <NavigationProperty Name="apartment_employee" Relationship="PropertyPlusModel.FK__apartment__apart__6ABAD62E" FromRole="apartment_employee_issue" ToRole="apartment_employee" />
         </EntityType>
         <EntityType Name="career">
           <Key>
@@ -2268,26 +2408,6 @@
           <Property Name="language" Type="Int32" Nullable="false" />
           <NavigationProperty Name="career" Relationship="PropertyPlusModel.FK__career_co__caree__25DB9BFC" FromRole="career_content" ToRole="career" />
         </EntityType>
-        <EntityType Name="problem">
-          <Key>
-            <PropertyRef Name="problem_id" />
-          </Key>
-          <Property Name="problem_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="issue_id" Type="Int32" />
-          <Property Name="type" Type="Int32" />
-          <Property Name="summary" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="is_calendar" Type="Boolean" />
-          <Property Name="priority" Type="Int32" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <Property Name="created_date" Type="Int32" Nullable="false" />
-          <Property Name="apartment_id" Type="Int32" Nullable="false" />
-          <Property Name="employee_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="apartment" Relationship="PropertyPlusModel.FK__problem__apartme__79FD19BE" FromRole="problem" ToRole="apartment" />
-          <NavigationProperty Name="issue" Relationship="PropertyPlusModel.FK__problem__issue_i__725BF7F6" FromRole="problem" ToRole="issue" />
-          <NavigationProperty Name="problem_image" Relationship="PropertyPlusModel.FK__problem_i__probl__753864A1" FromRole="problem" ToRole="problem_image" />
-          <NavigationProperty Name="problem_tracking" Relationship="PropertyPlusModel.FK__problem_t__probl__7814D14C" FromRole="problem" ToRole="problem_tracking" />
-        </EntityType>
         <EntityType Name="problem_image">
           <Key>
             <PropertyRef Name="problem_image_id" />
@@ -2310,67 +2430,6 @@
           <NavigationProperty Name="employee" Relationship="PropertyPlusModel.FK__problem_t__emplo__7908F585" FromRole="problem_tracking" ToRole="employee" />
           <NavigationProperty Name="problem" Relationship="PropertyPlusModel.FK__problem_t__probl__7814D14C" FromRole="problem_tracking" ToRole="problem" />
         </EntityType>
-        <EntityType Name="user_profile_note">
-          <Key>
-            <PropertyRef Name="user_profile_note_id" />
-          </Key>
-          <Property Name="user_profile_note_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="user_profile_id" Type="Int32" Nullable="false" />
-          <Property Name="created_date" Type="Int32" Nullable="false" />
-          <Property Name="note" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="employee_id" Type="Int32" />
-          <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_prof__user___0E04126B" FromRole="user_profile_note" ToRole="user_profile" />
-        </EntityType>
-        <Association Name="FK__apartment__apart__6CA31EA0">
-          <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="1" />
-          <End Type="PropertyPlusModel.apartment_employee" Role="apartment_employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="apartment">
-              <PropertyRef Name="apartment_id" />
-            </Principal>
-            <Dependent Role="apartment_employee">
-              <PropertyRef Name="apartment_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__problem__apartme__79FD19BE">
-          <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="1" />
-          <End Type="PropertyPlusModel.problem" Role="problem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="apartment">
-              <PropertyRef Name="apartment_id" />
-            </Principal>
-            <Dependent Role="problem">
-              <PropertyRef Name="apartment_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__apartment__apart__6ABAD62E">
-          <End Type="PropertyPlusModel.apartment_employee" Role="apartment_employee" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="PropertyPlusModel.apartment_employee_issue" Role="apartment_employee_issue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="apartment_employee">
-              <PropertyRef Name="apartment_employee_id" />
-            </Principal>
-            <Dependent Role="apartment_employee_issue">
-              <PropertyRef Name="apartment_employee_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__apartment__emplo__6D9742D9">
-          <End Type="PropertyPlusModel.employee" Role="employee" Multiplicity="1" />
-          <End Type="PropertyPlusModel.apartment_employee" Role="apartment_employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee">
-              <PropertyRef Name="employee_id" />
-            </Principal>
-            <Dependent Role="apartment_employee">
-              <PropertyRef Name="employee_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__apartment__issue__6BAEFA67">
           <End Type="PropertyPlusModel.issue" Role="issue" Multiplicity="1" />
           <End Type="PropertyPlusModel.apartment_employee_issue" Role="apartment_employee_issue" Multiplicity="*" />
@@ -2409,6 +2468,221 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="employee_note">
+          <Key>
+            <PropertyRef Name="employee_note_id" />
+          </Key>
+          <Property Name="employee_note_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="PropertyPlusModel.FK__employee___emplo__473C8FC7" FromRole="employee_note" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="inbox">
+          <Key>
+            <PropertyRef Name="inbox_id" />
+          </Key>
+          <Property Name="inbox_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_date" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="service">
+          <Key>
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="service_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="is_system" Type="Boolean" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="service_detail" Relationship="PropertyPlusModel.FK__service_d__servi__2D7CBDC4" FromRole="service" ToRole="service_detail" />
+        </EntityType>
+        <EntityType Name="service_detail">
+          <Key>
+            <PropertyRef Name="service_detail_id" />
+          </Key>
+          <Property Name="service_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="service" Relationship="PropertyPlusModel.FK__service_d__servi__2D7CBDC4" FromRole="service_detail" ToRole="service" />
+        </EntityType>
+        <Association Name="FK__employee___emplo__473C8FC7">
+          <End Type="PropertyPlusModel.employee" Role="employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PropertyPlusModel.employee_note" Role="employee_note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="employee_note">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__service_d__servi__2D7CBDC4">
+          <End Type="PropertyPlusModel.service" Role="service" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PropertyPlusModel.service_detail" Role="service_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="service_id" />
+            </Principal>
+            <Dependent Role="service_detail">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="apartment_employee">
+          <Key>
+            <PropertyRef Name="apartment_employee_id" />
+          </Key>
+          <Property Name="apartment_employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="check_in_time" Type="Int32" />
+          <Property Name="check_out_time" Type="Int32" />
+          <Property Name="check_in_geo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="check_out_geo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="contract_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="apartment_employee_issue" Relationship="PropertyPlusModel.FK__apartment__apart__6ABAD62E" FromRole="apartment_employee" ToRole="apartment_employee_issue" />
+          <NavigationProperty Name="contract" Relationship="PropertyPlusModel.FK__apartment__contr__5B438874" FromRole="apartment_employee" ToRole="contract" />
+          <NavigationProperty Name="employee" Relationship="PropertyPlusModel.FK__apartment__emplo__5C37ACAD" FromRole="apartment_employee" ToRole="employee" />
+        </EntityType>
+        <Association Name="FK__apartment__apart__6ABAD62E">
+          <End Type="PropertyPlusModel.apartment_employee" Role="apartment_employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PropertyPlusModel.apartment_employee_issue" Role="apartment_employee_issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="apartment_employee">
+              <PropertyRef Name="apartment_employee_id" />
+            </Principal>
+            <Dependent Role="apartment_employee_issue">
+              <PropertyRef Name="apartment_employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__apartment__contr__5B438874">
+          <End Type="PropertyPlusModel.contract" Role="contract" Multiplicity="1" />
+          <End Type="PropertyPlusModel.apartment_employee" Role="apartment_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contract">
+              <PropertyRef Name="contract_id" />
+            </Principal>
+            <Dependent Role="apartment_employee">
+              <PropertyRef Name="contract_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__apartment__emplo__5C37ACAD">
+          <End Type="PropertyPlusModel.employee" Role="employee" Multiplicity="1" />
+          <End Type="PropertyPlusModel.apartment_employee" Role="apartment_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="apartment_employee">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="user_profile_note">
+          <Key>
+            <PropertyRef Name="user_profile_note_id" />
+          </Key>
+          <Property Name="user_profile_note_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_profile_id" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="admin_id" Type="Int32" />
+          <NavigationProperty Name="admin" Relationship="PropertyPlusModel.FK__user_prof__admin__3335971A" FromRole="user_profile_note" ToRole="admin" />
+          <NavigationProperty Name="user_profile" Relationship="PropertyPlusModel.FK__user_prof__user___0E04126B" FromRole="user_profile_note" ToRole="user_profile" />
+        </EntityType>
+        <Association Name="FK__user_prof__admin__3335971A">
+          <End Type="PropertyPlusModel.admin" Role="admin" Multiplicity="0..1" />
+          <End Type="PropertyPlusModel.user_profile_note" Role="user_profile_note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admin">
+              <PropertyRef Name="admin_id" />
+            </Principal>
+            <Dependent Role="user_profile_note">
+              <PropertyRef Name="admin_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__user_prof__user___0E04126B">
+          <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1" />
+          <End Type="PropertyPlusModel.user_profile_note" Role="user_profile_note" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_profile">
+              <PropertyRef Name="user_profile_id" />
+            </Principal>
+            <Dependent Role="user_profile_note">
+              <PropertyRef Name="user_profile_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="problem">
+          <Key>
+            <PropertyRef Name="problem_id" />
+          </Key>
+          <Property Name="problem_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="issue_id" Type="Int32" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="summary" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="is_calendar" Type="Boolean" />
+          <Property Name="priority" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" />
+          <Property Name="apartment_id" Type="Int32" />
+          <Property Name="contract_id" Type="Int32" />
+          <NavigationProperty Name="apartment" Relationship="PropertyPlusModel.FK__problem__apartme__7E8CC4B1" FromRole="problem" ToRole="apartment" />
+          <NavigationProperty Name="contract" Relationship="PropertyPlusModel.FK__problem__contrac__7F80E8EA" FromRole="problem" ToRole="contract" />
+          <NavigationProperty Name="employee" Relationship="PropertyPlusModel.FK__problem__employe__6C6E1476" FromRole="problem" ToRole="employee" />
+          <NavigationProperty Name="issue" Relationship="PropertyPlusModel.FK__problem__issue_i__725BF7F6" FromRole="problem" ToRole="issue" />
+          <NavigationProperty Name="problem_image" Relationship="PropertyPlusModel.FK__problem_i__probl__753864A1" FromRole="problem" ToRole="problem_image" />
+          <NavigationProperty Name="problem_tracking" Relationship="PropertyPlusModel.FK__problem_t__probl__7814D14C" FromRole="problem" ToRole="problem_tracking" />
+        </EntityType>
+        <Association Name="FK__problem__apartme__7E8CC4B1">
+          <End Type="PropertyPlusModel.apartment" Role="apartment" Multiplicity="0..1" />
+          <End Type="PropertyPlusModel.problem" Role="problem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="apartment">
+              <PropertyRef Name="apartment_id" />
+            </Principal>
+            <Dependent Role="problem">
+              <PropertyRef Name="apartment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__problem__contrac__7F80E8EA">
+          <End Type="PropertyPlusModel.contract" Role="contract" Multiplicity="0..1" />
+          <End Type="PropertyPlusModel.problem" Role="problem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contract">
+              <PropertyRef Name="contract_id" />
+            </Principal>
+            <Dependent Role="problem">
+              <PropertyRef Name="contract_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__problem__employe__6C6E1476">
+          <End Type="PropertyPlusModel.employee" Role="employee" Multiplicity="0..1" />
+          <End Type="PropertyPlusModel.problem" Role="problem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="problem">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__problem__issue_i__725BF7F6">
           <End Type="PropertyPlusModel.issue" Role="issue" Multiplicity="0..1" />
           <End Type="PropertyPlusModel.problem" Role="problem" Multiplicity="*" />
@@ -2442,18 +2716,6 @@
             </Principal>
             <Dependent Role="problem_tracking">
               <PropertyRef Name="problem_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__user_prof__user___0E04126B">
-          <End Type="PropertyPlusModel.user_profile" Role="user_profile" Multiplicity="1" />
-          <End Type="PropertyPlusModel.user_profile_note" Role="user_profile_note" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user_profile">
-              <PropertyRef Name="user_profile_id" />
-            </Principal>
-            <Dependent Role="user_profile_note">
-              <PropertyRef Name="user_profile_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2753,6 +3015,7 @@
           <EntitySetMapping Name="contracts">
             <EntityTypeMapping TypeName="PropertyPlusModel.contract">
               <MappingFragment StoreEntitySet="contract">
+                <ScalarProperty Name="wifi_name" ColumnName="wifi_name" />
                 <ScalarProperty Name="owner_identification" ColumnName="owner_identification" />
                 <ScalarProperty Name="resident_identification" ColumnName="resident_identification" />
                 <ScalarProperty Name="resident_phone" ColumnName="resident_phone" />
@@ -2849,19 +3112,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="apartment_employee">
-            <EntityTypeMapping TypeName="PropertyPlusModel.apartment_employee">
-              <MappingFragment StoreEntitySet="apartment_employee">
-                <ScalarProperty Name="check_out_geo" ColumnName="check_out_geo" />
-                <ScalarProperty Name="check_in_geo" ColumnName="check_in_geo" />
-                <ScalarProperty Name="check_out_time" ColumnName="check_out_time" />
-                <ScalarProperty Name="check_in_time" ColumnName="check_in_time" />
-                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
-                <ScalarProperty Name="apartment_id" ColumnName="apartment_id" />
-                <ScalarProperty Name="apartment_employee_id" ColumnName="apartment_employee_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="apartment_employee_issue">
             <EntityTypeMapping TypeName="PropertyPlusModel.apartment_employee_issue">
               <MappingFragment StoreEntitySet="apartment_employee_issue">
@@ -2897,23 +3147,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="problems">
-            <EntityTypeMapping TypeName="PropertyPlusModel.problem">
-              <MappingFragment StoreEntitySet="problem">
-                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
-                <ScalarProperty Name="apartment_id" ColumnName="apartment_id" />
-                <ScalarProperty Name="created_date" ColumnName="created_date" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="priority" ColumnName="priority" />
-                <ScalarProperty Name="is_calendar" ColumnName="is_calendar" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="summary" ColumnName="summary" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="issue_id" ColumnName="issue_id" />
-                <ScalarProperty Name="problem_id" ColumnName="problem_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="problem_image">
             <EntityTypeMapping TypeName="PropertyPlusModel.problem_image">
               <MappingFragment StoreEntitySet="problem_image">
@@ -2935,14 +3168,85 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="employee_note">
+            <EntityTypeMapping TypeName="PropertyPlusModel.employee_note">
+              <MappingFragment StoreEntitySet="employee_note">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="employee_note_id" ColumnName="employee_note_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inboxes">
+            <EntityTypeMapping TypeName="PropertyPlusModel.inbox">
+              <MappingFragment StoreEntitySet="inbox">
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="inbox_id" ColumnName="inbox_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="services">
+            <EntityTypeMapping TypeName="PropertyPlusModel.service">
+              <MappingFragment StoreEntitySet="service">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="is_system" ColumnName="is_system" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="service_detail">
+            <EntityTypeMapping TypeName="PropertyPlusModel.service_detail">
+              <MappingFragment StoreEntitySet="service_detail">
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="service_detail_id" ColumnName="service_detail_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="apartment_employee">
+            <EntityTypeMapping TypeName="PropertyPlusModel.apartment_employee">
+              <MappingFragment StoreEntitySet="apartment_employee">
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="contract_id" ColumnName="contract_id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="check_out_geo" ColumnName="check_out_geo" />
+                <ScalarProperty Name="check_in_geo" ColumnName="check_in_geo" />
+                <ScalarProperty Name="check_out_time" ColumnName="check_out_time" />
+                <ScalarProperty Name="check_in_time" ColumnName="check_in_time" />
+                <ScalarProperty Name="apartment_employee_id" ColumnName="apartment_employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="user_profile_note">
             <EntityTypeMapping TypeName="PropertyPlusModel.user_profile_note">
               <MappingFragment StoreEntitySet="user_profile_note">
-                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
                 <ScalarProperty Name="note" ColumnName="note" />
                 <ScalarProperty Name="created_date" ColumnName="created_date" />
                 <ScalarProperty Name="user_profile_id" ColumnName="user_profile_id" />
                 <ScalarProperty Name="user_profile_note_id" ColumnName="user_profile_note_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="problems">
+            <EntityTypeMapping TypeName="PropertyPlusModel.problem">
+              <MappingFragment StoreEntitySet="problem">
+                <ScalarProperty Name="contract_id" ColumnName="contract_id" />
+                <ScalarProperty Name="apartment_id" ColumnName="apartment_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="is_calendar" ColumnName="is_calendar" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="issue_id" ColumnName="issue_id" />
+                <ScalarProperty Name="problem_id" ColumnName="problem_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
